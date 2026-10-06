@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spec Prompt Builder</title>
+<style>
+  :root {
+    --bg: #f6f7f8; --panel: #ffffff; --ink: #1b2125; --muted: #5d6870; --line: #dde2e5;
+    --accent: #1f6f8b; --accent-ink: #ffffff; --code: #eef1f3;
+    --ok: #1d7a46; --ok-bg: #e3f3e9; --warn: #8a5a00; --warn-bg: #fbf0d9; --bad: #a3262a; --bad-bg: #fbe5e5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12171a; --panel: #1a2125; --ink: #e3e8eb; --muted: #97a3aa; --line: #2c363c;
+      --accent: #5fb3cf; --accent-ink: #0d1316; --code: #222b30;
+      --ok: #6fd39b; --ok-bg: #173325; --warn: #e8bd62; --warn-bg: #3a2e14; --bad: #f08a8d; --bad-bg: #3d1c1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12171a; --panel: #1a2125; --ink: #e3e8eb; --muted: #97a3aa; --line: #2c363c;
+    --accent: #5fb3cf; --accent-ink: #0d1316; --code: #222b30;
+    --ok: #6fd39b; --ok-bg: #173325; --warn: #e8bd62; --warn-bg: #3a2e14; --bad: #f08a8d; --bad-bg: #3d1c1e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 64px; display: grid; gap: 16px; }
+  h1 { margin: 0; font-size: 22px; text-wrap: balance; }
+  h1 + p { margin: 4px 0 0; color: var(--muted); max-width: 75ch; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+  .head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .head h2 { margin: 0; font-size: 16px; flex: 1; min-width: 200px; }
+  .n { font: 600 12px ui-monospace, Consolas, monospace; color: var(--muted); margin-right: 6px; }
+  .grid { display: grid; gap: 10px 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  label { display: grid; gap: 3px; font-size: 12px; color: var(--muted); letter-spacing: .02em; }
+  label.inline { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink); letter-spacing: 0; }
+  input, textarea { width: 100%; font: 13px ui-monospace, Consolas, monospace; color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
+  input[type=checkbox] { width: auto; }
+  input[type=file] { font-family: inherit; }
+  textarea { resize: vertical; min-height: 90px; }
+  textarea.tall { min-height: 260px; }
+  button { font: 600 13px system-ui, sans-serif; border-radius: 6px; padding: 7px 14px; cursor: pointer;
+    border: 1px solid var(--accent); background: var(--panel); color: var(--accent); }
+  button.primary { background: var(--accent); color: var(--accent-ink); }
+  button:disabled { opacity: .5; cursor: progress; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pill { font: 600 11px system-ui, sans-serif; padding: 2px 9px; border-radius: 999px; letter-spacing: .03em; text-transform: uppercase;
+    background: var(--code); color: var(--muted); white-space: nowrap; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.warn { background: var(--warn-bg); color: var(--warn); }
+  .pill.bad { background: var(--bad-bg); color: var(--bad); }
+  .pill.run { background: var(--code); color: var(--accent); }
+  .info { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .msg { padding: 8px 12px; border-radius: 6px; font-size: 13px; }
+  .msg.ok { background: var(--ok-bg); color: var(--ok); }
+  .msg.warn { background: var(--warn-bg); color: var(--warn); }
+  .msg.bad { background: var(--bad-bg); color: var(--bad); }
+  .msg:empty { display: none; }
+  pre { margin: 0; background: var(--code); padding: 10px 12px; border-radius: 6px; overflow: auto; max-height: 420px;
+    white-space: pre-wrap; word-break: break-word; font: 12px/1.45 ui-monospace, Consolas, monospace; }
+  details > summary { cursor: pointer; color: var(--muted); font-size: 12px; padding: 2px 0; }
+  details[open] > summary { margin-bottom: 6px; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; font-weight: 600; }
+  td.mono { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { background: var(--code); border-radius: 4px; padding: 2px 8px; font: 12px ui-monospace, Consolas, monospace; }
+  .chip.drop { text-decoration: line-through; color: var(--bad); }
+  .meter { height: 10px; background: var(--code); border-radius: 5px; overflow: hidden; display: flex; }
+  .meter > span { display: block; height: 100%; }
+  .meter .p { background: var(--accent); }
+  .meter .o { background: var(--muted); opacity: .45; }
+  .row2 { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+  .row2 > div { display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .sub { font-size: 12px; color: var(--muted); letter-spacing: .03em; text-transform: uppercase; font-weight: 600; }
+  @media (prefers-reduced-motion: no-preference) { button { transition: background .15s; } }
+</style>
+
+<main>
+  <header>
+    <h1>Spec Prompt Builder <a href="/results.html" style="font-size:14px;font-weight:600;margin-left:10px">Run results →</a></h1>
+    <p>Raw HTML → our resolver → a verifier agent → a labels and example agent → the production spec prompt with both appended → a context-window check → the final extraction agent. Every agent uses the same model; only the task changes.</p>
+  </header>
+
+  <section aria-labelledby="s-set">
+    <div class="head"><h2 id="s-set">Model</h2><span class="info" id="ctxinfo"></span></div>
+    <div class="grid">
+      <label>API base URL <input id="api" value="https://openrouter.ai/api/v1"></label>
+      <label>API key <input id="key" type="password" placeholder="sk-or-..." autocomplete="off"></label>
+      <label>Model <input id="model" value="qwen/qwen-2.5-72b-instruct"></label>
+      <label>Context window (tokens) <input id="ctx" type="number" value="32768"></label>
+      <label>Max output tokens per call <input id="max" type="number" value="4096"></label>
+      <label class="inline"><input id="enforce" type="checkbox" checked> Enforce the JSON schema (structured output)</label>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-in">
+    <div class="head"><h2 id="s-in">Page</h2>
+      <button id="runall" class="primary">Run all steps</button></div>
+    <div class="grid">
+      <label>Page URL (the resolver uses the site's template) <input id="url" placeholder="https://munitionsindia.in/products/..."></label>
+      <label>Raw HTML file <input id="file" type="file" accept=".html,.htm,text/html"></label>
+      <label>Known product names (optional, comma-separated) <input id="known" placeholder="(none)"></label>
+    </div>
+    <label>Spec prompt (optional: leave empty to use our production spec prompt; if you enter one, steps 3, 4 and 7 use it. Its "PARAMETERS:" block of "name: meaning" lines sets the allowed names; the passage is added at the end)
+      <textarea id="sprompt" spellcheck="false" placeholder="(empty = the production spec prompt)"></textarea></label>
+    <div class="head"><button id="loadprompt" type="button">Load the production prompt to edit</button><span class="info" id="pinfo">using the production spec prompt</span></div>
+    <label>Raw HTML (leave empty to fetch the URL: our DC corpus copy first, else the live page) <textarea id="html" spellcheck="false" placeholder="<html>..."></textarea></label>
+    <div class="msg" id="allmsg"></div>
+  </section>
+
+  <section aria-labelledby="s1">
+    <div class="head"><h2 id="s1"><span class="n">1</span>Resolve HTML <select id="rmode" aria-label="Resolver">
+        <option value="text">text only: drop code, tags, svg, styles; keep every visible line</option>
+        <option value="production">production resolver (template_prec): also drops menus, footer, site template</option></select></h2>
+      <span class="pill" id="p1">waiting</span><button id="b1">Run</button></div>
+    <div class="info" id="i1"></div>
+    <div class="row2">
+      <div><span class="sub">Resolved passage (editable; later steps read this)</span><textarea id="resolved" class="tall" spellcheck="false"></textarea></div>
+      <div><span class="sub">Every visible line of the raw HTML</span><textarea id="visible" class="tall" spellcheck="false" readonly></textarea></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s2">
+    <div class="head"><h2 id="s2"><span class="n">2</span>Verify agent: does the resolved passage keep every spec of the page?</h2>
+      <span class="pill" id="p2">waiting</span><button id="b2">Run</button></div>
+    <div class="msg" id="m2"></div>
+    <div class="scroll" id="t2"></div>
+    <details><summary>Prompt and raw answer</summary><pre id="d2"></pre></details>
+  </section>
+
+  <section aria-labelledby="s3">
+    <div class="head"><h2 id="s3"><span class="n">3</span>Labels and example agent</h2>
+      <span class="pill" id="p3">waiting</span><button id="b3">Run</button></div>
+    <div class="msg" id="m3"></div>
+    <div><span class="sub">Spec labels on this page</span><div class="chips" id="labels"></div></div>
+    <div><span class="sub">Example generated from this page</span><pre id="example"></pre></div>
+    <details><summary>Prompt and raw answer</summary><pre id="d3"></pre></details>
+  </section>
+
+  <section aria-labelledby="s4">
+    <div class="head"><h2 id="s4"><span class="n">4</span>Final prompt: the production spec prompt + labels + example + resolved passage</h2>
+      <span class="pill" id="p4">waiting</span><button id="b4">Build</button></div>
+    <div class="info" id="i4"></div>
+    <textarea id="final" class="tall" spellcheck="false"></textarea>
+    <details><summary>JSON schema sent with it (parameter names = the allowed names + the page labels)</summary><pre id="schema"></pre></details>
+  </section>
+
+  <section aria-labelledby="s5">
+    <div class="head"><h2 id="s5"><span class="n">5</span>Context-window check</h2>
+      <span class="pill" id="p5">waiting</span><button id="b5">Check</button></div>
+    <div class="meter" aria-hidden="true"><span class="p" id="mp" style="width:0"></span><span class="o" id="mo" style="width:0"></span></div>
+    <div class="msg" id="m5"></div>
+  </section>
+
+  <section aria-labelledby="s6">
+    <div class="head"><h2 id="s6"><span class="n">6</span>Final agent: the specs</h2>
+      <span class="pill" id="p6">waiting</span><button id="b6">Run</button></div>
+    <div class="msg" id="m6"></div>
+    <div class="scroll" id="t6"></div>
+    <details><summary>Raw answer</summary><pre id="d6"></pre></details>
+  </section>
+
+  <section aria-labelledby="s7">
+    <div class="head"><h2 id="s7"><span class="n">7</span>Review agent: check the output against the whole page (a frontier model as the human reviewer)</h2>
+      <span class="pill" id="p7">waiting</span><button id="b7">Run</button></div>
+    <div class="grid">
+      <label>Review model <input id="rmodel" value="qwen/qwen3.5-122b-a10b"></label>
+      <label>Its context window (tokens) <input id="rctx" type="number" value="262144"></label>
+      <label>Max output tokens <input id="rmax" type="number" value="16000"></label>
+      <label>Provider (empty = any; Alibaba and AtlasCloud return empty reviews for this model) <input id="rprov" value="SiliconFlow"></label>
+      <label class="inline"><input id="rthink" type="checkbox"> Let it think (reasoning: slower, costs more output tokens)</label>
+      <label class="inline"><input id="r7all" type="checkbox"> Include this step in "Run all steps"</label>
+    </div>
+    <div class="info" id="i7"></div>
+    <div class="msg" id="m7"></div>
+    <div class="scroll" id="t7"></div>
+    <div><span class="sub">Corrected output (the reviewer's)</span><pre id="corr"></pre></div>
+    <details><summary>The page as Markdown (what the reviewer reads)</summary><pre id="md"></pre></details>
+    <details><summary>Prompt and raw answer</summary><pre id="d7"></pre></details>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const norm = s => String(s ?? "").toLowerCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").trim();
+const has = (hay, needle) => !!norm(needle) && norm(hay).includes(norm(needle));
+// Python json.dumps spacing, as in the production prompt's example
+const pyj = v => Array.isArray(v) ? "[" + v.map(pyj).join(", ") + "]"
+  : v && typeof v === "object" ? "{" + Object.entries(v).map(([k, x]) => JSON.stringify(k) + ": " + pyj(x)).join(", ") + "}"
+  : JSON.stringify(v);
+const pill = (n, cls, text) => { const p = $("p" + n); p.className = "pill " + cls; p.textContent = text; };
+const msg = (id, cls, text) => { const m = $(id); m.className = "msg " + cls; m.textContent = text; };
+
+let BASE, S = {};
+for (const k of ["api", "model", "ctx", "max"]) if (localStorage["sf_" + k]) $(k).value = localStorage["sf_" + k];
+$("key").value = localStorage.key_or || "";
+const save = () => { localStorage.key_or = $("key").value; for (const k of ["api", "model", "ctx", "max"]) localStorage["sf_" + k] = $(k).value; };
+
+async function srv(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.error || r.status);
+  return j;
+}
+const baseReady = srv("/base").then(b => BASE = b);
+// the custom spec prompt (Page section): kept in this browser only, so a fresh browser (the batch runner) uses the default
+try { $("sprompt").value = localStorage.sf_prompt || ""; } catch {}
+const pinfo = () => { $("pinfo").textContent = custom() ? `using YOUR spec prompt: ${custom().length.toLocaleString()} chars, ${allowed().length} parameter names` : "using the production spec prompt"; };
+$("sprompt").oninput = () => { try { localStorage.sf_prompt = $("sprompt").value; } catch {} if (BASE) pinfo(); };
+$("loadprompt").onclick = async () => { await baseReady; $("sprompt").value = BASE.template.trim(); $("sprompt").oninput(); };
+baseReady.then(pinfo);
+
+// the model's context window, from the provider's model list when it says
+async function loadCtx() {
+  try {
+    const r = await fetch($("api").value.replace(/\/$/, "") + "/models");
+    const m = ((await r.json()).data || []).find(x => x.id === $("model").value);
+    if (m && m.context_length) {
+      $("ctx").value = m.context_length;
+      $("ctxinfo").textContent = `context ${m.context_length.toLocaleString()} tokens (from the provider)` +
+        (m.top_provider?.max_completion_tokens ? `, max output ${m.top_provider.max_completion_tokens.toLocaleString()}` : "");
+    } else $("ctxinfo").textContent = "the provider did not report a context window: set it by hand";
+  } catch { $("ctxinfo").textContent = "could not reach the model list: set the context window by hand"; }
+}
+$("model").onchange = $("api").onchange = loadCtx;
+loadCtx();
+
+// o = {model, ctx, max}: step 7 uses its own review model; every other step the model at the top
+async function fits(prompt, o = {}) {
+  const { tokens } = await srv("/tokens", { text: prompt });
+  const ctx = +(o.ctx || $("ctx").value), max = +(o.max || $("max").value);
+  // 8% margin: OpenRouter refuses on its own token estimate, which runs above the real count (30,017 vs <= 28,672 seen)
+  // a non-Qwen model tokenizes differently: Claude counted 7,830 where the Qwen tokenizer counted 4,260, so x2 there
+  const k = o.model && !/qwen/i.test(o.model) ? 2 : 1.08;
+  return { tokens, ctx, max, ok: Math.ceil(tokens * k) + max <= ctx };
+}
+
+async function llm(prompt, schema, o = {}) {
+  save();
+  const f = await fits(prompt, o), model = o.model || $("model").value;
+  if (!f.ok) throw new Error(`the prompt does not fit: ${f.tokens.toLocaleString()} prompt + ${f.max.toLocaleString()} output tokens > ${f.ctx.toLocaleString()} context`);
+  const url = $("api").value.replace(/\/$/, "") + "/chat/completions";
+  const send = async withSchema => {
+    // streamed: a proxy in front of a slow GPU (Cloudflare: 524 after ~100 s of silence) cuts a long silent answer
+    const body = { model, temperature: 0, max_tokens: f.max, messages: [{ role: "user", content: prompt }],
+                   stream: true, stream_options: { include_usage: true } };
+    if (o.reasoning !== undefined) body.reasoning = { enabled: o.reasoning };   // a thinking model: on or off
+    if (withSchema) {
+      body.response_format = { type: "json_schema", json_schema: { name: "answer", strict: true, schema } };
+      body.provider = { require_parameters: true };   // refuse providers that would silently ignore the schema
+    }
+    if (o.provider) body.provider = { ...(body.provider || {}), order: [o.provider], allow_fallbacks: false };   // a pinned provider
+    for (const wait of [5, 15, 30, 60, 0]) {               // a rate limit or a provider hiccup: wait and retry
+      let r;
+      try {
+        r = await fetch(url, { method: "POST", body: JSON.stringify(body),
+          headers: { Authorization: "Bearer " + $("key").value, "Content-Type": "application/json" } });
+      } catch (e) {                                          // no network (a dropped connection, a laptop waking up)
+        if (!wait) throw e;
+        NOTE = `no network: retrying in ${wait} s`;
+        await new Promise(ok => setTimeout(ok, wait * 1000)); NOTE = ""; continue;
+      }
+      let j;
+      try { j = /event-stream/.test(r.headers.get("content-type") || "") ? await readStream(r) : await r.json().catch(() => ({})); }
+      catch (e) {                                            // the stream broke off half-way
+        if (!wait) throw e;
+        NOTE = `the answer broke off (${e.message}): retrying in ${wait} s`;
+        await new Promise(ok => setTimeout(ok, wait * 1000)); NOTE = ""; continue;
+      }
+      const code = r.ok && j.error ? j.error.code : r.status;   // OpenRouter can send an error inside a 200
+      if (!(code === 429 || code >= 500) || !wait) return [r.ok && j.error ? { ok: false, status: code } : r, j];
+      NOTE = code === 429 ? `the provider is rate-limiting (it is shared with the batch run): retrying in ${wait} s` : `provider error ${code}: retrying in ${wait} s`;
+      await new Promise(ok => setTimeout(ok, wait * 1000)); NOTE = "";
+    }
+  };
+  const withSchema = !!schema && $("enforce").checked;
+  let [r, j] = await send(withSchema), mode = withSchema ? "schema enforced" : "no schema";
+  if (!r.ok && withSchema && (r.status === 400 || r.status === 404)) {   // no provider takes this schema: say so, send without
+    [r, j] = await send(false); mode = "schema refused by the provider, sent without it";
+  }
+  if (!r.ok) throw new Error(JSON.stringify(j.error || j));
+  const c = j.choices[0], u = j.usage || {}, raw = c.message.content || "";
+  const info = `${j.model || model} | ${mode} | finish ${c.finish_reason} | tokens in ${u.prompt_tokens ?? "?"} (counted ${f.tokens}) out ${u.completion_tokens ?? "?"}` +
+    (c.finish_reason === "length" ? " | CUT OFF: raise max output tokens" : "");
+  let json = null;
+  try { json = JSON.parse(raw.replace(/^\s*```(?:json)?\s*|\s*```\s*$/g, "")); } catch {}
+  if (!json) throw new Error(`the model did not return valid JSON (${info}). Its answer began: ${raw.slice(0, 300)}`);
+  return { json, raw, info, prompt };
+}
+
+// a streamed answer, put back together into the one-shot shape {model, choices: [{message, finish_reason}], usage, error}
+async function readStream(r) {
+  const rd = r.body.getReader(), dec = new TextDecoder();
+  let buf = "", text = "", fin = null, usage = null, model = null, error = null, n = 0;
+  NOTE = "reading the page (prompt)…";
+  for (;;) {
+    const { done, value } = await rd.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    const lines = buf.split("\n"); buf = lines.pop();
+    for (const l of lines) {
+      if (!l.startsWith("data:")) continue;                  // ": OPENROUTER PROCESSING" keep-alives and blank lines
+      const d = l.slice(5).trim();
+      if (d === "[DONE]") continue;
+      let c; try { c = JSON.parse(d); } catch { continue; }
+      if (c.error) error = c.error;
+      model = c.model || model; usage = c.usage || usage;
+      const ch = (c.choices || [])[0];
+      if (ch) { text += (ch.delta && ch.delta.content) || ""; fin = ch.finish_reason || fin; n++; }
+    }
+    if (n) NOTE = `writing the answer: ${n} tokens so far`;
+  }
+  NOTE = "";
+  if (!text && !error && !fin) throw new Error("the stream ended with no answer");
+  return { model, usage, error, choices: [{ message: { content: text }, finish_reason: fin }] };
+}
+
+// a running step shows its elapsed time and what it waits for, next to its badge (the badge text itself stays "running":
+// the batch runner reads it)
+let NOTE = "";
+const step = (n, fn) => async () => {
+  const b = $("b" + n); b.disabled = true; pill(n, "run", "running");
+  let w = $("w" + n);
+  if (!w) { w = document.createElement("span"); w.id = "w" + n; w.className = "info"; $("p" + n).before(w); }
+  const t0 = Date.now(), tick = setInterval(() => {
+    if ($("p" + n).textContent === "running") w.textContent = `${Math.round((Date.now() - t0) / 1000)} s` + (NOTE ? ` · ${NOTE}` : "");
+  }, 1000);
+  try { return await fn(); }
+  catch (e) { pill(n, "bad", "error"); const m = $("m" + n) || $("i" + n); m.className = "msg bad"; m.textContent = "Error: " + e.message; return false; }
+  finally { clearInterval(tick); b.disabled = false; w.textContent = `took ${Math.round((Date.now() - t0) / 1000)} s`; NOTE = ""; }
+};
+
+$("file").onchange = async () => {
+  const f = $("file").files[0]; if (!f) return;
+  $("html").value = await f.text(); S.fetchedFor = null;
+  const m = $("html").value.match(/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)/i) || $("html").value.match(/property=["']og:url["'][^>]*content=["']([^"']+)/i);
+  if (m && !$("url").value) $("url").value = m[1];
+};
+
+// ---------------------------------------------------------------- 1. resolve (our own code, on the local server)
+const s1 = step(1, async () => {
+  let got = "";
+  if (S.fetchedFor && S.fetchedFor !== $("url").value) $("html").value = "";   // a new URL: fetch again
+  if (!$("html").value.trim()) {                            // URL only: the DC corpus copy, else the live page
+    if (!$("url").value.trim()) throw new Error("enter the page URL, or load or paste its raw HTML");
+    const f = await srv("/fetch", { url: $("url").value });
+    $("html").value = f.html; got = ` | HTML from ${f.source}`; S.fetchedFor = $("url").value;
+  }
+  const r = await srv("/resolve", { url: $("url").value, html: $("html").value, mode: $("rmode").value });
+  $("resolved").value = r.text; $("visible").value = r.visible;
+  $("i1").className = "info";
+  $("i1").textContent = `${$("html").value.length.toLocaleString()} chars of HTML → ${r.text.length.toLocaleString()} chars resolved | ` +
+    (r.ref_pages === null ? "text only: every visible line kept" : `site template: ${r.template_lines} lines from ${r.ref_pages} reference pages` +
+    (r.ref_pages ? "" : " (no reference pages for this site: only <nav>/<footer> and menus are removed)")) +
+    (r.text.length > 12000 ? " | production cuts the passage at 12,000 chars; here the whole passage goes on and step 5 decides" : "") + got;
+  if (!r.text.trim()) throw new Error("the page resolved to no text (" + $("i1").textContent + "). If it is a script-rendered page, upload its rendered HTML.");
+  pill(1, "ok", "done");
+  return true;
+});
+
+// ---------------------------------------------------------------- 2. verify agent
+const VERIFY = (src, res) => `You check that a text extraction kept every technical specification of a web page.
+SOURCE is every visible text line of the page's raw HTML (menus and footers included). RESOLVED is the passage our resolver kept from it.
+1. List EVERY technical specification the SOURCE states for a product on this page: the product it is for, its label exactly as written (for a value stated in a sentence with no label, a short description of it), and its value copied character for character from the SOURCE, with its unit and the same word forms and endings. A technical specification is a property of the product itself: a dimension, weight, range, time, speed, calibre, capacity, material, type, fuze, component, or the weapon or platform it is used with. A label and its value may sit on two consecutive lines ("Range" then "17 kms (Max)") or in one table row ("Range | 17 kms (Max)").
+   Skip order quantities, fleet sizes and numbers of units, prices, contract values, percentages, descriptive or marketing sentences, safety and reliability statements, packaging, where it is made, menus, navigation and footer links, contact details, addresses, dates, prices, and the names of other products listed in menus or related links.
+2. For each one, copy the value exactly as it appears in RESOLVED as resolved_value, or "" if RESOLVED does not state it.
+
+SOURCE:
+"""${src}"""
+
+RESOLVED:
+"""${res}"""`;
+const VERIFY_SCHEMA = { type: "object", required: ["specs"], properties: { specs: { type: "array", items: { type: "object",
+  required: ["product", "label", "value", "resolved_value"], properties: { product: { type: "string" }, label: { type: "string" },
+  value: { type: "string" }, resolved_value: { type: "string" } } } } } };
+
+// a page too long for one call is checked in parts (each part with the whole resolved passage)
+async function parts(lines, res) {
+  let out = [lines];
+  for (let d = 0; d < 6; d++) {
+    const sizes = await Promise.all(out.map(p => fits(VERIFY(p.join("\n"), res))));
+    if (sizes.every(s => s.ok)) return out;
+    out = out.flatMap((p, i) => sizes[i].ok || p.length < 2 ? [p] : [p.slice(0, p.length / 2 | 0), p.slice(p.length / 2 | 0)]);
+  }
+  throw new Error("the resolved passage alone does not leave room for the page: raise the context window or shorten the passage");
+}
+
+const s2 = step(2, async () => {
+  const res = $("resolved").value, src = $("visible").value;
+  if (!res.trim()) throw new Error("run step 1 first");
+  msg("m2", "", ""); $("t2").innerHTML = "";
+  const ps = await parts(src.split("\n"), res);
+  const answers = [];
+  for (const p of ps) answers.push(await llm(VERIFY(p.join("\n"), res), VERIFY_SCHEMA));
+  $("d2").textContent = answers.map((a, i) => `--- call ${i + 1} of ${answers.length}: ${a.info}\n\n${a.prompt}\n\n--- answer\n${a.raw}`).join("\n\n");
+  if (answers.some(a => !a.json)) throw new Error("the model did not return valid JSON (see the raw answer)");
+  const seen = new Set(), rows = [];
+  for (const a of answers) for (const x of a.json.specs || []) {
+    if (!/[\p{L}\p{N}]/u.test(x.value || "")) continue;     // "-", "N/A"-style placeholders state nothing
+    const k = norm(x.label) + "|" + norm(x.value); if (seen.has(k)) continue; seen.add(k);
+    // the code decides, not the agent: is the value really on the page, and is it (with its label) in the resolved passage?
+    // a label counts only when the page writes it (prose has none: the agent describes the value instead)
+    const status = !has(src, x.value) ? "not on the page" : !has(res, x.value) ? "missing" : has(src, x.label) && !has(res, x.label) ? "label lost" : "kept";
+    rows.push({ ...x, status });
+  }
+  // repair: a spec the resolver dropped goes back into the passage as the page's own lines, word for word -
+  // the line holding the value, its label line just above (label/value on two lines), and the product's line nearby
+  const lost = rows.filter(r => r.status === "missing" || r.status === "label lost");
+  let added = 0;
+  if (lost.length) {
+    const L = src.split("\n"), take = new Set();
+    for (const r of lost) {
+      const at = L.map((l, i) => i).filter(i => has(L[i], r.value));
+      const i = at.find(i => has(L[i], r.label)) ?? at.find(i => i > 0 && has(L[i - 1], r.label)) ?? at[0];
+      if (i === undefined) continue;
+      take.add(i);
+      if (!has(L[i], r.label) && i > 0 && has(L[i - 1], r.label)) take.add(i - 1);
+      for (let j = i - 1; j >= Math.max(0, i - 30); j--) if (has(L[j], r.product)) { take.add(j); break; }
+    }
+    const lines = [...take].sort((a, b) => a - b).map(i => L[i]).filter(l => !res.split("\n").some(x => norm(x) === norm(l)));
+    if (lines.length) {
+      $("resolved").value = res.replace(/\s*$/, "") + "\n" + lines.join("\n");
+      added = lines.length;
+      const res2 = $("resolved").value;
+      for (const r of lost) {
+        const now = !has(res2, r.value) ? "missing" : has(src, r.label) && !has(res2, r.label) ? "label lost" : "kept";
+        r.status = now === "kept" ? "added back" : now;
+      }
+    }
+  }
+  const real = rows.filter(r => r.status !== "not on the page"), kept = real.filter(r => r.status === "kept" || r.status === "added back");
+  const pct = real.length ? Math.round(100 * kept.length / real.length) : 100;
+  $("t2").innerHTML = rows.length ? `<table><thead><tr><th>Product</th><th>Label</th><th>Value on the page</th><th>Agent: value in resolved</th><th>Check</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td>${esc(r.product)}</td><td>${esc(r.label)}</td><td class="mono">${esc(r.value)}</td><td class="mono">${esc(r.resolved_value)}</td>` +
+      `<td><span class="pill ${r.status === "kept" ? "ok" : r.status === "added back" || r.status === "not on the page" ? "warn" : "bad"}">${esc(r.status)}</span></td></tr>`).join("") + "</tbody></table>" : "";
+  const extra = rows.length - real.length ? ` ${rows.length - real.length} value(s) the agent listed are not on the page, so they are left out of the count.` : "";
+  const fixed = added ? ` The resolver had dropped ${lost.length} spec(s): ${added} line(s) holding them were copied from the raw page to the end of the resolved passage (step 1), and the later steps read the repaired passage.` : "";
+  S.verified = pct === 100; S.repaired = added;
+  if (!real.length) { msg("m2", "warn", "The agent found no specifications on this page." + extra); pill(2, "warn", "no specs"); }
+  else if (S.verified && added) { msg("m2", "warn", `${kept.length} of ${real.length} specs in the passage (100%) after the repair.` + fixed + extra); pill(2, "warn", "100% after repair"); }
+  else if (S.verified) { msg("m2", "ok", `${kept.length} of ${real.length} specs kept with their labels (100%).` + extra); pill(2, "ok", "100% match"); }
+  else { msg("m2", "bad", `${kept.length} of ${real.length} specs kept (${pct}%).` + fixed + ` The rest could not be found as a line of the page: fix the resolved passage in step 1 (it is editable) and run step 2 again, or carry on knowing these values are missing.` + extra); pill(2, "bad", pct + "% match"); }
+  $("p2").title = answers.map(a => a.info).join("\n");
+  return true;
+});
+
+// ---------------------------------------------------------------- 3. labels + example agent
+// the spec prompt: the one entered in the Page section, else our production prompt. A trailing empty
+// PASSAGE: """""" block is dropped (the passage is appended in step 4); the parts are found by their headings.
+const custom = () => $("sprompt").value.trim().replace(/\n?PASSAGE:\s*"""\s*"""[\s\S]*$/, "").trim();
+const TPL = () => custom() ? custom() + "\n\n" : BASE.template;
+const between = (t, a, b) => { const i = t.indexOf(a); if (i < 0) return ""; const j = t.indexOf(b, i + a.length); return t.slice(i + a.length, j < 0 ? undefined : j).trim(); };
+const paramsBlock = () => between(TPL(), "PARAMETERS:\n", "EXAMPLE") || between(BASE.template, "PARAMETERS:\n", "EXAMPLE (synthetic");
+const instructions = () => { const t = TPL(), i = t.indexOf("PARAMETERS:"); return (i < 0 ? t : t.slice(0, i)).trim(); };
+const fewshot = () => { const t = TPL(), i = t.indexOf("EXAMPLE"); return i < 0 ? BASE.template.slice(BASE.template.indexOf("EXAMPLE (synthetic")) : t.slice(i); };
+const allowed = () => {                                       // a custom prompt's "name: meaning" lines, else the production names
+  const own = custom() ? [...new Set([...paramsBlock().matchAll(/^([a-z][a-z0-9_]*):/gm)].map(m => m[1]))] : [];
+  return own.length ? own : BASE.format.properties.products.items.properties.specs.items.properties.parameter.enum;
+};
+const LABELS = res => `List every specification LABEL the PASSAGE uses, exactly as written: the name of a field that is followed by its value (e.g. "Illuminating Time", "Fuze Used", "Range"). Only fields for a technical property of the product itself (a dimension, weight, range, time, speed, calibre, capacity, material, type, fuze, component, or the weapon or platform it is used with). Labels only: no values, no product names, no headings, no section titles, no sentences. Skip fields whose value is a descriptive sentence (Safety, Reliability, End Use, packaging and the like).
+
+PASSAGE:
+"""${res}"""`;
+const LABELS_SCHEMA = { type: "object", required: ["labels"], properties: { labels: { type: "array", items: { type: "string" } } } };
+const EXAMPLE = (res, labels, problems) => `Write ONE worked example for a specification extractor, from the PASSAGE below, in exactly the format of the FORMAT EXAMPLE.
+- lines: an excerpt of 2 to 8 lines of the PASSAGE that names the product and states some of its specifications. Copy each line WORD FOR WORD, one array item per line; you may skip lines in between.
+- output: the correct extraction of that excerpt. product = the specific named system exactly as written in the excerpt, or on the page when the excerpt is a spec list under the product's name (never empty, never a generic class like "the shell"); maker = the company the excerpt names as its maker, else ""; parameter = the ALLOWED NAME whose meaning fits the value, or the PAGE LABEL the value sits under when no allowed name fits; value_text = the value exactly as written, with its unit. Skip a value that fits neither.
+- note: one sentence that explains a choice in the output (for instance what gets nothing, and why).
+
+ALLOWED NAMES (name: meaning):
+${paramsBlock()}
+
+PAGE LABELS: ${labels.join("; ") || "(none)"}
+
+FORMAT EXAMPLE (synthetic):
+${fewshot().trim()}
+
+PASSAGE:
+"""${res}"""` + (problems.length ? `
+
+YOUR PREVIOUS EXAMPLE HAD THESE PROBLEMS - write a new one without them:
+- ${problems.join("\n- ")}` : "");
+const EXAMPLE_SCHEMA = names => ({ type: "object", required: ["lines", "output", "note"], properties: {
+  lines: { type: "array", items: { type: "string" } }, note: { type: "string" },
+  output: { type: "object", required: ["products"], properties: { products: { type: "array", items: { type: "object",
+    required: ["product", "maker", "specs"], properties: { product: { type: "string" }, maker: { type: "string" },
+    specs: { type: "array", items: { type: "object", required: ["parameter", "value_text"],
+      properties: { parameter: { type: "string", enum: names }, value_text: { type: "string" } } } } } } } } } } });
+// a label is a field name: a whole line, or the start of a "Label: value" / "Label | value" line
+const isLabel = (res, l) => res.split("\n").map(x => norm(x).replace(/[\s*†]+$/, "")).some(x => x === norm(l) || (x.startsWith(norm(l)) && /^\s*[:|]/.test(x.slice(norm(l).length))));
+const exampleProblems = (ex, res, names) => {
+  const out = [], ps = ex.output?.products || [];
+  const lines = res.split("\n").map(norm);
+  for (const l of ex.lines || []) if (!lines.some(x => norm(l) && x.includes(norm(l)))) out.push(`the line "${l}" is not copied word for word from the PASSAGE`);
+  if (!(ex.lines || []).length) out.push("the excerpt has no lines");
+  if (!ps.length) out.push("the output has no product");
+  else if (!ps.some(p => (p.specs || []).length)) out.push("the example states no values: pick lines that state specifications");
+  for (const p of ps) {
+    if (!String(p.product || "").trim()) out.push("a product is empty: name the system exactly as the excerpt writes it");
+    else if (!has(ex.passage, p.product) && !has(res, p.product)) out.push(`the product "${p.product}" is not written that way on the page`);
+    for (const s of p.specs || []) {
+      if (!names.includes(s.parameter)) out.push(`"${s.parameter}" is neither an allowed name nor a page label`);
+      if (!has(ex.passage, s.value_text)) out.push(`the value "${s.value_text}" is not written that way in the excerpt`);
+    }
+  }
+  return out;
+};
+
+const s3 = step(3, async () => {
+  await baseReady;
+  const res = $("resolved").value;
+  if (!res.trim()) throw new Error("run step 1 first");
+  msg("m3", "", ""); $("labels").innerHTML = ""; $("example").textContent = "";
+  const a = await llm(LABELS(res), LABELS_SCHEMA), log = [`--- labels call: ${a.info}\n\n${a.prompt}\n\n--- answer\n${a.raw}`];
+  $("d3").textContent = log.join("\n\n");
+  if (!a.json) throw new Error("the model did not return valid JSON (see the raw answer)");
+  const all = [...new Set((a.json.labels || []).map(l => l.trim()).filter(Boolean))];
+  S.labels = all.filter(l => isLabel(res, l));
+  $("labels").innerHTML = all.map(l => `<span class="chip${S.labels.includes(l) ? "" : " drop"}" title="${S.labels.includes(l) ? "a field name on the page" : "not a field name on the page: dropped"}">${esc(l)}</span>`).join("");
+  const names = [...new Set([...allowed(), ...S.labels])];
+  let ex = {}, problems = [];
+  for (let i = 0; i < 2; i++) {                             // one retry, told what was wrong
+    const b = await llm(EXAMPLE(res, S.labels, problems), EXAMPLE_SCHEMA(names));
+    log.push(`--- example call ${i + 1}: ${b.info}\n\n${b.prompt}\n\n--- answer\n${b.raw}`);
+    $("d3").textContent = log.join("\n\n");
+    if (!b.json) throw new Error("the model did not return valid JSON (see the raw answer)");
+    ex = b.json; ex.passage = (ex.lines || []).join(" "); problems = [...new Set(exampleProblems(ex, res, names))];
+    if (!problems.length) break;
+  }
+  S.example = problems.length ? null : ex;                  // a flawed example would teach the final agent its flaws
+  $("example").textContent = `PASSAGE: "${ex.passage}"\nOUTPUT: ${pyj(ex.output)}\n(${String(ex.note || "").replace(/^\(|\)$/g, "")})`;
+  const dropped = all.length - S.labels.length, nv = (ex.output?.products || []).flatMap(p => p.specs || []).length;
+  const lab = `${S.labels.length} labels` + (dropped ? ` (${dropped} dropped: not a field name on the page)` : "") + ". ";
+  if (problems.length) { msg("m3", "bad", lab + "The example still failed the checks after one retry, so it is NOT appended: " + problems.join("; ") + "."); pill(3, "warn", "no example"); }
+  else { msg("m3", "ok", lab + `Example passes the checks: copied from the page, product named, all ${nv} values in the excerpt, every parameter allowed.`); pill(3, "ok", "done"); }
+  return true;
+});
+
+// ---------------------------------------------------------------- 4. build the final prompt (code, no model)
+const s4 = step(4, async () => {
+  await baseReady;
+  const res = $("resolved").value;
+  if (!res.trim()) throw new Error("run step 1 first");
+  const T = TPL(), e = T.indexOf("EXAMPLE"), i = e < 0 ? T.length : e, labels = S.labels || [], ex = S.example;   // labels go before the examples
+  const lab = labels.length ? "PAGE LABELS (the spec labels this page uses; when no allowed parameter fits a value, use its page label, exactly as written, as the parameter):\n" +
+    labels.map(l => "- " + l).join("\n") + "\n\n" : "";
+  const ex2 = ex && ex.passage ? `EXAMPLE 2 (from this page)\nPASSAGE: "${ex.passage}"\nOUTPUT: ${pyj(ex.output)}\n(${String(ex.note || "").replace(/^\(|\)$/g, "")})\n\n` : "";
+  $("final").value = T.slice(0, i) + lab + T.slice(i) + ex2 + `PASSAGE:\n"""${res}"""\n\nKNOWN PRODUCT NAMES IN THIS PASSAGE (use these spellings when they fit): ${$("known").value.trim() || "(none)"}`;
+  const sch = JSON.parse(JSON.stringify(BASE.format));
+  const p = sch.properties.products.items.properties.specs.items.properties.parameter;
+  p.enum = [...new Set([...allowed(), ...labels])];          // the prompt's own parameter names + the page labels
+  S.schema = sch;
+  $("schema").textContent = JSON.stringify(sch, null, 1);
+  $("i4").textContent = `${labels.length} page labels and ${ex2 ? "1 page example" : "no page example"} appended to ${custom() ? "YOUR spec prompt (from the Page section)" : "the production spec prompt"} | ${allowed().length} parameter names | ${$("final").value.length.toLocaleString()} chars` +
+    (!labels.length && !ex2 ? " | run step 3 first to append them" : "");
+  pill(4, labels.length && ex2 ? "ok" : "warn", labels.length && ex2 ? "built" : "built without step 3");
+  return s5();
+});
+
+// ---------------------------------------------------------------- 5. context check
+let s5t;
+$("final").oninput = () => { clearTimeout(s5t); s5t = setTimeout(s5, 600); };
+const s5 = step(5, async () => {
+  const p = $("final").value;
+  if (!p.trim()) throw new Error("build the final prompt in step 4 first");
+  const f = await fits(p);
+  $("mp").style.width = Math.min(100, 100 * f.tokens / f.ctx) + "%";
+  $("mo").style.width = Math.max(0, Math.min(100 - 100 * f.tokens / f.ctx, 100 * f.max / f.ctx)) + "%";
+  const left = f.ctx - Math.ceil(f.tokens * 1.08) - f.max;     // with the 8% margin fits() keeps
+  msg("m5", f.ok ? "ok" : "bad", `${f.tokens.toLocaleString()} prompt tokens (Qwen2.5 tokenizer, chat template included) + ${f.max.toLocaleString()} reserved for the answer = ` +
+    `${(f.tokens + f.max).toLocaleString()} of ${f.ctx.toLocaleString()}. ` + (f.ok ? `Fits, with ${left.toLocaleString()} tokens to spare after an 8% safety margin.` : `Does not fit: ${(-left).toLocaleString()} tokens over. Shorten the passage or lower the max output tokens.`));
+  pill(5, f.ok ? "ok" : "bad", f.ok ? "fits" : "too long");
+  S.fits = f.ok;
+  return f.ok;
+});
+
+// ---------------------------------------------------------------- 6. final agent
+const s6 = step(6, async () => {
+  if (!S.schema) await s4();
+  if (!(await s5())) throw new Error("the final prompt does not fit the context window (step 5)");
+  msg("m6", "", "");
+  const res = $("resolved").value, a = await llm($("final").value, S.schema);
+  $("d6").textContent = `${a.info}\n\n${a.raw}`;
+  if (!a.json) throw new Error("the model did not return valid JSON (see the raw answer)");
+  S.final = a.json;
+  const rows = (a.json.products || []).flatMap(p => (p.specs || []).map(s => ({ product: p.product, maker: p.maker, ...s })));
+  const allowedSet = new Set(allowed());
+  $("t6").innerHTML = rows.length ? `<table><thead><tr><th>Product</th><th>Maker</th><th>Parameter</th><th>Value</th><th>Value in the passage</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td>${esc(r.product)}</td><td>${esc(r.maker)}</td><td class="mono">${esc(r.parameter)}${allowedSet.has(r.parameter) ? "" : ' <span class="pill">page label</span>'}</td>` +
+      `<td class="mono">${esc(r.value_text)}</td><td><span class="pill ${has(res, r.value_text) ? "ok" : "bad"}">${has(res, r.value_text) ? "yes" : "no"}</span></td></tr>`).join("") + "</tbody></table>" : "";
+  const off = rows.filter(r => !has(res, r.value_text)).length;
+  msg("m6", off ? "warn" : "ok", `${rows.length} specs for ${(a.json.products || []).length} product(s)` + (off ? `; ${off} value(s) are not written that way in the passage.` : "; every value is written that way in the passage.") + "  " + a.info);
+  pill(6, off ? "warn" : "ok", "done");
+  return true;
+});
+
+// ---------------------------------------------------------------- 7. review agent (a frontier model as the human reviewer)
+const KINDS = { missed: "missed", wrong_parameter: "mislabelled (wrong parameter)", wrong_product: "wrong product",
+  table_misread: "table misread", wrong_value: "value not as written", not_a_spec: "not a spec", duplicate: "duplicate" };
+const STR = { type: "string" };
+const obj = props => ({ type: "object", additionalProperties: false, required: Object.keys(props), properties: props });
+// parameters are held to the allowed names + this page's labels, as in the final step (a reviewer invented "height_overall_m")
+const REVIEW_SCHEMA = names => obj({
+  findings: { type: "array", items: obj({ kind: { type: "string", enum: Object.keys(KINDS) }, product: STR,
+    parameter: { type: "string", enum: names }, value: STR, output_had: STR, evidence: STR, note: STR }) },
+  corrected_output: obj({ products: { type: "array", items: obj({ product: STR, maker: STR,
+    specs: { type: "array", items: obj({ parameter: { type: "string", enum: names }, value_text: STR }) } }) } }),
+  summary: STR });
+const REVIEW = (md, out, labels) => `You are the human reviewer of an automated defence-specification extractor. Check its OUTPUT against the PAGE (the whole web page, converted to Markdown) and report every error.
+
+THE EXTRACTOR'S INSTRUCTIONS:
+${instructions()}
+
+ALLOWED PARAMETER NAMES (name: meaning):
+${paramsBlock()}
+
+PAGE LABELS the extractor may use as a parameter when no allowed name fits: ${labels}
+
+Report one finding per problem, of these kinds:
+- missed: a specification the PAGE states that the OUTPUT does not have
+- wrong_parameter: the value is right but filed under the wrong parameter (mislabelled)
+- wrong_product: the value is given to the wrong product (e.g. the launcher instead of the missile it fires)
+- table_misread: a table read wrongly (a value from the wrong row or column, variants mixed up, a matrix collapsed)
+- wrong_value: the value is not as written on the PAGE (changed, rounded, unit dropped, several values merged)
+- not_a_spec: in the OUTPUT but not a specification of that product (a quantity, price, date, or something the PAGE does not state)
+- duplicate: the same value listed twice
+Report each problem ONCE, under the one kind that fits best. A munition a launcher fires is its ammunition_type, not a compatible_weapon_system.
+For each finding give: kind; product; parameter (the correct one); value (exactly as written on the PAGE); output_had (what the OUTPUT has for it, "" if nothing); evidence (a short quote copied word for word from the PAGE); note (one sentence).
+Menus, navigation and related-product lists are not this page's specifications. Judge only from the PAGE.
+Then give corrected_output: the complete correct extraction for this page, in the same JSON shape as the OUTPUT, under the extractor's instructions. Finally a one-sentence summary.
+
+OUTPUT:
+${out}
+
+PAGE:
+"""${md}"""`;
+
+async function loadRctx() {                                   // the review model's window and price, from the provider
+  try {
+    const r = await fetch($("api").value.replace(/\/$/, "") + "/models");
+    const m = ((await r.json()).data || []).find(x => x.id === $("rmodel").value);
+    if (m) { if (m.context_length) $("rctx").value = m.context_length; S.rprice = m.pricing; }
+  } catch {}
+}
+$("rmodel").onchange = loadRctx; loadRctx();
+
+const s7 = step(7, async () => {
+  await baseReady;
+  if (!S.final) throw new Error("run step 6 first: there is no final output to review");
+  if (!$("html").value.trim()) throw new Error("the raw HTML is missing: run step 1 first");
+  msg("m7", "", ""); $("t7").innerHTML = ""; $("corr").textContent = "";
+  const { md } = await srv("/markdown", { html: $("html").value });
+  $("md").textContent = md;
+  const slug = ($("url").value.split("/").filter(Boolean).pop() || "page").replace(/[^\w.-]+/g, "_").slice(0, 80);
+  const nOut = (S.final.products || []).reduce((n, p) => n + (p.specs || []).length, 0);
+  let a;
+  for (let i = 0; i < 2; i++) {                             // an empty review of a non-empty output is a failed call: retry once
+    a = await llm(REVIEW(md, pyj(S.final), (S.labels || []).join("; ") || "(none)"), REVIEW_SCHEMA([...new Set([...allowed(), ...(S.labels || [])])]),
+      { model: $("rmodel").value, ctx: $("rctx").value, max: $("rmax").value, reasoning: $("rthink").checked, provider: $("rprov").value.trim() });
+    const nCorr = (a.json.corrected_output?.products || []).reduce((n, p) => n + (p.specs || []).length, 0);
+    if ((a.json.findings || []).length || nCorr || !nOut) break;
+    if (i) throw new Error("the reviewer returned an empty review twice (no findings and an empty corrected output): run step 7 again");
+  }
+  $("d7").textContent = `${a.info}\n\n${a.prompt}\n\n--- answer\n${a.raw}`;
+  const u = (a.raw && a.info.match(/tokens in (\d+) .* out (\d+)/)) || [], p = S.rprice || {};
+  const cost = u[1] && p.prompt ? ` | cost $${(u[1] * p.prompt + u[2] * p.completion).toFixed(4)}` : "";
+  $("i7").innerHTML = `${esc(a.info)}${esc(cost)} | <a download="${esc(slug)}.md" href="${URL.createObjectURL(new Blob([md], { type: "text/markdown" }))}">Download the page as .md</a> (${md.length.toLocaleString()} chars)`;
+  const res = $("resolved").value, f = a.json.findings || [];
+  // the code checks the reviewer: is its evidence really on the page? was a missed value ever in the passage the extractor read?
+  const rows = f.map(x => ({ ...x, real: has(md, x.evidence),
+    cause: x.kind !== "missed" ? "" : has(res, x.value) ? "the model missed it" : "the resolver dropped it" }));
+  $("t7").innerHTML = rows.length ? `<table><thead><tr><th>Finding</th><th>Product</th><th>Parameter</th><th>Value on the page</th><th>Output had</th><th>Evidence on the page?</th><th>Why</th><th>Note</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td><span class="pill ${r.kind === "missed" || r.kind === "not_a_spec" ? "bad" : "warn"}">${esc(KINDS[r.kind] || r.kind)}</span></td><td>${esc(r.product)}</td><td class="mono">${esc(r.parameter)}</td>` +
+      `<td class="mono">${esc(r.value)}</td><td class="mono">${esc(r.output_had)}</td><td><span class="pill ${r.real ? "ok" : "bad"}">${r.real ? "yes" : "NOT FOUND"}</span></td><td>${esc(r.cause)}</td><td>${esc(r.note)}</td></tr>`).join("") + "</tbody></table>" : "";
+  $("corr").textContent = JSON.stringify(a.json.corrected_output, null, 1);
+  const by = Object.entries(rows.reduce((m, r) => (m[KINDS[r.kind] || r.kind] = (m[KINDS[r.kind] || r.kind] || 0) + 1, m), {})).map(([k, n]) => `${n} ${k}`).join(", ");
+  const fake = rows.filter(r => !r.real).length, lost = rows.filter(r => r.cause === "the resolver dropped it").length;
+  msg("m7", rows.length ? "warn" : "ok", (rows.length ? `${rows.length} finding(s): ${by}.` : "No errors found.") +
+    (lost ? ` ${lost} missed value(s) were never in the resolved passage (the resolver dropped them).` : "") +
+    (fake ? ` ${fake} finding(s) quote evidence that is NOT on the page: check those by hand.` : "") + " " + (a.json.summary || ""));
+  pill(7, rows.length ? "warn" : "ok", rows.length ? rows.length + " findings" : "clean");
+  return true;
+});
+
+$("b1").onclick = s1; $("b2").onclick = s2; $("b3").onclick = s3; $("b4").onclick = s4; $("b5").onclick = s5; $("b6").onclick = s6; $("b7").onclick = s7;
+$("runall").onclick = async () => {
+  const b = $("runall"); b.disabled = true; msg("allmsg", "", "");
+  try {
+    if (!(await s1()) || !(await s2())) return msg("allmsg", "bad", "Stopped: see the step in red.");
+    if (!S.verified) return msg("allmsg", "bad", "Stopped at step 2: the resolved passage does not keep every spec of the page. Fix it, or run steps 3 to 6 one by one to carry on anyway.");
+    if (!(await s3()) || !(await s4())) return msg("allmsg", "bad", "Stopped: see the step in red.");
+    if (!S.fits) return msg("allmsg", "bad", "Stopped at step 5: the final prompt does not fit the context window.");
+    if (!(await s6())) return msg("allmsg", "bad", "Stopped: see the step in red.");
+    if (!$("r7all").checked) return msg("allmsg", "ok", "All six steps ran.");          // step 7 only when ticked
+    if (await s7()) msg("allmsg", "ok", "All seven steps ran.");
+    else msg("allmsg", "bad", "Stopped at step 7: see the step in red.");
+  } finally { b.disabled = false; }
+};
+</script>
+</html>

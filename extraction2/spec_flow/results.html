@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spec Run Results</title>
+<style>
+  :root {
+    --bg: #f6f7f8; --panel: #ffffff; --ink: #1b2125; --muted: #5d6870; --line: #dde2e5;
+    --accent: #1f6f8b; --accent-ink: #ffffff; --code: #eef1f3; --bar: #1f6f8b;
+    --ok: #1d7a46; --ok-bg: #e3f3e9; --warn: #8a5a00; --warn-bg: #fbf0d9; --bad: #a3262a; --bad-bg: #fbe5e5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12171a; --panel: #1a2125; --ink: #e3e8eb; --muted: #97a3aa; --line: #2c363c;
+      --accent: #5fb3cf; --accent-ink: #0d1316; --code: #222b30; --bar: #5fb3cf;
+      --ok: #6fd39b; --ok-bg: #173325; --warn: #e8bd62; --warn-bg: #3a2e14; --bad: #f08a8d; --bad-bg: #3d1c1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12171a; --panel: #1a2125; --ink: #e3e8eb; --muted: #97a3aa; --line: #2c363c;
+    --accent: #5fb3cf; --accent-ink: #0d1316; --code: #222b30; --bar: #5fb3cf;
+    --ok: #6fd39b; --ok-bg: #173325; --warn: #e8bd62; --warn-bg: #3a2e14; --bad: #f08a8d; --bad-bg: #3d1c1e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1280px; margin: 0 auto; padding: 24px 16px 64px; display: grid; gap: 16px; }
+  header { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+  header div { flex: 1; min-width: 260px; }
+  h1 { margin: 0; font-size: 22px; }
+  h1 + p { margin: 4px 0 0; color: var(--muted); max-width: 80ch; }
+  h2 { margin: 0; font-size: 16px; }
+  h3 { margin: 0; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+  a { color: var(--accent); }
+  .btn { font: 600 13px system-ui, sans-serif; border-radius: 6px; padding: 7px 14px; text-decoration: none; display: inline-block;
+    border: 1px solid var(--accent); background: var(--panel); color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  button.btn { cursor: pointer; } button.btn:disabled { opacity: .45; cursor: default; }
+  .tiles { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .tile { border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; }
+  .tile b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .tile span { color: var(--muted); font-size: 12px; }
+  .row2 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); }
+  .row2 > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+  .bars { display: grid; grid-template-columns: minmax(130px, auto) 1fr 44px; gap: 6px 10px; align-items: center; font-size: 13px; }
+  .bars .track { height: 14px; background: var(--code); border-radius: 0 4px 4px 0; }
+  .bars .fill { height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 2px; }
+  .bars .n { text-align: right; font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11px; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; font-weight: 600; position: sticky; top: 0; background: var(--panel); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.mono { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  tbody.pages tr { cursor: pointer; }
+  tbody.pages tr:hover { background: var(--code); }
+  tbody.pages tr.sel { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .pill { font: 600 11px system-ui, sans-serif; padding: 1px 8px; border-radius: 999px; white-space: nowrap; background: var(--code); color: var(--muted); }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); } .pill.warn { background: var(--warn-bg); color: var(--warn); } .pill.bad { background: var(--bad-bg); color: var(--bad); }
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; }
+  .filters label { display: grid; gap: 3px; font-size: 12px; color: var(--muted); }
+  select, input { font: 13px system-ui, sans-serif; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; }
+  .tablewrap { max-height: 560px; overflow: auto; border: 1px solid var(--line); border-radius: 6px; }
+  pre { margin: 0; background: var(--code); padding: 10px 12px; border-radius: 6px; overflow: auto; max-height: 420px;
+    white-space: pre-wrap; word-break: break-word; font: 12px/1.45 ui-monospace, Consolas, monospace; }
+  details > summary { cursor: pointer; color: var(--muted); font-size: 12px; }
+  .muted { color: var(--muted); font-size: 12px; }
+  .note { font-size: 13px; color: var(--muted); max-width: 90ch; }
+  a:focus-visible, select:focus-visible, input:focus-visible, tr:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<main>
+  <header>
+    <div>
+      <h1>Spec Run Results</h1>
+      <p>Every page of the edge-case corpus run through the Spec Prompt Builder on qwen-2.5-72b, English pages first. The first 100 have a reviewer answer, so they are scored.</p>
+    </div>
+    <a class="btn" href="/">Open the builder</a>
+    <a class="btn primary" href="/download/xlsx">Download the Excel</a>
+  </header>
+
+  <section aria-labelledby="h-prog">
+    <h2 id="h-prog">Run progress</h2>
+    <div class="filters">
+      <span class="pill" id="bstate">checking...</span>
+      <button class="btn primary" id="bstart" type="button">Start / resume the Excel run</button>
+      <button class="btn" id="bstop" type="button">Stop the Excel run</button>
+      <span class="muted" id="binfo"></span>
+    </div>
+    <div class="tiles" id="prog"></div>
+  </section>
+
+  <section aria-labelledby="h-score">
+    <h2 id="h-score">The first 100 pages: how fully were the specs extracted?</h2>
+    <p class="note" id="scorenote"></p>
+    <div class="tiles" id="score"></div>
+    <div class="row2">
+      <div><h3>Pages by outcome</h3><div class="bars" id="cats" role="img"></div></div>
+      <div><h3>How an outcome is decided</h3>
+        <table><tbody>
+          <tr><td><span class="pill ok">fully extracted</span></td><td>every expected value found, with the right product and parameter</td></tr>
+          <tr><td><span class="pill ok">mostly (50-99%)</span></td><td>half or more of the expected values found</td></tr>
+          <tr><td><span class="pill warn">partly (1-49%)</span></td><td>some found, most missed</td></tr>
+          <tr><td><span class="pill bad">nothing matched</span></td><td>the page has specs, none came out right</td></tr>
+          <tr><td><span class="pill ok">correctly empty</span></td><td>no specs on the page, and the model gave none</td></tr>
+          <tr><td><span class="pill bad">should be empty</span></td><td>no specs on the page, but the model gave some</td></tr>
+          <tr><td><span class="pill">no model output</span></td><td>the flow gave no final answer (page too long, answer cut off)</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <h3>Where it works and where it does not (sorted by recall, best first)</h3>
+    <div class="row2">
+      <div class="scroll" id="bylayout"></div>
+      <div class="scroll" id="bylang"></div>
+      <div class="scroll" id="bykind"></div>
+      <div class="scroll" id="bytier"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-review">
+    <h2 id="h-review">Review agent (step 7) on the first 100: what did the extraction get wrong?</h2>
+    <p class="note">A second model (qwen3.5-122b) reads the whole page as Markdown next to the final output and reports every error with a quote from the page as evidence. The code then checks that the quote is really on the page, and whether a missed value was ever in the passage the extractor read. Pages with no final output are not reviewed.</p>
+    <div class="tiles" id="rtiles"></div>
+    <div class="row2">
+      <div><h3>Findings by kind</h3><div class="bars" id="rkinds" role="img"></div></div>
+      <div><h3>Why values were missed</h3><div class="bars" id="rwhy" role="img"></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-pages">
+    <h2 id="h-pages">Pages</h2>
+    <div class="filters">
+      <label>Show <select id="fsample"><option value="">all pages run</option><option value="first 100">first 100 (scored)</option><option value="rest">the rest</option></select></label>
+      <label>Language <select id="flang"><option value="">all (English first)</option></select></label>
+      <label>Outcome <select id="fcat"><option value="">any</option></select></label>
+      <label>Search <input id="fq" type="search" placeholder="case, company, URL..."></label>
+      <span class="muted" id="count"></span>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Case</th><th>Lang</th><th>Tier</th><th>Layout</th><th>Company</th><th>Flow</th><th class="num">Specs out</th><th class="num">Expected</th><th class="num">Matched</th><th class="num">Precision</th><th class="num">Recall</th><th>Outcome</th><th>Review (step 7)</th></tr></thead>
+      <tbody class="pages" id="rows"></tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-detail" id="detail" hidden>
+    <h2 id="h-detail"></h2>
+    <div class="muted" id="dmeta"></div>
+    <div class="row2">
+      <div><h3>Model output (final agent)</h3><pre id="dout"></pre></div>
+      <div><h3>Expected output (reviewer agent)</h3><pre id="dexp"></pre><p class="note" id="dnotes"></p></div>
+    </div>
+    <div class="row2">
+      <div><h3>Missed (expected, not given)</h3><div class="scroll" id="dmiss"></div></div>
+      <div><h3>Extra (given, not expected)</h3><div class="scroll" id="dextra"></div></div>
+    </div>
+    <div><h3>Review agent (step 7)</h3><p class="note" id="drevmsg"></p><div class="scroll" id="drev"></div></div>
+    <details><summary>The reviewer's corrected output</summary><pre id="dcorr"></pre></details>
+    <details><summary>Flow steps</summary><pre id="dsteps"></pre></details>
+    <details><summary>Resolved passage (what the agents read)</summary><pre id="dres"></pre></details>
+    <details><summary>Final prompt</summary><pre id="dprompt"></pre></details>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const pct = x => x == null ? "-" : Math.round(x * 100) + "%";
+const CAT_CLS = { "fully extracted": "ok", "mostly (50-99%)": "ok", "partly (1-49%)": "warn", "nothing matched": "bad",
+  "correctly empty": "ok", "should be empty": "bad", "no model output": "" };
+const tile = (n, t) => `<div class="tile"><b>${n}</b><span>${t}</span></div>`;
+let ROWS = [];
+
+function group(title, list) {
+  return `<table><thead><tr><th>${title}</th><th class="num">Pages</th><th class="num">Fully</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">Value found*</th></tr></thead><tbody>` +
+    list.map(([g, a]) => `<tr><td>${esc(g)}</td><td class="num">${a.pages}</td><td class="num">${a.full}</td><td class="num">${pct(a.precision)}</td><td class="num">${pct(a.recall)}</td><td class="num">${pct(a.value_recall)}</td></tr>`).join("") + "</tbody></table>";
+}
+
+async function load() {
+  const d = await (await fetch("/api/results")).json();
+  const s = d.summary; ROWS = d.rows;
+  const st = s.status;
+  $("prog").innerHTML = tile(`${s.run.toLocaleString()} / ${s.total.toLocaleString()}`, "pages run so far") +
+    tile(s.english_run.toLocaleString(), "English pages run") +
+    tile((st["all six steps"] || 0).toLocaleString(), "ran all six steps") +
+    tile(((st["stopped at verify (carried on)"] || 0) + (st["a step failed"] || 0)).toLocaleString(), "stopped at a step (carried on)") +
+    tile(st["runner error"] || 0, "runner errors (re-run at the end)") + tile("$" + s.cost.toFixed(2), "OpenRouter spend on these pages");
+  const a = s.scored, b = s.scored_with_output;
+  $("scorenote").textContent = `A value counts as matched when the product, the parameter and the value agree with the reviewer's answer. ` +
+    `${a.pages} pages hold ${a.expected.toLocaleString()} expected values; ${a.pages - b.pages} of them got no model output and hold ${(a.expected - b.expected).toLocaleString()} of those values. ` +
+    `*Value found: the right value for the right product, under any parameter name.`;
+  $("score").innerHTML = tile(a.full + " of " + a.pages, "pages fully extracted") +
+    tile(pct(a.precision), "precision: of the values given, right") + tile(pct(a.recall), "recall: of all expected values, found") +
+    tile(pct(b.recall), "recall on the pages that got an answer") + tile(pct(a.value_recall), "value found, any parameter name");
+  const max = Math.max(...s.categories.map(c => c[1]), 1);
+  $("cats").innerHTML = s.categories.map(([c, n]) => `<span>${esc(c)}</span><div class="track"><div class="fill" style="width:${100 * n / max}%"></div></div><span class="n">${n}</span>`).join("");
+  $("cats").setAttribute("aria-label", s.categories.map(([c, n]) => `${c}: ${n}`).join(", "));
+  $("bylayout").innerHTML = group("Layout", s.by_layout); $("bylang").innerHTML = group("Language", s.by_language);
+  $("bykind").innerHTML = group("Page kind", s.by_kind); $("bytier").innerHTML = group("Tier", s.by_tier.map(([g, x]) => ["tier " + g, x]));
+  const v = s.review;
+  $("rtiles").innerHTML = tile(`${v.pages}`, "pages reviewed so far") + tile(v.clean, "clean: no errors found") +
+    tile(v.findings, "findings in all") + tile(v.not_on_page, "findings whose quote is NOT on the page (check by hand)") +
+    tile(v.errors, "reviews that failed") + tile("$" + v.cost.toFixed(3), "review spend");
+  const bars = (list, el) => { const mx = Math.max(...list.map(x => x[1]), 1);
+    $(el).innerHTML = list.length ? list.map(([k, n]) => `<span>${esc(k)}</span><div class="track"><div class="fill" style="width:${100 * n / mx}%"></div></div><span class="n">${n}</span>`).join("") : '<span class="muted">none yet</span>';
+    $(el).setAttribute("aria-label", list.map(([k, n]) => `${k}: ${n}`).join(", ")); };
+  bars(v.kinds, "rkinds"); bars([["the model missed it", v.model_missed], ["the resolver dropped it", v.resolver]], "rwhy");
+  const langs = [...new Set(ROWS.map(r => r.language))];
+  $("flang").innerHTML = '<option value="">all (English first)</option>' + langs.map(l => `<option>${esc(l)}</option>`).join("");
+  $("fcat").innerHTML = '<option value="">any</option>' + s.categories.map(([c]) => `<option>${esc(c)}</option>`).join("");
+  draw();
+}
+
+function flow(r) {
+  if (r.status === "All six steps ran.") return '<span class="pill ok">all steps</span>';
+  if (r.status.startsWith("Stopped at step 2")) return '<span class="pill warn">verify &lt;100%</span>';
+  if (r.status.startsWith("Stopped")) return `<span class="pill bad">step failed</span>`;
+  return '<span class="pill bad">runner error</span>';
+}
+
+function draw() {
+  const fs = $("fsample").value, fl = $("flang").value, fc = $("fcat").value, q = $("fq").value.trim().toLowerCase();
+  const rs = ROWS.filter(r => (!fs || r.sample === fs) && (!fl || r.language === fl) && (!fc || r.category === fc) &&
+    (!q || (r.case + " " + r.company + " " + r.url + " " + r.layout).toLowerCase().includes(q)));
+  $("count").textContent = `${rs.length.toLocaleString()} page(s)`;
+  $("rows").innerHTML = rs.map(r => `<tr data-case="${esc(r.case)}" tabindex="0"><td class="mono">${esc(r.case)}</td><td>${esc(r.language)}</td><td>${esc(r.tier)}</td>` +
+    `<td>${esc(r.layout)}</td><td>${esc(r.company)}</td><td>${flow(r)}</td><td class="num">${r.got ?? "-"}</td>` +
+    `<td class="num">${r.expected ?? ""}</td><td class="num">${r.matched ?? ""}</td><td class="num">${r.category ? pct(r.precision) : ""}</td>` +
+    `<td class="num">${r.category ? pct(r.recall) : ""}</td><td>${r.category ? `<span class="pill ${CAT_CLS[r.category]}">${esc(r.category)}</span>` : '<span class="muted">no reviewer answer</span>'}</td>` +
+    `<td>${!r.review ? "" : r.review.status === "clean" ? '<span class="pill ok">clean</span>' : r.review.status === "error" ? '<span class="pill bad">failed</span>'
+      : `<span class="pill warn">${r.review.findings} finding${r.review.findings === 1 ? "" : "s"}</span>`}</td></tr>`).join("");
+}
+
+const itemTable = list => list && list.length ? `<table><thead><tr><th>Product</th><th>Parameter</th><th>Value</th></tr></thead><tbody>` +
+  list.map(([p, k, v]) => `<tr><td>${esc(p)}</td><td class="mono">${esc(k)}</td><td class="mono">${esc(v)}</td></tr>`).join("") + "</tbody></table>"
+  : '<span class="muted">none</span>';
+
+async function open(cid) {
+  document.querySelectorAll("#rows tr.sel").forEach(t => t.classList.remove("sel"));
+  document.querySelector(`#rows tr[data-case="${CSS.escape(cid)}"]`)?.classList.add("sel");
+  const d = await (await fetch("/api/result?case=" + encodeURIComponent(cid))).json(), m = d.meta, r = d.run;
+  $("detail").hidden = false;
+  $("h-detail").textContent = `${cid}: ${m.Company} (${m["Page kind"]}, ${m.Layout}, ${m.Language})`;
+  $("dmeta").innerHTML = `<a href="${esc(m.Link)}" target="_blank" rel="noopener">${esc(m.Link)}</a> | ${esc(r.run_all || r.runner_error || "")} | ${esc(m["Difficulties this page tests"])}`;
+  $("dout").textContent = d.model_output ? JSON.stringify(d.model_output, null, 1) : (d.model_raw || "(no model output)");
+  $("dexp").textContent = d.expected ? JSON.stringify(d.expected, null, 1) : "(no reviewer answer for this page)";
+  $("dnotes").textContent = d.notes ? "Reviewer notes: " + d.notes : "";
+  $("dmiss").innerHTML = d.expected ? itemTable(d.missed) : '<span class="muted">not scored</span>';
+  $("dextra").innerHTML = d.expected ? itemTable(d.extra) : '<span class="muted">not scored</span>';
+  $("dsteps").textContent = ["i1", "m2", "m3", "i4", "m5", "m6"].map(k => r[k]).filter(Boolean).join("\n\n") +
+    (r.labels ? "\n\nPage labels: " + r.labels.filter(l => l[1]).map(l => l[0]).join("; ") : "") + (r.example ? "\n\nPage example:\n" + r.example : "");
+  const rv = d.review;
+  $("drevmsg").textContent = !rv ? "Not reviewed (yet): only the first 100 pages with a final output are reviewed." :
+    (rv.runner_error ? "The review failed: " + rv.runner_error : (rv.m7 || "") + "  " + (rv.i7 || "").replace(/\s*\|\s*Download.*$/, ""));
+  $("drev").innerHTML = rv && rv.findings && rv.findings.length ? `<table><thead><tr><th>Finding</th><th>Product</th><th>Parameter</th><th>Value on the page</th><th>Output had</th><th>Quote on the page?</th><th>Why</th><th>Note</th></tr></thead><tbody>` +
+    rv.findings.map(f => `<tr><td><span class="pill ${/missed|not a spec/.test(f[0]) ? "bad" : "warn"}">${esc(f[0])}</span></td><td>${esc(f[1])}</td><td class="mono">${esc(f[2])}</td><td class="mono">${esc(f[3])}</td><td class="mono">${esc(f[4])}</td>` +
+      `<td><span class="pill ${f[5] === "yes" ? "ok" : "bad"}">${esc(f[5])}</span></td><td>${esc(f[6])}</td><td>${esc(f[7])}</td></tr>`).join("") + "</tbody></table>" : "";
+  $("dcorr").textContent = rv && rv.corrected ? rv.corrected : "";
+  $("dres").textContent = d.resolved || ""; $("dprompt").textContent = d.final_prompt || "";
+  $("detail").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+}
+
+// ---------------------------------------------------------------- the Excel run: start (resume) / stop
+let LAST = null;
+async function batch(action) {
+  const r = await fetch("/api/batch" + (action ? "/" + action : ""), action ? { method: "POST" } : {});
+  const b = await r.json();
+  if (!r.ok) throw new Error(b.error || r.status);
+  $("bstate").className = "pill " + (b.running ? "ok" : "");
+  $("bstate").textContent = b.running ? `running · ${b.workers} worker${b.workers === 1 ? "" : "s"}` : "stopped";
+  $("bstart").disabled = b.running; $("bstop").disabled = !b.running;
+  $("binfo").textContent = (b.running && b.since ? `since ${new Date(b.since * 1000).toLocaleTimeString()} · ` : "") + (b.log || []).slice(-1).join("");
+  if (LAST !== null && LAST !== b.running) load();            // it just started or stopped: refresh the numbers
+  LAST = b.running;
+  return b;
+}
+$("bstart").onclick = async () => {
+  const left = ROWS.length ? 1913 - ROWS.length : null;
+  if (!confirm(`Resume the Excel run? It runs the remaining${left ? " " + left.toLocaleString() : ""} pages on qwen-2.5-72b with 3 workers ` +
+    `(about $0.005 a page on your OpenRouter key; pages already done are skipped). The builder page shares the model with it, so it gets slower while this runs.`)) return;
+  $("bstart").disabled = true; $("binfo").textContent = "starting..."; await batch("start");
+};
+$("bstop").onclick = async () => {
+  if (!confirm("Stop the Excel run? Finished pages are kept; the 3 pages in progress are redone on the next start.")) return;
+  $("bstop").disabled = true; $("binfo").textContent = "stopping..."; await batch("stop");
+};
+batch().catch(e => $("binfo").textContent = "could not read the run state: " + e.message);
+setInterval(() => batch().catch(() => {}), 15000);
+setInterval(() => { if (LAST) load(); }, 120000);             // while it runs, refresh the numbers every 2 minutes
+
+$("rows").onclick = e => { const t = e.target.closest("tr"); if (t) open(t.dataset.case); };
+$("rows").onkeydown = e => { const t = e.target.closest("tr"); if (t && e.key === "Enter") open(t.dataset.case); };
+for (const id of ["fsample", "flang", "fcat"]) $(id).onchange = draw;
+$("fq").oninput = draw;
+load().catch(e => $("prog").textContent = "Could not load the run: " + e.message);
+</script>
+</html>

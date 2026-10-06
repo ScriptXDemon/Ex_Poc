@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.env
+extraction2/spec_flow/run/
+extraction2/corpus/

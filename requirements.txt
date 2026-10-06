@@ -1,0 +1,5 @@
+lxml>=5
+tokenizers>=0.15
+psutil>=5
+# optional: renders pages that need JavaScript (uses Microsoft Edge)
+# playwright>=1.40
