@@ -14,7 +14,7 @@ raw HTML → 1 resolve → 2 verify (+ repair) → 3 labels + example → 4 fina
 | 4 Final prompt | The production spec prompt (or your own, pasted in the Page section) + the labels + the example + the passage. |
 | 5 Context check | Counts the prompt's tokens with the Qwen2.5 tokenizer and refuses a prompt that would not fit the model's context window. |
 | 6 Extract | The final agent returns the specs as JSON, held to a strict schema. |
-| 7 Review (optional) | A second, larger model compares the JSON with the whole page as Markdown and lists what was missed, mislabelled or misread. |
+| 7 Review (optional) | A second, larger model (the judge) compares the JSON with the whole page as Markdown and lists only the **ontology** specs (the allowed parameter names) that are missing; a missed page label is fine. Code rejects any value not on the page, adds the ones written in the resolved passage to the output, and reports the ones the resolver dropped. |
 
 Every step's prompt, answer, token count and time is shown on the page.
 
@@ -40,6 +40,9 @@ Open http://127.0.0.1:8765/ and then:
 4. Press **Run all steps**, or run the steps one at a time.
 
 Self-check (no model calls): `python extraction2/spec_flow/server.py --demo` prints `ok`.
+Step 7's recovery logic: `node extraction2/spec_flow/recover_check.js` prints `ok`.
+
+The DC corpus: set `DC_DSN=postgresql://user:pass@host:5432/db` before starting the server and `/fetch` reads the page from its `documents` table first (`extraction2/dc.py`).
 
 ## Good to know
 

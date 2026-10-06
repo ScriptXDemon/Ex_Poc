@@ -164,7 +164,7 @@
   </section>
 
   <section aria-labelledby="s7">
-    <div class="head"><h2 id="s7"><span class="n">7</span>Review agent: check the output against the whole page (a frontier model as the human reviewer)</h2>
+    <div class="head"><h2 id="s7"><span class="n">7</span>Review agent: a judge finds the ontology specs step 6 missed; the ones in the resolved passage are added</h2>
       <span class="pill" id="p7">waiting</span><button id="b7">Run</button></div>
     <div class="grid">
       <label>Review model <input id="rmodel" value="qwen/qwen3.5-122b-a10b"></label>
@@ -177,7 +177,7 @@
     <div class="info" id="i7"></div>
     <div class="msg" id="m7"></div>
     <div class="scroll" id="t7"></div>
-    <div><span class="sub">Corrected output (the reviewer's)</span><pre id="corr"></pre></div>
+    <div><span class="sub">Final output: step 6 + the specs recovered here</span><pre id="corr"></pre></div>
     <details><summary>The page as Markdown (what the reviewer reads)</summary><pre id="md"></pre></details>
     <details><summary>Prompt and raw answer</summary><pre id="d7"></pre></details>
   </section>
@@ -598,46 +598,61 @@ const s6 = step(6, async () => {
   return true;
 });
 
-// ---------------------------------------------------------------- 7. review agent (a frontier model as the human reviewer)
-const KINDS = { missed: "missed", wrong_parameter: "mislabelled (wrong parameter)", wrong_product: "wrong product",
-  table_misread: "table misread", wrong_value: "value not as written", not_a_spec: "not a spec", duplicate: "duplicate" };
+// ---------------------------------------------------------------- 7. review agent: an LLM judge for missed ontology specs
+// The judge (a bigger model) reads the whole page as Markdown and step 6's JSON and lists only the ONTOLOGY specs (the
+// allowed parameter names) the output misses; a miss under a page label is fine. The code checks each one and adds it
+// to the output only when the line that states it is in the resolved passage (the text step 6 read).
 const STR = { type: "string" };
 const obj = props => ({ type: "object", additionalProperties: false, required: Object.keys(props), properties: props });
-// parameters are held to the allowed names + this page's labels, as in the final step (a reviewer invented "height_overall_m")
 const REVIEW_SCHEMA = names => obj({
-  findings: { type: "array", items: obj({ kind: { type: "string", enum: Object.keys(KINDS) }, product: STR,
-    parameter: { type: "string", enum: names }, value: STR, output_had: STR, evidence: STR, note: STR }) },
-  corrected_output: obj({ products: { type: "array", items: obj({ product: STR, maker: STR,
-    specs: { type: "array", items: obj({ parameter: { type: "string", enum: names }, value_text: STR }) } }) } }),
+  missing: { type: "array", items: obj({ product: STR, parameter: { type: "string", enum: names }, value: STR, evidence: STR }) },
   summary: STR });
-const REVIEW = (md, out, labels) => `You are the human reviewer of an automated defence-specification extractor. Check its OUTPUT against the PAGE (the whole web page, converted to Markdown) and report every error.
+const REVIEW = (md, out) => `You are the reviewer (an LLM judge) of an automated defence-specification extractor. Your ONLY job: find the specifications the PAGE states that the OUTPUT is MISSING, for the ONTOLOGY PARAMETERS below. Report nothing else: not wrong values, not wrong parameters, not extra items, not values that fit no ontology parameter.
 
-THE EXTRACTOR'S INSTRUCTIONS:
+THE EXTRACTOR'S RULES (a value counts only when these rules make it a specification):
 ${instructions()}
 
-ALLOWED PARAMETER NAMES (name: meaning):
+ONTOLOGY PARAMETERS (name: meaning), the must-have specifications:
 ${paramsBlock()}
 
-PAGE LABELS the extractor may use as a parameter when no allowed name fits: ${labels}
-
-Report one finding per problem, of these kinds:
-- missed: a specification the PAGE states that the OUTPUT does not have
-- wrong_parameter: the value is right but filed under the wrong parameter (mislabelled)
-- wrong_product: the value is given to the wrong product (e.g. the launcher instead of the missile it fires)
-- table_misread: a table read wrongly (a value from the wrong row or column, variants mixed up, a matrix collapsed)
-- wrong_value: the value is not as written on the PAGE (changed, rounded, unit dropped, several values merged)
-- not_a_spec: in the OUTPUT but not a specification of that product (a quantity, price, date, or something the PAGE does not state)
-- duplicate: the same value listed twice
-Report each problem ONCE, under the one kind that fits best. A munition a launcher fires is its ammunition_type, not a compatible_weapon_system.
-For each finding give: kind; product; parameter (the correct one); value (exactly as written on the PAGE); output_had (what the OUTPUT has for it, "" if nothing); evidence (a short quote copied word for word from the PAGE); note (one sentence).
-Menus, navigation and related-product lists are not this page's specifications. Judge only from the PAGE.
-Then give corrected_output: the complete correct extraction for this page, in the same JSON shape as the OUTPUT, under the extractor's instructions. Finally a one-sentence summary.
+How to work:
+1. Go through the PAGE product by product: each specific named system, exactly as written. Menus, navigation and related-product lists are not this page's products.
+2. For each value the PAGE states FOR that product that fits an ONTOLOGY PARAMETER, look for it in the OUTPUT under that product. Present under any parameter = NOT missing: skip it.
+3. Report each missing value once: product (as written on the PAGE); parameter (the ontology name that fits); value (copied character for character from the PAGE, with its unit); evidence (the PAGE line that states it, copied word for word).
+If nothing is missing, return an empty list. Then a one-sentence summary.
 
 OUTPUT:
 ${out}
 
 PAGE:
 """${md}"""`;
+
+// the code checks the judge, then repairs. Proof: the product, the evidence and the value inside it are all on the page
+// (a short value like "3" alone matches any page). A miss is added only when its evidence line is in the resolved
+// passage (recovery reads the passage, never the raw page); one the resolver dropped is only reported.
+// whole-value match: "3" is not in "30 mm", "45 km" is in "~45 km"
+const hasWord = (hay, needle) => { const h = norm(hay), n = norm(needle), w = c => /[\p{L}\p{N}]/u.test(c || "");
+  for (let i = h.indexOf(n); n && i >= 0; i = h.indexOf(n, i + 1)) if (!w(h[i - 1]) && !w(h[i + n.length])) return true;
+  return false; };
+const mdLine = l => String(l ?? "").replace(/^\s*(#+|-)\s+/, "").replace(/^[\s|]+|[\s|]+$/g, "");   // "| a | b |" -> "a | b"
+function recover(final, missing, md, res, names) {
+  const out = JSON.parse(JSON.stringify(final)), ps = out.products = out.products || [];
+  const rows = missing.map(x => {
+    const p = ps.find(p => norm(p.product) === norm(x.product));
+    const inOut = (p ? [p] : ps).some(q => (q.specs || []).some(s => hasWord(s.value_text, x.value)));   // no exact product: any
+    const status = !names.includes(x.parameter) ? "not an ontology parameter"
+      : !has(md, x.product) || !has(md, x.evidence) || !hasWord(x.evidence, x.value) ? "no proof on the page"
+      : inOut ? "already in the output"
+      : has(res, mdLine(x.evidence)) ? "added"
+      : has(res, x.value) ? "line not in the passage" : "resolver dropped it";
+    if (status === "added") {
+      const q = p || ps[ps.push({ product: x.product, maker: "", specs: [] }) - 1];
+      (q.specs = q.specs || []).push({ parameter: x.parameter, value_text: x.value });
+    }
+    return { ...x, status };
+  });
+  return { out, rows };
+}
 
 async function loadRctx() {                                   // the review model's window and price, from the provider
   try {
@@ -656,33 +671,34 @@ const s7 = step(7, async () => {
   const { md } = await srv("/markdown", { html: $("html").value });
   $("md").textContent = md;
   const slug = ($("url").value.split("/").filter(Boolean).pop() || "page").replace(/[^\w.-]+/g, "_").slice(0, 80);
-  const nOut = (S.final.products || []).reduce((n, p) => n + (p.specs || []).length, 0);
+  const names = allowed();
   let a;
-  for (let i = 0; i < 2; i++) {                             // an empty review of a non-empty output is a failed call: retry once
-    a = await llm(REVIEW(md, pyj(S.final), (S.labels || []).join("; ") || "(none)"), REVIEW_SCHEMA([...new Set([...allowed(), ...(S.labels || [])])]),
+  for (let i = 0; i < 2; i++) {     // an answer with no findings and no summary is a failed call (some providers send it): retry once
+    a = await llm(REVIEW(md, pyj(S.final)), REVIEW_SCHEMA(names),
       { model: $("rmodel").value, ctx: $("rctx").value, max: $("rmax").value, reasoning: $("rthink").checked, provider: $("rprov").value.trim() });
-    const nCorr = (a.json.corrected_output?.products || []).reduce((n, p) => n + (p.specs || []).length, 0);
-    if ((a.json.findings || []).length || nCorr || !nOut) break;
-    if (i) throw new Error("the reviewer returned an empty review twice (no findings and an empty corrected output): run step 7 again");
+    if ((a.json.missing || []).length || String(a.json.summary || "").trim()) break;
+    if (i) throw new Error("the reviewer returned an empty review twice (no findings, no summary): run step 7 again or change the provider");
   }
   $("d7").textContent = `${a.info}\n\n${a.prompt}\n\n--- answer\n${a.raw}`;
   const u = (a.raw && a.info.match(/tokens in (\d+) .* out (\d+)/)) || [], p = S.rprice || {};
   const cost = u[1] && p.prompt ? ` | cost $${(u[1] * p.prompt + u[2] * p.completion).toFixed(4)}` : "";
   $("i7").innerHTML = `${esc(a.info)}${esc(cost)} | <a download="${esc(slug)}.md" href="${URL.createObjectURL(new Blob([md], { type: "text/markdown" }))}">Download the page as .md</a> (${md.length.toLocaleString()} chars)`;
-  const res = $("resolved").value, f = a.json.findings || [];
-  // the code checks the reviewer: is its evidence really on the page? was a missed value ever in the passage the extractor read?
-  const rows = f.map(x => ({ ...x, real: has(md, x.evidence),
-    cause: x.kind !== "missed" ? "" : has(res, x.value) ? "the model missed it" : "the resolver dropped it" }));
-  $("t7").innerHTML = rows.length ? `<table><thead><tr><th>Finding</th><th>Product</th><th>Parameter</th><th>Value on the page</th><th>Output had</th><th>Evidence on the page?</th><th>Why</th><th>Note</th></tr></thead><tbody>` +
-    rows.map(r => `<tr><td><span class="pill ${r.kind === "missed" || r.kind === "not_a_spec" ? "bad" : "warn"}">${esc(KINDS[r.kind] || r.kind)}</span></td><td>${esc(r.product)}</td><td class="mono">${esc(r.parameter)}</td>` +
-      `<td class="mono">${esc(r.value)}</td><td class="mono">${esc(r.output_had)}</td><td><span class="pill ${r.real ? "ok" : "bad"}">${r.real ? "yes" : "NOT FOUND"}</span></td><td>${esc(r.cause)}</td><td>${esc(r.note)}</td></tr>`).join("") + "</tbody></table>" : "";
-  $("corr").textContent = JSON.stringify(a.json.corrected_output, null, 1);
-  const by = Object.entries(rows.reduce((m, r) => (m[KINDS[r.kind] || r.kind] = (m[KINDS[r.kind] || r.kind] || 0) + 1, m), {})).map(([k, n]) => `${n} ${k}`).join(", ");
-  const fake = rows.filter(r => !r.real).length, lost = rows.filter(r => r.cause === "the resolver dropped it").length;
-  msg("m7", rows.length ? "warn" : "ok", (rows.length ? `${rows.length} finding(s): ${by}.` : "No errors found.") +
-    (lost ? ` ${lost} missed value(s) were never in the resolved passage (the resolver dropped them).` : "") +
-    (fake ? ` ${fake} finding(s) quote evidence that is NOT on the page: check those by hand.` : "") + " " + (a.json.summary || ""));
-  pill(7, rows.length ? "warn" : "ok", rows.length ? rows.length + " findings" : "clean");
+  const { out, rows } = recover(S.final, a.json.missing || [], md, $("resolved").value, names);
+  const tone = { "added": "ok", "resolver dropped it": "bad", "line not in the passage": "bad" };
+  $("t7").innerHTML = rows.length ? `<table><thead><tr><th>Product</th><th>Parameter</th><th>Value on the page</th><th>Evidence</th><th>Result</th></tr></thead><tbody>` +
+    rows.map(r => `<tr><td>${esc(r.product)}</td><td class="mono">${esc(r.parameter)}</td><td class="mono">${esc(r.value)}</td><td>${esc(r.evidence)}</td>` +
+      `<td><span class="pill ${tone[r.status] || "warn"}">${esc(r.status)}</span></td></tr>`).join("") + "</tbody></table>" : "";
+  $("corr").textContent = JSON.stringify(out, null, 1);
+  // coverage of the must-have (ontology) specs: what step 6 had, against what it had + the judge's confirmed misses
+  const n = st => rows.filter(r => r.status === st).length, added = n("added"), dropped = n("resolver dropped it"), unsure = n("line not in the passage");
+  const had = (S.final.products || []).flatMap(p => p.specs || []).filter(s => names.includes(s.parameter)).length;
+  const all = had + added + dropped + unsure, pct = k => all ? Math.round(100 * k / all) : 100, rejected = rows.length - added - dropped - unsure;
+  msg("m7", added + dropped + unsure ? "warn" : "ok", `Ontology specs: step 6 had ${had} of ${all} (${pct(had)}%)` +
+    (added ? `; ${added} added from the resolved passage: now ${had + added} of ${all} (${pct(had + added)}%)` : "") + "." +
+    (dropped ? ` ${dropped} missing value(s) are not in the resolved passage (the resolver dropped them), so they are not added.` : "") +
+    (unsure ? ` ${unsure} value(s) are in the passage but not on their evidence line, so they are not added: check by hand.` : "") +
+    (rejected ? ` ${rejected} finding(s) rejected: no proof on the page, not an ontology parameter, or already in the output.` : "") + " " + (a.json.summary || ""));
+  pill(7, dropped + unsure ? "warn" : "ok", added + dropped + unsure ? `${added} added, ${dropped + unsure} not added` : "nothing missing");
   return true;
 });
 
