@@ -1,0 +1,46 @@
+doc_id: pdf_d802f1477a652544
+url: https://www.nammo.com/wp-content/uploads/2020/06/Lapua_Catalog_2026_ENG_web.pdf
+level: 4
+format: pdf
+partial: true
+# Lapua 2026 catalogue (19 pages, 1,514 blocks): cartridge cards (calibre > bullet weight & type > product no., with
+# muzzle velocity in m/s and fps, ballistic coefficients G1/G7, GEE / PBR sight-in distances) laid out as separate
+# label and number blocks, then dense ballistic and component tables (pages 14-18). Sample: cartridge cards at the
+# start (p4) and middle (p6-7). The end tables are not labelled: the parser merges their columns ("100 yd 2525 786"),
+# so a reliable key cannot be written from them. Aliases always carry the bullet weight or product number so a
+# calibre-only record (".308 Winchester") is not mistaken for a specific cartridge.
+products:
+  P1: {name: ".222 Remington 3.6 g / 55 gr FMJ", aliases: ["4315021", ".222 Remington 55 gr FMJ", ".222 Remington FMJ 55 gr", ".222 Rem. FMJ 3,6 g / 55 gr"], pos: start, page: 4}
+  P2: {name: ".243 Winchester 5.8 g / 90 gr FMJ", aliases: ["4316052", ".243 Winchester 90 gr FMJ", ".243 Winchester FMJ 90 gr", ".243 Win. FMJ 5,8 g / 90 gr"], pos: start, page: 4}
+  P3: {name: "6.5x47 Lapua 7.8 g / 120 gr OTM Scenar-L", aliases: ["4316017", "6.5x47 Lapua 120 gr Scenar-L", "6.5x47 Lapua Scenar-L 120 gr", "6.5x47 Lapua 120 gr OTM Scenar-L"], pos: start, page: 4}
+  P4: {name: ".308 Winchester 11.0 g / 170 gr Lock Base", aliases: ["4317596", ".308 Winchester 170 gr Lock Base", ".308 Winchester Lock Base 170 gr", ".308 Win. Lock Base 11,0 g / 170 gr"], pos: middle, page: 6}
+  P5: {name: ".308 Winchester 11.0 g / 170 gr Naturalis", aliases: ["N317105", ".308 Winchester 170 gr Naturalis", ".308 Winchester Naturalis 170 gr", ".308 Win. Naturalis 11,0 g / 170 gr"], pos: middle, page: 6}
+  P6: {name: "Pistol King", aliases: ["420164", ".22 LR Pistol King", "Lapua Pistol King"], pos: middle, page: 7}
+facts:
+  - {p: P1, param: muzzle_velocity, alt: [muzzle_velocity_ms, muzzle_velocity_fps], v: "910", nums: [910], b: b31}
+  - {p: P1, param: muzzle_velocity_fps, alt: [muzzle_velocity], v: "2985", nums: [2985], b: b33}
+  - {p: P1, param: ballistic_coefficient_g1, alt: [ballistic_coefficient, bc_g1], v: "0.230", nums: [0.23], b: b36}
+  - {p: P1, param: gee_distance, alt: [optimal_sighting_distance, sight_in_distance, gee], v: "168 GEE", nums: [168], b: b39}
+  - {p: P1, param: point_blank_range, alt: [pbr, maximum_point_blank_range], v: "184 PBR", nums: [184], b: b40}
+  - {p: P2, param: muzzle_velocity, alt: [muzzle_velocity_ms, muzzle_velocity_fps], v: "885", nums: [885], b: b111}
+  - {p: P2, param: muzzle_velocity_fps, alt: [muzzle_velocity], v: "2905", nums: [2905], b: b113}
+  - {p: P2, param: gee_distance, alt: [optimal_sighting_distance, sight_in_distance, gee], v: "176 GEE", nums: [176], b: b119}
+  - {p: P2, param: point_blank_range, alt: [pbr, maximum_point_blank_range], v: "192 PBR", nums: [192], b: b120}
+  - {p: P3, param: muzzle_velocity, alt: [muzzle_velocity_ms, muzzle_velocity_fps], v: "845", nums: [845], b: b159}
+  - {p: P3, param: muzzle_velocity_fps, alt: [muzzle_velocity], v: "2772", nums: [2772], b: b161}
+  - {p: P3, param: ballistic_coefficient_g1, alt: [ballistic_coefficient, bc_g1], v: "0.497", nums: [0.497], b: b164}
+  - {p: P3, param: ballistic_coefficient_g7, alt: [ballistic_coefficient, bc_g7], v: "0.246", nums: [0.246], b: b166}
+  - {p: P4, param: muzzle_velocity, alt: [muzzle_velocity_ms, muzzle_velocity_fps], v: "840", nums: [840], b: b507}
+  - {p: P4, param: muzzle_velocity_fps, alt: [muzzle_velocity], v: "2756", nums: [2756], b: b509}
+  - {p: P4, param: ballistic_coefficient_g1, alt: [ballistic_coefficient, bc_g1], v: "0.498", nums: [0.498], b: b512}
+  - {p: P4, param: ballistic_coefficient_g7, alt: [ballistic_coefficient, bc_g7], v: "0.249", nums: [0.249], b: b514}
+  - {p: P5, param: muzzle_velocity, alt: [muzzle_velocity_ms, muzzle_velocity_fps], v: "800", nums: [800], b: b535}
+  - {p: P5, param: muzzle_velocity_fps, alt: [muzzle_velocity], v: "2625", nums: [2625], b: b537}
+  - {p: P5, param: ballistic_coefficient_g1, alt: [ballistic_coefficient, bc_g1], v: "0.354", nums: [0.354], b: b540}
+  - {p: P5, param: ballistic_coefficient_g7, alt: [ballistic_coefficient, bc_g7], v: "0.177", nums: [0.177], b: b542}
+  - {p: P5, param: gee_distance, alt: [optimal_sighting_distance, sight_in_distance, gee], v: "159 GEE", nums: [159], b: b543}
+  - {p: P5, param: point_blank_range, alt: [pbr, maximum_point_blank_range], v: "174 PBR", nums: [174], b: b544}
+  - {p: P6, param: muzzle_velocity, alt: [muzzle_velocity_ms, muzzle_velocity_fps], v: "285", nums: [285], b: b892}
+  - {p: P6, param: muzzle_velocity_fps, alt: [muzzle_velocity], v: "935", nums: [935], b: b894}
+  - {p: P6, param: bullet_weight, alt: [projectile_weight, bullet_mass], v: "2.59 g / 40 gr", nums: [2.59, 40], b: b891}
+negatives: []

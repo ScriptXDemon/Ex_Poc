@@ -1,0 +1,47 @@
+doc_id: E448
+url: https://knds.com/en/products/systems/rch-155-tracked
+products:
+  P1: {name: RCH 155 TRACKED, aliases: [RCH 155, Remote Controlled Howitzer 155 mm]}
+facts:
+  - {p: P1, param: calibre, v: "155 mm"}
+  - {p: P1, param: main_armament, v: "155mm/L52 main gun (JBMoU-compatible)"}
+  - {p: P1, param: rate_of_fire, v: "> 8 rounds per minute"}
+  - {p: P1, param: rate_of_fire, v: "9 rounds per minute", cond: while on the move}
+  - {p: P1, param: traverse_range, v: "360° (+/-200°)"}
+  - {p: P1, param: elevation_range, v: "from -2.5° to +65° (-45 mils to +1,150 mils)"}
+  - {p: P1, param: max_range, v: "up to 40", nums: [40]}
+  - {p: P1, param: max_range, v: "54 (V-LAP)", nums: [54], cond: V-LAP}
+  - {p: P1, param: max_range, v: "70 (VULCANO) km", nums: [70], cond: VULCANO}
+  - {p: P1, param: ammunition_type, v: "JBMoU-compatible 155 mm ammunition"}
+  - {p: P1, param: ammunition_type, alt: [modular_charges], v: "up to six modular charges", any: ["six modular charges", "6 modular charges"]}
+  - {p: P1, param: magazine_capacity, v: "30 fuzed projectiles"}
+  - {p: P1, param: magazine_capacity, v: "144 modular charges"}
+  - {p: P1, param: fuze_programming, alt: [fuze_type], v: "Inductive programming during the ramming process"}
+  - {p: P1, param: secondary_armament, v: "Optional Remote Controlled Weapon Station RCWS", any: ["Remote Controlled Weapon Station"]}
+  - {p: P1, param: secondary_armament, v: "Multi-Purpose Grenade Launcher (MPL)"}
+  - {p: P1, param: direct_laying, v: "Optionally available with optronics or remote-controlled weapon station"}
+  - {p: P1, param: combat_weight, v: "< 45 t (metric)"}
+  - {p: P1, param: length_overall, v: "10,60 m"}
+  - {p: P1, param: width, v: "3,45 m"}
+  - {p: P1, param: height, v: "3,5 m"}
+  - {p: P1, param: engine_power, v: "approx. 800 - 900 kW"}
+  - {p: P1, param: max_road_speed, alt: [max_speed], v: "70 km/h (road)"}
+  - {p: P1, param: operational_range, v: "< 500km (road)"}
+  - {p: P1, param: crew, v: "two operators"}
+  - {p: P1, param: protection_level, v: "Ballistic protection for the crew on IFV-Level"}
+  - {p: P1, param: protection_level, v: "Mine and IED protection"}
+  - {p: P1, param: protection_level, v: "NBC protection system"}
+  - {p: P1, param: chassis, alt: [launch_platform], k: compat, v: "BOXER TRACKED"}
+  - {p: P1, param: max_shell_length, v: "up to 1,000 mm length"}
+  - {p: P1, param: mrsi, v: "within 2 sec"}
+  - {p: P1, k: text, v: "firing on the move"}
+  - {p: P1, k: text, v: "engagement of moving targets"}
+  - {p: P1, k: text, v: "Direct firing capability with 155 mm gun"}
+  - {p: P1, k: text, v: "Autonomous navigation and fire control"}
+  - {p: P1, k: text, v: "Automated gun-laying system with coincidence control of the weapon"}
+  - {p: P1, k: text, v: "Fully-automated loading system for projectiles and modular charges"}
+  - {p: P1, k: text, v: "Loading in all elevation and azimuth positions possible"}
+  - {p: P1, k: text, v: "No Chassis stabilization needed"}
+  - {p: P1, k: text, v: "Cooling and heating system for crew and turret"}
+  - {p: P1, k: text, v: "Barracuda mobile camouflage (optional)"}
+negatives: ["60 shells", "288 modular charges", "ISO 20-foot"]

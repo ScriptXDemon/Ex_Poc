@@ -1,0 +1,33 @@
+doc_id: E432
+url: https://knds.com/en/products/systems/fennek/fennek-reconnaissance-vehicle
+products:
+  P1: {name: FENNEK Reconnaissance Vehicle, aliases: [FENNEK]}
+facts:
+  - {p: P1, param: length_overall, v: "5.58 m"}
+  - {p: P1, param: width, v: "2.55 m / 2.67 m", nums: [2.55]}
+  - {p: P1, param: height, v: "1.79 m"}
+  - {p: P1, param: combat_weight, alt: [weight], v: "Up to 12 t"}
+  - {p: P1, param: engine_power, v: "177 kW", nums: [177]}
+  - {p: P1, param: engine_power, v: "235 kW", nums: [235]}
+  - {p: P1, param: max_road_speed, alt: [max_speed], v: "> 100 km/h"}
+  - {p: P1, param: operational_range, v: "1,000 km", nums: [1000]}
+  - {p: P1, param: main_armament, alt: [secondary_armament, armament], v: "40 mm grenade machine gun"}
+  - {p: P1, param: main_armament, alt: [secondary_armament, armament], v: "machine gun / cal. 7.62 x 51", any: ["cal. 7.62 x 51"]}
+  - {p: P1, param: main_armament, alt: [secondary_armament, armament], v: "machine gun cal. 50", any: ["cal. 50"]}
+  - {p: P1, param: crew, v: "3 man", any: ["3-man crew", "three-man crew"]}
+  - {p: P1, param: protection_level, v: "Ballistic, Mine, IED", any: ["Ballistic", "Mine", "IED"]}
+  - {p: P1, param: endurance, v: "up to 5 days", any: ["five days"]}
+  - {p: P1, param: gradient, v: "gradients in excess of 60%", nums: [60]}
+  - {p: P1, param: side_slope, v: "slopes in excess of 35%", nums: [35]}
+  - {p: P1, param: turning_radius, v: "turning circle of 13 m", nums: [13]}
+  - {p: P1, param: fording_depth, v: "ford water at a depth of 1 m", nums: [1]}
+  - {p: P1, param: transportable_by, alt: [launch_platform], k: compat, v: "C-130/160", any: ["C-130"]}
+  - {p: P1, param: transportable_by, alt: [launch_platform], k: compat, v: "A400M"}
+  - {p: P1, param: drive_configuration, v: "selectable or permanent four-wheel drive"}
+  - {p: P1, param: transmission, v: "fully automatic manual transmission and a transfer case", any: ["fully automatic manual transmission"]}
+  - {p: P1, k: text, v: "automatic tire pressure control system"}
+  - {p: P1, k: text, v: "H-drive"}
+  - {p: P1, k: text, v: "Exceptional target location accuracy in azimuth and elevation"}
+  - {p: P1, k: text, v: "Communication system to coordinate land, air and naval forces"}
+  - {p: P1, k: text, v: "reconnaissance"}
+negatives: []

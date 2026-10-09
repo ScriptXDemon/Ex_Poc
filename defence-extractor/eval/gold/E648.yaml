@@ -1,0 +1,35 @@
+doc_id: E648
+url: https://munitionsindia.in/hi/products/round-30mm-bmp-ii-he-i
+products:
+  P1: {name: ROUND 30mm BMP-II HE/I, aliases: [राउंड 30mm BMP-II HE/I, 30mm BMP-II HE/I, High Explosive Incendiary Shell (HE/I), HE/I]}
+  P2: {name: 30mm Automatic Gun 2A42, aliases: [Gun 2A42, 2A42]}
+facts:
+  - {p: P1, param: calibre, v: "30mm"}
+  - {p: P1, param: warhead_type, alt: [ammunition_type], v: "High Explosive Incendiary", any: ["HE/I"]}
+  - {p: P1, param: compatible_weapon_system, alt: [launch_platform], k: compat, v: "30mm Automatic Gun 2A42", any: ["2A42"]}
+  - {p: P1, param: target_type, k: target, v: "man power and non-armoured ground and Ariel targets", any: ["non-armoured ground"]}
+  - {p: P1, param: target_type, k: target, v: "light armored targets, soft skinned targets and against personnel", any: ["light armored targets"]}
+  - {p: P1, param: effective_range, alt: [max_range], v: "up to 4000 meters", nums: [4000]}
+  - {p: P1, param: engagement_altitude, v: "up to 2000 meters", nums: [2000]}
+  - {p: P1, param: shell_material, alt: [material], v: "Hot rolled cold drawn Steel 50-TY 14-1-2884-80 or JSS 9510-1, SSA-21 with S & P 0.03 max, hardness 229 NLT.", any: ["Steel 50-TY"]}
+  - {p: P1, param: cartridge_case_material, v: "Cold drawn low carbon Steel 1110A TY 14-1-3455-82 or Steel 11YUA / GOST 19032-73 or JSS-1402 with C=0.09 to 0.13 %", any: ["Steel 1110A"]}
+  - {p: P1, param: fuze_type, v: "A670M (DASD Type)"}
+  - {p: P1, param: primer, v: "KB-30 (Percussion Type)"}
+  - {p: P1, param: explosive_type, v: "(ME 305) (RDX : Al : Wax = 74 : 20 : 6 )", any: ["ME 305"]}
+  - {p: P1, param: warhead_weight, alt: [burst_charge_mass], v: "0.0485 ± 0.001 Kg", nums: [0.0485]}
+  - {p: P1, param: projectile_weight, v: "0.389 ± 0.006 Kg", nums: [0.389]}
+  - {p: P1, param: weight, alt: [cartridge_weight, round_weight], v: "0.837 Kg", nums: [0.837]}
+  - {p: P1, param: round_length, alt: [length_overall], v: "H = 292.84, L = 289.45", nums: [292.84]}
+  - {p: P1, param: max_chamber_pressure, v: "3600 kg/cm2 (Propellant)", nums: [3600]}
+  - {p: P1, param: max_chamber_pressure, v: "3800 kg/cm2 (Separate Round)", nums: [3800]}
+  - {p: P1, param: muzzle_velocity, v: "960 ± 10 m/s", nums: [960]}
+  - {p: P1, param: sd_timing, v: "09 to 14 sec", nums: [9, 14]}
+  - {p: P1, param: ballistic_time, v: "0.007 Sec", nums: [0.007]}
+  - {p: P1, param: shelf_life, v: "07 Years", nums: [7]}
+  - {p: P1, param: max_range, alt: [effective_range], v: "04 Km (Ground Target)", nums: [4], cond: ground target}
+  - {p: P1, param: engagement_altitude, alt: [max_range], v: "02 Km (Ariel Target/Altitude)", nums: [2], cond: aerial target}
+  - {p: P1, k: text, v: "Shell , Cartridge Case, Propellant, Packing Box H-60 (Steel)", any: ["Packing Box H-60"]}
+  - {p: P2, param: launch_platform, k: compat, v: "Infantry Combat Vehicle Bmp-II", any: ["Bmp-II"]}
+  - {p: P2, k: text, v: "single shot firing as well as automatic firing both at rapid and slow rates"}
+  - {p: P2, k: text, v: "double belt feed system"}
+negatives: []

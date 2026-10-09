@@ -62,3 +62,11 @@ The DC corpus: set `DC_DSN=postgresql://user:pass@host:5432/db` before starting 
 | `extraction2/spec_flow/qwen2.5_tokenizer.json` | Qwen2.5-72B-Instruct tokenizer, for exact token counts |
 | `extraction2/spec_flow/results.html`, `runview.py` | Batch run results page |
 | `extraction2/webbench.py`, `content.py`, `docprep.py`, `dates.py` | The resolver (HTML → text) |
+
+## defence-extractor: agentic framework for whole documents
+
+`defence-extractor/` holds the multi-agent extraction engine for whole documents: HTML pages and PDFs of any length
+(40-page windows, image pages read by a vision model), many products per document with each value tied to its product,
+durable Temporal runs over a folder of documents, and answer-key evaluation by position in the document. It talks to any
+OpenAI-compatible endpoint (self-hosted GPU servers or OpenRouter). Start with
+[defence-extractor/README.md](defence-extractor/README.md).

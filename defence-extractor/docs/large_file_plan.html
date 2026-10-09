@@ -1,0 +1,264 @@
+<title>Large-File Accuracy Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column for a decision memo; evidence tables inline where each claim is made. Same identity as the results report. */
+:root {
+  --bg: #f3f5f3; --surface: #ffffff; --ink: #18201d; --muted: #59655f; --rule: #d6ddd9; --accent: #8a4f12;
+  --good: #2c7a4b; --warn: #a36d0f; --bad: #a8382c; --track: #e3e8e5;
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+main { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 34px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 4.4vw, 44px); font-weight: 700; }
+h2 { font-size: 25px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0; max-width: 74ch; }
+a { color: var(--accent); }
+section { display: grid; gap: 12px; min-width: 0; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); font-size: 17px; }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 15px 17px; display: grid; gap: 4px; align-content: start; }
+.kpi b { font: 600 28px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.kpi b.bad { color: var(--bad); } .kpi b.warn { color: var(--warn); }
+.kpi span { color: var(--muted); font-size: 14px; }
+.wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 11.5px/1.3 var(--mono); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n, .n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13px; }
+.mono { font-family: var(--mono); font-size: 13px; }
+td.url { max-width: 300px; overflow-wrap: anywhere; font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.note { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+.note ul, .note ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.verdict { border-left: 3px solid var(--accent); background: var(--surface); padding: 12px 16px; border-radius: 0 10px 10px 0; display: grid; gap: 6px; }
+.tag { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.tag.done { color: var(--good); } .tag.new { color: var(--warn); } .tag.crit { color: var(--bad); }
+code { font-family: var(--mono); font-size: 13px; background: var(--track); padding: 1px 5px; border-radius: 4px; }
+.small { font-size: 13.5px; color: var(--muted); }
+.bar { display: inline-block; width: 80px; height: 7px; background: var(--track); border-radius: 4px; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--bad); }
+.bar.ok span { background: var(--good); }
+</style>
+<main>
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Defence product intelligence · extraction engine · plan, 2026-10-09</div>
+  <h1>Large-File Accuracy Plan</h1>
+  <p class="lede">How the engine behaves on very long PDFs and HTML pages, what breaks and why (measured on the 459-document run),
+  the framework changes that fix it, whether the current models are enough, and a costed test on 13 large documents from the corpus.</p>
+</header>
+
+<div class="strip" role="list">
+  <div class="kpi" role="listitem"><b class="bad">10.7%</b><span>of values put on the wrong product in documents over 30,000 characters (0.8–1.4% below that)</span></div>
+  <div class="kpi" role="listitem"><b class="warn">75%</b><span>of specs found on the 100,000-character article, against 90–100% on short pages</span></div>
+  <div class="kpi" role="listitem"><b class="warn">~9,200</b><span>tokens of entity list sent with every call on a 590-entity catalogue</span></div>
+  <div class="kpi" role="listitem"><b class="warn">11.3%</b><span>of PDF pages are mostly image; 3.1% have no text layer at all</span></div>
+  <div class="kpi" role="listitem"><b>$20</b><span>budget I need for the large-file test (minimum $12)</span></div>
+</div>
+
+<section>
+  <h2>Done in this step</h2>
+  <div class="grid2">
+    <div class="note"><h3>Inputs and outputs, side by side</h3>
+      <p><code>extraction_outputs/</code> in the project folder: one folder per processed document (476) with <code>input.html</code> / <code>input.pdf</code>, <code>output.json</code>,
+      a readable <code>summary.md</code>, <code>source.json</code> (URL, level, cost) and, for the 33 hand-labelled documents, <code>answer_key.yaml</code>.
+      <code>index.html</code> and <code>index.csv</code> list all 809 documents, including the ones not yet processed.</p></div>
+    <div class="note"><h3>A14 proposals into the catalogue</h3>
+      <p>186 proposals reviewed: 65 promoted, 45 merged into a parameter as aliases, 76 rejected (entity or procurement data, vague labels, or artefacts
+      of bugs now fixed). The catalogue grows from 92 to 178 parameters (new ones as <em>candidate</em>), in a separate, reversible extension file.
+      Four wrong aliases in the original list were corrected, for example "power consumption" was an alias of power <em>output</em>.
+      Every decision is in <code>docs/ontology_a14_review.md</code>.</p></div>
+    <div class="note"><h3>Two unit bugs fixed</h3>
+      <p>"541 Nm" engine torque was read as nautical miles and "98 KN" thrust as knots, so those values could never map to torque or thrust.
+      Both now parse correctly (unit tests added; 27 pass).</p></div>
+    <div class="note"><h3>Measured effect so far</h3>
+      <p>By page label alone, 675 of the run's 5,342 dynamic specs (13%) now land on a catalogue parameter. The LLM mapping step adds more on the next run,
+      because the extraction prompt now lists the new parameters.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>What happens to a large document today</h2>
+  <p>The engine already reads documents in section-aligned chunks that carry their heading path, caps dense chunks, splits answers that overflow, and closes
+  the evidence ledger, so nothing is silently dropped. The problems are in the parts that need the whole document at once.</p>
+  <div class="wrap"><table>
+    <tr><th>Where</th><th>What happens</th><th>Evidence from the run</th></tr>
+    <tr><td>PDF parsing</td><td>Only the first 120 pages are parsed. Pages without a text layer are read as empty and image content is never looked at.</td>
+        <td>3 corpus PDFs exceed 120 pages (294, 144, 132). The 132-page catalogue lost pages 121–132. 69 pages have no text, 250 are mostly image.</td></tr>
+    <tr><td>Page map (A2)</td><td>Sees an outline of the first 160 sections only.</td><td>The 132-page catalogue has 437 sections; 277 got no role.</td></tr>
+    <tr><td>Entity registry</td><td>Every prompt carries the full list of entities found anywhere in the document.</td>
+        <td>590 entities = about 9,200 tokens per call; 334 entities on a 310,000-character page = about 6,150.</td></tr>
+    <tr><td>Who owns a value</td><td>Decided chunk by chunk. When a product's table continues on the next page, or its name is styled text rather than a heading, the chunk has no owner in view.</td>
+        <td>The verifier rejected the owner of 85 values on Poongsan, 101 on Autel and 53 on Elbit (reason <code>belongs_to_other_entity</code>); those values ended unresolved.</td></tr>
+    <tr><td>Long stages</td><td>Extraction for a whole document is one step that saves only at the end; the spend counter for the $0.40 cap lives in memory.</td>
+        <td>The Lapua catalogue (1,514 blocks, about 4,500 values) restarted from zero after every worker restart, spent $3.71 and never finished.</td></tr>
+    <tr><td>Size and cost</td><td>Calls and tokens grow with the page count; the per-document cap then stops reading.</td>
+        <td>Over 30,000 characters: 65 calls and about 246k input / 80k output tokens per document (11 calls and 15k / 8k on pages under 4,000).</td></tr>
+  </table></div>
+  <div class="wrap"><table>
+    <tr><th>Document size</th><th>Docs</th><th>Products / doc</th><th>Values put on the wrong product</th></tr>
+    <tr><td class="n">under 4,000 chars</td><td class="n">314</td><td class="n">2.6</td><td><span class="bar ok"><span style="width:8%"></span></span><span class="n">0.8%</span></td></tr>
+    <tr><td class="n">4,000–12,000</td><td class="n">77</td><td class="n">4.4</td><td><span class="bar ok"><span style="width:13%"></span></span><span class="n">1.4%</span></td></tr>
+    <tr><td class="n">12,000–30,000</td><td class="n">19</td><td class="n">9.0</td><td><span class="bar ok"><span style="width:13%"></span></span><span class="n">1.4%</span></td></tr>
+    <tr><td class="n">over 30,000</td><td class="n">22</td><td class="n">16.7</td><td><span class="bar"><span style="width:100%"></span></span><span class="n">10.7%</span></td></tr>
+  </table></div>
+  <p class="small">Excludes the 27 documents cut short by the budget stop (their verification was refused, so every value stayed unresolved; a re-run costs about $0.40).
+  Bar width is the rate on a 0–10.7% scale. The system abstained on these values rather than publishing them under the wrong product, so the loss is recall, not wrong output.</p>
+</section>
+
+<section>
+  <h2>Is the current model choice enough?</h2>
+  <div class="verdict">
+    <p><b>For reading a bounded chunk, yes.</b> Qwen3.8-27B finds 97% of benchmark specs and 91% on the corpus answer keys, and most misses trace to what the chunk
+    could see, not to the model's reading ability. Keep it as the high-volume extractor.</p>
+    <p><b>For the document-wide decisions, it should be tested against a bigger model.</b> Large files fail on decisions that need the whole document:
+    which product a table belongs to, roles among hundreds of entities, a page map over 400+ sections. I want to run those steps (A2, A4, product map, A6, A7)
+    with Qwen3.5-122B-A10B: a mixture-of-experts model with about 10B active parameters, so it serves at close to 27B speed, with a 262k context and image input.
+    Keep gpt-oss-120b for audit and verification; it is cheap and did well.</p>
+    <p><b>A longer context window is not the fix.</b> Putting a whole 300-page catalogue in one prompt costs more and blurs which product a value belongs to.
+    The fix is structural: map the document to products first, then extract each product's pages with only that product's context (D1, D2 below).</p>
+  </div>
+  <div class="grid2">
+    <div class="note"><h3>A/B test design</h3><ul>
+      <li>Same pipeline and prompts; only the document-wide steps switch model.</li>
+      <li>Run on the 6 test documents with the most ownership errors.</li>
+      <li>Adopt the 122B for those steps if values on the wrong product drop by a third or more, at acceptable cost and latency.</li>
+      <li>Also check whether the 122B avoids the 27B's empty answers with thinking off (retried today; 12–19% of LLM cost).</li>
+    </ul></div>
+    <div class="note"><h3>At data-centre scale (per document, run average)</h3><ul>
+      <li>Main model: about 29k input and 13k output tokens.</li>
+      <li>Verifier: about 15k input and 11k output tokens.</li>
+      <li>Output tokens dominate GPU time. Per million corpus-like pages that is about 13B output tokens on the main model and 11B on the verifier; documents over 30,000 characters weigh 5–10 times an average one.</li>
+      <li>The local registry (D2) and product-segmented reading (D1) cut input tokens on large files the most.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>PDF structure, OCR and vision</h2>
+  <p>Measured on all 250 corpus PDFs (2,203 pages): 69 pages (3.1%) have no text layer, 250 (11.3%) are mostly image with little text, 103 PDFs (41%) have at least one such page,
+  and 37 have them on 30% or more of their pages. The IWI 2020 catalogue is 32 pages with 28 image-heavy pages and only about 3,800 characters of text.
+  Many of these images are product photos, but some carry spec tables and annotated drawings that the engine cannot see today.</p>
+  <div class="grid2">
+    <div class="note"><h3>Proposed routing (per page, not per file)</h3><ol>
+      <li><b>Text layer present:</b> Docling layout and tables, as now. This stays the source of truth for verbatim values.</li>
+      <li><b>No text layer:</b> OCR that page (RapidOCR inside Docling), even when the rest of the file has text.</li>
+      <li><b>Mostly image:</b> one vision call that transcribes any technical text and tables on the page into blocks, tagged with page and source <code>vision</code>.</li>
+      <li><b>Table that parses badly</b> (Docling's own cell-alignment warnings, ragged rows): re-read the table from the page image and compare.</li>
+    </ol></div>
+    <div class="note"><h3>Why vision is an add-on, not the main path</h3><ul>
+      <li>Nearly 89% of pages carry their content in the text layer, which gives exact characters for evidence quotes.</li>
+      <li>Vision output is read, not quoted, so its values get a lower evidence confidence and are checked again by the verifier.</li>
+      <li>Both Qwen3.8-27B and Qwen3.5-122B accept images, so no extra model is needed in the data centre.</li>
+      <li>Cost is small: about $0.002 per page image on OpenRouter.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Critical changes before the large-file run</h2>
+  <div class="wrap"><table>
+    <tr><th>#</th><th>Change</th><th>What it fixes</th><th>How</th></tr>
+    <tr><td><span class="tag crit">D1</span></td><td><b>Product map, then extract per product</b></td>
+        <td>Values put on the wrong product; tables that continue across pages or chunks</td>
+        <td>Before extraction, assign every page range or section to its product(s), using headings, page titles, table captions and repeated names, with a
+        windowed page map over the whole document instead of the first 160 sections. Each extraction chunk then states its product, family and variants.</td></tr>
+    <tr><td><span class="tag crit">D2</span></td><td><b>Local entity list per chunk</b></td>
+        <td>Attention spread over hundreds of irrelevant names; 6–9k tokens of overhead per call</td>
+        <td>Send only the entities mentioned in the chunk and its section, plus the segment's product and its parents; at most about 40.</td></tr>
+    <tr><td><span class="tag crit">D3</span></td><td><b>Full-length PDF parsing</b></td><td>Pages after 120 are lost</td>
+        <td>Parse in 40-page windows with a one-page overlap for tables that span a page break, in parallel, checkpointed per window.</td></tr>
+    <tr><td><span class="tag crit">D4</span></td><td><b>Page-level OCR and vision</b></td><td>Scanned pages and specs in images are unseen</td><td>The routing above.</td></tr>
+    <tr><td><span class="tag crit">D5</span></td><td><b>Checkpoints inside long stages</b></td><td>Restarts lose all work; the spend cap resets; dead workers go unnoticed for 45 minutes</td>
+        <td>Save each chunk's result as it finishes and skip finished chunks on resume; keep the per-document spend on disk; heartbeat from long steps.</td></tr>
+    <tr><td><span class="tag new">D6</span></td><td><b>One product sheet per product</b></td><td>The same spec repeated in a summary table and a detail page; conflicting values</td>
+        <td>After extraction, merge duplicates across pages, flag conflicts (for example 212,000 vs 212,299 lb on the KC-46 page), keep page provenance, and roll subsystem specs up into the product record.</td></tr>
+    <tr><td><span class="tag new">D7</span></td><td><b>Spend where the specs are</b></td><td>The per-document cap stops reading before the important pages</td>
+        <td>Read spec-dense sections first (ranked by value count) and skip legal, contact and history pages, so a cap or a budget cut falls on low-value pages.</td></tr>
+    <tr><td><span class="tag new">D8</span></td><td><b>Position-aware answer keys</b></td><td>No measurement of whether accuracy drops deeper into a document</td>
+        <td>For each large document, label products sampled from the start, middle and end, and report accuracy by position.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Where we are still weak: plan</h2>
+  <div class="wrap"><table>
+    <tr><th>Weak point</th><th>Fix</th><th>How we will measure</th></tr>
+    <tr><td>Values put on the wrong product in large multi-product documents (10.7%)</td><td>D1 and D2, deterministic ownership for product-keyed tables, and the 122B for ownership decisions if the A/B supports it</td>
+        <td>Wrong-owner rate and recall on the 13-document test set, compared with this run</td></tr>
+    <tr><td>Two products in one spec table (SHARKY 774/775, Autel, Poongsan)</td><td>When a table's row or column headers name products, attribute each cell to its row or column product without asking the model; the model handles only ambiguous tables</td>
+        <td>SHARKY answer key; Autel and Poongsan unresolved counts</td></tr>
+    <tr><td>News and analysis pages accept operational statements (readiness, ports visited, deployments)</td><td>Page-type-aware acceptance: on news and analysis pages, accept only stated product characteristics; add a rejection reason for operational events</td>
+        <td>Facts on non-key products for the news answer keys (Navy Lookout, Rafael, DID)</td></tr>
+    <tr><td>Components named inside a sentence (an ejection seat's catapult and parachute); subsystem specs sit on separate records</td>
+        <td>Record "fitted with X" as a component fact of the product, and roll subsystem specs up into the product record (D6)</td><td>ACES 5 and Buffalo answer keys, without needing the via-subsystem matching</td></tr>
+    <tr><td>Empty answers from Qwen3.8-27B with thinking off; the retries cost 12–19% of LLM spend</td><td>Test the 122B and a small thinking budget for extraction; pick by cost per correct fact</td><td>Retry rate and cost per correct spec in the A/B</td></tr>
+    <tr><td>Small evaluation set (33 hand-labelled documents)</td><td>Add the 13 large documents (position-aware), 10 news pages, 6 multi-product tables and 6 non-English pages: about 70 in total</td><td>Per-level and per-position accuracy with useful sample sizes</td></tr>
+    <tr><td>Parameter mapping: 62% of specs are dynamic</td><td>Done: catalogue +86 parameters, unit fixes, units read from table headers. Review new A14 proposals after every large run.</td><td>Dynamic share on the next run</td></tr>
+    <tr><td>27 documents cut short by the budget stop</td><td>Re-run their verification</td><td>About $0.40</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Large-file test set (13 documents from the corpus)</h2>
+  <p>Chosen to cover the failure modes above: very long PDFs, dense catalogues, catalogues with known ownership errors, an image-heavy catalogue, very long
+  HTML articles, a listing page and a large API page. Seven were processed in the run, so their results there are the baseline.</p>
+  <div class="wrap"><table>
+    <tr><th>Document</th><th>Size</th><th>Tests</th><th>In the run</th><th>Est. cost</th></tr>
+    <tr><td class="url"><a href="https://admin.interlinkcs.cz/uploads/Product_Catalog_2024_2025_e71ddc58fe.pdf" target="_blank" rel="noopener">CZ product catalogue 2024–2025</a></td><td class="n">294 pp</td><td>Over 120 pages; many products and tables</td><td>not processed</td><td class="n">$2.00–3.00</td></tr>
+    <tr><td class="url"><a href="https://media.northropgrumman.com/45089d32-0e64-41d5-b7bd-b4500167ed2f/NG-Propulsion-Products-Catalog_Original%20file.pdf" target="_blank" rel="noopener">Northrop Grumman propulsion products catalogue</a></td><td class="n">144 pp</td><td>Over 120 pages; one spec table per rocket motor</td><td>not processed</td><td class="n">$1.00–1.50</td></tr>
+    <tr><td class="url"><a href="https://future-forces-forum.org/download/FUTURE_FORCES_FORUM_Catalogue_2022.pdf" target="_blank" rel="noopener">Future Forces Forum catalogue 2022</a></td><td class="n">132 pp</td><td>590 entities; pages 121–132 were cut</td><td>processed</td><td class="n">$0.70–1.00</td></tr>
+    <tr><td class="url"><a href="https://poongsan.co.kr/include/images/cs/제품기술자료_Copper_Alloy_Products_2025.pdf" target="_blank" rel="noopener">Poongsan copper-alloy products</a></td><td class="n">113 pp</td><td>85 values with the wrong owner</td><td>processed</td><td class="n">$0.50–0.70</td></tr>
+    <tr><td class="url"><a href="https://cdn.leonardodrs.com/uploads/wp-content/uploads/2025/06/ADACS_Catalog_00190037_Rev.18_06.15.25_.pdf" target="_blank" rel="noopener">Leonardo DRS ADACS catalogue</a></td><td class="n">111 pp</td><td>Long technical catalogue</td><td>not processed</td><td class="n">$0.70–1.00</td></tr>
+    <tr><td class="url"><a href="https://www.nammo.com/wp-content/uploads/2020/06/Lapua_Catalog_2026_ENG_web.pdf" target="_blank" rel="noopener">Nammo Lapua catalogue 2026</a></td><td class="n">19 pp · 4,500 values</td><td>Extreme table density; the hang</td><td>never finished</td><td class="n">$1.50–2.50</td></tr>
+    <tr><td class="url"><a href="https://www.elbitsystems.com/sites/default/files/2025-02/catalog-tanks_17_noimi_web_compressed_0.pdf" target="_blank" rel="noopener">Elbit tanks catalogue</a></td><td class="n">24 pp</td><td>53 values with the wrong owner</td><td>processed</td><td class="n">$0.40</td></tr>
+    <tr><td class="url"><a href="https://iwi.net/wp-content/uploads/2021/03/IWI-2020-Catalog-Web-Ready.pdf" target="_blank" rel="noopener">IWI 2020 catalogue</a></td><td class="n">32 pp · 28 image pages</td><td>Vision routing</td><td>stopped mid-way</td><td class="n">$0.30–0.50</td></tr>
+    <tr><td class="url"><a href="https://www.defenseindustrydaily.com/p8-poseidon-mma-longrange-maritime-patrol-and-more-4-0240542" target="_blank" rel="noopener">DID: P-8 Poseidon</a></td><td class="n">310k chars</td><td>Longest HTML; 334 entities; stopped at the $0.40 cap</td><td>processed (capped)</td><td class="n">$0.80–1.20</td></tr>
+    <tr><td class="url"><a href="https://www.autelrobotics.com/productdetail/evo-max-4t" target="_blank" rel="noopener">Autel EVO Max 4T</a></td><td class="n">48k chars</td><td>One product with many accessories; 101 values with the wrong owner</td><td>processed</td><td class="n">$0.30</td></tr>
+    <tr><td class="url"><a href="https://www.defenseindustrydaily.com/adding-arleigh-burkes-northrop-grumman-underway-06007" target="_blank" rel="noopener">DID: Arleigh Burke</a></td><td class="n">100k chars</td><td>Has an answer key: 75% of specs found</td><td>processed</td><td class="n">$0.30</td></tr>
+    <tr><td class="url"><a href="https://www.thedefensenews.com/index.php?pageno=3" target="_blank" rel="noopener">The Defense News, listing page 3</a></td><td class="n">68k chars</td><td>News listing with 18 products</td><td>processed</td><td class="n">$0.20</td></tr>
+    <tr><td class="url"><a href="https://oshkoshdefense.com/wp-json/wp/v2/pages/133740" target="_blank" rel="noopener">Oshkosh Defense (WordPress API page)</a></td><td class="n">99k chars</td><td>Large JSON-wrapped page</td><td>not processed</td><td class="n">$0.30</td></tr>
+  </table></div>
+  <p class="small">Answer keys for the 100+ page catalogues will be partial: products sampled from the start, middle and end of each document, fully labelled.
+  Costs assume the per-document cap is raised to $3 for this test, so we measure full accuracy rather than the cap.</p>
+</section>
+
+<section>
+  <h2>Budget and phases</h2>
+  <div class="wrap"><table>
+    <tr><th>Phase</th><th>Work</th><th>OpenRouter cost</th></tr>
+    <tr><td>0 · Build</td><td>D1–D8, position-aware answer keys for the 13 documents, unit tests, parsing-only checks on all 13 (no LLM)</td><td class="n">$0</td></tr>
+    <tr><td>1 · Pilot</td><td>Lapua, the 294-page CZ catalogue and Autel: no hangs, cost per document, sanity of the product map</td><td class="n">$4–6</td></tr>
+    <tr><td>2 · Full test</td><td>The other 10 documents with the new framework; score all 13 against the answer keys and compare with this run</td><td class="n">$5–7</td></tr>
+    <tr><td>3 · Model A/B</td><td>The 6 ownership-heavy documents with Qwen3.5-122B on the document-wide steps</td><td class="n">$3–4</td></tr>
+    <tr><td>4 · Fix and close</td><td>One fix-and-rerun round, the 27 budget-stopped documents, a 100-page vision sample across the corpus</td><td class="n">$3–4</td></tr>
+    <tr><td colspan="2"><b>Total</b></td><td class="n"><b>about $15–21 · ask: $20</b></td></tr>
+  </table></div>
+  <p class="small">With $12: phases 1 and 2 only (no model A/B, no fix round). Calls whose prompts do not change are served from the response cache at no cost.</p>
+</section>
+
+<section>
+  <h2>Decisions I need from you</h2>
+  <div class="note"><ol>
+    <li><b>Budget:</b> $20 (recommended) or $12.</li>
+    <li><b>Models you will host:</b> is your "Qwen 122B" Qwen3.5-122B-A10B, and is the 72B Qwen2.5-72B? The A/B should test what you will deploy.</li>
+    <li><b>Vision through OpenRouter:</b> may page images be sent for the test, as page text is today?</li>
+    <li><b>Per-document cap for the test:</b> $3, to measure full accuracy; the production cap is decided afterwards.</li>
+    <li><b>Partial answer keys</b> for catalogues of 100+ pages (sampled products at start, middle and end), as described above.</li>
+    <li><b>Catalogue:</b> the 86 promoted parameters are in as candidates. Anything in <code>docs/ontology_a14_review.md</code> to drop or rename?</li>
+  </ol></div>
+</section>
+</main>

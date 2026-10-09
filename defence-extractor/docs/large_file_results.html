@@ -1,0 +1,185 @@
+<title>Large-File Test Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout: one reading column for a decision memo; evidence tables inline where each claim is made. Same identity as the results report. */
+:root {
+  --bg: #f3f5f3; --surface: #ffffff; --ink: #18201d; --muted: #59655f; --rule: #d6ddd9; --accent: #8a4f12;
+  --good: #2c7a4b; --warn: #a36d0f; --bad: #a8382c; --track: #e3e8e5;
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+main { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 34px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 4.4vw, 44px); font-weight: 700; }
+h2 { font-size: 25px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0; max-width: 74ch; }
+a { color: var(--accent); }
+section { display: grid; gap: 12px; min-width: 0; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); font-size: 17px; }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 15px 17px; display: grid; gap: 4px; align-content: start; }
+.kpi b { font: 600 28px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.kpi b.bad { color: var(--bad); } .kpi b.warn { color: var(--warn); }
+.kpi span { color: var(--muted); font-size: 14px; }
+.wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 11.5px/1.3 var(--mono); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n, .n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13px; }
+.mono { font-family: var(--mono); font-size: 13px; }
+td.url { max-width: 300px; overflow-wrap: anywhere; font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.note { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+.note ul, .note ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.verdict { border-left: 3px solid var(--accent); background: var(--surface); padding: 12px 16px; border-radius: 0 10px 10px 0; display: grid; gap: 6px; }
+.tag { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.tag.done { color: var(--good); } .tag.new { color: var(--warn); } .tag.crit { color: var(--bad); }
+code { font-family: var(--mono); font-size: 13px; background: var(--track); padding: 1px 5px; border-radius: 4px; }
+.small { font-size: 13.5px; color: var(--muted); }
+.bar { display: inline-block; width: 80px; height: 7px; background: var(--track); border-radius: 4px; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--bad); }
+.bar.ok span { background: var(--good); }
+</style>
+<style>
+.pos td:first-child { white-space: nowrap; }
+.pos td { min-width: 150px; }
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.fixlist { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.fixlist li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 12px; align-items: baseline; }
+.fixlist li b { font: 600 12px/1.3 var(--mono); color: var(--accent); }
+@media (max-width: 560px) { .fixlist li { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+<main>
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Defence product intelligence · extraction engine · large-file test, 2026-10-09</div>
+  <h1>Large-File Test Results</h1>
+  <p class="lede">The engine after the D1–D8 changes, run on 15 large documents from the corpus: PDF catalogues up to 294 pages and
+  1M characters, image-only catalogue pages, and long HTML articles and listings. Each was scored against a partial answer key written
+  from the parsed source before any output was seen, with products sampled at the start, middle and end of the document.</p>
+</header>
+
+<div class="strip" role="list"><div class="kpi" role="listitem"><b class="good">77%</b><span>of the sampled specs found on the 7 large documents the old run also processed (61% before)</span></div><div class="kpi" role="listitem"><b class="good">71%</b><span>found in the last part of those documents (41% before): accuracy no longer fades with depth</span></div><div class="kpi" role="listitem"><b class="good">6.2%</b><span>of found values on the wrong product (7.6% before)</span></div><div class="kpi" role="listitem"><b class="">76%</b><span>recall on all 13 scored large documents (305 of 403 sampled specs)</span></div><div class="kpi" role="listitem"><b class="">$8.79</b><span>LLM cost of the 14 finished documents: 575 PDF pages and 0.7M characters of HTML (largest single file $2.72)</span></div></div>
+
+<section>
+  <h2>Can the large-file test set run now?</h2>
+  <div class="verdict">
+    <p><b>Yes.</b> All 15 documents run end to end through the Temporal pipeline, with no page limit: the parser reads PDFs in 40-page windows (294 pages for the largest), image pages are transcribed, long stages heartbeat and resume from checkpoints, and a per-document spend cap protects the budget. 14 documents have finished. The largest, a 294-page L3Harris radio catalogue (9,407 blocks, 1,218 entities, 1,197 product-keyed table rows), is still in its extraction stage and will be added to this page when it completes. On the documents the old run also processed, recall rose from 61% to 77%, and the end of documents improved most: 41% to 71%.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Accuracy by position in the document</h2>
+  <p>Share of the answer-key specs found on the right product, by where the sampled product sits in the document. The old run lost
+  accuracy the deeper it read; the product map, local entity lists and full-length parsing remove most of that drop.</p>
+  <div class="wrap"><table class="pos"><thead><tr><th>Run</th><th>Start</th><th>Middle</th><th>End</th></tr></thead><tbody><tr><td>Before: old run, 7 documents</td><td class="n"><span class="bar ok"><span style="width:78%"></span></span>78% <span class="small">(73/94, wrong product 4)</span></td><td class="n"><span class="bar ok"><span style="width:51%"></span></span>51% <span class="small">(59/115, wrong product 4)</span></td><td class="n"><span class="bar ok"><span style="width:41%"></span></span>41% <span class="small">(30/73, wrong product 8)</span></td></tr><tr><td>Now: same 7 documents</td><td class="n"><span class="bar ok"><span style="width:90%"></span></span>90% <span class="small">(85/94, wrong product 1)</span></td><td class="n"><span class="bar ok"><span style="width:65%"></span></span>65% <span class="small">(75/115, wrong product 10)</span></td><td class="n"><span class="bar ok"><span style="width:71%"></span></span>71% <span class="small">(52/73, wrong product 6)</span></td></tr><tr><td>Now: all 13 scored documents</td><td class="n"><span class="bar ok"><span style="width:82%"></span></span>82% <span class="small">(129/157, wrong product 6)</span></td><td class="n"><span class="bar ok"><span style="width:64%"></span></span>64% <span class="small">(105/163, wrong product 12)</span></td><td class="n"><span class="bar ok"><span style="width:76%"></span></span>76% <span class="small">(109/144, wrong product 8)</span></td></tr></tbody></table></div>
+  <p class="small">"Wrong product" counts answer-key values that the engine accepted, but on another product that does not have that value.</p>
+</section>
+
+<section>
+  <h2>Per document</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Document</th><th>Size</th><th>Found</th><th>Recall</th><th>Wrong product</th><th>Unresolved</th><th>Before</th><th>By position</th><th>Cost</th><th>Notes</th></tr></thead>
+    <tbody><tr><td>L3Harris radio catalogue (Interlink CS)<div class="small mono">pdf_b7c2369cde80f556</div></td><td class="n">294 pp</td><td class="n">–/–</td><td class="n">–</td><td class="n">–</td><td class="n">–</td><td class="n">not run</td><td class="small"></td><td class="n">running</td><td class="small"></td></tr><tr><td>Northrop Grumman propulsion catalogue<div class="small mono">pdf_d01bfafbe389a5f8</div></td><td class="n">144 pp</td><td class="n">41/56</td><td class="n">73%</td><td class="n">1</td><td class="n">3</td><td class="n">not run</td><td class="small">s 17/20 · m 13/21 · e 15/20</td><td class="n">$1.36</td><td class="small">vision: 20 blocks from 1 of 3 image pages</td></tr><tr><td>Future Forces Forum 2022 catalogue<div class="small mono">pdf_d717bf66f633d689</div></td><td class="n">132 pp</td><td class="n">16/18</td><td class="n">89%</td><td class="n">1</td><td class="n">0</td><td class="n">7/18</td><td class="small">s 9/9 · m 11/18 · e 3/3</td><td class="n">$0.86</td><td class="small">vision: 23 blocks from 1 of 16 image pages</td></tr><tr><td>Poongsan copper-alloy catalogue<div class="small mono">pdf_b1dcc677b47283e3</div></td><td class="n">113 pp</td><td class="n">16/55</td><td class="n">29%</td><td class="n">6</td><td class="n">4</td><td class="n">9/55</td><td class="small">s 12/21 · m 1/19 · e 6/20</td><td class="n">$0.71</td><td class="small"></td></tr><tr><td>Leonardo DRS ADACS catalogue<div class="small mono">pdf_ed4c47836e872292</div></td><td class="n">111 pp</td><td class="n">9/10</td><td class="n">90%</td><td class="n">1</td><td class="n">0</td><td class="n">not run</td><td class="small">s 4/4 · m 2/2 · e 3/8</td><td class="n">$1.16</td><td class="small"></td></tr><tr><td>Lapua 2026 ammunition catalogue<div class="small mono">pdf_d802f1477a652544</div></td><td class="n">19 pp</td><td class="n">12/26</td><td class="n">46%</td><td class="n">4</td><td class="n">3</td><td class="n">not run</td><td class="small">s 4/13 · m 8/13</td><td class="n">$2.72</td><td class="small"></td></tr><tr><td>Elbit tank-ammunition catalogue<div class="small mono">pdf_5b039048bbb93ebd</div></td><td class="n">24 pp</td><td class="n">51/57</td><td class="n">89%</td><td class="n">4</td><td class="n">0</td><td class="n">51/57</td><td class="small">s 20/20 · m 18/19 · e 13/18</td><td class="n">$0.32</td><td class="small"></td></tr><tr><td>IWI US 2020 catalogue (image pages)<div class="small mono">pdf_e9e47aa8ee65e39e</div></td><td class="n">32 pp</td><td class="n">35/37</td><td class="n">95%</td><td class="n">0</td><td class="n">2</td><td class="n">not run</td><td class="small">s 5/5 · m 4/4 · e 26/28</td><td class="n">$0.29</td><td class="small">vision: 116 blocks from 10 of 28 image pages</td></tr><tr><td>DID: P-8 Poseidon article<div class="small mono">doc_6c07c88a456f9130</div></td><td class="n">312k chars</td><td class="n">21/23</td><td class="n">91%</td><td class="n">1</td><td class="n">0</td><td class="n">15/23</td><td class="small">s 15/15 · m 5/7 · e 6/8</td><td class="n">$0.50</td><td class="small"></td></tr><tr><td>Autel EVO Max 4T product page<div class="small mono">doc_6e1d0c3d81160802</div></td><td class="n">56k chars</td><td class="n">29/29</td><td class="n">100%</td><td class="n">0</td><td class="n">0</td><td class="n">28/29</td><td class="small">s 6/6 · m 13/13 · e 11/11</td><td class="n">$0.27</td><td class="small"></td></tr><tr><td>DID: Arleigh Burke contracts log<div class="small mono">doc_5a4cfa2b110b8e65</div></td><td class="n">102k chars</td><td class="n">22/28</td><td class="n">79%</td><td class="n">0</td><td class="n">0</td><td class="n">21/28</td><td class="small">s 12/12 · m 15/27 · e 6/6</td><td class="n">$0.18</td><td class="small"></td></tr><tr><td>Defense news listing, page 3<div class="small mono">doc_45fc640b99a0fe26</div></td><td class="n">69k chars</td><td class="n">28/28</td><td class="n">100%</td><td class="n">0</td><td class="n">0</td><td class="n">15/28</td><td class="small">s 11/11 · m 12/12 · e 7/7</td><td class="n">$0.16</td><td class="small"></td></tr><tr><td>Oshkosh news listing (no specs)<div class="small mono">doc_ea9543d8cb971d07</div></td><td class="n">2k chars</td><td class="n">0/0</td><td class="n">–</td><td class="n">0</td><td class="n">0</td><td class="n">–</td><td class="small"></td><td class="n">$0.00</td><td class="small"></td></tr><tr><td>Navy Lookout: Type 26 guide<div class="small mono">doc_5a93f5203ebff67d</div></td><td class="n">91k chars</td><td class="n">11/15</td><td class="n">73%</td><td class="n">0</td><td class="n">0</td><td class="n">not run</td><td class="small">s 13/17</td><td class="n">$0.08</td><td class="small"></td></tr><tr><td>Think Defence: Aster / Sea Viper<div class="small mono">doc_743031a2b7a8dd0b</div></td><td class="n">44k chars</td><td class="n">14/21</td><td class="n">67%</td><td class="n">2</td><td class="n">0</td><td class="n">not run</td><td class="small">s 1/4 · m 3/8 · e 13/15</td><td class="n">$0.17</td><td class="small"></td></tr></tbody>
+  </table></div>
+  <p class="small">Answer keys: <code>eval/gold_large/</code>, written from the parsed source text before any output was seen, with every value checked against its source block. They sample 2–3 products at the start, middle and end of each document (403 specs on the 13 scored documents; the Oshkosh listing has no specs and only checks that nothing is invented). “Before” is the 459-document run from earlier today, scored with the same keys and the same scorer; “not run” means that run never processed the document. Found counts specs and compatibility facts on the right product, including values on a linked subsystem record. Poongsan, re-run with the product-map fix described below: 22/55, 3 on the wrong product (shown in the table: the first run).</p>
+</section>
+
+<section>
+  <h2>Specs outside the catalogue, on the right product</h2>
+  <div class="split">
+    <div class="note"><h3>What the engine accepted</h3>
+      <p>6798 specifications were accepted on these documents: 15% map to a catalogue parameter, 18% to a
+      candidate parameter from the A14 extension, and 68% are dynamic, named from the document's own label.
+      Among the answer-key specs the engine found, 45 were dynamic parameters on the right product; 14 dynamic values
+      landed on a wrong product.</p></div>
+    <div class="note"><h3>How a value is tied to its product</h3>
+      <ul>
+        <li>The product map gives every section its product from headings, page titles, running headers and the page map, and the
+        extraction prompt shows it next to each section ("describes: …").</li>
+        <li>Rows and columns of product-keyed tables (one row or column per model) are assigned to that model without asking the model.</li>
+        <li>Each call sees only the 40 entities relevant to its pages, not a list of hundreds.</li>
+        <li>A part's values (controller, battery, camera, launcher) stay on the part and roll up into the product's sheet as a subsystem.</li>
+        <li>The verifier checks every accepted value against its evidence and owner.</li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Vision with the same Qwen 27B</h2>
+  <div class="split">
+    <div class="note"><h3>How it works</h3>
+      <ul>
+        <li>Routing is per page: only pages with no text layer, or mostly image with little text, are rendered (1,600 px long side) and
+        transcribed. The text layer stays the source of truth everywhere else.</li>
+        <li>The model returns typed blocks (heading, table row, label–value, paragraph), inserted in reading order on their own page, so
+        every later agent reads them in place.</li>
+        <li>Values read from images get a lower evidence confidence and go through the same verification.</li>
+        <li>At most 40 pages per document; about $0.002 per page on OpenRouter.</li>
+      </ul></div>
+    <div class="note"><h3>Result</h3>
+      <p>The IWI US catalogue has 32 pages; 28 are mostly image and 19 have no text layer. All 28 went through vision; 10 carried technical content and gave 116 blocks, and 353 of the 364 candidate facts came from them, attached to the item numbers of the product list (XB17-9, GAR1651, M9ORP17…). The engine found 35 of the 37 key facts, including the values that exist only in the images of the product list; the old run produced nothing for this file. On the other PDFs vision only fills gaps: 20 blocks from 1 of 3 image pages in the propulsion catalogue, 23 from 1 of 16 in the forum catalogue, and nothing where the pages are photos.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>What changed</h2>
+  <div class="split">
+    <div class="note"><h3>Planned changes D1–D8</h3>
+      <ul class="fixlist">
+        <li><b>D1 product map</b><span>Section, page and table ownership before extraction; windowed page map over the whole document.</span></li>
+        <li><b>D2 local entities</b><span>At most 40 relevant entities per call instead of the whole registry.</span></li>
+        <li><b>D3 full PDFs</b><span>40-page windows with a disk cache, no page limit; tables continued across a page break keep their header.</span></li>
+        <li><b>D4 vision</b><span>Page-level transcription of image pages with the main model.</span></li>
+        <li><b>D5 checkpoints</b><span>Heartbeats from long stages, per-document spend kept on disk, finished calls replayed from the cache.</span></li>
+        <li><b>D6 product sheet</b><span>Duplicates merged, conflicting values flagged, page provenance, subsystems rolled up.</span></li>
+        <li><b>D7 spend order</b><span>Specification-dense chunks first, so a budget cap cuts narrative, not tables.</span></li>
+        <li><b>D8 answer keys</b><span>Position-aware partial keys for the 15 documents, written blind.</span></li>
+      </ul></div>
+    <div class="note"><h3>Found and fixed while testing</h3>
+      <ul class="fixlist">
+        <li><b>hyphens</b><span>The verifier model writes non-breaking hyphens; every such value failed the evidence check (204 in the old run).</span></li>
+        <li><b>table units</b><span>"IMU: 259; Units: mm" read as "259 mm" was rejected; about 2,900 such table values in the old run are now kept.</span></li>
+        <li><b>roles</b><span>Product-type entities left without a role lost their values from the output; re-asked, typed, kept.</span></li>
+        <li><b>parts</b><span>Named parts in spec tables become components of their product; a section label no longer pulls a part's values onto the product.</span></li>
+        <li><b>throughput</b><span>Attribution and parameter mapping ran one call at a time, and mapping overflowed on catalogues; both now batch in parallel.</span></li>
+        <li><b>PDF threads</b><span>The PDF library is not thread-safe; parallel documents now share one lock.</span></li>
+        <li><b>scoring</b><span>Product names must agree on model numbers, so variants such as M322 and M338 are told apart.</span></li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Short documents still hold</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Set</th><th>Before</th><th>Now</th><th>Notes</th></tr></thead>
+    <tbody><tr><td>Benchmark pages (17 pages, 267 specs)</td><td class="n">97.0% (259/267)</td><td class="n">97.0% (259/267)</td><td class="small">0 values on the wrong product; text facts 98.9%; parameter mapping 188 correct / 7 wrong (before 181 / 8); old answer key 190/203 (v3: 183)</td></tr><tr><td>Corpus answer keys (16 documents, 281 specs)</td><td class="n">89.0% (250/281)</td><td class="n">94.0% (264/281)</td><td class="small">wrong product 11 → 2, unresolved 5 → 1; the SHARKY 774/775 brochure (two products in one table) 13/24 → 24/24</td></tr></tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Cost, time and capacity</h2>
+  <div class="split">
+    <div class="note"><h3>This run</h3><p>$8.79 for the 14 finished documents, from $0.002 (the news listing without specs) to $2.72 (the Lapua catalogue, 1,514 blocks); none reached its $3 cap. The 294-page catalogue runs under a $5.50 cap. About 2,000 model calls, all served by one provider (DeepInfra): median latency 69 s, 90th percentile 203 s with 48 calls in parallel. Retries and JSON repairs were 33% of the spend: with thinking off the 27B returns an empty list on 47% of entity-finding calls on the big PDFs and 22% of extraction calls, and each is retried with thinking.</p></div>
+    <div class="note"><h3>For the data centre</h3><p>In the data centre these retries cost GPU time instead of money; your note that thinking on/off retries are affordable holds, but on documents over 100 pages it is cheaper to start entity finding with light thinking than to pay for the empty first answer. Load also needs to spread: here one provider queue set the pace, so on our own servers run several replicas behind the router. Large catalogues are dominated by output tokens (extraction and audit answers of 5–9k tokens), so size GPU capacity for generation, not prompt length. The per-document cap stays as a guard against a runaway file.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Still weak, and next</h2>
+  <div class="note"><ul><li><b>Entity discovery on catalogues.</b> The copper-alloy catalogue registered 27 entities for dozens of alloys, so whole alloy pages had no product. Stopping the product map from carrying the previous alloy across an unknown model heading lifted it from 16 to 22 of 55 and cut wrong-product values from 6 to 3; next, promote model-number headings (C7451, RF-7850A…) to products.</li><li><b>Roles on long news logs.</b> The role model labels many real products “other” (66 of 127 on the Arleigh Burke log). Their values are now kept in the output, but the product map and attribution do not see them yet; map “other” to the role implied by the entity type.</li><li><b>Spec cards with labels and numbers in separate blocks</b> (Lapua: “Muzzle velocity”, “m / sec”, “910”) lose values: 12 of 26 found. A layout rule that joins label, unit and number would fix most.</li><li><b>Throughput.</b> Spread calls over several replicas and start entity finding with thinking on big PDFs; together they should halve the time of a run like this.</li><li><b>Bigger evaluation set.</b> These keys sample 403 specs on 13 documents; the larger set you are preparing will narrow the error bars, especially for the middle of documents (65% now).</li></ul></div>
+</section>
+</main>

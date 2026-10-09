@@ -1,0 +1,44 @@
+doc_id: pdf_c109f27503511726
+url: https://www.saab.com/globalassets/markets/colombia/brochure-Gripen-Brasil.pdf
+level: 4
+format: pdf
+# Spanish-language programme brochure (non-English): mostly procurement / technology-transfer narrative, one
+# "Las cifras del caza Gripen" figure block and an on-board systems list. Values verbatim (European number format).
+products:
+  P1: {name: Gripen E, aliases: [Gripen, Gripen brasileño, caza Gripen, Gripen NG, Gripen E/F, F-39 Gripen]}
+  P2: {name: Meteor, aliases: [Meteor BVRAAM, misiles Meteor]}
+  P3: {name: Gripen F, aliases: []}
+facts:
+  - {p: P1, param: landing_distance, alt: [landing_run], v: "600m", nums: [600]}
+  - {p: P1, param: takeoff_distance, alt: [takeoff_run, min_takeoff_distance], v: "500m", nums: [500]}
+  - {p: P1, param: max_speed, alt: [max_speed_altitude, max_speed_at_altitude], v: "Mach 2", cond: "a gran altitud"}
+  - {p: P1, param: length_overall, alt: [length], v: "15,2 m", nums: [15.2]}
+  - {p: P1, param: wingspan, alt: [width, span], v: "8,6 m", nums: [8.6]}
+  - {p: P1, param: empty_weight, alt: [weight_empty, weight], v: "8.000 Kg"}
+  - {p: P1, param: internal_fuel_capacity, alt: [fuel_capacity, internal_fuel], v: "3.400 kg"}
+  - {p: P1, param: thrust, alt: [max_thrust, engine_thrust], v: "98 KN", nums: [98]}
+  - {p: P1, param: max_speed_sea_level, alt: [max_speed, max_speed_at_sea_level], v: "más de 1.400 km/h", cond: "al nivel del mar"}
+  - {p: P1, param: service_ceiling, alt: [ceiling, max_altitude], v: "más de 16.000 m"}
+  - {p: P1, param: ferry_range, alt: [range, max_range], v: "4.000 km"}
+  - {p: P1, param: g_limits, alt: [load_factor, g_limit], v: "+9G/-3G", any: ["+9G"]}
+  - {p: P1, param: hardpoints, alt: [weapon_stations, pylons, hard_points], v: "10", nums: [10]}
+  - {p: P1, param: turnaround_time, alt: [combat_turnaround_time, rearm_time], v: "10 minutos", nums: [10], cond: "configuración aire-aire"}
+  - {p: P1, param: engine_change_time, alt: [engine_replacement_time], v: "menos de 1 hora", nums: [1]}
+  - {p: P1, param: radar, alt: [radar_type, sensors], v: "Radar AESA ES-05 \"RAVEN\"", any: ["ES-05", "RAVEN"]}
+  - {p: P1, param: flight_control_system, alt: [flight_controls], v: "Triple sistema de control de vuelo, tipo fly-by wire", any: ["fly-by wire", "fly-by-wire"]}
+  - {p: P1, param: compatible_munitions, alt: [armament, missile_armament, missiles], k: compat, v: "Meteor", any: ["misiles Meteor"]}
+  - {p: P1, param: compatible_munitions, alt: [armament, missile_armament, missiles], k: compat, v: "IRIS-T", any: ["misil IRIS-T"]}
+  - {p: P1, k: text, v: "Baja firma visual, radar e infrarroja", any: ["Baja firma"]}
+  - {p: P1, k: text, v: "sistema receptor de alerta radar (RWR) y alerta de aproximación de misiles (MAWS)", any: ["RWR", "MAWS"]}
+  - {p: P1, k: text, v: "IRST (Infra Red Search and Track)", any: ["IRST"]}
+  - {p: P1, k: text, v: "Pod de detección de objetivos", any: ["detección de objetivos"]}
+  - {p: P1, k: text, v: "cápsulas de reconocimiento que actúan en todas las bandas del espectro visual y electrónico", any: ["cápsulas de reconocimiento", "Pod de reconocimiento"]}
+  - {p: P1, k: text, v: "sistema sonda-cesta, conforme al estándar de la OTAN", any: ["sonda-cesta", "reabastecimiento aire-aire"]}
+  - {p: P1, k: text, v: "misiones aire-aire, aire-tierra y de reconocimiento en una misma incursión", any: ["aire-aire, airetierra", "aire-aire"]}
+  - {p: P1, k: text, v: "aterrizar en carreteras", any: ["carreteras"]}
+  - {p: P1, k: text, v: "bombas de planeo, misiles antibuque y misiles de ataque profundo", any: ["misiles antibuque", "bombas de planeo"]}
+  - {p: P2, k: text, v: "misil BVRAAM guiado por radar activo", any: ["guiado por radar activo"]}
+  - {p: P2, param: propulsion_type, alt: [propulsion, engine_type], v: "ramjet", any: ["propulsión por un ramjet"]}
+  - {p: P2, param: target_type, k: target, v: "blancos aéreos", any: ["objetivos muy distantes"]}
+  - {p: P3, k: text, v: "la versión biplaza del caza", any: ["biplaza"]}
+negatives: ["36 aviones", "36 cazas", "9 billones", "120 ingenieros", "5.000 m2"]

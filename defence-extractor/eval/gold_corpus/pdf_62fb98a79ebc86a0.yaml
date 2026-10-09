@@ -1,0 +1,43 @@
+doc_id: pdf_62fb98a79ebc86a0
+url: https://www.diehl.com/cms/files/202507_Brochure_SHARKY_Series_EN_DP_view.pdf?download=1
+level: 2
+format: pdf
+products:
+  P1: {name: SHARKY 774, aliases: [SHARKY 774 Compact]}
+  P2: {name: SHARKY 775, aliases: []}
+  P3: {name: SHARKY, aliases: [SHARKY series, SHARKY energy meters, SHARKY thermal energy meters]}
+facts:
+  - {p: P1, param: approval, alt: [certification, certifications, standard_compliance], v: "MID (EN 1434)", any: ["MID"]}
+  - {p: P1, param: nominal_size, alt: [sizes, pipe_size, size], v: "DN 15 - DN 20", nums: [15, 20]}
+  - {p: P1, param: flow_range, alt: [flow_rate, permanent_flow_rate], v: "qp 0.6 … 2.5 m³/h", nums: [0.6, 2.5]}
+  - {p: P1, param: exchangeable_temperature_sensor, v: "No"}
+  - {p: P1, param: temperature_range_heating, alt: [operating_temperature, temperature_range], v: "5 ... 105/130 °C", nums: [5, 105, 130]}
+  - {p: P1, param: temperature_range_cooling, alt: [operating_temperature, temperature_range], v: "2 ... 50 °C", nums: [2, 50]}
+  - {p: P1, param: temperature_range_heating_cooling, alt: [operating_temperature, temperature_range], v: "5 ... 105 °C", nums: [5, 105]}
+  - {p: P1, param: connectivity, alt: [communication_interface, interfaces], v: "M-Bus or radio (OMS Generation 4, Profile B)", any: ["M-Bus or radio"]}
+  - {p: P1, param: battery_life, alt: [battery_lifetime], v: "Up to 11 years", nums: [11]}
+  - {p: P1, k: text, v: "individual consumption metering in apartments", any: ["submetering"]}
+  - {p: P1, k: text, v: "configured on site for inlet and outlet installation position via the front button", any: ["inlet and outlet installation position"]}
+  - {p: P2, param: approval, alt: [certification, certifications, standard_compliance], v: "MID (EN 1434)", any: ["MID"]}
+  - {p: P2, param: nominal_size, alt: [sizes, pipe_size, size], v: "DN 15 - DN 100", nums: [15, 100]}
+  - {p: P2, param: flow_range, alt: [flow_rate, permanent_flow_rate], v: "qp 0.6 … 100 m³/h", nums: [0.6, 100]}
+  - {p: P2, param: exchangeable_temperature_sensor, v: "Yes"}
+  - {p: P2, param: temperature_range_heating, alt: [operating_temperature, temperature_range], v: "5 ... 130/150 °C", nums: [5, 130, 150]}
+  - {p: P2, param: temperature_range_cooling, alt: [operating_temperature, temperature_range], v: "2 ... 50 °C", nums: [2, 50]}
+  - {p: P2, param: temperature_range_heating_cooling, alt: [operating_temperature, temperature_range], v: "5 ... 105 °C", nums: [5, 105]}
+  - {p: P2, param: connectivity, alt: [communication_interface, interfaces], v: "OMS Generation 4, Profile B + 2 Slots", any: ["2 Slots"]}
+  - {p: P2, param: battery_life, alt: [battery_lifetime], v: "Up to 11/16 years (A-/D-cell)", nums: [11, 16]}
+  - {p: P2, param: communication_modules, alt: [connectivity, communication_interface], v: "mioty®4OMS, LoRaWAN®, NB-IoT, M-Bus, and Modbus", any: ["LoRaWAN", "NB-IoT"]}
+  - {p: P2, param: communication_channels, alt: [connectivity], v: "three communication channels", any: ["three"]}
+  - {p: P2, param: radio_communication, alt: [connectivity, security_standard, encryption], v: "OMS Generation 4, Mode 7, Security Profile B", any: ["Mode 7"]}
+  - {p: P2, k: text, v: "replaceable batteries"}
+  - {p: P2, k: text, v: "external power units can be integrated", any: ["external power units"]}
+  - {p: P2, k: text, v: "modular communication concept"}
+  - {p: P2, k: text, v: "district as well as local heating, cooling, main and submetering", any: ["main and submetering"]}
+  - {p: P3, param: dynamic_range, alt: [measuring_range, turndown_ratio], v: "up to 1:250 (qi:qp)", nums: [1, 250]}
+  - {p: P3, param: dynamic_range, alt: [measuring_range, turndown_ratio], v: "1:100", nums: [1, 100], cond: standard}
+  - {p: P3, param: standard_compliance, alt: [approval, certification, standards], v: "EN 1434:2022", nums: [1434, 2022]}
+  - {p: P3, k: text, v: "bidirectional ultrasonic pulses based on the time-of-flight method", any: ["time-of-flight", "time-offlight"]}
+  - {p: P3, k: text, v: "free-flow principle without any moving parts", any: ["free-flow principle"]}
+  - {p: P3, k: text, v: "automatically signals air in the pipe, incorrect installation or swapped temperature sensors", any: ["air in the pipe", "self-monitoring"]}
+negatives: ["2,500", "30,000", "5+ million", "60 million", "17,212", "+49 911 6424-0"]

@@ -1,0 +1,1513 @@
+# Ontology extension v1.1.0: parameters promoted from the A14 proposals of corpus run corpus1 (459 documents),
+# curated 2026-10-09 (see docs/ontology_a14_review.md for every proposal and its decision).
+# Loaded on top of seed_v1.yaml by load_ontology(). New parameters enter as status 'candidate'.
+version: 1.1.0
+source: A14 proposals, run corpus1
+alias_additions:
+  length_overall:
+  - total length extended
+  - length extended
+  - length (stock extended)
+  - total length (extended)
+  - length mm
+  - total length (mm)
+  - total length (approx.)
+  - length
+  - length (mm)
+  - total length extended (mm)
+  - total length exstended (mm)
+  operating_temperature:
+  - operating temperature range
+  - temperature range
+  - operating temp
+  - temperature limits operating
+  - temperature operating
+  diameter:
+  - diameter mm
+  torque:
+  - max torque
+  - maximum torque
+  - engine torque
+  max_range:
+  - maximum range (km)
+alias_removals:
+  projectile_weight:
+  - round weight
+  - cartridge weight
+  power_output:
+  - power consumption
+  twist_rate:
+  - rifling
+  deployment_time:
+  - reaction time
+parameters:
+- id: part_number
+  name: Part / Order Number
+  family: identity
+  status: candidate
+  classes: &id001
+  - '*'
+  aliases:
+  - part number
+  - part no
+  - p/n
+  - product number
+  - product no
+  - order number
+  - order no
+  - order code
+  - article number
+  - catalogue number
+  - catalog number
+  - item number
+  - reference number
+  description: Manufacturer part, order or catalogue number of the item (not a contract number).
+- id: nsn
+  name: NATO Stock Number
+  family: identity
+  status: candidate
+  classes: *id001
+  aliases:
+  - nsn
+  - nato stock number
+  - national stock number
+  - product nsn
+  - product_nsn
+  description: NATO / national stock number.
+- id: material
+  name: Material
+  family: physical
+  status: candidate
+  classes: *id001
+  aliases:
+  - material
+  - materials
+  - material composition
+  - construction material
+  - body material
+  - case material
+  - housing material
+  - frame material
+  - shell material
+  - penetrator material
+  - cartridge case
+  - rotating band material
+  - housing
+  description: Main material(s) of the item or a named part (e.g. 'C103 niobium alloy', 'polymer frame').
+- id: colour
+  name: Colour / Finish
+  family: physical
+  status: candidate
+  classes: *id001
+  aliases:
+  - color
+  - colour
+  - colors
+  - colours
+  - available colors
+  - available colours
+  - finish
+  - barrel finish
+  - surface finish
+  - coating colour
+  - color/finish
+  description: Colour, camouflage or surface finish options.
+- id: dimensions
+  name: Dimensions (L x W x H)
+  family: physical
+  status: candidate
+  classes: *id001
+  aliases:
+  - dimensions
+  - overall dimensions
+  - external dimensions
+  - size
+  - l x w x h
+  - lxwxh
+  - dimensions lxwxh
+  - fuselage dimensions
+  - car size
+  - envelope dimensions
+  - weights and dimensions
+  description: Composite dimensions as stated; also decomposed into length / width / height when they are an L x W x H triple.
+  dimension: length
+- id: length_folded
+  name: Length Folded / Retracted
+  family: physical
+  status: candidate
+  classes: *id001
+  aliases:
+  - length folded
+  - folded length
+  - total length folded
+  - length retracted
+  - retracted length
+  - total length retracted
+  - length with stock folded
+  - transport length
+  - total length folded (mm)
+  description: Length with stock, rotor, wings or mast folded / retracted.
+  dimension: length
+- id: hull_height
+  name: Hull Height
+  family: physical
+  status: candidate
+  classes: &id008
+  - armoured_vehicle
+  - tank
+  - apc_ifv
+  - mrap
+  - light_tactical_vehicle
+  - logistics_truck
+  - ugv
+  - engineering_vehicle
+  - artillery
+  aliases:
+  - hull height
+  - height over hull
+  - height hull
+  - height to hull top
+  description: Height to the top of the hull (excluding turret / weapon station).
+  dimension: length
+- id: volume
+  name: Volume
+  family: physical
+  status: candidate
+  classes: *id001
+  aliases:
+  - volume
+  - internal volume
+  - cargo volume
+  - cargo bay volume
+  - stowage volume
+  - volume (cubic inches)
+  description: Internal / cargo volume.
+  dimension: volume
+- id: display_size
+  name: Display Size
+  family: other_technical
+  status: candidate
+  classes: &id003
+  - radar
+  - eo_ir
+  - sonar
+  - laser_rangefinder
+  - night_vision
+  - acoustic_sensor
+  - electronic_warfare
+  - communication_c2
+  - antenna
+  - navigation
+  - computing_rugged
+  - power_system
+  - battery
+  - uav
+  - ugv
+  - usv
+  - uuv
+  - satellite
+  - ground_segment
+  - component_subsystem
+  - simulation_training
+  - support_equipment
+  aliases:
+  - display size
+  - screen size
+  - display
+  - monitor size
+  - daylight readable display
+  description: Diagonal size of the display / screen.
+  dimension: length
+- id: operating_environment
+  name: Operating Environment
+  family: operating_environment
+  status: candidate
+  classes: *id001
+  aliases:
+  - operating environment
+  - operational environment
+  - environmental conditions
+  - operating conditions
+  - operational conditions
+  - operating condition
+  - operational condition
+  - climate
+  - weather capability
+  - all-weather capability
+  - operating environment directions
+  - climate zones
+  description: Environments / conditions the item is designed for (all-weather, high altitude, desert, maritime...).
+  multi: true
+- id: storage_temperature
+  name: Storage Temperature
+  family: operating_environment
+  status: candidate
+  classes: *id001
+  aliases:
+  - storage temperature
+  - storage temp
+  - storage temperature range
+  - temperature limits storage
+  - non-operating temperature
+  - 'temperature limits: storage'
+  - storage short term
+  - storage long term
+  description: Storage (non-operating) temperature range.
+  dimension: temperature
+- id: humidity
+  name: Humidity
+  family: operating_environment
+  status: candidate
+  classes: *id001
+  aliases:
+  - humidity
+  - relative humidity
+  - operating humidity
+  - rh
+  - relative_humidity
+  - humidity (operating/storage)
+  description: Relative humidity the item withstands.
+  dimension: ratio
+- id: max_wind_speed
+  name: Maximum Wind Speed
+  family: operating_environment
+  status: candidate
+  classes: *id001
+  aliases:
+  - max wind speed
+  - maximum wind speed
+  - wind resistance
+  - max wind speed resistance
+  - maximum wind speed resistance
+  - wind speed limit
+  - max wind
+  - max wind peak
+  - max wind conditions
+  - max. wind resistance
+  description: Maximum wind speed for operation / launch / deployment.
+  dimension: speed
+- id: standard_compliance
+  name: Standards Compliance
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - standard compliance
+  - compliance standard
+  - conforms to
+  - military standard compliance
+  - regulatory compliance
+  - qualification standard
+  - qualification basis standard
+  - design standard
+  - standard_compliance
+  - compliance standards
+  - regulatory_compliance
+  description: Standards the item complies with or is qualified to (STANAG, MIL-STD, EN, ICAO...).
+  multi: true
+- id: environmental_standard
+  name: Environmental Qualification
+  family: operating_environment
+  status: candidate
+  classes: *id001
+  aliases:
+  - environmental standard
+  - environmental
+  - environmental qualification
+  - environmental testing
+  - environmental specification
+  - vibration
+  - shock and vibration
+  - vibration standard
+  - salt/fog, vibe, shock, emi
+  description: Environmental qualification standard (e.g. MIL-STD-810, IEC 60945).
+  multi: true
+- id: emc_standard
+  name: EMC / EMI Compliance
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - emc
+  - emi
+  - emc compliance
+  - emi compliance
+  - electromagnetic compatibility
+  - emc/emi
+  - compliance to emcd, immunity/emission
+  description: Electromagnetic compatibility / interference standard (e.g. MIL-STD-461).
+  multi: true
+- id: safety_standard
+  name: Safety Standard
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - safety standard
+  - product safety
+  - laser safety standard
+  - insensitive munition
+  - im compliance
+  - safety certification
+  description: Safety standard or safety classification (e.g. insensitive munition).
+  multi: true
+- id: certification
+  name: Certification
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - certification
+  - certifications
+  - approval
+  - approvals
+  - type certification
+  - type approval
+  description: Certifications / approvals held (e.g. AS9100, FAR 25, MID).
+  multi: true
+- id: vibration_load
+  name: Vibration Load
+  family: operating_environment
+  status: candidate
+  classes: *id001
+  aliases:
+  - environmental load
+  - vibration load
+  - random vibration
+  - environmental load axial
+  - environmental load lateral
+  - environmental load mon or mmh
+  - 'environmental load (mon or mmh) (by similarity): axial'
+  - 'environmental load: axial'
+  - 'environmental load (he): axial'
+  - 'environmental load (mon or mmh) (by similarity): lateral'
+  - 'environmental load: lateral'
+  - 'environmental load (he): lateral'
+  description: Random vibration level the item is qualified to (Grms), per axis as a condition.
+- id: operating_pressure
+  name: Operating Pressure
+  family: other_technical
+  status: candidate
+  classes: &id002
+  - component_subsystem
+  - launch_vehicle
+  - satellite
+  - missile
+  - rocket
+  - torpedo
+  - support_equipment
+  aliases:
+  - operating pressure
+  - maximum expected operating pressure
+  - meop
+  - working pressure
+  - max operating pressure
+  - rated pressure
+  - operating pressure (psig)
+  description: Operating / working pressure.
+  dimension: pressure
+- id: burst_pressure
+  name: Burst Pressure
+  family: other_technical
+  status: candidate
+  classes: *id002
+  aliases:
+  - burst pressure
+  - rupture pressure
+  - actual rupture pressure
+  - minimum burst pressure
+  - design burst pressure
+  - actual rupture pressure (psig)
+  description: Burst / rupture pressure.
+  dimension: pressure
+- id: proof_factor
+  name: Proof Pressure Factor
+  family: other_technical
+  status: candidate
+  classes: *id002
+  aliases:
+  - proof factor
+  - proof pressure factor
+  description: Proof pressure / MEOP factor.
+- id: burst_factor
+  name: Burst Factor
+  family: other_technical
+  status: candidate
+  classes: *id002
+  aliases:
+  - burst factor
+  - minimum burst factor
+  - burst safety factor
+  description: Burst pressure / MEOP safety factor.
+- id: operating_voltage
+  name: Operating Voltage
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - operating voltage
+  - operating voltage range
+  - supply voltage
+  - power supply
+  - input voltage
+  - voltage
+  - nominal voltage
+  - electrical system
+  - electrical system voltage
+  - dc input
+  - external power supply
+  - operating voltage (full power)
+  - valve voltage
+  description: Supply / operating voltage (range) of the item.
+  dimension: voltage
+- id: output_current
+  name: Output Current
+  family: other_technical
+  status: candidate
+  classes: *id003
+  aliases:
+  - output current
+  - max output current
+  - rated current
+  description: Output current.
+  dimension: current
+- id: power_consumption
+  name: Power Consumption
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - power consumption
+  - power draw
+  - power requirement
+  - power input
+  - maximum input power
+  - input power
+  - input power factor
+  - max. input power
+  - power consumption, full tx
+  - power consumption, rx only
+  description: Electrical power consumed by the item.
+  dimension: power
+- id: cooling_type
+  name: Cooling
+  family: other_technical
+  status: candidate
+  classes: *id001
+  aliases:
+  - cooling
+  - cooling type
+  - cooling concept
+  - cooling system
+  - cooling method
+  description: Cooling method (air-cooled, liquid-cooled, forced air...).
+- id: interfaces
+  name: Interfaces
+  family: communication_c2
+  status: candidate
+  classes: *id001
+  aliases:
+  - interface
+  - interfaces
+  - data interface
+  - data interfaces
+  - communication interface
+  - communication interfaces
+  - communication ports
+  - i/o
+  - connectivity
+  - onboard connectivity
+  - interface type
+  - output interfaces
+  - ports
+  - bus interface
+  - options input/output
+  description: Data / communication / control interfaces (Ethernet, CAN, RS-422, MIL-STD-1553...).
+  multi: true
+- id: connector_type
+  name: Connector Type
+  family: communication_c2
+  status: candidate
+  classes: *id003
+  aliases:
+  - connector
+  - connector type
+  - rf connector
+  - power connector
+  - ethernet/power connector
+  description: Physical connector type(s).
+- id: encryption
+  name: Encryption
+  family: communication_c2
+  status: candidate
+  classes: &id004
+  - communication_c2
+  - antenna
+  - electronic_warfare
+  - radar
+  - uav
+  - ugv
+  - usv
+  - uuv
+  - satellite
+  - ground_segment
+  - navigation
+  - computing_rugged
+  aliases:
+  - encryption
+  - crypto
+  - encryption standard
+  - comsec
+  - encryption_internal
+  description: Encryption algorithms / standards.
+- id: modulation
+  name: Modulation
+  family: communication_c2
+  status: candidate
+  classes: *id004
+  aliases:
+  - modulation
+  - modulation type
+  - waveform
+  - waveforms
+  - modulation_type
+  description: Modulation scheme / waveform.
+- id: channel_bandwidth
+  name: Channel Bandwidth
+  family: communication_c2
+  status: candidate
+  classes: *id004
+  aliases:
+  - channel bandwidth
+  - bandwidth
+  - fm bandwidth
+  - instantaneous bandwidth
+  description: Channel / instantaneous bandwidth.
+  dimension: frequency
+- id: antenna_gain
+  name: Antenna Gain
+  family: communication_c2
+  status: candidate
+  classes: *id004
+  aliases:
+  - antenna gain
+  - gain
+  description: Antenna gain (dBi / dBic).
+  dimension: level
+- id: eirp
+  name: EIRP
+  family: communication_c2
+  status: candidate
+  classes: *id004
+  aliases:
+  - eirp
+  - equivalent isotropic radiated power
+  - effective isotropic radiated power
+  - equivalent isotropic radiated power (eirp)
+  - effective isotropic radiated power (eirp)
+  - wi-fi effective isotropic radiated power (eirp)
+  description: Equivalent isotropic radiated power.
+  dimension: level
+- id: impedance
+  name: Impedance
+  family: communication_c2
+  status: candidate
+  classes: *id003
+  aliases:
+  - impedance
+  - nominal impedance
+  - microphone impedance
+  - earphone impedance
+  description: Electrical impedance (ohm).
+- id: data_link_range
+  name: Data Link Range
+  family: communication_c2
+  status: candidate
+  classes:
+  - communication_c2
+  - antenna
+  - electronic_warfare
+  - radar
+  - uav
+  - ugv
+  - usv
+  - uuv
+  - satellite
+  - ground_segment
+  - navigation
+  - computing_rugged
+  - loitering_munition
+  aliases:
+  - data link range
+  - link range
+  - communication range
+  - transmission range
+  - datalink range
+  - control range
+  - data link
+  - vhf data link
+  description: Range of the data / control link.
+  dimension: length
+- id: update_rate
+  name: Update Rate
+  family: performance
+  status: candidate
+  classes: *id003
+  aliases:
+  - update rate
+  - refresh rate
+  - output rate
+  - data update rate
+  - air situation picture update rate
+  description: Update / refresh rate.
+- id: storage_capacity
+  name: Storage Capacity
+  family: other_technical
+  status: candidate
+  classes:
+  - computing_rugged
+  - communication_c2
+  - uav
+  - ugv
+  - navigation
+  - eo_ir
+  - simulation_training
+  aliases:
+  - storage capacity
+  - local storage
+  - ssd
+  - memory storage
+  description: Data storage capacity.
+- id: memory_capacity
+  name: Memory (RAM)
+  family: other_technical
+  status: candidate
+  classes:
+  - computing_rugged
+  - communication_c2
+  - navigation
+  - simulation_training
+  aliases:
+  - ram
+  - memory
+  - ram capacity
+  - system memory
+  description: Working memory (RAM).
+- id: software
+  name: Software
+  family: other_technical
+  status: candidate
+  classes: *id003
+  aliases:
+  - software
+  - firmware
+  - software platform
+  - pre-installed application
+  - software lines
+  - pre-installed flight application
+  description: Software / firmware supplied with the item.
+- id: magnification
+  name: Magnification / Zoom
+  family: sensor
+  status: candidate
+  classes: &id005
+  - eo_ir
+  - night_vision
+  - laser_rangefinder
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - turret_rws
+  aliases:
+  - magnification
+  - zoom
+  - optical zoom
+  - digital zoom
+  - zoom factor
+  - magnifier
+  - boresighting telescope magnification
+  - zoom_factor
+  description: Optical / digital magnification or zoom range (e.g. '3-12x').
+- id: objective_lens_diameter
+  name: Objective Lens Diameter
+  family: sensor
+  status: candidate
+  classes: *id005
+  aliases:
+  - objective lens diameter
+  - objective diameter
+  - objective lens
+  - objective
+  description: Objective lens diameter of a sight / scope.
+  dimension: length
+- id: field_of_view
+  name: Field of View
+  family: sensor
+  status: candidate
+  classes:
+  - eo_ir
+  - night_vision
+  - laser_rangefinder
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - turret_rws
+  - radar
+  - uav
+  - ugv
+  - acoustic_sensor
+  aliases:
+  - field of view
+  - fov
+  - angle of view
+  - field of view (h x v)
+  - viewing angle
+  - field of view zoomed
+  description: Field of view.
+  dimension: angle
+- id: wavelength
+  name: Wavelength
+  family: sensor
+  status: candidate
+  classes:
+  - laser_rangefinder
+  - eo_ir
+  - night_vision
+  - directed_energy
+  - small_arm
+  aliases:
+  - wavelength
+  - laser wavelength
+  - operating wavelength
+  - wave length
+  description: Operating wavelength.
+  dimension: length
+- id: beam_divergence
+  name: Beam Divergence
+  family: sensor
+  status: candidate
+  classes:
+  - laser_rangefinder
+  - eo_ir
+  - directed_energy
+  - small_arm
+  aliases:
+  - beam divergence
+  - divergence
+  description: Laser beam divergence (mrad).
+- id: laser_safety_class
+  name: Laser Safety Class
+  family: sensor
+  status: candidate
+  classes:
+  - laser_rangefinder
+  - eo_ir
+  - night_vision
+  - small_arm
+  - directed_energy
+  aliases:
+  - laser class
+  - laser safety class
+  - eye safety class
+  - laser classification
+  description: Laser safety class (1, 3R, 3B...).
+- id: detector_type
+  name: Detector / Imager Type
+  family: sensor
+  status: candidate
+  classes:
+  - eo_ir
+  - night_vision
+  - laser_rangefinder
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - turret_rws
+  - uav
+  - ugv
+  aliases:
+  - detector
+  - detector type
+  - imager type
+  - thermal imager
+  - sensor type
+  - focal plane array
+  - fpa
+  - fhd thermal imager
+  description: Detector / imager technology (uncooled VOx microbolometer, MWIR...).
+- id: sight_type
+  name: Sight Type
+  family: fire_control
+  status: candidate
+  classes:
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - grenade_launcher
+  - sniper_rifle
+  - turret_rws
+  - eo_ir
+  - night_vision
+  aliases:
+  - sight type
+  - scope type
+  - optic type
+  - optics
+  - type of sight
+  description: Type of sight / optic fitted or offered.
+- id: mount_ring_diameter
+  name: Mount Ring / Tube Diameter
+  family: sensor
+  status: candidate
+  classes: *id005
+  aliases:
+  - ring size
+  - ring diameter
+  - tube diameter
+  - main tube diameter
+  description: Scope tube / mounting ring diameter.
+  dimension: length
+- id: azimuth_coverage
+  name: Azimuth Coverage
+  family: sensor
+  status: candidate
+  classes:
+  - radar
+  - eo_ir
+  - sonar
+  - electronic_warfare
+  - antenna
+  - acoustic_sensor
+  - air_defence_system
+  aliases:
+  - azimuth coverage
+  - coverage azimuth
+  - horizontal coverage
+  - antenna coverage
+  - coverage
+  description: Azimuth coverage of a sensor / antenna.
+  dimension: angle
+- id: position_accuracy
+  name: Position Accuracy
+  family: guidance_navigation
+  status: candidate
+  classes: &id006
+  - navigation
+  - uav
+  - ugv
+  - usv
+  - uuv
+  - loitering_munition
+  - missile
+  - combat_aircraft
+  - helicopter
+  - computing_rugged
+  aliases:
+  - position accuracy
+  - horizontal position accuracy
+  - positioning accuracy
+  - navigation accuracy
+  - horizontal accuracy
+  description: Navigation / positioning accuracy (per mode as condition).
+  dimension: length
+- id: heading_accuracy
+  name: Heading Accuracy
+  family: guidance_navigation
+  status: candidate
+  classes: *id006
+  aliases:
+  - heading accuracy
+  - heading
+  - heading accuracy / (static | dynamic)
+  description: Heading accuracy.
+  dimension: angle
+- id: attitude_accuracy
+  name: Roll / Pitch Accuracy
+  family: guidance_navigation
+  status: candidate
+  classes: *id006
+  aliases:
+  - roll/pitch accuracy
+  - pitch & roll accuracy
+  - pitch roll accuracy
+  - roll pitch accuracy
+  - attitude accuracy
+  - roll/pitch
+  - pitch roll
+  - pitch & roll accuracy / (dynamic)
+  description: Roll / pitch (attitude) accuracy.
+  dimension: angle
+- id: velocity_accuracy
+  name: Velocity Accuracy
+  family: guidance_navigation
+  status: candidate
+  classes: *id006
+  aliases:
+  - velocity accuracy
+  - horizontal velocity accuracy
+  - vertical velocity accuracy
+  - gnss denied velocity accuracy
+  description: Velocity accuracy.
+  dimension: speed
+- id: rifling
+  name: Rifling
+  family: armament
+  status: candidate
+  classes:
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - grenade_launcher
+  - sniper_rifle
+  - gun_cannon
+  aliases:
+  - rifling
+  - grooves
+  - rifling grooves
+  - number of grooves
+  description: Rifling (grooves, direction); the twist rate itself is twist_rate.
+- id: fire_modes
+  name: Fire Modes
+  family: armament
+  status: candidate
+  classes:
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - grenade_launcher
+  - gun_cannon
+  - turret_rws
+  aliases:
+  - fire mode
+  - fire modes
+  - firing mode
+  - firing modes
+  - modes of fire
+  - selector
+  - operation modes (weapon)
+  - fire control mode
+  - fire_mode
+  description: Available fire modes (safe / semi / burst / auto).
+  multi: true
+- id: accessory_rails
+  name: Accessory Rails
+  family: armament
+  status: candidate
+  classes:
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - grenade_launcher
+  - sniper_rifle
+  aliases:
+  - rails
+  - accessory rails
+  - rail interface
+  - picatinny
+  - m-lok
+  - keymod
+  description: Accessory rail interfaces (Picatinny, M-LOK...).
+- id: cartridge_weight
+  name: Cartridge Weight
+  family: ammunition
+  status: candidate
+  classes: &id007
+  - ammunition
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - gun_cannon
+  - artillery
+  - mortar
+  - grenade_launcher
+  - rocket
+  - missile
+  - mine
+  - torpedo
+  - bomb_guidance_kit
+  aliases:
+  - cartridge weight
+  - round weight
+  - complete round weight
+  - weight of round
+  - nominal wt
+  - patronengewicht
+  - nominal wt. gm
+  description: Weight of the complete cartridge / round (projectile weight is projectile_weight).
+  dimension: mass
+- id: cartridge_length
+  name: Cartridge Length
+  family: ammunition
+  status: candidate
+  classes: *id007
+  aliases:
+  - cartridge length
+  - overall cartridge length
+  - round length
+  - coal
+  - patronenlänge
+  - nominal length
+  - nominal length mm
+  description: Overall length of the complete cartridge / round.
+  dimension: length
+- id: propellant_type
+  name: Propellant Type
+  family: ammunition
+  status: candidate
+  classes:
+  - ammunition
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - gun_cannon
+  - artillery
+  - mortar
+  - grenade_launcher
+  - rocket
+  - missile
+  - mine
+  - torpedo
+  - bomb_guidance_kit
+  - launch_vehicle
+  - satellite
+  aliases:
+  - propellant
+  - propellant type
+  - powder
+  - propellant powder
+  description: Propellant type / designation.
+- id: warhead_effect
+  name: Warhead Effect
+  family: armament
+  status: candidate
+  classes:
+  - ammunition
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - gun_cannon
+  - artillery
+  - mortar
+  - grenade_launcher
+  - rocket
+  - missile
+  - mine
+  - torpedo
+  - bomb_guidance_kit
+  - loitering_munition
+  aliases:
+  - warhead effect
+  - warhead effects
+  - terminal effect
+  description: Effect of the warhead (blast, fragmentation, incendiary...).
+  multi: true
+- id: initiation_mode
+  name: Initiation Mode
+  family: ammunition
+  status: candidate
+  classes: *id007
+  aliases:
+  - initiation mode
+  - initiation method
+  - fuze mode
+  - function mode
+  - initiation
+  description: How the munition is initiated / its fuze modes (delay, command, impact...).
+- id: detonation_delay
+  name: Detonation Delay
+  family: ammunition
+  status: candidate
+  classes: *id007
+  aliases:
+  - detonation delay
+  - delay time
+  - functioning delay
+  - line charge detonation delay
+  description: Detonation / function delay.
+  dimension: time
+- id: standoff_distance
+  name: Standoff Distance
+  family: ammunition
+  status: candidate
+  classes:
+  - ammunition
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - gun_cannon
+  - artillery
+  - mortar
+  - grenade_launcher
+  - rocket
+  - missile
+  - mine
+  - torpedo
+  - bomb_guidance_kit
+  - engineering_vehicle
+  - armour_protection_kit
+  aliases:
+  - standoff distance
+  - stand-off distance
+  - standoff
+  description: Standoff distance of a charge or munition effect.
+  dimension: length
+- id: launcher_configuration
+  name: Launcher Configuration
+  family: armament
+  status: candidate
+  classes:
+  - missile
+  - rocket
+  - launcher
+  - air_defence_system
+  - surface_combatant
+  - patrol_vessel
+  - artillery
+  aliases:
+  - launcher configuration
+  - launch configuration
+  - pod configuration
+  - launching pod
+  - internal missile launcher configuration
+  description: Launcher / pod arrangement (e.g. '2 quad launchers').
+- id: launch_method
+  name: Launch Method
+  family: mission_target
+  status: candidate
+  classes:
+  - missile
+  - rocket
+  - uav
+  - loitering_munition
+  - torpedo
+  - launch_vehicle
+  - launcher
+  aliases:
+  - launch method
+  - launch type
+  - launch mode
+  - launch_method
+  description: How the item is launched (canister, rail, catapult, drop, vertical cold launch...).
+- id: approach_angle
+  name: Approach Angle
+  family: mobility
+  status: candidate
+  classes: *id008
+  aliases:
+  - approach angle
+  - angle of approach
+  - approach angle (°)
+  - j — approach angle
+  description: Approach angle.
+  dimension: angle
+- id: departure_angle
+  name: Departure Angle
+  family: mobility
+  status: candidate
+  classes: *id008
+  aliases:
+  - departure angle
+  - angle of departure
+  - departure angle (°)
+  - k — departure angle
+  description: Departure angle.
+  dimension: angle
+- id: track_width
+  name: Track Width
+  family: mobility
+  status: candidate
+  classes: *id008
+  aliases:
+  - track width
+  - wheel track
+  - wheel track width
+  - track (wheel)
+  description: Distance between wheel centrelines on one axle.
+  dimension: length
+- id: track_gauge
+  name: Rail Track Gauge
+  family: mobility
+  status: candidate
+  classes: *id001
+  aliases:
+  - track gauge
+  - rail gauge
+  - broad gauge
+  - standard gauge
+  description: Rail track gauge (rail vehicles).
+  dimension: length
+- id: tyre_size
+  name: Tyre Size
+  family: mobility
+  status: candidate
+  classes:
+  - armoured_vehicle
+  - tank
+  - apc_ifv
+  - mrap
+  - light_tactical_vehicle
+  - logistics_truck
+  - ugv
+  - engineering_vehicle
+  - artillery
+  - transport_aircraft
+  - uav
+  aliases:
+  - tyres
+  - tyre
+  - tires
+  - tire
+  - tyre size
+  - tire size
+  - wheels and tyres
+  description: Tyre designation / size.
+- id: steering
+  name: Steering
+  family: mobility
+  status: candidate
+  classes: *id008
+  aliases:
+  - steering
+  - steering system
+  - steering type
+  description: Steering system.
+- id: engine_displacement
+  name: Engine Displacement
+  family: propulsion
+  status: candidate
+  classes:
+  - armoured_vehicle
+  - tank
+  - apc_ifv
+  - mrap
+  - light_tactical_vehicle
+  - logistics_truck
+  - ugv
+  - engineering_vehicle
+  - artillery
+  - uav
+  - patrol_vessel
+  - usv
+  aliases:
+  - engine displacement
+  - cubic capacity
+  - swept volume
+  - engine capacity
+  description: Engine swept volume (litres / cc).
+  dimension: volume
+- id: engine_speed
+  name: Engine Speed
+  family: propulsion
+  status: candidate
+  classes: *id001
+  aliases:
+  - engine speed
+  - rated speed
+  - engine speed range
+  - rated engine speed
+  - rpm
+  - engine_speed
+  description: Engine (rated) speed.
+  dimension: rate
+- id: fuel_type
+  name: Fuel Type
+  family: propulsion
+  status: candidate
+  classes: *id001
+  aliases:
+  - fuel
+  - fuel type
+  - fuel grade
+  - fuels
+  description: Fuel type(s) the item runs on.
+  multi: true
+- id: thrust
+  name: Thrust
+  family: propulsion
+  status: candidate
+  classes: *id001
+  aliases:
+  - thrust
+  - max thrust
+  - maximum thrust
+  - thrust range
+  - engine thrust
+  - static thrust
+  - take-off thrust
+  description: Engine / motor thrust.
+  dimension: force
+- id: launch_altitude
+  name: Launch Altitude
+  family: performance
+  status: candidate
+  classes:
+  - combat_aircraft
+  - trainer_aircraft
+  - transport_aircraft
+  - special_mission_aircraft
+  - helicopter
+  - uav
+  - loitering_munition
+  - aerostat
+  - missile
+  - launch_vehicle
+  - launcher
+  aliases:
+  - launch altitude
+  - release altitude
+  - drop altitude
+  description: Altitude at which the item is launched / released.
+  dimension: length
+- id: turnaround_time
+  name: Turnaround Time
+  family: maintainability_support
+  status: candidate
+  classes:
+  - combat_aircraft
+  - trainer_aircraft
+  - transport_aircraft
+  - special_mission_aircraft
+  - helicopter
+  - uav
+  - loitering_munition
+  - aerostat
+  - missile
+  - launch_vehicle
+  - artillery
+  - launcher
+  - air_defence_system
+  aliases:
+  - turnaround time
+  - combat turnaround
+  - combat turnaround time
+  - rearm time
+  - refuel and rearm time
+  - turn-around time
+  - maintenance turnaround time
+  - combat turnaround air-to-air
+  description: Time to turn the platform around between missions.
+  dimension: time
+- id: aircraft_capacity
+  name: Aircraft Capacity
+  family: payload
+  status: candidate
+  classes:
+  - surface_combatant
+  - patrol_vessel
+  - auxiliary_vessel
+  - surface_combatant
+  aliases:
+  - aircraft capacity
+  - embarked aircraft
+  - air wing
+  - air group
+  - hangar capacity
+  - aircraft carried
+  - simultaneous aircraft embarkation capacity
+  description: Number / type of aircraft a ship carries or operates.
+- id: mounting_type
+  name: Mounting
+  family: compatibility
+  status: candidate
+  classes: *id001
+  aliases:
+  - mounting
+  - mounting type
+  - mount type
+  - antenna mount
+  description: How the item is mounted / installed.
+- id: response_time
+  name: Response Time
+  family: performance
+  status: candidate
+  classes: *id001
+  aliases:
+  - response time
+  - reaction time
+  - system reaction time
+  - fire detection response time
+  - light response time
+  description: Response / reaction time.
+  dimension: time
+- id: reliability
+  name: Reliability
+  family: maintainability_support
+  status: candidate
+  classes: *id001
+  aliases:
+  - reliability
+  - mission reliability
+  - launch reliability
+  - dispatch reliability
+  - reliability maintenance characteristic
+  - reliability on time takeoff
+  - reliability mission abort rate
+  description: Reliability figure (probability / rate).
+- id: shelf_life
+  name: Shelf Life
+  family: maintainability_support
+  status: candidate
+  classes: *id001
+  aliases:
+  - shelf life
+  - storage life
+  - shelf life minimum
+  - shelf life in controlled storage condition (yrs)
+  - shelf life of vt fuze (yrs)
+  description: Shelf / storage life.
+  dimension: time
+- id: service_life
+  name: Service Life
+  family: maintainability_support
+  status: candidate
+  classes: *id001
+  aliases:
+  - service life
+  - design life
+  - operational life
+  - life time
+  - lifetime
+  - useful life
+  description: Design / service life.
+  dimension: time
+- id: packaging
+  name: Packaging
+  family: maintainability_support
+  status: candidate
+  classes:
+  - ammunition
+  - small_arm
+  - sniper_rifle
+  - machine_gun
+  - gun_cannon
+  - artillery
+  - mortar
+  - grenade_launcher
+  - rocket
+  - missile
+  - mine
+  - torpedo
+  - bomb_guidance_kit
+  - support_equipment
+  - component_subsystem
+  aliases:
+  - packaging
+  - packing
+  - packaging configuration
+  description: Packaging / packing configuration (e.g. '20 cartridges per box').
+- id: operating_modes
+  name: Operating Modes
+  family: automation_autonomy
+  status: candidate
+  classes: *id001
+  aliases:
+  - operating mode
+  - operating modes
+  - operational mode
+  - operational modes
+  - mode of operation
+  - modes of operation
+  - typical operational mode
+  - operation_mode
+  description: Operating modes (autonomous, remote-controlled, active / passive...).
+  multi: true

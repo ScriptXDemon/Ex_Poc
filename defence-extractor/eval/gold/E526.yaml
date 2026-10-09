@@ -1,0 +1,36 @@
+doc_id: E526
+url: https://www.leonardo.com/en/-/aw149
+products:
+  P1: {name: AW149, aliases: [Leonardo AW149]}
+facts:
+  - {p: P1, param: max_takeoff_weight, alt: [weight, combat_weight, max_gross_weight], v: "8,600 kg - 18,960 lb", nums: [8600]}
+  - {p: P1, param: propulsion_type, v: "2 x General Electric CT7-2E1 and 1 x Safran e-APU (60 kW)", any: ["2 x General Electric CT7-2E1"]}
+  - {p: P1, param: propulsion_type, v: "2 x Safran Aneto-1K and 1 x Safran e-APU (60 kW)", any: ["2 x Safran Aneto-1K"]}
+  - {p: P1, param: length_overall, v: "17.57 m - 57 ft 08 in", nums: [17.57], cond: rotors turning}
+  - {p: P1, param: height, v: "5.07 m - 16 ft 07 in", nums: [5.07], cond: rotors turning}
+  - {p: P1, param: rotor_diameter, v: "14.60 m - 47 ft 11 in", nums: [14.60]}
+  - {p: P1, param: troop_capacity, v: "up to 16 troops heavily", nums: [16]}
+  - {p: P1, param: troop_capacity, v: "19 troops lightly equipped", nums: [19]}
+  - {p: P1, param: cruise_speed, alt: [max_speed, max_cruise_speed], v: "294 km/h - 159 kt", nums: [294]}
+  - {p: P1, param: hover_ceiling_ige, v: "3,948 m (12,953 ft)", nums: [3948], cond: General Electric CT7-2E1}
+  - {p: P1, param: hover_ceiling_ige, v: "4,572 m (15,000 ft)", nums: [4572], cond: Safran Aneto-1K}
+  - {p: P1, param: hover_ceiling_oge, v: "2,893 m (9,490 ft)", nums: [2893], cond: General Electric CT7-2E1}
+  - {p: P1, param: hover_ceiling_oge, v: "2,712 m (8,900 ft)", nums: [2712], cond: Safran Aneto-1K}
+  - {p: P1, param: operational_range, alt: [max_range], v: "1,009 km (545 nm)", nums: [1009], cond: General Electric CT7-2E1}
+  - {p: P1, param: operational_range, alt: [max_range], v: "913 km (493 nm)", nums: [913], cond: Safran Aneto-1K}
+  - {p: P1, param: endurance, v: "5 h 05 min", cond: General Electric CT7-2E1}
+  - {p: P1, param: endurance, v: "4 h 28 min", cond: Safran Aneto-1K}
+  - {p: P1, param: main_armament, alt: [secondary_armament], v: "window-mounted machine guns"}
+  - {p: P1, param: armour_type, alt: [protection_level], v: "additional armour protection"}
+  - {p: P1, param: gearbox_dry_run, v: "50-minute dry run capability", nums: [50]}
+  - {p: P1, k: text, v: "single pilot Night Vision Goggle (NVG) compatible"}
+  - {p: P1, k: text, v: "crashworthy fuselage and seats"}
+  - {p: P1, k: text, v: "energy-absorbing landing gear and structure"}
+  - {p: P1, k: text, v: "self-sealing fuel tanks"}
+  - {p: P1, k: text, v: "fully integrated defensive aids suite"}
+  - {p: P1, k: text, v: "day/night all-weather capability"}
+  - {p: P1, k: text, v: "troop transport"}
+  - {p: P1, k: text, v: "medical and casualty evacuation"}
+  - {p: P1, k: text, v: "Search and Rescue (SAR)"}
+  - {p: P1, k: text, v: "Intelligence, Surveillance and Reconnaissance (ISR)"}
+negatives: ["45.80€", "3.7 BILLION EUR", "-0.45%"]

@@ -1,0 +1,9 @@
+doc_id: doc_3a7a5cce53335853
+url: https://www.leonardodrs.com/who-we-are/our-commitment/community-involvement/mli-mine-detection-dog-partnership-program
+level: 3
+format: html
+# Community-engagement page about a charity's mine detection dog programme: no defence product with specifications.
+# Any product facts the system accepts here show up as "other_product_facts" (precision signal).
+products: {}
+facts: []
+negatives: ["50 million square meters", "235 landmine detection dogs", "130 unexploded ordnance", "29.5 million square meters"]

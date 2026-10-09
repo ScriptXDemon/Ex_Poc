@@ -1,0 +1,27 @@
+doc_id: E783
+url: https://www.patriagroup.com/products-and-services/protected-mobility-and-defence-systems/armament/patria-nemo
+products:
+  P1: {name: Patria NEMO, aliases: [NEMO, Patria Nemo]}
+facts:
+  - {p: P1, param: calibre, v: "120 mm"}
+  - {p: P1, param: main_armament, alt: [product_type], v: "120 mm mortar"}
+  - {p: P1, param: traverse_range, v: "360º"}
+  - {p: P1, param: ammunition_type, v: "all standard 120 smoothbore mortar ammunition"}
+  - {p: P1, param: ammunition_type, v: "smart guided ammunition"}
+  - {p: P1, param: mrsi, alt: [mtsi, mrsi_rounds], v: "up to 5 grenades"}
+  - {p: P1, param: launch_platform, k: compat, v: "8x8 armoured wheeled vehicles"}
+  - {p: P1, param: launch_platform, k: compat, v: "tracked chassis"}
+  - {p: P1, param: launch_platform, k: compat, v: "6x6 armoured wheeled vehicles"}
+  - {p: P1, param: launch_platform, k: compat, v: "fast-moving patrol and coastal vessels"}
+  - {p: P1, param: protection_level, v: "Modular ballistic protection against infantry weapons, splinters and IEDs"}
+  - {p: P1, param: protection_level, v: "NBC and muzzle blast protection"}
+  - {p: P1, k: text, v: "Multiple Rounds Simultaneous Impact (MRSI)"}
+  - {p: P1, k: text, v: "Multiple Targets Simultaneous Impact (MTSI)"}
+  - {p: P1, k: text, v: "direct fire capability"}
+  - {p: P1, k: text, v: "Fire-on-the-move capability"}
+  - {p: P1, k: text, v: "Rapid deployment to avoid counter-battery fire"}
+  - {p: P1, k: text, v: "Network-centric warfare management"}
+  - {p: P1, k: text, v: "remote-controlled"}
+  - {p: P1, k: text, v: "modular design"}
+  - {p: P1, k: text, v: "sensor-to-shooter operations"}
+negatives: ["19.10.2026", "28.10.2026", "3.11.2026"]

@@ -1,0 +1,57 @@
+doc_id: doc_6c07c88a456f9130
+url: https://www.defenseindustrydaily.com/p8-poseidon-mma-longrange-maritime-patrol-and-more-4-0240542
+level: 4
+format: html
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Defense Industry Daily P-8 Poseidon article (1002 blocks, mostly dated contract news). Windows: start 0.00-0.20 =
+# platform/weapons/sensors/competitors sections (b75-b136); middle 0.40-0.60 = FY2013-14 news (Challenger MSA,
+# DOT&E reliability, P-8i Mk.82 drop); end 0.80-1.00 = FY2005-09 news + sources (engine cert, MX-20HD pick, HAAWC note).
+# Linkage cases: MX-20HD turret, PW150A engine (Lockheed Orion21 bid), Mk.82 bomb, CFM56-7B27A/3 engine and HAAWC kit
+# own their own values, not the P-8A. Skipped: "30,000 feet" (b946 = both HAAWC launch altitude and P-8A surveillance
+# altitude), JSTARS-recap requirements (b439, no product owner), Orion21 / NP2000 propeller. T-1 first-flight
+# altitude (b800) and contract values / fleet counts are negatives. nums omitted on pure model designations
+# (AN/APY-10, MX-20HD, CFM56-7B27A/3...) so their digits do not numerically match unrelated values.
+products:
+  P1: {name: "P-8A Poseidon", aliases: ["P-8A", "Poseidon MMA", "P-8A MMA"], pos: start}
+  P2: {name: "MX-20HD", aliases: ["MX-20"], pos: start}
+  P3: {name: "PW150A", aliases: [], pos: start}
+  P4: {name: "Challenger 605 MSA", aliases: ["Challenger MSA", "Challenger 605", "Maritime Surveillance Aircraft"], pos: middle}
+  P5: {name: "Mk.82", aliases: [], pos: middle}
+  P6: {name: "CFM56-7B27A/3", aliases: [], pos: end}
+  P7: {name: "HAAWC", aliases: ["High Altitude Anti-Submarine Warfare Weapon Capability", "HAAWC Mk54"], pos: end}
+facts:
+  # --- start window: P-8A platform section ---
+  - {p: P1, param: unrefueled_range, alt: [range, max_range, ferry_range], v: "around 7,500 km", nums: [7500], any: ["over 4,000"], b: b80}
+  - {p: P1, param: time_on_station, alt: [endurance, on_station_time, loiter_time], v: "4 hours on station", nums: [4], b: b80}
+  - {p: P1, param: mission_radius, alt: [combat_radius, radius_of_action, operational_radius], v: "more than 1,200 nautical miles", nums: [1200], any: ["2,200 km"], b: b80}
+  - {p: P1, param: hardpoints, alt: [weapon_stations, hard_points, pylons], v: "11 weapon hard points", nums: [11], b: b83}
+  - {p: P1, param: weapon_bay_stations, alt: [internal_weapon_stations, rotary_weapon_bay, internal_hardpoints], v: "5 in the rotary weapon bay", nums: [5], b: b83}
+  - {p: P1, param: weapon_load, alt: [max_weapon_load, payload, stores_capacity], v: "10t/ 22,000 pounds", nums: [10, 22000], any: ["10t", "22,000 pounds"], b: b83}
+  - {p: P1, param: sonobuoy_capacity, alt: [sonobuoys, sonobuoy_storage, stores_capacity], v: "up to 120 sonobuoys", nums: [120], b: b86}
+  - {p: P1, param: sonobuoy_launcher, alt: [launcher, sonobuoy_launchers], v: "built-in triple launcher", any: ["triple launcher"], b: b86}
+  - {p: P1, param: base_platform, alt: [platform, airframe, base_airframe], v: "737-800 ERX", b: b75}
+  - {p: P1, param: radar, alt: [sensors, radar_type, primary_radar], v: "AN/APY-10", b: b97}
+  - {p: P1, k: text, v: "dorsal receptacle allows in-flight refueling", any: ["in-flight refueling", "dorsal receptacle"], b: b80}
+  # --- start window: separately named subsystems (linkage) ---
+  - {p: P2, param: imaging_sensors, alt: [sensors, number_of_sensors, sensor_count], v: "up to 3 day/night imaging sensors", nums: [3], b: b100}
+  - {p: P2, param: laser_payloads, alt: [lasers, laser_payload, number_of_lasers], v: "3 laser payloads", nums: [3], b: b100}
+  - {p: P2, k: text, v: "rangefinding, marking/pointing, target designation", any: ["target designation", "rangefinding"], b: b100}
+  - {p: P3, param: power_rating, alt: [engine_power, power, max_power], v: "7,000 shp", nums: [7000], b: b136}
+  # --- middle window ---
+  - {p: P1, param: on_time_takeoff_rate, alt: [takeoff_reliability, dispatch_reliability, reliability], v: "on-time take-off rate of 93.6%", nums: [93.6], b: b493, pos: middle}
+  - {p: P1, param: mission_abort_rate, alt: [airborne_abort_rate, abort_rate, reliability], v: "airborne mission abort rate of only 1.6%", nums: [1.6], b: b493, pos: middle}
+  - {p: P4, param: range, alt: [max_range, ferry_range, operational_range], v: "4,000 nmi", nums: [4000], any: ["7,408 km"], b: b514}
+  - {p: P4, param: radar, alt: [sensors, radar_type, surveillance_radar], v: "Selex ES Seaspray 7300 maritime surveillance radar", any: ["Seaspray 7300"], b: b466}
+  - {p: P4, param: eo_ir_sensor, alt: [electro_optical_system, sensors, eo_ir_turret], v: "FLIR Systems Star Safire 380 day/night surveillance turret", any: ["Star Safire 380"], b: b466}
+  - {p: P4, k: text, v: "wide cabin is well suited to special mission crews and equipment", any: ["wide cabin"], b: b514}
+  - {p: P5, param: weight, alt: [bomb_weight, nominal_weight, weight_class], v: "500 pound", nums: [500], b: b565}
+  # --- end window ---
+  - {p: P1, param: engine_type, alt: [engine, engine_model, powerplant, propulsion_type], v: "CFM56-7B27A/3", b: b826, pos: end}
+  - {p: P1, param: eo_ir_sensor, alt: [electro_optical_system, sensors, eo_ir_turret], v: "MX-20HD", b: b853, pos: end}
+  - {p: P1, k: text, v: "raked or backswept wingtip", any: ["raked", "backswept wingtip"], b: b887, pos: end}
+  - {p: P1, k: text, v: "non-halon Dry Bay Fire Protection System", any: ["Dry Bay Fire Protection"], b: b866, pos: end}
+  - {p: P6, param: thrust, alt: [takeoff_thrust, engine_thrust, max_thrust], v: "27,300 pounds", nums: [27300], any: ["121 kN"], b: b826}
+  - {p: P6, k: text, v: "jointly certified by the U.S. Federal Aviation Administration and the European Aviation Safety Agency", any: ["Federal Aviation Administration", "European Aviation Safety Agency"], b: b826}
+  - {p: P7, param: glide_time, alt: [glide_duration, time_of_flight, flight_time], v: "seven to 10 minutes", nums: [7, 10], b: b946}
+  - {p: P7, k: text, v: "shed its wings and activate a parachute", any: ["parachute"], b: b946}
+negatives: ["$3.9 billion", "109 production aircraft", "$1.2 billion", "$2.07 billion", "$175.3 million per plane", "$2.1 billion", "25,000 feet", "1,600 people"]

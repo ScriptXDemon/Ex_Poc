@@ -1,0 +1,98 @@
+doc_id: pdf_d01bfafbe389a5f8
+url: https://media.northropgrumman.com/45089d32-0e64-41d5-b7bd-b4500167ed2f/NG-Propulsion-Products-Catalog_Original%20file.pdf
+level: 4
+format: pdf
+partial: true
+# Northrop Grumman Propulsion Products Catalog (144 pages): one data sheet per motor (dotted "label....value" lists)
+# plus summary tables (large motors Table 1 / Table 2 on p8-11, one row per motor; STAR summary p67-68). Page windows
+# set by the requester: start p3-30, middle p60-85, end p115-144. Start = Orion 32XL (own sheet p15) and the adjacent
+# table rows Orion 50S XLT / Orion 50S XLG (p8, p10; XLT also has its own sheet p23). Middle = Orion LAS ACM (p62) and
+# the adjacent sheets STAR 12GV / STAR 13B (p80-81). End = STAR 92 (p117) and the adjacent sheets ASAS 21-85V /
+# ASAS 21-120 (p124-125). No sampled name contains another (ORION 50S XL, ORION 32, STAR 13, ASAS 21-120V not
+# sampled; note ASAS 21-120 is a substring of the unsampled ASAS 21-120V, a description-only page). Left out: values
+# shared by two motors of a window (diameter 32.5 / 50.2, propellant 33,145, burn time 69.0, mass fractions 0.90 /
+# 0.92 / 0.93 in Table 1, ignition delay 0.02 / 0.012, TP-H-3062, titanium case, graphite-epoxy case, FLIGHT-PROVEN,
+# DEVELOPMENT, ACM mass fraction 0.37 = STAR 5F), dash-ranged temperatures, and STAR 92 values that are repeated in
+# the middle-window STAR summary table (total impulse, Isp, propellant weight, mass fraction).
+products:
+  P1: {name: "ORION 32XL", aliases: ["Orion 32 XL"], pos: start, page: 15}
+  P2: {name: "ORION 50S XLT", aliases: ["50S XLT"], pos: start, page: 23}
+  P3: {name: "ORION 50S XLG", aliases: ["50S XLG"], pos: start, page: 24}
+  P4: {name: "Orion LAS ACM", aliases: ["ORION LAS ACM TE-M-1174-1", "TE-M-1174-1", "Launch Abort System (LAS) Attitude Control Motor (ACM)"], pos: middle, page: 62}
+  P5: {name: "STAR 12GV", aliases: ["STAR 12GV TE-M-951", "TE-M-951"], pos: middle, page: 80}
+  P6: {name: "STAR 13B", aliases: ["STAR 13B TE-M-763", "TE-M-763"], pos: middle, page: 81}
+  P7: {name: "STAR 92", aliases: [], pos: end, page: 117}
+  P8: {name: "ASAS 21-85V", aliases: ["ASAS 21-85V TE-M-1031-1", "TE-M-1031-1"], pos: end, page: 124}
+  P9: {name: "ASAS 21-120", aliases: ["ASAS 21-120 TE-M-1059-1", "TE-M-1059-1"], pos: end, page: 125}
+facts:
+  # --- start: Orion 32XL data sheet (p15)
+  - {p: P1, param: overall_length, alt: [motor_length, length, overall_motor_length], v: "179.5", nums: [179.5], b: b156}
+  - {p: P1, param: average_chamber_pressure, alt: [chamber_pressure, burn_time_average_chamber_pressure], v: "922", nums: [922], b: b159}
+  - {p: P1, param: total_impulse, alt: [impulse], v: "1,838,200", nums: [1838200], b: b160}
+  - {p: P1, param: burn_time_average_thrust, alt: [average_thrust, thrust], v: "35,056", nums: [35056], b: b161}
+  - {p: P1, param: nozzle_expansion_ratio, alt: [expansion_ratio, average_expansion_ratio], v: "7.99", nums: [7.99], b: b165}
+  - {p: P1, param: burnout_weight, alt: [burnout_mass, burnout], v: "745", nums: [745], b: b169}
+  - {p: P1, param: propellant_designation, alt: [propellant, propellant_type], v: "QEM, HTPB POLYMER, 19% ALUMINUM", nums: [19], any: ["QEM"], b: b170}
+  # --- start: Orion 50S XLT (own sheet p23 + Table 1 p8 + Table 2 p10)
+  - {p: P2, param: maximum_thrust, alt: [max_thrust, peak_thrust], v: "156,823", nums: [156823], b: b314}
+  - {p: P2, param: effective_specific_impulse, alt: [specific_impulse, isp], v: "284.61", nums: [284.61], b: b315}
+  - {p: P2, param: total_impulse, alt: [impulse], v: "9,472,400", nums: [9472400], b: b316}
+  - {p: P2, param: overall_length, alt: [length, motor_length], v: "390.8", nums: [390.8], b: b30, page: 8}
+  - {p: P2, param: total_weight, alt: [total_motor_weight, loaded_weight, gross_weight], v: "35,763", nums: [35763], b: b30, page: 8}
+  - {p: P2, param: motors_flown, alt: [number_of_motors_flown, flights, flight_history], v: "4", nums: [4], b: b75, page: 10}
+  - {p: P2, k: text, v: "thicker skirts", any: ["thicker skirt"], b: b310}
+  # --- start: Orion 50S XLG (Table 1 p8 + Table 2 p10 rows; own page p24 is description only)
+  - {p: P3, param: overall_length, alt: [length, motor_length], v: "344.0", nums: [344.0], b: b31, page: 8}
+  - {p: P3, param: total_weight, alt: [total_motor_weight, loaded_weight, gross_weight], v: "35,525", nums: [35525], b: b31, page: 8}
+  - {p: P3, param: total_impulse, alt: [impulse], v: "9,061,400", nums: [9061400], b: b31, page: 8}
+  - {p: P3, param: static_fire_tests, alt: [number_of_static_fire_tests, static_tests, tests], v: "5", nums: [5], b: b74, page: 10}
+  - {p: P3, param: motors_flown, alt: [number_of_motors_flown, flights, flight_history], v: "28", nums: [28], b: b74, page: 10}
+  - {p: P3, k: text, v: "ground-ignited, vectorable nozzle configuration", any: ["ground-ignited"], b: b333}
+  # --- middle: Orion LAS attitude control motor TE-M-1174-1 (p62)
+  - {p: P4, param: number_of_valves, alt: [valves, number_of_nozzles, nozzles], v: "Eight, fully proportional valves", nums: [8], any: ["Eight"], b: b761}
+  - {p: P4, param: valve_response_time, alt: [response_time, full_stroke_response], v: "100 msec response full stroke", nums: [100], any: ["100 msec"], b: b761}
+  - {p: P4, param: total_loaded_weight, alt: [total_weight, loaded_weight], v: "1,629.1", nums: [1629.1], b: b763}
+  - {p: P4, param: valve_assembly_weight, alt: [valve_weight, valve_assembly_weight_each], v: "23.3", nums: [23.3], b: b766}
+  - {p: P4, param: propellant_designation, alt: [propellant, propellant_type], v: "TP-H-3174", b: b774}
+  - {p: P4, param: case_material, alt: [motor_case_material, case], v: "D6AC steel", any: ["D6AC"], b: b758}
+  - {p: P4, k: text, v: "first human-rated, single fault tolerant solid control system to be flight qualified", any: ["human-rated"], b: b758}
+  # --- middle: STAR 12GV data sheet (p80)
+  - {p: P5, param: motor_length, alt: [length, overall_length], v: "22.5", nums: [22.5], b: b1216}
+  - {p: P5, param: average_chamber_pressure, alt: [burn_time_average_chamber_pressure, chamber_pressure], v: "1,550", nums: [1550], b: b1220}
+  - {p: P5, param: total_impulse, alt: [impulse], v: "20,669", nums: [20669], b: b1222}
+  - {p: P5, param: nozzle_expansion_ratio, alt: [expansion_ratio, initial_expansion_ratio], v: "58:1", nums: [58], b: b1230}
+  - {p: P5, param: tvc_angle, alt: [thrust_vector_control, tvc, tvc_deflection], v: "± 5 deg", nums: [5], any: ["± 5"], b: b1231}
+  - {p: P5, param: propellant_mass_fraction, alt: [mass_fraction], v: "0.79", nums: [0.79], b: b1239}
+  - {p: P5, param: propellant_designation, alt: [propellant, propellant_type], v: "TP-H-3340A", b: b1244}
+  - {p: P5, k: text, v: "head-end flight destruct ordnance", any: ["flight destruct"], b: b1213}
+  # --- middle: STAR 13B data sheet (p81)
+  - {p: P6, param: motor_length, alt: [length, overall_length], v: "25.11", nums: [25.11], b: b1256}
+  - {p: P6, param: average_chamber_pressure, alt: [burn_time_average_chamber_pressure, chamber_pressure], v: "823", nums: [823], b: b1260}
+  - {p: P6, param: total_impulse, alt: [impulse], v: "26,050", nums: [26050], b: b1262}
+  - {p: P6, param: maximum_thrust, alt: [max_thrust, peak_thrust], v: "2,160", nums: [2160], b: b1266}
+  - {p: P6, param: nozzle_expansion_ratio, alt: [expansion_ratio, initial_expansion_ratio], v: "49.8:1/41.0:1", nums: [49.8, 41.0], any: ["49.8:1"], b: b1270}
+  - {p: P6, param: spin_experience, alt: [spin_experience_rpm, spin_rate, max_spin_rate], v: "120", nums: [120], b: b1280}
+  # --- end: STAR 92 data sheet (p117); only values not repeated in the p68 summary table
+  - {p: P7, param: motor_length, alt: [length, overall_length], v: "143.0", nums: [143.0], b: b2270}
+  - {p: P7, param: burn_time, alt: [action_time], v: "175.6", nums: [175.6], b: b2272}
+  - {p: P7, param: average_chamber_pressure, alt: [chamber_pressure, burn_time_average_chamber_pressure], v: "791", nums: [791], b: b2273}
+  - {p: P7, param: nozzle_expansion_ratio, alt: [expansion_ratio, average_expansion_ratio], v: "39.0:1", nums: [39.0], b: b2279}
+  - {p: P7, param: total_loaded_weight, alt: [total_weight, loaded_weight], v: "37,119", nums: [37119], b: b2280}
+  - {p: P7, param: production_status, alt: [status, qualification_status, development_status], v: "DESIGN CONCEPT (THROUGH PDR)", any: ["DESIGN CONCEPT"], b: b2291}
+  # --- end: ASAS 21-85V data sheet (p124)
+  - {p: P8, param: motor_diameter, alt: [diameter], v: "20.4", nums: [20.4], b: b2373}
+  - {p: P8, param: motor_length, alt: [length, overall_length], v: "95.5", nums: [95.5], b: b2374}
+  - {p: P8, param: total_impulse, alt: [impulse], v: "347,400", nums: [347400], b: b2380}
+  - {p: P8, param: nozzle_expansion_ratio, alt: [expansion_ratio, initial_expansion_ratio], v: "13.9:1", nums: [13.9], b: b2387}
+  - {p: P8, param: tvc_angle, alt: [thrust_vector_control, tvc, tvc_deflection], v: "±4.5", nums: [4.5], any: ["4.5-degree"], b: b2388}
+  - {p: P8, param: propellant_mass_fraction, alt: [mass_fraction], v: "0.87", nums: [0.87], b: b2395}
+  - {p: P8, param: propellant_designation, alt: [propellant, propellant_type], v: "TP-H-3514A", b: b2399}
+  # --- end: ASAS 21-120 data sheet (p125)
+  - {p: P9, param: motor_diameter, alt: [diameter], v: "20.5", nums: [20.5], b: b2408}
+  - {p: P9, param: motor_length, alt: [length, overall_length], v: "138.0", nums: [138.0], b: b2409}
+  - {p: P9, param: total_impulse, alt: [impulse], v: "497,600", nums: [497600], b: b2415}
+  - {p: P9, param: nozzle_expansion_ratio, alt: [expansion_ratio, initial_expansion_ratio], v: "25:1", nums: [25], b: b2422}
+  - {p: P9, param: propellant_mass_fraction, alt: [mass_fraction], v: "0.88", nums: [0.88], b: b2429}
+  - {p: P9, param: total_loaded_weight, alt: [total_weight, loaded_weight], v: "2,323", nums: [2323], b: b2424}
+  - {p: P9, k: text, v: "fixed nozzle version of the ASAS 21-120V motor", any: ["fixed nozzle"], b: b2406}
+negatives: ["99.79%", "2,446 tests and flights", "over 1,900 flights", "99.95%", "May 6, 2010", "more than 425 tests", "September 30, 1998"]

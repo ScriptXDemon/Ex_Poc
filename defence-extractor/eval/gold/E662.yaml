@@ -1,0 +1,20 @@
+doc_id: E662
+url: https://www.nammo.com/products/ammunition/small-caliber-ammunition/7-62mm-series/7-62-mm-x-51-ball-11-long-range
+products:
+  P1: {name: 7.62 mm x 51 Ball 11 Long Range, aliases: [Ball 11 Long Range, NM258, 7.62mm ball long range]}
+facts:
+  - {p: P1, param: calibre, v: "7.62 mm x 51", any: ["7.62 mm"]}
+  - {p: P1, param: ammunition_type, alt: [projectile_type], v: "full metal jacket projectile"}
+  - {p: P1, param: projectile_weight, v: "10.9 g (168 grain)"}
+  - {p: P1, param: muzzle_velocity, v: "805 m/s"}
+  - {p: P1, param: accuracy, v: "≤ 1 MOA"}
+  - {p: P1, param: penetration, v: "3.5 mm NATO plate at 550 m"}
+  - {p: P1, param: powder, v: "Temperature stable"}
+  - {p: P1, param: operating_temperature, alt: [service_temperature], v: "-54°C to +52°C"}
+  - {p: P1, param: safety_temperature, v: "-54°C to +71°C"}
+  - {p: P1, param: standard, alt: [standard_compliance, specification_standard], v: "STANAG 2310"}
+  - {p: P1, param: compatible_weapon_system, k: compat, v: "semi-automatic rifles (DMR)"}
+  - {p: P1, param: compatible_weapon_system, k: compat, v: "sniper rifles"}
+  - {p: P1, param: compatible_weapon_system, k: compat, v: "machine guns"}
+  - {p: P1, param: impact_energy, v: "increases the impact energy by 40 percent at 800 m", nums: [40, 800]}
+negatives: ["186 pages"]

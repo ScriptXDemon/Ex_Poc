@@ -1,0 +1,20 @@
+doc_id: E604
+url: https://www.mbda-systems.com/products/deep-strike/exocet-family/exocet-am39
+products:
+  P1: {name: EXOCET AM39, aliases: [AM39, EXOCET AM39 Block 2 Mod2]}
+facts:
+  - {p: P1, param: weight, v: "670kg"}
+  - {p: P1, param: length_overall, v: "4.69m"}
+  - {p: P1, param: diameter, alt: [calibre], v: "350mm"}
+  - {p: P1, param: launch_platform, k: compat, v: "Rafale"}
+  - {p: P1, param: launch_platform, k: compat, v: "ATL2 Atlantic aircraft"}
+  - {p: P1, param: launch_platform, k: compat, v: "combat aircraft", any: ["strike aircraft"]}
+  - {p: P1, param: launch_platform, k: compat, v: "Maritime Patrol Aircraft", any: ["MPA"]}
+  - {p: P1, param: launch_platform, k: compat, v: "helicopters"}
+  - {p: P1, param: max_range, v: "up to 70km", cond: depending on the altitude and speed of the launch aircraft}
+  - {p: P1, param: target_type, k: target, v: "anti-ship"}
+  - {p: P1, param: guidance_type, k: text, v: "Fire and Forget"}
+  - {p: P1, k: text, v: "All weather"}
+  - {p: P1, k: text, v: "Deep Strike"}
+  - {p: P1, k: text, v: "fully digitised"}
+negatives: ["300 kg", "800 km", "11 foreign forces"]

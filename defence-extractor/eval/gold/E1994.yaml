@@ -1,0 +1,44 @@
+# Gold labels — written from the page snapshot before any pipeline output was seen.
+doc_id: E1994
+url: https://www.thinkdefence.co.uk/docs/saxon
+products:
+  P1: {name: AT-105 Saxon, aliases: [Saxon, GKN AT-105 Saxon, AT-105]}
+facts:
+  - {p: P1, param: crew, v: "2 (driver and commander)"}
+  - {p: P1, param: troop_capacity, v: "up to 8 troops"}
+  - {p: P1, param: combat_weight, alt: [weight], v: "11,660 kg (combat loaded)"}
+  - {p: P1, param: length_overall, v: "5.17 m"}
+  - {p: P1, param: width, v: "2.49 m"}
+  - {p: P1, param: height, v: "2.63 m"}
+  - {p: P1, param: ground_clearance, v: "0.29 m"}
+  - {p: P1, param: propulsion_type, v: "Cummins 6BT 5.91-litre turbo diesel"}
+  - {p: P1, param: engine_power, v: "160 hp"}
+  - {p: P1, param: torque, v: "541 Nm"}
+  - {p: P1, param: propulsion_type, v: "Bedford 500", cond: earlier models}
+  - {p: P1, param: engine_power, v: "164 hp", cond: earlier models (Bedford 500)}
+  - {p: P1, param: transmission, v: "Allison automatic (4 forward, 1 reverse)"}
+  - {p: P1, param: transfer_case, alt: [transmission], v: "2-speed transfer case"}
+  - {p: P1, param: max_road_speed, alt: [max_speed], v: "96 km/h"}
+  - {p: P1, param: operational_range, v: "480 km"}
+  - {p: P1, param: gradient, v: "66%"}
+  - {p: P1, param: fording_depth, v: "1.12 m"}
+  - {p: P1, param: vertical_obstacle, v: "0.41 m"}
+  - {p: P1, param: main_armament, alt: [secondary_armament], v: "pintle-mounted 7.62 mm GPMG"}
+  - {p: P1, param: main_armament, alt: [secondary_armament, armament_option], v: "optional turret with L37 (from FV432)"}
+  - {p: P1, param: main_armament, alt: [secondary_armament, armament_option], v: "vehicle-launched missiles"}
+  - {p: P1, param: tyres, v: "13.00×20 or 14.00×20 run-flat"}
+  - {p: P1, param: electrical_system, v: "24 V (two 12 V batteries)"}
+  - {p: P1, param: fuel_capacity, v: "150-153 litres"}
+  - {p: P1, param: chassis, v: "modified Bedford TM truck chassis"}
+  - {p: P1, param: protection_level, v: "protection against 7.62mm AP and 155mm shell fragments at 10m"}
+  - {p: P1, param: main_armament, alt: [secondary_armament], v: "12.7 mm DShKM heavy machine gun", cond: Ukrainian upgrade}
+  - {p: P1, param: secondary_armament, alt: [main_armament], v: "dual 7.62 mm PK general-purpose machine guns (GPMGs)", cond: Ukrainian upgrade}
+  - {p: P1, param: winch, k: text, v: "Hudson Wharton 5 tonne winch", cond: Recovery Vehicle variant}
+  - {p: P1, k: text, v: "Command"}
+  - {p: P1, k: text, v: "Internal Security"}
+  - {p: P1, k: text, v: "Ambulance"}
+  - {p: P1, k: text, v: "Recovery Vehicle"}
+  - {p: P1, k: text, v: "Mortar Fire Control"}
+  - {p: P1, k: text, v: "Air Defence Command"}
+  - {p: P1, k: text, v: "Forward Observer/Surveillance"}
+negatives: ["47 vehicles", "first 50 vehicles", "200 more", "30 more", "batch of 100", "524 vehicles", "577", "20 AT-105 Saxon", "£2.8 million", "batch of 55", "approximately 500"]

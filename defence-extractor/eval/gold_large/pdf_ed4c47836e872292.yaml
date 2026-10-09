@@ -1,0 +1,39 @@
+doc_id: pdf_ed4c47836e872292
+url: "https://cdn.leonardodrs.com/uploads/wp-content/uploads/2025/06/ADACS_Catalog_00190037_Rev.18_06.15.25_.pdf"
+level: 4
+format: pdf
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Leonardo DRS ADACS & AFD 2025-2026 catalogue (111 pages). It is a price list: each part number has a description row,
+# then rows of min-buy quantity, lead time, delivery frequency and unit price. Those are procurement terms, not specs
+# (prices / lead times are negatives). The only spec-like content is in a few descriptions (supersession, DDG-51,
+# cable length, pressure range) and in the FAQ (p106). Start: the AFD/CTM controller variants, each superseding a
+# different old part (variant-ownership test). Pages 45-65 hold only cable / network-stub assemblies whose rows carry
+# no spec at all, so the "middle" sample uses the nearest spec-bearing pair, the wide-band photo-sensors on p70/p72
+# (pos 0.68-0.69, outside the 0.40-0.60 window). End: pressure sensor (p95) and the FAQ facts (p106); the catalogue
+# lists the Thermal Ionization Detector as 07030620-5/-6/-7 (p75-78), whose names contain this product name. The
+# "4 seconds" belongs to USIM software 6.0, not to the TID (linkage test).
+products:
+  P1: {name: "07030000-11", aliases: [], pos: start, page: 7}
+  P2: {name: "07030000-12", aliases: [], pos: start, page: 8}
+  P3: {name: "07030000-13", aliases: ["ADACS AFD/CTM CONTROLLER DDG-51"], pos: start, page: 9}
+  P4: {name: "07030600-1", aliases: ["WIDE BAND PHOTO-SENSOR (5' CABLE)", "WIDE BAND PHOTO- SENSOR (5' CABLE)"], pos: middle, page: 70}
+  P5: {name: "07030600-2", aliases: ["WIDE BAND PHOTO-SENSOR (1' CABLE)", "WIDE BAND PHOTO- SENSOR (1' CABLE)"], pos: middle, page: 72}
+  P6: {name: "5180-3621-09", aliases: ["5180-3621- 09", "PRESSURE SENSOR ASSEMBLY, .02 IN WC"], pos: end, page: 95}
+  P7: {name: "Thermal Ionization Detector", aliases: ["Thermal Ionization Detector (TID)", "ADACS Thermal Ionization Detector"], pos: end, page: 106}
+  P8: {name: "USIM Software Version 6.0", aliases: ["USIM software version 6.0", "Software version 6.0"], pos: end, page: 106}
+facts:
+  - {p: P1, param: supersedes_part_number, alt: [supersedes, replaces_part_number, superseded_part], v: "07030000-6", any: ["SUPERSEDES 07030000-6"], b: b28}
+  - {p: P2, param: supersedes_part_number, alt: [supersedes, replaces_part_number, superseded_part], v: "07030000-8", any: ["SUPERSEDES 07030000-8"], b: b39}
+  - {p: P3, param: supersedes_part_number, alt: [supersedes, replaces_part_number, superseded_part], v: "07030000-7", any: ["SUPERSEDES 07030000-7"], b: b50}
+  - {p: P3, param: platform, alt: [compatible_platform, ship_class, host_platform], v: "DDG-51", b: b50}
+  - {p: P4, param: cable_length, alt: [lead_length, cable, integral_cable_length], v: "5' CABLE", nums: [5], b: b1006}
+  - {p: P5, param: cable_length, alt: [lead_length, cable, integral_cable_length], v: "1' CABLE", nums: [1], b: b1028}
+  - {p: P6, param: pressure_range, alt: [pressure_rating, measurement_range, sensing_range], v: ".02 IN WC", nums: [0.02], b: b1342}
+  - {p: P7, param: radioactive_isotope, alt: [radioactive_source, isotope, source_material], v: "Americium 241", nums: [241], b: b1459}
+  - {p: P7, param: source_activity, alt: [radioactivity, activity, radioactive_activity], v: "a few kBq / 1 µCi", nums: [1], any: ["1 µCi"], b: b1459}
+  - {p: P7, k: text, v: "pose very little radiological hazard", any: ["radiological hazard"], b: b1459}
+  - {p: P7, k: text, v: "same isotope, in the same amount, as is used in a home smoke detector", any: ["home smoke detector"], b: b1459}
+  - {p: P8, param: tid_bit_active_time_increase, alt: [bit_active_time, tid_bit_active_time, alarm_delay], v: "adding 4 seconds to the TID BIT Active time", nums: [4], any: ["4 seconds"], b: b1455}
+  - {p: P8, k: text, v: "eliminates sending a false wideband photo sensor channel 1 alarm continuous Thermal Monitoring (CTM) message", any: ["false wideband photo sensor channel 1 alarm"], b: b1455}
+  - {p: P8, k: text, v: "reduces false alarms", b: b1455}
+negatives: ["$76,930.93", "$77,429.21", "397", "$2,422.65", "$7,430.22", "$19,734.27", "850-302-3679", "495 days"]

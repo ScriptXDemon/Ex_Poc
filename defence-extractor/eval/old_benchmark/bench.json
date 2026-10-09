@@ -1,0 +1,7703 @@
+[
+ {
+  "id": "E1994",
+  "name": "AT-105 Saxon",
+  "dropped": 4,
+  "total": 26,
+  "old_dropped": 17,
+  "structure": "label/value spec table",
+  "url": "https://www.thinkdefence.co.uk/docs/saxon",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "crew_count",
+    "page_value": "2 (driver and commander)",
+    "our_value": "2 (driver and commander) + up to 8 troops"
+   },
+   {
+    "status": "caught",
+    "parameter": "troop_capacity",
+    "page_value": "up to 8 troops",
+    "our_value": "2 (driver and commander) + up to 8 troops"
+   },
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "11,660 kg (combat loaded)",
+    "our_value": "11,660 kg (combat loaded)"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "5.17 m",
+    "our_value": "5.17 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Width",
+    "page_value": "2.49 m",
+    "our_value": "2.49 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Height",
+    "page_value": "2.63 m",
+    "our_value": "2.63 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Ground Clearance",
+    "page_value": "0.29 m",
+    "our_value": "0.29 m"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "propulsion_type",
+    "page_value": "Cummins 6BT 5.91-litre turbo diesel",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "Bedford 500",
+    "our_value": "Bedford 500 (164 hp)"
+   },
+   {
+    "status": "caught",
+    "parameter": "engine_power_hp",
+    "page_value": "160 hp",
+    "our_value": "160 hp"
+   },
+   {
+    "status": "caught",
+    "parameter": "engine_power_hp",
+    "page_value": "164 hp",
+    "our_value": "Bedford 500 (164 hp)"
+   },
+   {
+    "status": "caught",
+    "parameter": "torque",
+    "page_value": "541 Nm",
+    "our_value": "541 Nm torque"
+   },
+   {
+    "status": "caught",
+    "parameter": "Transmission",
+    "page_value": "Allison automatic (4 forward, 1 reverse); 2-speed transfer case",
+    "our_value": "Allison automatic (4 forward, 1 reverse)"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "96 km/h",
+    "our_value": "96 km/h"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "480 km",
+    "our_value": "480 km"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fording",
+    "page_value": "1.12 m",
+    "our_value": "1.12 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Vertical obstacle",
+    "page_value": "0.41 m",
+    "our_value": "0.41 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "pintle-mounted 7.62 mm GPMG",
+    "our_value": "pintle-mounted 7.62 mm GPMG"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "optional turret with L37 (from FV432) or vehicle-launched missiles",
+    "our_value": "optional turret with L37 (from FV432) or vehicle-launched missiles"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "main_armament",
+    "page_value": "12.7 mm DShKM heavy machine gun",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "secondary_armament",
+    "page_value": "dual 7.62 mm PK general-purpose machine guns (GPMGs)",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "Tyres",
+    "page_value": "13.00×20 or 14.00×20 run-flat",
+    "our_value": "13.00×20 or 14.00×20 run-flat"
+   },
+   {
+    "status": "caught",
+    "parameter": "Electrical System",
+    "page_value": "24 V (two 12 V batteries)",
+    "our_value": "24 V (two 12 V batteries)"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fuel Capacity",
+    "page_value": "150-153 litres",
+    "our_value": "150-153 litres"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "protection against 7.62mm AP and 155mm shell fragments at 10m",
+    "our_value": "protection against 7.62mm AP and 155mm shell fragments at 10m"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "chassis",
+    "page_value": "modified Bedford TM truck chassis",
+    "our_value": ""
+   }
+  ],
+  "output": [
+   {
+    "product": "Saxon",
+    "parameter": "crew_count",
+    "value": "2 (driver and commander) + up to 8 troops",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "vehicle_weight_t",
+    "value": "11,660 kg (combat loaded)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "length_overall_m",
+    "value": "5.17 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "max_speed_kmh",
+    "value": "96 km/h",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "operational_range_km",
+    "value": "480 km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "main_armament",
+    "value": "pintle-mounted 7.62 mm GPMG",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "secondary_armament",
+    "value": "optional turret with L37 (from FV432) or vehicle-launched missiles",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "tyres",
+    "value": "13.00×20 or 14.00×20 run-flat",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "electrical_system",
+    "value": "24 V (two 12 V batteries)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "fuel_capacity",
+    "value": "150-153 litres",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "protection_level",
+    "value": "protection against 7.62mm AP and 155mm shell fragments at 10m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "width_overall_m",
+    "value": "2.49 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "height_overall_m",
+    "value": "2.63 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "ground_clearance_m",
+    "value": "0.29 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "engine_power_hp",
+    "value": "160 hp",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "engine_torque_nm",
+    "value": "541 Nm torque",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "earlier_engine",
+    "value": "Bedford 500 (164 hp)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "transmission_type",
+    "value": "Allison automatic (4 forward, 1 reverse)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "transmission_transfer_case",
+    "value": "2-speed transfer case",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "max_gradient",
+    "value": "66%",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "fording_depth_m",
+    "value": "1.12 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Saxon",
+    "parameter": "vertical_obstacle_height_m",
+    "value": "0.41 m",
+    "found_by": "step 6",
+    "flag": ""
+   }
+  ]
+ },
+ {
+  "id": "E783",
+  "name": "Patria NEMO",
+  "dropped": 4,
+  "total": 11,
+  "old_dropped": 4,
+  "structure": "few specs",
+  "url": "https://www.patriagroup.com/products-and-services/protected-mobility-and-defence-systems/armament/patria-nemo",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "120 mm",
+    "our_value": "120 mm mortar system"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "120 mm mortar",
+    "our_value": "120 mm mortar system"
+   },
+   {
+    "status": "caught",
+    "parameter": "traverse_deg",
+    "page_value": "360º",
+    "our_value": "360º"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "all standard 120 smoothbore mortar ammunition as well as smart guided ammunition",
+    "our_value": "all standard 120 smoothbore mortar ammunition as well as smart guided ammunition"
+   },
+   {
+    "status": "caught",
+    "parameter": "Multiple Rounds Simultaneous Impact (MRSI)",
+    "page_value": "up to 5 grenades",
+    "our_value": "Multiple Targets Simultaneous Impact (MTSI) fire missions where up to 5 grenades hit the target or targets simultaneously"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "launch_platform",
+    "page_value": "8x8 armoured wheeled vehicles",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "launch_platform",
+    "page_value": "tracked chassis",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "launch_platform",
+    "page_value": "6x6 armoured wheeled vehicles",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "launch_platform",
+    "page_value": "fast-moving patrol and coastal vessels",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "Modular ballistic protection against infantry weapons, splinters and IEDs",
+    "our_value": "modular ballistic protection against infantry weapons, splinters and IEDs"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "NBC and muzzle blast protection",
+    "our_value": "NBC and muzzle blast protection"
+   }
+  ],
+  "output": [
+   {
+    "product": "Patria NEMO",
+    "parameter": "main_armament",
+    "value": "120 mm mortar system",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "traverse_deg",
+    "value": "360º",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "rate_of_fire_rpm",
+    "value": "High rate of fire",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "fire_control_system",
+    "value": "sensor-to-shooter operations",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "ammunition_type",
+    "value": "all standard 120 smoothbore mortar ammunition as well as smart guided ammunition",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "protection_class",
+    "value": "modular ballistic protection against infantry weapons, splinters and IEDs",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "protection_level",
+    "value": "NBC and muzzle blast protection",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "amphibious_capability",
+    "value": "applicability for land and sea",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "deployment_time_min",
+    "value": "Rapid deployment to avoid counter-battery fire",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "magazine_capacity",
+    "value": "Large on-board ammunition supply",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "target_type",
+    "value": "indirect, direct and MRSI capabilities with direct lay functionality",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "operational_range_km",
+    "value": "Fire-on-the-move capability",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "direct_fire_capability",
+    "value": "can also be used for self-defence",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "multiple_targets_simultaneous_impact",
+    "value": "Multiple Targets Simultaneous Impact (MTSI) fire missions where up to 5 grenades hit the target or targets simultaneously",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "protection_against_ballistics",
+    "value": "Turret and armoured chassis protect the crew against ballistics, mines and IED threats and battlefield contaminants within the protection level of the platform vehicle",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "modular_design",
+    "value": "modular design and therefore it guarantees maximum flexibility and capability for further upgrades for diverse requirements to meet the specific needs of modern warfare and threats in changing environment",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "network_centric_warfare",
+    "value": "Network-centric warfare management",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Patria NEMO",
+    "parameter": "reduced_carrier_stresses",
+    "value": "Reduced carrier stresses",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E329",
+  "name": "Ariete C2",
+  "dropped": 3,
+  "total": 43,
+  "old_dropped": 23,
+  "structure": "mixed: table and prose",
+  "url": "https://www.idvgroup.com/products/land-armoured-vehicles/ariete-c2",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "engine_power_hp",
+    "page_value": "1,500 hp",
+    "our_value": "1,500 hp"
+   },
+   {
+    "status": "caught",
+    "parameter": "power_kw",
+    "page_value": "1103 kW",
+    "our_value": "1103 kW (1500 hp)"
+   },
+   {
+    "status": "caught",
+    "parameter": "Torque",
+    "page_value": "5000 Nm",
+    "our_value": "5000 Nm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fuel",
+    "page_value": "Diesel fuel",
+    "our_value": "Diesel fuel"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "120/44 mm smoothbore gun",
+    "our_value": "120/44 mm smoothbore gun"
+   },
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "120 mm",
+    "our_value": "120 mm main armament with electrical servo and stabilisation system"
+   },
+   {
+    "status": "caught",
+    "parameter": "barrel_length_cal",
+    "page_value": "120/44 mm",
+    "our_value": "120/44 mm smoothbore gun"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "secondary_armament",
+    "page_value": "coaxial 7.62 mm machine gun",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "secondary_armament",
+    "page_value": "12.7 mm RCWS",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "secondary_armament",
+    "page_value": "1 x 7.62 mm machine gun",
+    "our_value": "1 x 7.62 mm machine gun"
+   },
+   {
+    "status": "caught",
+    "parameter": "secondary_armament",
+    "page_value": "1 x 12.7 mm machine gun",
+    "our_value": "1 x 12.7 mm machine gun"
+   },
+   {
+    "status": "caught",
+    "parameter": "fire_control_system",
+    "page_value": "New fire control system",
+    "our_value": "new fire control system"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Advanced optronic equipment",
+    "our_value": "advanced optronic equipment"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Night vision equipment",
+    "our_value": "Night vision equipment"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Laser warning system",
+    "our_value": "Laser warning system"
+   },
+   {
+    "status": "caught",
+    "parameter": "armour_type",
+    "page_value": "welded steel hull",
+    "our_value": "welded steel"
+   },
+   {
+    "status": "caught",
+    "parameter": "armour_type",
+    "page_value": "composite armour",
+    "our_value": "composite armour"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "Scalable protection kit",
+    "our_value": "Scalable protection kit"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "NBC system",
+    "our_value": "NBC system"
+   },
+   {
+    "status": "caught",
+    "parameter": "crew_count",
+    "page_value": "4",
+    "our_value": "4 + 2 r."
+   },
+   {
+    "status": "caught",
+    "parameter": "crew_count",
+    "page_value": "3 men",
+    "our_value": "3 men"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "9905 mm",
+    "our_value": "9905 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Length without barrel",
+    "page_value": "7990 mm",
+    "our_value": "7990 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Height hull",
+    "page_value": "1834 mm",
+    "our_value": "1834 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Height with turret (panoramic sight)",
+    "page_value": "3011 mm",
+    "our_value": "3011 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Overall width with fender",
+    "page_value": "3610 mm",
+    "our_value": "3610 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Overall width without fender",
+    "page_value": "3420 mm",
+    "our_value": "3420 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Wheelbase",
+    "page_value": "2800 mm",
+    "our_value": "2800 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "62,500 kg",
+    "our_value": "62,500 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "approx. 60 km/h",
+    "our_value": "approx. 60 km/h"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "550 km",
+    "our_value": "550 km"
+   },
+   {
+    "status": "caught",
+    "parameter": "Step",
+    "page_value": "1.1 m",
+    "our_value": "1.1 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Trench",
+    "page_value": "3.0 m",
+    "our_value": "3.0 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fording depth without preparation",
+    "page_value": "1.20 m",
+    "our_value": "1.20 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fording depth with preparation",
+    "page_value": "2.1 m",
+    "our_value": "2.1 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Turning radius",
+    "page_value": "Pivot",
+    "our_value": "Pivot"
+   },
+   {
+    "status": "caught",
+    "parameter": "Power to weight ratio",
+    "page_value": "24 hp/t",
+    "our_value": "24 hp/t"
+   },
+   {
+    "status": "caught",
+    "parameter": "Number of gears",
+    "page_value": "4 + 2 r.",
+    "our_value": "4 + 2 r."
+   },
+   {
+    "status": "caught",
+    "parameter": "DRIVELINE / SUSPENSION",
+    "page_value": "Torsion bars",
+    "our_value": "Torsion bars"
+   },
+   {
+    "status": "caught",
+    "parameter": "DRIVELINE / SUSPENSION",
+    "page_value": "Hydraulic brakes actuated with transmission retarder",
+    "our_value": "Hydraulic brakes actuated with transmission retarder"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "ammunition_type",
+    "page_value": "All standard NATO kinetic and chemical",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "magazine_capacity",
+    "page_value": ">2400 rds",
+    "our_value": "120 mm: 42, Coaxial and AA MGs: >2400 rds, Smoke Grenade: 8"
+   },
+   {
+    "status": "caught",
+    "parameter": "traverse_deg",
+    "page_value": "unlimited",
+    "our_value": "unlimited"
+   }
+  ],
+  "output": [
+   {
+    "product": "ARIETE C2",
+    "parameter": "engine_power_hp",
+    "value": "1,500 hp",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "main_armament",
+    "value": "120 mm main armament with electrical servo and stabilisation system",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "crew_count",
+    "value": "4 (driver, gunner, weapon servant, commander)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Length with barrel",
+    "value": "9905 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Length without barrel",
+    "value": "7990 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Height hull",
+    "value": "1834 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Height with turret (panoramic sight)",
+    "value": "3011 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Overall width with fender",
+    "value": "3610 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Overall width without fender",
+    "value": "3420 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Wheelbase",
+    "value": "2800 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Approach angle",
+    "value": "40°",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Departure angle",
+    "value": "40°",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Max. GVW (configuration with MPK and PSO kit)",
+    "value": "62,500 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "max_speed_kmh",
+    "value": "approx. 60 km/h",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Gradient",
+    "value": "60%",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Side slope",
+    "value": "30%",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "operational_range_km",
+    "value": "550 km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Step",
+    "value": "1.1 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Trench",
+    "value": "3.0 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Fording depth without preparation",
+    "value": "1.20 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Fording depth with preparation",
+    "value": "2.1 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Turning radius",
+    "value": "Pivot",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Power to weight ratio",
+    "value": "24 hp/t",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Engine",
+    "value": "IVECO V-12",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Fuel",
+    "value": "Diesel fuel",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Power",
+    "value": "1103 kW (1500 hp)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Torque",
+    "value": "5000 Nm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Number of gears",
+    "value": "4 + 2 r.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Hydraulic brakes actuated with transmission retarder",
+    "value": "Hydraulic brakes actuated with transmission retarder",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Torsion bars",
+    "value": "Torsion bars",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "1, 2, 3, 6 and 7 road wheel stations have hydraulic shock absorbers",
+    "value": "1, 2, 3, 6 and 7 road wheel stations have hydraulic shock absorbers",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Laser warning system",
+    "value": "Laser warning system",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "NBC system",
+    "value": "NBC system",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Night vision equipment",
+    "value": "Night vision equipment",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Scalable protection kit",
+    "value": "Scalable protection kit",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "crew_count",
+    "value": "3 men",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "main_armament",
+    "value": "120/44 mm smoothbore gun",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "secondary_armament",
+    "value": "1 x 7.62 mm machine gun",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "AA machine gun",
+    "value": "1 x 7.62 mm machine gun",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "AA pintle mounted",
+    "value": "1 x 12.7 mm machine gun",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Smoke grenade launchers",
+    "value": "4 x 2",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Ammunition stowage",
+    "value": "120 mm: 42, Coaxial and AA MGs: >2400 rds, Smoke Grenade: 8",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Azimuth arc",
+    "value": "unlimited",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Elevation arc",
+    "value": "-7.5° / +19°",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Azimuth speed (acceleration)",
+    "value": "0.4 rad/s / (0.35 rad/s2)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "Elevation speed (acceleration)",
+    "value": "0.3 rad/s / (0.8 rad/s2)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "hull_material",
+    "value": "welded steel",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "turret_material",
+    "value": "composite armour",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "main_armament_manufacturer",
+    "value": "Leonardo",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "brake_system",
+    "value": "enhanced brake system",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "track_system",
+    "value": "widened track system",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "fire_control_system",
+    "value": "new fire control system",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "human_machine_interface",
+    "value": "new Human-Machine Interface",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "optronic_equipment",
+    "value": "advanced optronic equipment",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "command_control_system",
+    "value": "innovative command, control, navigation and communication system",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "protection_class",
+    "value": "Mid-Life Upgrade Programme",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "protection_class",
+    "value": "significant improvements in the hull and the turret",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "suspension_type",
+    "value": "torsion bar suspension with hydraulic bumpers",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "gvw_increase",
+    "value": "higher GVW",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "protection_level",
+    "value": "superior armour protection",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "mobility_enhancement",
+    "value": "enhanced mobility",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "firepower_enhancement",
+    "value": "substantial firepower",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "performance_enhancement",
+    "value": "better performance",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "evolution_type",
+    "value": "advanced evolution",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "version_type",
+    "value": "improved state-of-the-art version",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ARIETE C2",
+    "parameter": "base_model",
+    "value": "ARIETE C1 MBT",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E604",
+  "name": "EXOCET AM39",
+  "dropped": 3,
+  "total": 9,
+  "old_dropped": 2,
+  "structure": "scattered key/value lines",
+  "url": "https://www.mbda-systems.com/products/deep-strike/exocet-family/exocet-am39",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "missile_weight_kg",
+    "page_value": "670kg",
+    "our_value": "670kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "4.69m",
+    "our_value": "4.69m"
+   },
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "350mm",
+    "our_value": "350mm"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "launch_platform",
+    "page_value": "Rafale",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "launch_platform",
+    "page_value": "ATL2 Atlantic aircraft",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "combat aircraft, Maritime Patrol Aircraft and helicopters",
+    "our_value": "combat aircraft, Maritime Patrol Aircraft and helicopters"
+   },
+   {
+    "status": "caught",
+    "parameter": "guidance_type",
+    "page_value": "Fire and Forget",
+    "our_value": "Fire and Forget"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": "up to 70km",
+    "our_value": "70km"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "target_type",
+    "page_value": "anti-ship",
+    "our_value": ""
+   }
+  ],
+  "output": [
+   {
+    "product": "EXOCET AM39",
+    "parameter": "weight_kg",
+    "value": "670kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "length_overall_m",
+    "value": "4.69m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "calibre_mm",
+    "value": "350mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "maximum_range_km",
+    "value": "70km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "launch_platform",
+    "value": "combat aircraft, Maritime Patrol Aircraft and helicopters",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "guidance_type",
+    "value": "Fire and Forget",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "operating_conditions",
+    "value": "All weather",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "target_type",
+    "value": "Combat proven target selectivity in complex scenario",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "in_service_with",
+    "value": "French Navy and 11 foreign forces",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "EXOCET AM39",
+    "parameter": "range_dependency",
+    "value": "up to 70km, depending on the altitude and speed of the launch aircraft",
+    "found_by": "step 6",
+    "flag": ""
+   }
+  ]
+ },
+ {
+  "id": "E448",
+  "name": "RCH 155 TRACKED",
+  "dropped": 2,
+  "total": 25,
+  "old_dropped": 3,
+  "structure": "specs in prose only",
+  "url": "https://knds.com/en/products/systems/rch-155-tracked",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "155 mm",
+    "our_value": "155mm/L52 main gun (JBMoU-compatible)"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "155mm/L52 main gun (JBMoU-compatible)",
+    "our_value": "155mm/L52 main gun (JBMoU-compatible)"
+   },
+   {
+    "status": "caught",
+    "parameter": "rate_of_fire_rpm",
+    "page_value": "> 8 rounds per minute",
+    "our_value": "> 8 rounds per minute"
+   },
+   {
+    "status": "caught",
+    "parameter": "rate_of_fire_rpm",
+    "page_value": "9 rounds per minute",
+    "our_value": "“ready to fire” while on the move; fire mission with 9 rounds per minute; continuing without stopping"
+   },
+   {
+    "status": "caught",
+    "parameter": "elevation_deg",
+    "page_value": "from -2.5° to +65° (-45 mils to +1,150 mils)",
+    "our_value": "Elevation: from -2.5° to +65° (-45 mils to +1,150 mils)"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": "up to 40/ 54 (V-LAP)/ 70 (VULCANO) km",
+    "our_value": "up to 40/ 54 (V-LAP)/ 70 (VULCANO) km; prepared for future ammunition"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "ammunition_type",
+    "page_value": "JBMoU-compatible 155 mm ammunition",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "ammunition_type",
+    "page_value": "six modular charges",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "magazine_capacity",
+    "page_value": "30 fuzed projectiles / 144 modular charges",
+    "our_value": "30 fuzed projectiles / 144 modular charges"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fuze programming",
+    "page_value": "Inductive programming during the ramming process",
+    "our_value": "Inductive programming during the ramming process"
+   },
+   {
+    "status": "caught",
+    "parameter": "secondary_armament",
+    "page_value": "Optional Remote Controlled Weapon Station RCWS / Multi-Purpose Grenade Launcher (MPL)",
+    "our_value": "Optional Remote Controlled Weapon Station RCWS / Multi-Purpose Grenade Launcher (MPL)"
+   },
+   {
+    "status": "caught",
+    "parameter": "Direct laying",
+    "page_value": "Optionally available with optronics or remote-controlled weapon station",
+    "our_value": "Optional Optionally available with optronics or remote-controlled weapon station"
+   },
+   {
+    "status": "caught",
+    "parameter": "fire_control_system",
+    "page_value": "Autonomous navigation and fire control",
+    "our_value": "Autonomous navigation and fire control"
+   },
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "< 45 t (metric)",
+    "our_value": "< 45 t (metric)"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "10,60 m",
+    "our_value": "10,60 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Dimensions (LxWxH)",
+    "page_value": "3,45 m",
+    "our_value": "3,45 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Dimensions (LxWxH)",
+    "page_value": "3,5 m",
+    "our_value": "3,5 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "power_kw",
+    "page_value": "approx. 800 - 900 kW",
+    "our_value": "approx. 800 - 900 kW"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "70 km/h (road)",
+    "our_value": "70 km/h (road)"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "< 500km (road)",
+    "our_value": "< 500km (road)"
+   },
+   {
+    "status": "caught",
+    "parameter": "crew_count",
+    "page_value": "two operators",
+    "our_value": "Protected BOXER TRACKED chassis for two operators"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "Ballistic protection for the crew on IFV-Level",
+    "our_value": "Ballistic protection for the crew on IFV-Level"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "Mine and IED protection",
+    "our_value": "Mine and IED protection"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "NBC protection system",
+    "our_value": "NBC protection system"
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "BOXER TRACKED",
+    "our_value": "Protected BOXER TRACKED chassis for two operators"
+   }
+  ],
+  "output": [
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "main_armament",
+    "value": "155mm/L52 main gun (JBMoU-compatible)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "rate_of_fire_rpm",
+    "value": "> 8 rounds per minute",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "traverse_deg",
+    "value": "Azimuth: 360° (+/-200°) with up to 6 modular charges without support legs",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "elevation_deg",
+    "value": "Elevation: from -2.5° to +65° (-45 mils to +1,150 mils)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "maximum_range_km",
+    "value": "up to 40/ 54 (V-LAP)/ 70 (VULCANO) km; prepared for future ammunition",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "magazine_capacity",
+    "value": "30 fuzed projectiles / 144 modular charges",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "fuze_type",
+    "value": "Inductive programming during the ramming process",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "secondary_armament",
+    "value": "Optional Remote Controlled Weapon Station RCWS / Multi-Purpose Grenade Launcher (MPL)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "vehicle_weight_t",
+    "value": "< 45 t (metric)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "length_overall_m",
+    "value": "10,60 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "beam_m",
+    "value": "3,45 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "height",
+    "value": "3,5 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "engine_power_kw",
+    "value": "approx. 800 - 900 kW",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "max_speed_kmh",
+    "value": "70 km/h (road)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "operational_range_km",
+    "value": "< 500km (road)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Ballistic protection for the crew on IFV-Level",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_level",
+    "value": "Mine and IED protection",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "NBC protection system",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "High tactical land mobility due to low ground pressure",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Protected BOXER TRACKED chassis for two operators",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Cooling and heating system for crew and turret",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "High reliability (mature technology and subassemblies based on PzH 2000 and BOXER / BOXER TRACKED)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Options for day / night 360° surveillance, self-protection and direct firing",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Barracuda mobile camouflage (optional)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Network-based system architecture with e.g. growth potential for unmanned operation (remote-controlled driving, firing and future shells and fuzes)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Superior tactical capabilities",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Outstanding Range and Area Coverage",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "No Chassis stabilization needed",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Artillery engagement on the move “Shoot and Scoot 2.0”",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "“ready to fire” while on the move; fire mission with 9 rounds per minute; continuing without stopping",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "“Multiple Round Simultaneous Impact” MRSI",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "Engagement of Moving Targets",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "protection_class",
+    "value": "One of the most modern barreled artillery systems in the world",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "direct_laying",
+    "value": "Optional Optionally available with optronics or remote-controlled weapon station",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "ammunition_length",
+    "value": "Ability to handle and fire JBMoU-compatible shells up to 1,000 mm length",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "autonomous_navigation",
+    "value": "Autonomous navigation and fire control",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "automated_gun_laying",
+    "value": "Automated gun-laying system with coincidence control of the weapon",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "automated_loading",
+    "value": "Fully-automated loading system for projectiles and modular charges",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "loading_positions",
+    "value": "Loading in all elevation and azimuth positions possible",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "shoot_and_scoot",
+    "value": "Utmost “Shoot & Scoot 2.0” capability by firing on the move, real MRSI (“Multiple Rounds Simultaneous Impact” within 2 sec) and engagement of moving targets",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "RCH 155 TRACKED",
+    "parameter": "direct_firing",
+    "value": "Direct firing capability with 155 mm gun by using the optronic of the RCWS (“Hunter / Killer” capability)",
+    "found_by": "step 6",
+    "flag": ""
+   }
+  ]
+ },
+ {
+  "id": "E662",
+  "name": "7.62 mm x 51 Ball 11 Long Range",
+  "dropped": 2,
+  "total": 10,
+  "old_dropped": 2,
+  "structure": "specs in prose only",
+  "url": "https://www.nammo.com/products/ammunition/small-caliber-ammunition/7-62mm-series/7-62-mm-x-51-ball-11-long-range",
+  "answer_key": [
+   {
+    "status": "DROPPED",
+    "parameter": "calibre_mm",
+    "page_value": "7.62 mm",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "ammunition_type",
+    "page_value": "full metal jacket projectile",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "projectile_weight_kg",
+    "page_value": "10.9 g (168 grain)",
+    "our_value": "10.9 g (168 grain)"
+   },
+   {
+    "status": "caught",
+    "parameter": "muzzle_velocity_mps",
+    "page_value": "805 m/s",
+    "our_value": "805 m/s"
+   },
+   {
+    "status": "caught",
+    "parameter": "Max. dispersion",
+    "page_value": "≤ 1 MOA",
+    "our_value": "≤ 1 MOA"
+   },
+   {
+    "status": "caught",
+    "parameter": "penetration_capacity_mm",
+    "page_value": "3.5 mm NATO plate at 550 m",
+    "our_value": "3.5 mm NATO plate at 550 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Powder",
+    "page_value": "Temperature stable",
+    "our_value": "Temperature stable"
+   },
+   {
+    "status": "caught",
+    "parameter": "Service temperature",
+    "page_value": "-54°C to +52°C",
+    "our_value": "-54°C to +52°C"
+   },
+   {
+    "status": "caught",
+    "parameter": "Safety temperature",
+    "page_value": "-54°C to +71°C",
+    "our_value": "-54°C to +71°C"
+   },
+   {
+    "status": "caught",
+    "parameter": "compatible_weapon_system",
+    "page_value": "semi-automatic rifles (DMR), sniper rifles and machine guns",
+    "our_value": "Suitable for semi-automatic rifles (DMR), sniper rifles and machine guns."
+   }
+  ],
+  "output": [
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "projectile_weight_kg",
+    "value": "10.9 g (168 grain)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "muzzle_velocity_mps",
+    "value": "805 m/s",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "max. dispersion",
+    "value": "≤ 1 MOA",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "penetration",
+    "value": "3.5 mm NATO plate at 550 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "powder",
+    "value": "Temperature stable",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "service_temperature",
+    "value": "-54°C to +52°C",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "safety_temperature",
+    "value": "-54°C to +71°C",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "status",
+    "value": "In production. Qualified by Norwegian defense forces as NM258.",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "suitable_for",
+    "value": "Suitable for semi-automatic rifles (DMR), sniper rifles and machine guns.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball 11 Long Range",
+    "parameter": "impact_energy",
+    "value": "The high projectile weight increases the impact energy by 40 percent at 800 m compared to a standard ball (M80).",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E526",
+  "name": "AW149",
+  "dropped": 2,
+  "total": 18,
+  "old_dropped": 10,
+  "structure": "specs in prose only",
+  "url": "https://www.leonardo.com/en/-/aw149",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "mtow_kg",
+    "page_value": "8,600 kg",
+    "our_value": "8,600 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "2 x General Electric CT7-2E1 and 1 x Safran e-APU (60 kW)",
+    "our_value": "2 x General Electric CT7-2E1 and 1 x Safran e-APU (60 kW)\nor\n2 x Safran Aneto-1K and 1 x Safran e-APU (60 kW)"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "2 x Safran Aneto-1K and 1 x Safran e-APU (60 kW)",
+    "our_value": "2 x General Electric CT7-2E1 and 1 x Safran e-APU (60 kW)\nor\n2 x Safran Aneto-1K and 1 x Safran e-APU (60 kW)"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "17.57 m",
+    "our_value": "17.57 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Overall height",
+    "page_value": "5.07 m",
+    "our_value": "5.07 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Rotor diameter",
+    "page_value": "14.60 m",
+    "our_value": "14.60 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "troop_capacity",
+    "page_value": "up to 16 troops heavily / 19 troops lightly equipped",
+    "our_value": "up to 16 troops heavily / 19 troops lightly equipped"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_speed_kmh",
+    "page_value": "294 km/h",
+    "our_value": "294 km/h"
+   },
+   {
+    "status": "caught",
+    "parameter": "HIGE",
+    "page_value": "3,948 m (12,953 ft)",
+    "our_value": "3,948 m (12,953 ft)*/4,572 m (15,000 ft) **"
+   },
+   {
+    "status": "caught",
+    "parameter": "HIGE",
+    "page_value": "4,572 m (15,000 ft)",
+    "our_value": "3,948 m (12,953 ft)*/4,572 m (15,000 ft) **"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "HOGE",
+    "page_value": "2,893 m (9,490 ft)",
+    "our_value": ""
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "HOGE",
+    "page_value": "2,712 m (8,900 ft)",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": "1,009 km",
+    "our_value": "1,009 km (545 nm)*/913 km (493 nm) **"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": "913 km",
+    "our_value": "1,009 km (545 nm)*/913 km (493 nm) **"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "5 h 05 min",
+    "our_value": "5 h 05 min*/4 h 28 min **"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "4 h 28 min",
+    "our_value": "5 h 05 min*/4 h 28 min **"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "window-mounted machine guns",
+    "our_value": "window-mounted machine guns"
+   },
+   {
+    "status": "caught",
+    "parameter": "armour_type",
+    "page_value": "additional armour protection",
+    "our_value": "additional armour protection"
+   }
+  ],
+  "output": [
+   {
+    "product": "AW149",
+    "parameter": "mtow_kg",
+    "value": "8,600 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "powerplant",
+    "value": "2 x General Electric CT7-2E1 and 1 x Safran e-APU (60 kW)\nor\n2 x Safran Aneto-1K and 1 x Safran e-APU (60 kW)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "length_overall_m",
+    "value": "17.57 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "overall_height",
+    "value": "5.07 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "rotor_diameter",
+    "value": "14.60 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "troop_capacity",
+    "value": "up to 16 troops heavily / 19 troops lightly equipped",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "max_speed_kmh",
+    "value": "294 km/h",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "service_ceiling_m",
+    "value": "3,948 m (12,953 ft)*/4,572 m (15,000 ft) **",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "operational_range_km",
+    "value": "1,009 km (545 nm)*/913 km (493 nm) **",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "endurance_h",
+    "value": "5 h 05 min*/4 h 28 min **",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "max_cruise_speed_kmh",
+    "value": "294 km/h - 159 kt",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "hige_powerplant",
+    "value": "*General Electric CT7-2E1 / ** Safran Aneto-1K",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "hoge_powerplant",
+    "value": "*General Electric CT7-2E1 / **Safran Aneto-1K",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "max_range_km",
+    "value": "1,009 km (545 nm)* / 913 km (493 nm)** with Standard self-sealing fuel tank, under floor tanks and transversal aux fuel tank - no reserve",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "max_range_powerplant",
+    "value": "*General Eletric CT7-2E1\n**Safran Aneto-1K",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "max_endurance_h",
+    "value": "5 h 05 min*/4 h 28 min** with Standard self-sealing fuel tank, under floor tanks and transversal aux fuel tank - no reserve",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "endurance_h",
+    "value": "50-minute dry run capability",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "operating_mode",
+    "value": "day/night all-weather capability",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "night_vision_compatibility",
+    "value": "single pilot Night Vision Goggle (NVG) compatible",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "survivability_feature",
+    "value": "crashworthy fuselage and seats",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "survivability_feature",
+    "value": "energy-absorbing landing gear and structure",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "survivability_feature",
+    "value": "self-sealing fuel tanks",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "defensive_aids_suite",
+    "value": "fully integrated defensive aids suite",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "armour_type",
+    "value": "additional armour protection",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "ballistic_tolerance",
+    "value": "high levels of ballistic tolerance of the blades, airframe and components",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "cabin_feature",
+    "value": "large sliding doors on both sides",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "cabin_feature",
+    "value": "fast roping and hoist operations",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "secondary_armament",
+    "value": "window-mounted machine guns",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "AW149",
+    "parameter": "cabin_feature",
+    "value": "large equipment stowage area for stretchers and medical kit",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "cockpit_type",
+    "value": "glass cockpit",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "cockpit_feature",
+    "value": "low workload",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "AW149",
+    "parameter": "mission_system",
+    "value": "advanced open architecture mission system",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E108",
+  "name": "ARCHER",
+  "dropped": 2,
+  "total": 17,
+  "old_dropped": 2,
+  "structure": "specs in prose only",
+  "url": "https://www.baesystems.com/en/product/archer",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "155mm",
+    "our_value": "155mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "deployment_time_min",
+    "page_value": "less than 30 seconds",
+    "our_value": "less than 30 seconds"
+   },
+   {
+    "status": "caught",
+    "parameter": "deployment_time_min",
+    "page_value": "20 seconds",
+    "our_value": "20 seconds for deployment and redeployment"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "conventional artillery ammunition",
+    "our_value": "conventional artillery ammunition, BONUS Anti-armor, Excalibur Precision Guided Munitions"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "BONUS Anti-armor",
+    "our_value": "conventional artillery ammunition, BONUS Anti-armor, Excalibur Precision Guided Munitions"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "Excalibur Precision Guided Munitions",
+    "our_value": "conventional artillery ammunition, BONUS Anti-armor, Excalibur Precision Guided Munitions"
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "6x6 VOLVO articulated hauler chassis",
+    "our_value": "6x6 VOLVO articulated hauler chassis"
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "military off-the-shelf all-terrain 8x8 vehicle",
+    "our_value": "Mounted on a military off-the-shelf all-terrain 8x8 vehicle"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "up to 90 km / h",
+    "our_value": "90 km / h"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "Up to 650 km",
+    "our_value": "650 km"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "armour_type",
+    "page_value": "armored cabin",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "Full protection against NBC threats, artillery fragmentation, mine attacks and blast overpressure",
+    "our_value": "Full protection against NBC threats, artillery fragmentation, mine attacks and blast overpressure"
+   },
+   {
+    "status": "caught",
+    "parameter": "guidance_type",
+    "page_value": "GPS-supported INS",
+    "our_value": "Onboard ballistics calculation, automated ammunition management, automated electronic fuze setting (NATO standard), open architecture interfaces, fully digitized fire missions, GPS-supported INS"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": "in excess of 50 km",
+    "our_value": "in excess of 50 km"
+   },
+   {
+    "status": "caught",
+    "parameter": "rate_of_fire_rpm",
+    "page_value": "up to 9 rounds/minute",
+    "our_value": "9 rounds/minute"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "MRSI",
+    "page_value": "4–6 rounds depending on range",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "magazine_capacity",
+    "page_value": "21 shells",
+    "our_value": "21 shells and modular charges"
+   }
+  ],
+  "output": [
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "calibre_mm",
+    "value": "155mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "deployment_time_min",
+    "value": "less than 30 seconds",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "max_speed_kmh",
+    "value": "90 km / h",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "effective_range_km",
+    "value": "in excess of 50 km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "rate_of_fire_rpm",
+    "value": "9 rounds/minute",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "magazine_capacity",
+    "value": "21 shells and modular charges",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "ammunition_type",
+    "value": "conventional artillery ammunition, BONUS Anti-armor, Excalibur Precision Guided Munitions",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "operational_range_km",
+    "value": "650 km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "protection_class",
+    "value": "Full protection against NBC threats, artillery fragmentation, mine attacks and blast overpressure",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "fire_control_system",
+    "value": "Onboard ballistics calculation, automated ammunition management, automated electronic fuze setting (NATO standard), open architecture interfaces, fully digitized fire missions, GPS-supported INS",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "main_armament",
+    "value": "155mm howitzer",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "vehicle_weight_t",
+    "value": "",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "crew_count",
+    "value": "Crew separated from gun and ammunition, crew never has to leave the cabin during combat",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "deployment_time_seconds",
+    "value": "20 seconds for deployment and redeployment",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "vehicle_type",
+    "value": "Mounted on a military off-the-shelf all-terrain 8x8 vehicle",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "transportability",
+    "value": "Can be transported by rail, boat or air",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "runflat_system",
+    "value": "Integrated runflat system",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "camouflage",
+    "value": "Optional Advanced Multispectral Camouflage System",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "ammunition_portfolio",
+    "value": "Access to an extensive portfolio of ammunition",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "target_change",
+    "value": "Fast change of targets in a wide firing area",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ARCHER Mobile Howitzer",
+    "parameter": "launch_platform",
+    "value": "6x6 VOLVO articulated hauler chassis",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "M109 Self-Propelled Howitzer",
+    "parameter": "barrel_length_cal",
+    "value": "52-caliber",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "M109 Self-Propelled Howitzer",
+    "parameter": "main_armament",
+    "value": "52-caliber cannon",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ACV",
+    "parameter": "product",
+    "value": "Amphibious Combat Vehicles",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "artillery systems",
+    "parameter": "product",
+    "value": "artillery systems",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Armored Multi-Purpose Vehicle",
+    "parameter": "product",
+    "value": "Armored Multi-Purpose Vehicle",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "CV90",
+    "parameter": "product",
+    "value": "CV90 combat vehicles",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E661",
+  "name": "7.62 mm x 51 Ball Non Toxic 9 HP",
+  "dropped": 2,
+  "total": 8,
+  "old_dropped": 1,
+  "structure": "specs in prose only",
+  "url": "https://www.nammo.com/products/ammunition/small-caliber-ammunition/7-62mm-series/7-62-mm-x-51-ball-non-toxic-9-hp",
+  "answer_key": [
+   {
+    "status": "DROPPED",
+    "parameter": "calibre_mm",
+    "page_value": "7.62 mm x 51",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "projectile_weight_kg",
+    "page_value": "9 g (139 grain)",
+    "our_value": "9 g (139 grain)"
+   },
+   {
+    "status": "caught",
+    "parameter": "muzzle_velocity_mps",
+    "page_value": "860 m/s",
+    "our_value": "860 m/s"
+   },
+   {
+    "status": "caught",
+    "parameter": "Max. dispersion",
+    "page_value": "SD ≤ 150 mm at 550 m",
+    "our_value": "SD ≤ 150 mm at 550 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "penetration_capacity_mm",
+    "page_value": "3.5 mm NATO plate at 900 m",
+    "our_value": "3.5 mm NATO plate at 900 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Service temperature",
+    "page_value": "-54°C to +52°C",
+    "our_value": "-54°C to +52°C"
+   },
+   {
+    "status": "caught",
+    "parameter": "Safety temperature",
+    "page_value": "-54°C to +71°C",
+    "our_value": "-54°C to +71°C"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "lead free",
+    "page_value": "100 percent",
+    "our_value": ""
+   }
+  ],
+  "output": [
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "projectile_weight_kg",
+    "value": "9 g (139 grain)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "muzzle_velocity_mps",
+    "value": "860 m/s",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "max. dispersion",
+    "value": "SD ≤ 150 mm at 550 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "penetration",
+    "value": "3.5 mm NATO plate at 900 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "service_temperature",
+    "value": "-54°C to +52°C",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "safety_temperature",
+    "value": "-54°C to +71°C",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "calibers",
+    "value": "Exists in all three NATO calibers – both as ball and tracer",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "7.62 mm x 51 Ball Non Toxic 9 HP",
+    "parameter": "status",
+    "value": "The world’s only NATO qualified 7.62 mm “green” ball round totally free from lead. In service with Swedish and Norwegian defense forces. Combat proven and NATO qualified as AC/116-32A.",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E1069",
+  "name": "HERO 90",
+  "dropped": 1,
+  "total": 6,
+  "old_dropped": 5,
+  "structure": "few specs",
+  "url": "https://uvisionuav.com/loitering-munitions/hero-90",
+  "answer_key": [
+   {
+    "status": "DROPPED",
+    "parameter": "target_type",
+    "page_value": "armored vehicles, defilade positions, and hardened targets",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "warhead_type",
+    "page_value": "Anti-Armor, Anti-Tank",
+    "our_value": "Multiple Warhead Types- Anti-Armor, Anti-Tank"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "High-res EO/IR camera",
+    "our_value": "High-res EO/IR camera with payload option"
+   },
+   {
+    "status": "caught",
+    "parameter": "Precision accuracy",
+    "page_value": "<1 mCEP",
+    "our_value": "Precision accuracy, minimal collateral (<1 mCEP)"
+   },
+   {
+    "status": "caught",
+    "parameter": "deployment_time_min",
+    "page_value": "under 2 minutes",
+    "our_value": "Backpack-carried launcher: launch-ready in under 2 minutes"
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "light vehicles, tanks, and armored vehicles",
+    "our_value": "Plug-and-play on light vehicles, tanks, and armored vehicles"
+   }
+  ],
+  "output": [
+   {
+    "product": "HERO 90",
+    "parameter": "weight_kg",
+    "value": "0 Kg",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "warhead_weight_kg",
+    "value": "0 Kg",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "maximum_range_km",
+    "value": "0 Km",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "endurance_h",
+    "value": "0 Min",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "target_type",
+    "value": "Multi-Purpose, Dismounted Loitering Munition",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "accuracy",
+    "value": "Precision accuracy, minimal collateral (<1 mCEP)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "operating_environment",
+    "value": "Mission adaptable in GPS-denied environments",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "sensor_payload_suite",
+    "value": "High-res EO/IR camera with payload option",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "penetration_capacity_mm",
+    "value": "Top-attack roof penetration",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "warhead_type",
+    "value": "Multiple Warhead Types- Anti-Armor, Anti-Tank",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "sensor_payload_suite",
+    "value": "AI tracker with optional ATR",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "compatible_weapon_system",
+    "value": "Integrates with land vehicles of all sizes and dismounted infantry, merging easily into third-party ISR and C2 for rapid cue-to-strike",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "launch_platform",
+    "value": "Plug-and-play on light vehicles, tanks, and armored vehicles",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "deployment_time_min",
+    "value": "Backpack-carried launcher: launch-ready in under 2 minutes",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "rate_of_fire_rpm",
+    "value": "One-to-many: supports paired or sequential launches for coordinated effects against multiple armored targets",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "HERO 90",
+    "parameter": "compact_size",
+    "value": "The compact size and low weight ideally suit tactical, on-the-move forces, geared to “hunt” mobile and transient threats.",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E252",
+  "name": "ROMULUS™ 7",
+  "dropped": 1,
+  "total": 9,
+  "old_dropped": 0,
+  "structure": "scattered key/value lines",
+  "url": "https://www.hii.com/products/ROMULUS-7",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "7ft",
+    "our_value": "7ft"
+   },
+   {
+    "status": "caught",
+    "parameter": "beam_m",
+    "page_value": "2ft",
+    "our_value": "2ft"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_knots",
+    "page_value": "19kn",
+    "our_value": "19kn"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "4+ hrs",
+    "our_value": "Cruise 4+ hrs, Loiter 24+ hrs, and 30+ nm operational range"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "24+ hrs",
+    "our_value": "Cruise 4+ hrs, Loiter 24+ hrs, and 30+ nm operational range"
+   },
+   {
+    "status": "caught",
+    "parameter": "range_nm",
+    "page_value": "30+ nm",
+    "our_value": "30nm"
+   },
+   {
+    "status": "caught",
+    "parameter": "payload_capacity_kg",
+    "page_value": "60 lb",
+    "our_value": "60 lb capacity; 4.6+ cu ft volume; includes Mod Payload Interface"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "propulsion_type",
+    "page_value": "all-electric propulsion",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "Energy",
+    "page_value": "9 kWh Li-ion battery",
+    "our_value": "All-electric architecture; 9 kWh Li-ion battery"
+   }
+  ],
+  "output": [
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "length_overall_m",
+    "value": "7ft",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "max_speed_knots",
+    "value": "19kn",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "endurance_h",
+    "value": "30nm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "beam_m",
+    "value": "2ft",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "max_speed_knots",
+    "value": "14 kt; Sprint 19 kt",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "endurance_h",
+    "value": "Cruise 4+ hrs, Loiter 24+ hrs, and 30+ nm operational range",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "payload_capacity_kg",
+    "value": "60 lb capacity; 4.6+ cu ft volume; includes Mod Payload Interface",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "propulsion_type",
+    "value": "All-electric architecture; 9 kWh Li-ion battery",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "compatible_weapon_system",
+    "value": "Odyssey™",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "sensor_payload_suite",
+    "value": "Line of Sight (LOS)/Beyond Line of Sight (BLOS); Waypoint, Line Follow, Loiter, RC; Regulated payload rails (12V/150W; 28V/360W), multiple Ethernet LAN/WAN ports, DC blocked GPS feed, gland passthrough for through deck routing",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "length_overall_m",
+    "value": "7ft Legnth",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "beam_m",
+    "value": "2ft Beam",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "mission_applications",
+    "value": "RF-acoustic communication relay to bridge the air-water interface",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "mission_applications",
+    "value": "Intelligence, Surveillance, Reconnaissance (ISR)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "mission_applications",
+    "value": "Bathymetry and hydrographic survey",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "mission_applications",
+    "value": "Electronic warfare and signals operations",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "mission_applications",
+    "value": "Payload delivery and extraction",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "mission_applications",
+    "value": "Vessel interdiction and maritime security",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "advantages",
+    "value": "Rapid deployment from shore or small boats.",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "advantages",
+    "value": "Low lifecycle cost",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "advantages",
+    "value": "Open architecture",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "advantages",
+    "value": "Standardized payload interfaces",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "advantages",
+    "value": "REMUS interoperability",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "advantages",
+    "value": "Enabled by Odyssey Autonomy Suite",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "propulsion_type",
+    "value": "man-portable",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "length_overall_m",
+    "value": "7-foot",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "ROMULUS™ 7",
+    "parameter": "target_type",
+    "value": "expeditionary and special operations",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E815",
+  "name": "NEGEV SF",
+  "dropped": 1,
+  "total": 5,
+  "old_dropped": 1,
+  "structure": "scattered key/value lines",
+  "url": "https://iwi.net/negev/negev-sf",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "5.56X45mm",
+    "our_value": "5.56X45mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Rifling",
+    "page_value": "6 RH Grooves, 1:7″ twist",
+    "our_value": "6 RH Grooves, 1:7″ twist"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "barrel_length_mm",
+    "page_value": "330mm",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "rate_of_fire_rpm",
+    "page_value": "850~1,050 (magazine / belt)",
+    "our_value": "850~1,050 (magazine / belt)"
+   },
+   {
+    "status": "caught",
+    "parameter": "rate_of_fire_rpm",
+    "page_value": "950~1,150 (belt – extreme conditions)",
+    "our_value": "950~1,150 (belt – extreme conditions)"
+   }
+  ],
+  "output": [
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "calibre_mm",
+    "value": "5.56X45mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "barrel_length_mm",
+    "value": "330 (13\")",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "length_overall_m",
+    "value": "890 mm",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "length_overall_m",
+    "value": "680 mm",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "weight_kg",
+    "value": "7.65",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "rate_of_fire_rpm",
+    "value": "850~1,050 (magazine / belt)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "rate_of_fire_rpm",
+    "value": "950~1,150 (belt – extreme conditions)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO 21 Day / night self-illuminated reflex sight",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO MOR Multi-purpose reflex sight with two laser pointers (Visible and IR)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO M5 Red dot weapon sight",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO MX3 x3 magnifying scope with TAVOR adaptor",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO X4 Day scope with x4 magnification",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRP RANTEL Multi-functional night vision mini-monocular",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO GLS Self-illuminated reflex sight for 40mm grenade launcher",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "MEPRO STING Laser pointer",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "sight",
+    "value": "REMOVABLE IRON SIGHT For TAVOR & X95 Assault Rifle / Carbine / SMG With quick detach",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "bayonet",
+    "value": "BAYONET – BLACK For Assault Rifle",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "bipod",
+    "value": "BIPOD For Assault Rifle / SMG",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "suppressor",
+    "value": "5.56 SUPPRESSOR 5.56X45mm suppressor for TAVOR / ACE / X95",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NEGEV SF ®",
+    "parameter": "rifling",
+    "value": "6 RH Grooves, 1:7″ twist",
+    "found_by": "step 7",
+    "flag": ""
+   }
+  ]
+ },
+ {
+  "id": "E957",
+  "name": "CROSS MAGNUM",
+  "dropped": 1,
+  "total": 26,
+  "old_dropped": 0,
+  "structure": "specs in prose only",
+  "url": "https://www.sigsauer.com/cross-magnum.html",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "300 Win Mag",
+    "our_value": "300 Win Mag"
+   },
+   {
+    "status": "caught",
+    "parameter": "barrel_length_mm",
+    "page_value": "24 in [609.6 mm]",
+    "our_value": "24 in [609.6 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "BARREL MATERIAL",
+    "page_value": "Stainless Steel",
+    "our_value": "Stainless Steel"
+   },
+   {
+    "status": "caught",
+    "parameter": "TWIST RATE",
+    "page_value": "1:9",
+    "our_value": "1:9"
+   },
+   {
+    "status": "caught",
+    "parameter": "THREADS",
+    "page_value": "5/8 in -24, 90 Degree Shoulder",
+    "our_value": "5/8 in -24, 90 Degree Shoulder"
+   },
+   {
+    "status": "caught",
+    "parameter": "MUZZLE DEVICE",
+    "page_value": "Radial Brake",
+    "our_value": "Radial Brake"
+   },
+   {
+    "status": "caught",
+    "parameter": "action_type",
+    "page_value": "Bolt",
+    "our_value": "Bolt-Action"
+   },
+   {
+    "status": "caught",
+    "parameter": "OPERATING SYSTEM",
+    "page_value": "Bolt-Action",
+    "our_value": "Bolt-Action"
+   },
+   {
+    "status": "caught",
+    "parameter": "STOCK TYPE",
+    "page_value": "Folding Precision Adjustable Stock",
+    "our_value": "Folding Precision Adjustable Stock"
+   },
+   {
+    "status": "caught",
+    "parameter": "GRIP TYPE",
+    "page_value": "Weighted AR-Compatible PRS",
+    "our_value": "Weighted AR-Compatible PRS"
+   },
+   {
+    "status": "caught",
+    "parameter": "TRIGGER TYPE",
+    "page_value": "2-Stage Adjustable Match Trigger (2.5-4lb)",
+    "our_value": "2-Stage Adjustable Match"
+   },
+   {
+    "status": "caught",
+    "parameter": "TRIGGER SHAPE",
+    "page_value": "Curved",
+    "our_value": "Curved"
+   },
+   {
+    "status": "caught",
+    "parameter": "MANUAL SAFETY",
+    "page_value": "Ambidextrous PRS Thumb Rest",
+    "our_value": "Ambidextrous PRS Thumb Rest"
+   },
+   {
+    "status": "caught",
+    "parameter": "FOREND TYPE",
+    "page_value": "Free-Floating M-LOK/ARCA",
+    "our_value": "Free-Floating M-LOK/ARCA"
+   },
+   {
+    "status": "caught",
+    "parameter": "ACCESSORY RAIL",
+    "page_value": "M-LOK/ARCA/Picatinny",
+    "our_value": "M-LOK/ARCA/Picatinny"
+   },
+   {
+    "status": "caught",
+    "parameter": "ACCESSORY RAIL",
+    "page_value": "20 MOA Picatinny Rail",
+    "our_value": "20 MOA"
+   },
+   {
+    "status": "caught",
+    "parameter": "MAG TYPE",
+    "page_value": "AICS",
+    "our_value": "AICS"
+   },
+   {
+    "status": "caught",
+    "parameter": "magazine_capacity",
+    "page_value": "6rd",
+    "our_value": "(1) 6rd Double Stack Steel Mag"
+   },
+   {
+    "status": "DROPPED",
+    "parameter": "COLOR",
+    "page_value": "Black",
+    "our_value": ""
+   },
+   {
+    "status": "caught",
+    "parameter": "RECEIVER FINISH",
+    "page_value": "Coyote Anodized",
+    "our_value": "Coyote Anodized"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "46.9 in [1191 mm] Comb Extended",
+    "our_value": "46.9 in [1191 mm] Comb Extended"
+   },
+   {
+    "status": "caught",
+    "parameter": "COLLAPSED LENGTH",
+    "page_value": "45 in Comb Collapsed",
+    "our_value": "45 in Comb Collapsed"
+   },
+   {
+    "status": "caught",
+    "parameter": "FOLDED LENGTH",
+    "page_value": "35.8 in",
+    "our_value": "35.8 in"
+   },
+   {
+    "status": "caught",
+    "parameter": "OVERALL WIDTH",
+    "page_value": "3.4 in [86 mm]",
+    "our_value": "3.4 in [86 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "HEIGHT",
+    "page_value": "7.3 in",
+    "our_value": "7.3 in"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "8.7 lb [3.9 kg]",
+    "our_value": "8.7 lb [3.9 kg]"
+   }
+  ],
+  "output": [
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "calibre_mm",
+    "value": "300 Win Mag",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "barrel_length_mm",
+    "value": "24 in [609.6 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "barrel_material",
+    "value": "Stainless Steel",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "twist_rate",
+    "value": "1:9",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "threads",
+    "value": "5/8 in -24, 90 Degree Shoulder",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "muzzle_device",
+    "value": "Radial Brake",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "action_type",
+    "value": "Bolt-Action",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "operating_system",
+    "value": "Bolt",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "stock_type",
+    "value": "Folding Precision Adjustable Stock",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "grip_type",
+    "value": "Weighted AR-Compatible PRS",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "trigger_type",
+    "value": "2-Stage Adjustable Match",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "trigger_shape",
+    "value": "Curved",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "manual_safety",
+    "value": "Ambidextrous PRS Thumb Rest",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "forend_type",
+    "value": "Free-Floating M-LOK/ARCA",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "accessory_rail",
+    "value": "M-LOK/ARCA/Picatinny",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "mag_type",
+    "value": "AICS",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "mags_included",
+    "value": "(1) 6rd Double Stack Steel Mag",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "color",
+    "value": "Coyote Anodized",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "receiver_finish",
+    "value": "Coyote Anodized",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "length_overall_m",
+    "value": "46.9 in [1191 mm] Comb Extended",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "collapsed_length",
+    "value": "45 in Comb Collapsed",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "folded_length",
+    "value": "35.8 in",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "overall_width",
+    "value": "3.4 in [86 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "height",
+    "value": "7.3 in",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "weight_kg",
+    "value": "8.7 lb [3.9 kg]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "barrel_contour",
+    "value": "Medium Contour 5R",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "forward_assist",
+    "value": "N/A",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "trigger_pull_weight",
+    "value": "2.5-4lb",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS-MAG-300WM-24B",
+    "parameter": "picatinny_rail_angle",
+    "value": "20 MOA",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "folded_length",
+    "value": "36\"",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "picatinny_rail_angle",
+    "value": "20 MOA",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "barrel_contour",
+    "value": "Medium Contour 5R",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "receiver_finish",
+    "value": "Coyote Anodized",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "stock_type",
+    "value": "Folding Precision Adjustable Stock",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "grip_type",
+    "value": "Forward Angle PRS Style Grip",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "manual_safety",
+    "value": "Right Side PRS Thumb Rest Safety",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "forend_type",
+    "value": "Free-Floating M-LOK/ARCA",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "accessory_rail",
+    "value": "Picatinny",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "barrel_length_mm",
+    "value": "24\"",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "barrel_material",
+    "value": "Stainless Steel",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "calibre_mm",
+    "value": "300 Win Mag",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "twist_rate",
+    "value": "1:9",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "threads",
+    "value": "5/8 in -24, 90 Degree Shoulder",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "muzzle_device",
+    "value": "Radial Brake",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "action_type",
+    "value": "Bolt-Action",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "mag_type",
+    "value": "AICS",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "mags_included",
+    "value": "(1) 6rd Double Stack Steel Mag",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "length_overall_m",
+    "value": "46.9 in [1191 mm] Comb Extended",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "collapsed_length",
+    "value": "45 in Comb Collapsed",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "folded_length",
+    "value": "35.8 in",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "overall_width",
+    "value": "3.4 in [86 mm]",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "height",
+    "value": "7.3 in",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "weight_kg",
+    "value": "8.7 lb [3.9 kg]",
+    "found_by": "step 7",
+    "flag": ""
+   },
+   {
+    "product": "CROSS MAGNUM",
+    "parameter": "forward_assist",
+    "value": "N/A",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E950",
+  "name": "ELITE V-CROWN M17",
+  "dropped": 0,
+  "total": 7,
+  "old_dropped": 3,
+  "structure": "mixed: table and prose",
+  "url": "https://www.sigsauer.com/9mm-p-124gr-elite-v-crown-m17-jhp-box-20.html",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "9mm Luger",
+    "our_value": "9mm Luger"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "Jacketed Hollow Point (JHP)",
+    "our_value": "Jacketed Hollow Point (JHP)"
+   },
+   {
+    "status": "caught",
+    "parameter": "projectile_weight_kg",
+    "page_value": "124 Grain",
+    "our_value": "124 Grain"
+   },
+   {
+    "status": "caught",
+    "parameter": "muzzle_velocity_mps",
+    "page_value": "1,198 fps",
+    "our_value": "1,198 fps"
+   },
+   {
+    "status": "caught",
+    "parameter": "Muzzle Energy",
+    "page_value": "395 ft-lbs",
+    "our_value": "395 ft-lbs"
+   },
+   {
+    "status": "caught",
+    "parameter": "Bullet Length",
+    "page_value": "14.859 mm",
+    "our_value": "14.859 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Case Type",
+    "page_value": "Nickel Plated Brass",
+    "our_value": "Nickel Plated Brass"
+   }
+  ],
+  "output": [
+   {
+    "product": "M17 9mm +P",
+    "parameter": "calibre_mm",
+    "value": "9mm Luger",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "projectile_weight_kg",
+    "value": "124 Grain",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "muzzle_velocity_mps",
+    "value": "1,198 fps",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "magazine_capacity",
+    "value": "20",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "bullet_length",
+    "value": "14.859 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "case_type",
+    "value": "Nickel Plated Brass",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "test_barrel_length_in",
+    "value": "4.0 ± 1/16",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "muzzle_energy",
+    "value": "395 ft-lbs",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "ammo_application",
+    "value": "Defensive",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "ammo_type",
+    "value": "Jacketed Hollow Point (JHP)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "series",
+    "value": "M17, V-Crown",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17 9mm +P",
+    "parameter": "lead_free",
+    "value": "No",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E946",
+  "name": "SIG MCX SBR",
+  "dropped": 0,
+  "total": 7,
+  "old_dropped": 0,
+  "structure": "label/value spec table",
+  "url": "http://www.sigsauer.com/sig-mcx-sbr.html",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "300BLK",
+    "our_value": "300BLK cartridge"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "5.56 NATO",
+    "our_value": "5.56 NATO"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "7.62x39mm",
+    "our_value": "7.62x39mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Height",
+    "page_value": "8 in [203 mm]",
+    "our_value": "8 in [203 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "26.25 in [667 mm] - 31 in [787 mm]",
+    "our_value": "26.25 in [667 mm] - 31 in [787 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "Overall Width",
+    "page_value": "2.8 in [71 mm]",
+    "our_value": "2.8 in [71 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "5.5 lb [2.5 kg] - 6.4 lb [2.9 kg]",
+    "our_value": "5.5 lb [2.5 kg] - 6.4 lb [2.9 kg]"
+   }
+  ],
+  "output": [
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "ammunition_type",
+    "value": "300BLK cartridge",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "Height",
+    "value": "8 in [203 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "length_overall_m",
+    "value": "26.25 in [667 mm] - 31 in [787 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "Overall Width",
+    "value": "2.8 in [71 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "weight_kg",
+    "value": "5.5 lb [2.5 kg] - 6.4 lb [2.9 kg]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "propulsion_type",
+    "value": "Gas Piston",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "ammunition_type",
+    "value": "5.56 NATO",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "ammunition_type",
+    "value": "7.62x39mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "gas_block",
+    "value": "two-position gas block",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "handguard",
+    "value": "alloy KeyMod handguard",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "controls",
+    "value": "AR-style lower controls",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "magazines",
+    "value": "polymer magazines",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "recoil_system",
+    "value": "revolutionary recoil system",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "stock",
+    "value": "side-folding and telescoping stocks",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "top_rail",
+    "value": "picatinny top rail",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "forend",
+    "value": "alloy forend",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SIG MCX SBR",
+    "parameter": "ambidextrous_controls",
+    "value": "Completely ambidextrous controls include the safety, magazine release and charging handle",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E318",
+  "name": "Viking",
+  "dropped": 0,
+  "total": 15,
+  "old_dropped": 4,
+  "structure": "mixed: table and prose",
+  "url": "https://www.idvgroup.com/products/uncrewed-ground-vehicles/viking",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "45 km/h",
+    "our_value": "45 km/h"
+   },
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "2 t",
+    "our_value": "GVW 2 t"
+   },
+   {
+    "status": "caught",
+    "parameter": "empty_weight_kg",
+    "page_value": "1300 kg",
+    "our_value": "Approx. 1300 kg, kerb"
+   },
+   {
+    "status": "caught",
+    "parameter": "payload_capacity_kg",
+    "page_value": "750 kg",
+    "our_value": "750 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "3 m",
+    "our_value": "3 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "Series hybrid",
+    "our_value": "Series hybrid"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "Parallel diesel electric drive",
+    "our_value": "Diesel / electric drive"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "300 km",
+    "our_value": "300 km hybrid range"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "30 km",
+    "our_value": "30 km electric range"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "over 24 hours",
+    "our_value": "over 24 hours in silent watch mode"
+   },
+   {
+    "status": "caught",
+    "parameter": "POWER",
+    "page_value": "75 kW/t",
+    "our_value": "75 kW/t"
+   },
+   {
+    "status": "caught",
+    "parameter": "Ground clearance",
+    "page_value": "300 mm",
+    "our_value": "Ground clearance 300 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Step capability",
+    "page_value": "350 mm",
+    "our_value": "Step capability 350 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Fording depth",
+    "page_value": "600 mm",
+    "our_value": "600 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Operating temperature",
+    "page_value": "-20° C / +39° C",
+    "our_value": "-20° C / +39° C"
+   }
+  ],
+  "output": [
+   {
+    "product": "Viking",
+    "parameter": "power_kw",
+    "value": "75 kW/t",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "propulsion_type",
+    "value": "Series hybrid",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "propulsion_type",
+    "value": "Diesel / electric drive",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "propulsion_type",
+    "value": "Plug-in and self-charging",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "range_km",
+    "value": "30 km electric range",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "range_km",
+    "value": "300 km hybrid range",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "max_speed_kmh",
+    "value": "45 km/h",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "vehicle_weight_t",
+    "value": "GVW 2 t",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "payload_capacity_kg",
+    "value": "750 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "gradient",
+    "value": "Gradient 60%",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "drivetrain",
+    "value": "6×6 drivetrain",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "suspension",
+    "value": "Independent suspension",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "ground_clearance_mm",
+    "value": "Ground clearance 300 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "step_capability_mm",
+    "value": "Step capability 350 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "steering",
+    "value": "2-wheel and 4-wheel steer",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "length_overall_m",
+    "value": "3 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "beam_m",
+    "value": "1.8 m",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "height",
+    "value": "0.9 m",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "payload_space",
+    "value": "2.2 m x 1.8 m",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "payload_power_and_data_connection",
+    "value": "Standard payload power and data connection",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "autonomy",
+    "value": "Remote control",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "autonomy",
+    "value": "Teleoperation",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "autonomy",
+    "value": "Autonomous behaviours (Route following, Follow Me, Recce and Survey)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "Soldier Support / CASEVAC",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "ISTAR",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "CBRNE Recce and Survey",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "Last Mile Resupply / Logistics",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "Remote Weapon Station",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "Counter UAS",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "IED Detect",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "Anti Armour",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "powertrain",
+    "value": "Parallel diesel electric drive",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "range_km",
+    "value": "30 km electric drive (on flat road at nominal +20° C)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "range_km",
+    "value": "300 km hybrid drive (on flat road at nominal +20° C)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "operation",
+    "value": "All light conditions",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "e_stops",
+    "value": "3 fitted to the Viking — 1 fitted to the hand controller",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "operating_temperature",
+    "value": "-20° C / +39° C",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "fording_depth_mm",
+    "value": "600 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "low_profile",
+    "value": "Low profile 3 m x 1.8 m x 0.9 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "kerb_weight_kg",
+    "value": "Approx. 1300 kg, kerb",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "minimum_turning_circle_m",
+    "value": "7 m minimum turning circle",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "slope",
+    "value": "60% slope",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "differential_locks",
+    "value": "6×6 drive and lockable differentials",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "silent_watch_mode_hours",
+    "value": "over 24 hours in silent watch mode",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Viking",
+    "parameter": "fire_control_system",
+    "value": "MACE system",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "sensor_payload_suite",
+    "value": "AI-driven passive and active sensors",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "autonomy",
+    "value": "remotely and autonomously navigating",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "casualty evacuation",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "surveillance",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "CBRN",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "combat support",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "differential_locks",
+    "value": "differential locks",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "ground_clearance_mm",
+    "value": "high ground clearance",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "propulsion_type",
+    "value": "diesel engine with a high-voltage electric motor and battery pack",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "power_kw",
+    "value": "high power-to-weight ratio",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "autonomy",
+    "value": "IDV Robotics' MACE system",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "IED Detection",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "Viking",
+    "parameter": "missions_payloads",
+    "value": "Remote Weapon Stations",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E807",
+  "name": "STAND ALONE IWI GL 40",
+  "dropped": 0,
+  "total": 4,
+  "old_dropped": 2,
+  "structure": "scattered key/value lines",
+  "url": "https://iwi.net/ace/stand-alone-iwi-gl-40",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "40X46mm",
+    "our_value": "40X46mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "barrel_length_mm",
+    "page_value": "303mm",
+    "our_value": "303mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Rifling",
+    "page_value": "6 RH grooves, 1:48″ twist",
+    "our_value": "6 RH grooves, 1:48″ twist"
+   },
+   {
+    "status": "caught",
+    "parameter": "compatible_weapon_system",
+    "page_value": "X95 Assault Rifles",
+    "our_value": "Can be mounted on selected models of X95 Assault Rifles"
+   }
+  ],
+  "output": [
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "calibre_mm",
+    "value": "40X46mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "barrel_length_mm",
+    "value": "305 (12″)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "total_length_retracted_mm",
+    "value": "606",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "total_length_extended_mm",
+    "value": "690",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "weight_kg",
+    "value": "2",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "rifling",
+    "value": "6 RH grooves, 1:48″ twist",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "barrel_length_mm",
+    "value": "303mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "mounting",
+    "value": "Can be mounted on selected models of X95 Assault Rifles",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRO MOR Multi-purpose reflex sight with two laser pointers (Visible and IR)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRO M5 Red dot weapon sight",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRO MX3 x3 magnifying scope with TAVOR adaptor",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRO X4 Day scope with x4 magnification",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRP RANTEL Multi-functional night vision mini-monocular",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRO GLS Self-illuminated reflex sight for 40mm grenade launcher",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "MEPRO STING Laser pointer",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "sight",
+    "value": "REMOVABLE IRON SIGHT For TAVOR & X95 Assault Rifle / Carbine / SMG With quick detach",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "accessory",
+    "value": "BAYONET – BLACK For Assault Rifle",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "accessory",
+    "value": "BIPOD For Assault Rifle / SMG",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "STAND ALONE IWI GL 40",
+    "parameter": "accessory",
+    "value": "5.56 SUPPRESSOR 5.56X45mm suppressor for TAVOR / ACE / X95",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E126",
+  "name": "Quick Reaction Surface to Air Missile (QRSAM)",
+  "dropped": 0,
+  "total": 11,
+  "old_dropped": 0,
+  "structure": "scattered key/value lines",
+  "url": "https://bdl-india.in/qrsam",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "4364 mm",
+    "our_value": "4364 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Dia",
+    "page_value": "0.225 m",
+    "our_value": "0.225 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "missile_weight_kg",
+    "page_value": "270 kgs",
+    "our_value": "270 kgs"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": "05 to 30 Km",
+    "our_value": "30 Km"
+   },
+   {
+    "status": "caught",
+    "parameter": "engagement_altitude_km",
+    "page_value": "6 Km",
+    "our_value": "6 Km"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "Single Stage Solid Rocket Motor",
+    "our_value": "Single Stage Solid Rocket Motor"
+   },
+   {
+    "status": "caught",
+    "parameter": "guidance_type",
+    "page_value": "Mid Course Inertial + Target Update Terminal Active Homing Seeker",
+    "our_value": "Mid Course Inertial + Target Update Terminal Active Homing Seeker"
+   },
+   {
+    "status": "caught",
+    "parameter": "seeker_type",
+    "page_value": "Active Homing Seeker",
+    "our_value": "Mid Course Inertial + Target Update Terminal Active Homing Seeker"
+   },
+   {
+    "status": "caught",
+    "parameter": "warhead_type",
+    "page_value": "Pre-Fragmented & High Energy",
+    "our_value": "Pre-Fragmented & High Energy"
+   },
+   {
+    "status": "caught",
+    "parameter": "Launch",
+    "page_value": "Canisterized Inclined Launch",
+    "our_value": "Canisterized Inclined Launch"
+   },
+   {
+    "status": "caught",
+    "parameter": "Engagement",
+    "page_value": "Simultaneous 6 Targets",
+    "our_value": "Simultaneous 6 Targets"
+   }
+  ],
+  "output": [
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "length_overall_m",
+    "value": "4364 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "weight_kg",
+    "value": "270 kgs",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "maximum_range_km",
+    "value": "30 Km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "engagement_altitude_km",
+    "value": "6 Km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "propulsion_type",
+    "value": "Single Stage Solid Rocket Motor",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "guidance_type",
+    "value": "Mid Course Inertial + Target Update Terminal Active Homing Seeker",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "warhead_type",
+    "value": "Pre-Fragmented & High Energy",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "launch_platform",
+    "value": "Canisterized Inclined Launch",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "tracked_targets",
+    "value": "Simultaneous 6 Targets",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "diameter_m",
+    "value": "0.225 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "sskp",
+    "value": "80%",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Quick Reaction Surface to Air Missile (QRSAM)",
+    "parameter": "operating_modes",
+    "value": "Search on Move, Track on Move and Fire on Short halts",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E962",
+  "name": "M17X",
+  "dropped": 0,
+  "total": 9,
+  "old_dropped": 6,
+  "structure": "specs in prose only",
+  "url": "http://www.sigsauer.com/m17x.html",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "9mm Luger",
+    "our_value": "9mm Luger"
+   },
+   {
+    "status": "caught",
+    "parameter": "magazine_capacity",
+    "page_value": "21rd",
+    "our_value": "(3) 21rd Steel Mag"
+   },
+   {
+    "status": "caught",
+    "parameter": "action_type",
+    "page_value": "Striker",
+    "our_value": "Striker"
+   },
+   {
+    "status": "caught",
+    "parameter": "barrel_length_mm",
+    "page_value": "4.7 in [119.38 mm]",
+    "our_value": "4.7 in [119.38 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "7.2 in [183 mm]",
+    "our_value": "7.2 in [183 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "33 oz [935.5 g] w/ Magazine",
+    "our_value": "33 oz [935.5 g] w/ Magazine"
+   },
+   {
+    "status": "caught",
+    "parameter": "Sight Radius",
+    "page_value": "6.6 in [168 mm]",
+    "our_value": "6.6 in [168 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "Overall Width",
+    "page_value": "1.6 in [41 mm]",
+    "our_value": "1.6 in [41 mm]"
+   },
+   {
+    "status": "caught",
+    "parameter": "Height",
+    "page_value": "6.3 in [163 mm]",
+    "our_value": "6.3 in [163 mm]"
+   }
+  ],
+  "output": [
+   {
+    "product": "M17X-9-RX",
+    "parameter": "calibre_mm",
+    "value": "9mm Luger",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "magazine_capacity",
+    "value": "(3) 21rd Steel Mag",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "sensor_payload_suite",
+    "value": "ROMEOM17 With SIGLITE Front/Rear",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "rx_footprint",
+    "value": "Yes",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "optic_ready",
+    "value": "SIG-LOC (M17/M18 MHS & Commem.)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "barrel_length_mm",
+    "value": "6.6 in [168 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "slide_finish",
+    "value": "Coyote PVD",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "slide_material",
+    "value": "Stainless Steel",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "electro-optic_installed",
+    "value": "Yes",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "trigger_action",
+    "value": "Striker",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "trigger_type",
+    "value": "X Flat Trigger",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "manual_safety",
+    "value": "No",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "frame_finish",
+    "value": "N/A",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "frame_material",
+    "value": "X Modular Polymer",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "grip_module",
+    "value": "Standard Polymer",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "grip_type",
+    "value": "Coyote Tan",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "grip_material",
+    "value": "Coyote Tan",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "accessory_rail",
+    "value": "M1913",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "fcu_finish",
+    "value": "N/A",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "fcu_material",
+    "value": "Stainless Steel",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "barrel_length_mm",
+    "value": "4.7 in [119.38 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "threaded_barrel",
+    "value": "No",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "barrel_material",
+    "value": "Carbon Steel",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "overall_length",
+    "value": "7.2 in [183 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "overall_width",
+    "value": "1.6 in [41 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "height",
+    "value": "6.3 in [163 mm]",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "M17X-9-RX",
+    "parameter": "weight_kg",
+    "value": "33 oz [935.5 g] w/ Magazine",
+    "found_by": "step 6",
+    "flag": ""
+   }
+  ]
+ },
+ {
+  "id": "E1043",
+  "name": "SeaCat MK1",
+  "dropped": 0,
+  "total": 9,
+  "old_dropped": 4,
+  "structure": "label/value spec table",
+  "url": "https://www.tkmsgroup.com/atlas-elektronik/uncrewed-naval-systems/seacat-mk1",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "3.0 m to 4.5 m",
+    "our_value": "3.0 m to 4.5 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Diameter",
+    "page_value": "324 mm",
+    "our_value": "324 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "200 kg to 350 kg",
+    "our_value": "200 kg to 350 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "Typical operating speed",
+    "page_value": "3 – 4 knots",
+    "our_value": "3 – 4 knots"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "7 hrs to more than 24 hrs",
+    "our_value": "7 hrs to more than 24 hrs"
+   },
+   {
+    "status": "caught",
+    "parameter": "operating_depth_m",
+    "page_value": "600 metres",
+    "our_value": "600 metres"
+   },
+   {
+    "status": "caught",
+    "parameter": "Modes of operation",
+    "page_value": "manual (WiFi), remotely operated (with 1000 m fibreoptic cable), fully autonomous",
+    "our_value": "manual (WiFi), remotely operated (with 1000 m fibreoptic cable), fully autonomous"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "standard high-resolution sidescan or synthetic aperture sonar payloads",
+    "our_value": "standard high-resolution sidescan or synthetic aperture sonar payloads"
+   },
+   {
+    "status": "caught",
+    "parameter": "guidance_type",
+    "page_value": "inertial navigation",
+    "our_value": "inertial navigation"
+   }
+  ],
+  "output": [
+   {
+    "product": "SeaCat MK1",
+    "parameter": "length_overall_m",
+    "value": "3.0 m to 4.5 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "beam_m",
+    "value": "324 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "weight_kg",
+    "value": "200 kg to 350 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "max_speed_knots",
+    "value": "3 – 4 knots",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "endurance_h",
+    "value": "7 hrs to more than 24 hrs",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "operating_depth_m",
+    "value": "600 metres",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "mode_of_operation",
+    "value": "manual (WiFi), remotely operated (with 1000 m fibreoptic cable), fully autonomous",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "endurance_h",
+    "value": "24-hour endurance",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "fibreoptic_cable_length_m",
+    "value": "1,000 metres",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "navigation",
+    "value": "inertial navigation",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "data_processing",
+    "value": "real-time onboard data processing",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "payload_sensors",
+    "value": "standard high-resolution sidescan or synthetic aperture sonar payloads",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "payload_sensors",
+    "value": "multi-beam echosounders",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "payload_sensors",
+    "value": "sub-bottom profilers",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "payload_sensors",
+    "value": "optical imaging systems",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "manoeuvrability",
+    "value": "Vertical and lateral thrusters provide precise low-speed manoeuvrability",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "roving_functionality",
+    "value": "Remotely Operated Vehicle (ROV) functionality",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E467",
+  "name": "NSM",
+  "dropped": 0,
+  "total": 5,
+  "old_dropped": 1,
+  "structure": "scattered key/value lines",
+  "url": "https://www.kongsberg.com/what-we-do/defence-and-security/missile-systems/nsm-naval-strike-missile",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "maximum_speed_kmh",
+    "page_value": "High Subsonic",
+    "our_value": "High Subsonic"
+   },
+   {
+    "status": "caught",
+    "parameter": "missile_weight_kg",
+    "page_value": "407 kg (897 lbs)",
+    "our_value": "407 kg (897 lbs)"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "3,96 m (156 inches)",
+    "our_value": "3,96 m (156 inches)"
+   },
+   {
+    "status": "caught",
+    "parameter": "maximum_range_km",
+    "page_value": ">300 km (162 nm)",
+    "our_value": ">300 km (162 nm)"
+   },
+   {
+    "status": "caught",
+    "parameter": "target_type",
+    "page_value": "sea and land targets",
+    "our_value": "sea and land targets"
+   }
+  ],
+  "output": [
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "maximum_speed_kmh",
+    "value": "High Subsonic",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "weight_kg",
+    "value": "407 kg (897 lbs)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "length_overall_m",
+    "value": "3,96 m (156 inches)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "maximum_range_km",
+    "value": ">300 km (162 nm)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "target_type",
+    "value": "sea and land targets",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "guidance_type",
+    "value": "passive",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "seeker_type",
+    "value": "Autonomous Target Recognition (ATR)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "manoeuvrability",
+    "value": "extremely good",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "sea_skimming_capability",
+    "value": "proven excellent",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "terminal_manoeuvres",
+    "value": "advanced",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "airframe_design",
+    "value": "The airframe design and the high thrust to weight ratio give the NSM extremely good manoeuvrability.",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "launch_platforms",
+    "value": "The NSM is a very flexible system, which can be launched from a variety of platforms against a variety of targets on sea and land.",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "NSM Naval Strike Missile (NSM)",
+    "parameter": "guidance_type",
+    "value": "completely passive",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E1050",
+  "name": "SeaCat MK1",
+  "dropped": 0,
+  "total": 9,
+  "old_dropped": 4,
+  "structure": "label/value spec table",
+  "url": "https://www.tkmsgroup.com/atlas-elektronik/mine-warfare-systems/seacat-mk1",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "3.0 m to 4.5 m",
+    "our_value": "3.0 m to 4.5 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Diameter",
+    "page_value": "324 mm",
+    "our_value": "324 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "200 kg to 350 kg",
+    "our_value": "200 kg to 350 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "Typical operating speed",
+    "page_value": "3 – 4 knots",
+    "our_value": "3 – 4 knots"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "7 hrs to more than 24 hrs",
+    "our_value": "7 hrs to more than 24 hrs"
+   },
+   {
+    "status": "caught",
+    "parameter": "operating_depth_m",
+    "page_value": "600 metres",
+    "our_value": "600 metres"
+   },
+   {
+    "status": "caught",
+    "parameter": "guidance_type",
+    "page_value": "inertial navigation",
+    "our_value": "inertial navigation"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "sidescan or synthetic aperture sonar",
+    "our_value": "standard high-resolution sidescan or synthetic aperture sonar payloads"
+   },
+   {
+    "status": "caught",
+    "parameter": "Modes of operation",
+    "page_value": "manual (WiFi), remotely operated (with 1000 m fibreoptic cable), fully autonomous",
+    "our_value": "manual (WiFi), remotely operated (with 1000 m fibreoptic cable), fully autonomous"
+   }
+  ],
+  "output": [
+   {
+    "product": "SeaCat MK1",
+    "parameter": "length_overall_m",
+    "value": "3.0 m to 4.5 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "beam_m",
+    "value": "324 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "weight_kg",
+    "value": "200 kg to 350 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "max_speed_knots",
+    "value": "3 – 4 knots",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "endurance_h",
+    "value": "7 hrs to more than 24 hrs",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "operating_depth_m",
+    "value": "600 metres",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "modes_of_operation",
+    "value": "manual (WiFi), remotely operated (with 1000 m fibreoptic cable), fully autonomous",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "endurance_h",
+    "value": "24-hour endurance",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "propulsion",
+    "value": "Vertical and lateral thrusters",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "navigation",
+    "value": "inertial navigation",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "sensors",
+    "value": "standard high-resolution sidescan or synthetic aperture sonar payloads",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "sensors",
+    "value": "multi-beam echosounders, sub-bottom profilers, and optical imaging systems",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "launch_platforms",
+    "value": "surface vessels",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "operating_modes",
+    "value": "unsupervised missions",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "operating_modes",
+    "value": "Remotely Operated Vehicle (ROV) functionality",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "operating_modes",
+    "value": "ROV function, with an optional fiber optic cable",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "length_overall_m",
+    "value": "3.0 to 4.5 metres",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "propulsion_type",
+    "value": "advanced navigation, communication, and power modules",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "operating_modes",
+    "value": "hovering capabilities",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "export_status",
+    "value": "dual-use good for export and is exempt from ITAR restrictions",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "modularity_feature",
+    "value": "SwapHead system allows on-site plug & play sensor changes",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "communication_range_m",
+    "value": "1,000 metres",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "SeaCat MK1",
+    "parameter": "payload_type",
+    "value": "powerful and comprehensive payload solution",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E1020",
+  "name": "Tata LPTA 6260 12x12",
+  "dropped": 0,
+  "total": 2,
+  "old_dropped": 1,
+  "structure": "few specs",
+  "url": "https://www.tataadvancedsystems.com/HMV-12X12-platform",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "engine_power_hp",
+    "page_value": "600 HP @ 2200 rpm",
+    "our_value": "600 HP @ 2200 rpm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Torque",
+    "page_value": "Min 1900 Nm at 1400 rpm",
+    "our_value": "Min 1900 Nm at 1400 rpm"
+   }
+  ],
+  "output": [
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "engine_power_hp",
+    "value": "600 HP @ 2200 rpm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "torque",
+    "value": "Min 1900 Nm at 1400 rpm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "transmission_type",
+    "value": "Automatic transmission System",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "chassis_type",
+    "value": "Heavy Chassis frame for Higher Payload",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "loading_span",
+    "value": "Longer Loading Span",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "axles",
+    "value": "Rear Two axles are Steerable",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "protection_system",
+    "value": "NBC kit and Self recovery Winch",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "suspension_type",
+    "value": "CTIS,IADL, ABS & SPT",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Tata LPTA 6260 12x12",
+    "parameter": "application",
+    "value": "Launcher, Carrier , Command post, Crane application",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E432",
+  "name": "FENNEK Reconnaissance Vehicle",
+  "dropped": 0,
+  "total": 12,
+  "old_dropped": 3,
+  "structure": "specs in prose only",
+  "url": "https://knds.com/en/products/systems/fennek/fennek-reconnaissance-vehicle",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "5.58 m",
+    "our_value": "5.58 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Width",
+    "page_value": "2.55 m / 2.67 m",
+    "our_value": "2.55 m / 2.67 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Heigth (vehicle roof)",
+    "page_value": "1.79 m",
+    "our_value": "1.79 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "Up to 12 t",
+    "our_value": "Up to 12 t"
+   },
+   {
+    "status": "caught",
+    "parameter": "power_kw",
+    "page_value": "177 kW / 235 kW",
+    "our_value": "177 kW / 235 kW"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "> 100 km/h",
+    "our_value": "> 100 km/h"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "1,000 km",
+    "our_value": "1,000 km"
+   },
+   {
+    "status": "caught",
+    "parameter": "crew_count",
+    "page_value": "3 man",
+    "our_value": "3 man"
+   },
+   {
+    "status": "caught",
+    "parameter": "protection_level",
+    "page_value": "Ballistic, Mine, IED",
+    "our_value": "Ballistic, Mine, IED"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "up to 5 days",
+    "our_value": "5 days"
+   },
+   {
+    "status": "caught",
+    "parameter": "turning circle",
+    "page_value": "13 m",
+    "our_value": "13 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "ford water at a depth of",
+    "page_value": "1 m",
+    "our_value": "1 m"
+   }
+  ],
+  "output": [
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "length_overall_m",
+    "value": "5.58 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "beam_m",
+    "value": "2.55 m / 2.67 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "height",
+    "value": "1.79 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "vehicle_weight_t",
+    "value": "Up to 12 t",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "power_kw",
+    "value": "177 kW / 235 kW",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "max_speed_kmh",
+    "value": "> 100 km/h",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "operational_range_km",
+    "value": "1,000 km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "main_armament",
+    "value": "40 mm grenade machine gun, machine gun / cal. 7.62 x 51, or machine gun cal. 50",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "crew_count",
+    "value": "3 man",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "protection_class",
+    "value": "Ballistic, Mine, IED",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "fording_depth",
+    "value": "1 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "turning_circle_m",
+    "value": "13 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "gradient",
+    "value": "in excess of 60%",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "slope",
+    "value": "in excess of 35%",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "self_sufficiency_days",
+    "value": "5 days",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "air_transportable",
+    "value": "C-130/160 and A400M",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "drive_type",
+    "value": "selectable or permanent four-wheel drive",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "transmission",
+    "value": "fully automatic manual transmission and a transfer case",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "engine_type",
+    "value": "latest engine technology",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "navigation_performance",
+    "value": "Enhanced navigation performance and targeting",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "weapon_stations",
+    "value": "Various weapon stations can be mounted",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "communication_system",
+    "value": "Communication system to coordinate land, air and naval forces",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "target_location_accuracy",
+    "value": "Exceptional target location accuracy in azimuth and elevation",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "reconnaissance_capability",
+    "value": "Excellent reconnaissance capability",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "manoeuvrability",
+    "value": "High manoeuvrability in difficult terrain",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "stealth",
+    "value": "quiet and self-sufficient for up to 5 days",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "tire_pressure_control",
+    "value": "An automatic tire pressure control system allows the vehicle to be perfectly adapted to ground conditions",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "FENNEK Reconnaissance Vehicle",
+    "parameter": "h_drive",
+    "value": "The H-drive allows for a low profile and low center of gravity, ensuring excellent maneuverability even on difficult terrain",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E103",
+  "name": "30mm Machine Gun System",
+  "dropped": 0,
+  "total": 8,
+  "old_dropped": 2,
+  "structure": "specs in prose only",
+  "url": "https://www.baesystems.com/en/product/30mm-machine-gun-system",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "30mm",
+    "our_value": "30mm MGS"
+   },
+   {
+    "status": "caught",
+    "parameter": "main_armament",
+    "page_value": "Bushmaster chain gun",
+    "our_value": "Bushmaster chain gun"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "on-mount electro-optical sensor (EOS)",
+    "our_value": "on-mount electro-optical sensor (EOS)"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "high explosive and air burst ammunition",
+    "our_value": "high explosive and air burst ammunition"
+   },
+   {
+    "status": "caught",
+    "parameter": "ammunition_type",
+    "page_value": "U.S. NATO standard 30mm by 173mm ammunition",
+    "our_value": "U.S. NATO standard 30mm by 173mm ammunition"
+   },
+   {
+    "status": "caught",
+    "parameter": "elevation_deg",
+    "page_value": "greater than 65 degrees",
+    "our_value": "greater than 65 degrees elevation"
+   },
+   {
+    "status": "caught",
+    "parameter": "target_type",
+    "page_value": "small, fast, and agile surface and air threats",
+    "our_value": "small, fast, and agile surface and air threats"
+   },
+   {
+    "status": "caught",
+    "parameter": "target_type",
+    "page_value": "unmanned aerial systems (UAS)",
+    "our_value": "unmanned aerial systems (UAS)"
+   }
+  ],
+  "output": [
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "main_armament",
+    "value": "30mm MGS",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "sensor_payload_suite",
+    "value": "on-mount electro-optical sensor (EOS)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "fire_control_system",
+    "value": "state-of-the-art fire control system",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "ammunition_type",
+    "value": "high explosive and air burst ammunition",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "ammunition_type",
+    "value": "U.S. NATO standard 30mm by 173mm ammunition",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "rate_of_fire_rpm",
+    "value": "selectable rates of fire",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "elevation_deg",
+    "value": "greater than 65 degrees elevation",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "target_type",
+    "value": "close-in air threats",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "target_type",
+    "value": "unmanned aerial systems (UAS)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "target_type",
+    "value": "multiple threats",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "target_type",
+    "value": "small, fast, and agile surface and air threats",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "gun_type",
+    "value": "Bushmaster chain gun",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Machine Gun System (MGS)",
+    "parameter": "operating_conditions",
+    "value": "all weather conditions, day or night",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E486",
+  "name": "AM-448 Cavity-Backed Spiral Antenna",
+  "dropped": 0,
+  "total": 12,
+  "old_dropped": 6,
+  "structure": "label/value spec table",
+  "url": "https://www.l3harris.com/all-capabilities/am-448-cavity-backed-spiral-antenna",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "frequency_band",
+    "page_value": "2.0 – 18.0 GHz",
+    "our_value": "2.0 – 18.0 GHz"
+   },
+   {
+    "status": "caught",
+    "parameter": "VSWR",
+    "page_value": "2.0 – 3.0 GHz 3.5:1",
+    "our_value": "2.0 – 3.0 GHz 3.5:1"
+   },
+   {
+    "status": "caught",
+    "parameter": "VSWR",
+    "page_value": "3.0 – 18.0 GHz 3.0:1 max",
+    "our_value": "3.0 – 18.0 GHz 3.0:1 max"
+   },
+   {
+    "status": "caught",
+    "parameter": "Gain",
+    "page_value": "+1.0 dBli nom",
+    "our_value": "+1.0 dBli nom"
+   },
+   {
+    "status": "caught",
+    "parameter": "Gain tracking",
+    "page_value": "In sets of 5 antennas, ±1.0 dB from 2.0 – 18.0 GHz on axis",
+    "our_value": "2.0 – 18.0 GHz"
+   },
+   {
+    "status": "caught",
+    "parameter": "Beam width (3 dB)",
+    "page_value": "75° nom",
+    "our_value": "75° nom"
+   },
+   {
+    "status": "caught",
+    "parameter": "Polarization",
+    "page_value": "Circular, LHCP or RHCP available",
+    "our_value": "Circular, LHCP or RHCP available"
+   },
+   {
+    "status": "caught",
+    "parameter": "Axial ratio boresight",
+    "page_value": "≤2.0 dB",
+    "our_value": "±45° ≤2.0 dB ≤2.0 dB"
+   },
+   {
+    "status": "caught",
+    "parameter": "Power handling",
+    "page_value": "1 W CW",
+    "our_value": "1 W CW"
+   },
+   {
+    "status": "caught",
+    "parameter": "Connector",
+    "page_value": "SMA female at 40° angle to boresight",
+    "our_value": "SMA female at 40° angle to boresight"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "1 lb 7 oz.",
+    "our_value": "1 lb 7 oz."
+   },
+   {
+    "status": "caught",
+    "parameter": "Finish",
+    "page_value": "Exterior of antenna made from no. 316 stainless steel, except for radome, connector and hardware",
+    "our_value": "Exterior of antenna made from no. 316 stainless steel, except for radome, connector and hardware"
+   }
+  ],
+  "output": [
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "frequency_band",
+    "value": "2.0 – 18.0 GHz",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "vswr",
+    "value": "2.0 – 3.0 GHz 3.5:1",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "vswr",
+    "value": "3.0 – 18.0 GHz 3.0:1 max",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "gain",
+    "value": "+1.0 dBli nom",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "gain_tracking",
+    "value": "In sets of 5 antennas, ±1.0 dB from 2.0 – 18.0 GHz on axis",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "beam_width_3_db",
+    "value": "75° nom",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "polarization",
+    "value": "Circular, LHCP or RHCP available",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "axial_ratio_boresight",
+    "value": "±45° ≤2.0 dB ≤2.0 dB",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "squint",
+    "value": "±6°",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "power_handling",
+    "value": "1 W CW",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "connector",
+    "value": "SMA female at 40° angle to boresight",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "weight_kg",
+    "value": "1 lb 7 oz.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "finish",
+    "value": "Exterior of antenna made from no. 316 stainless steel, except for radome, connector and hardware",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "option",
+    "value": "LHCP or RHCP available",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "application",
+    "value": "high pressure applications",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "AM-448 Cavity-Backed Spiral Antenna",
+    "parameter": "housing",
+    "value": "stainless steel housing",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E319",
+  "name": "MUV 4×4",
+  "dropped": 0,
+  "total": 5,
+  "old_dropped": 3,
+  "structure": "few specs",
+  "url": "https://www.idvgroup.com/2023/06/16/idv-to-provide-up-to-3000-multirole-vehicles-to-the-swedish-armed-forces",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "up to 7 ton",
+    "our_value": "7 ton"
+   },
+   {
+    "status": "caught",
+    "parameter": "payload_capacity_kg",
+    "page_value": "4 ton",
+    "our_value": "4 ton"
+   },
+   {
+    "status": "caught",
+    "parameter": "temperatures",
+    "page_value": "-32°C to +49°C",
+    "our_value": "from -32°C to +49°C"
+   },
+   {
+    "status": "caught",
+    "parameter": "drive",
+    "page_value": "permanent 4×4 drive with central/front/rear lockable differentials and a PTO equipped transfer case",
+    "our_value": "permanent 4×4 drive with central/front/rear lockable differentials"
+   },
+   {
+    "status": "caught",
+    "parameter": "suspension system",
+    "page_value": "independent front suspension system with torsion bar",
+    "our_value": "independent front suspension system with torsion bar"
+   }
+  ],
+  "output": [
+   {
+    "product": "MUV 4×4",
+    "parameter": "vehicle_weight_t",
+    "value": "7 ton",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "payload_capacity_kg",
+    "value": "4 ton",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "gvw_t",
+    "value": "up to 7 ton",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "operating_temperature_range",
+    "value": "from -32°C to +49°C",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "fuel_compatibility",
+    "value": "NATO fuels",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "drive_system",
+    "value": "permanent 4×4 drive with central/front/rear lockable differentials",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "transfer_case",
+    "value": "PTO equipped transfer case",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "suspension_system",
+    "value": "independent front suspension system with torsion bar",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "compliance_standards",
+    "value": "military and NATO standards",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "component_synergy",
+    "value": "heavily industrialized components",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "emc_performance",
+    "value": "top-notch EMC performance",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "variant_count",
+    "value": "12 different variants",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "variant_types",
+    "value": "troop transport vehicles, medical variant vehicles, communication vehicles, logistic vehicles, and dog transport",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "modularity_features",
+    "value": "several combinations in terms of GVW, chassis, cab, engine and driveline",
+    "found_by": "step 7",
+    "flag": "extra"
+   },
+   {
+    "product": "MUV 4×4",
+    "parameter": "superstructure_type",
+    "value": "modular superstructures",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E879",
+  "name": "Senator APC",
+  "dropped": 0,
+  "total": 8,
+  "old_dropped": 5,
+  "structure": "scattered key/value lines",
+  "url": "https://roshel.com/products/defense/senator-apc",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "armour_type",
+    "page_value": "lightweight composite materials",
+    "our_value": "innovative lightweight composite materials"
+   },
+   {
+    "status": "caught",
+    "parameter": "engine_power_hp",
+    "page_value": "330 @ 2,600 rpm",
+    "our_value": "330 @ 2,600 rpm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Torque",
+    "page_value": "750 @ 2,000 rpm",
+    "our_value": "750 @ 2,000 rpm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Transmission",
+    "page_value": "10-speed automatic",
+    "our_value": "10-speed automatic"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "5945 x 2340 x 2450 mm",
+    "our_value": "5945 x 2340 x 2450 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Wheelbase",
+    "page_value": "3683 mm",
+    "our_value": "3683 mm"
+   },
+   {
+    "status": "caught",
+    "parameter": "Side Slope Performance",
+    "page_value": "39-degree",
+    "our_value": "best-in-class side slope performance, consistently reaching 39-degree mark on both sides"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "external view cameras",
+    "our_value": "perimeter gun ports, escape hatches, advanced locks, external view cameras, siren/PA system, emergency lighting"
+   }
+  ],
+  "output": [
+   {
+    "product": "Senator APC",
+    "parameter": "crew_count",
+    "value": "3-man crew",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "manoeuvrability",
+    "value": "high degree of manoeuvrability, with the small turning radius making it an ideal choice for urban environments",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "protection_class",
+    "value": "CEN B7 ballistic protection level",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "protection_level",
+    "value": "protection up to CEN B7 ballistic protection level",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "armour_type",
+    "value": "innovative lightweight composite materials",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "interior_features",
+    "value": "advanced heat and noise insulation materials, fully air-conditioned",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "security_features",
+    "value": "perimeter gun ports, escape hatches, advanced locks, external view cameras, siren/PA system, emergency lighting",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "smart_capabilities",
+    "value": "remote surveillance, monitoring, access controls, customizable for specific operational requirements",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "engine_power_hp",
+    "value": "330 @ 2,600 rpm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "torque",
+    "value": "750 @ 2,000 rpm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "drivetrain",
+    "value": "4X4",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "transmission",
+    "value": "10-speed automatic",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "wheels",
+    "value": "335/85/R20",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "dimensions",
+    "value": "5945 x 2340 x 2450 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "wheelbase",
+    "value": "3683 mm",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "seating_capacity",
+    "value": "Up to 12",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "protection_levels",
+    "value": "Level I: .22 LRHV Lead, .38 Special RN Lead; Level II-A: .357 Magnum JSP, 9mm FMJ; Level II: .357 Magnum JSP, 9mm FMJ; Level III-A: .44 Magnum SWC, 9mm FMJ; Level III: 7.62mm .308 Winchester FMJ; Level IV: 30-60 AP",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "side_slope_performance",
+    "value": "best-in-class side slope performance, consistently reaching 39-degree mark on both sides",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "mine_protected_seats",
+    "value": "Mine Protected Seats",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "ergonomic_interior_layout",
+    "value": "Ergonomic Interior Layout",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "heavy_duty_mil_spec_door_hinges",
+    "value": "Heavy-Duty Mil-Spec Door Hinges",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "heavy_duty_upgraded_suspension_system",
+    "value": "Heavy-Duty Upgraded Suspension System",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "optimized_body_engineering",
+    "value": "Optimized Body Engineering",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "secured_remote_connectivity",
+    "value": "Secured Remote Connectivity",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "tow_bar",
+    "value": "Tow Bar",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "running_boards",
+    "value": "Running Boards",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "remote_controlled_led_projector",
+    "value": "Remote Controlled LED Projector",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "modified_and_upgraded_power_steering",
+    "value": "Modified & Upgraded Power Steering",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "security_lock",
+    "value": "Security Lock",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Senator APC",
+    "parameter": "heavy_duty_winch",
+    "value": "Heavy-Duty Winch",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E648",
+  "name": "ROUND 30mm BMP-II HE/I",
+  "dropped": 0,
+  "total": 19,
+  "old_dropped": 8,
+  "structure": "specs in prose only",
+  "url": "https://munitionsindia.in/hi/products/round-30mm-bmp-ii-he-i",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "calibre_mm",
+    "page_value": "30mm",
+    "our_value": "30mm Automatic Gun 2A42"
+   },
+   {
+    "status": "caught",
+    "parameter": "warhead_type",
+    "page_value": "High Explosive Incendiary",
+    "our_value": "High Explosive Incendiary Shell (HE/I)"
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "Infantry Combat Vehicle Bmp-II",
+    "our_value": "30mm Automatic Gun 2A42 usually mounted on Infantry Combat Vehicle Bmp-II"
+   },
+   {
+    "status": "caught",
+    "parameter": "target_type",
+    "page_value": "man power and non-armoured ground and Ariel targets",
+    "our_value": "High Explosive Incendiary Shell (HE/I) is used against man power and non-armoured ground and Ariel targets."
+   },
+   {
+    "status": "caught",
+    "parameter": "target_type",
+    "page_value": "light armored targets, soft skinned targets and against personnel",
+    "our_value": "It is a fixed type & intended for use against light armored targets, soft skinned targets and against personnel at ranges up to 4000 meters."
+   },
+   {
+    "status": "caught",
+    "parameter": "effective_range_m",
+    "page_value": "4000 meters",
+    "our_value": "4000 meters"
+   },
+   {
+    "status": "caught",
+    "parameter": "engagement_altitude_km",
+    "page_value": "2000 meters",
+    "our_value": "2000 meters"
+   },
+   {
+    "status": "caught",
+    "parameter": "Material of Empty Shell",
+    "page_value": "Hot rolled cold drawn Steel 50-TY 14-1-2884-80 or JSS 9510-1, SSA-21 with S & P 0.03 max, hardness 229 NLT.",
+    "our_value": "Hot rolled cold drawn Steel 50-TY 14-1-2884-80 or JSS 9510-1, SSA-21 with S & P 0.03 max, hardness 229 NLT."
+   },
+   {
+    "status": "caught",
+    "parameter": "fuze_type",
+    "page_value": "A670M (DASD Type)",
+    "our_value": "A670M (DASD Type)"
+   },
+   {
+    "status": "caught",
+    "parameter": "Primer used in Round",
+    "page_value": "KB-30 (Percussion Type)",
+    "our_value": "KB-30 (Percussion Type)"
+   },
+   {
+    "status": "caught",
+    "parameter": "warhead_weight_kg",
+    "page_value": "0.0485 ± 0.001 Kg",
+    "our_value": "0.0485 ± 0.001 Kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "projectile_weight_kg",
+    "page_value": "0.389 ± 0.006 Kg",
+    "our_value": "0.389 ± 0.006 Kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "weight_kg",
+    "page_value": "0.837 Kg",
+    "our_value": "0.837 Kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "Max. Chamber Pressure",
+    "page_value": "3600 kg/cm2 (Propellant)",
+    "our_value": "3600 kg/cm2 (Propellant), 3800 kg/cm2 (Separate Round)"
+   },
+   {
+    "status": "caught",
+    "parameter": "Max. Chamber Pressure",
+    "page_value": "3800 kg/cm2 (Separate Round)",
+    "our_value": "3600 kg/cm2 (Propellant), 3800 kg/cm2 (Separate Round)"
+   },
+   {
+    "status": "caught",
+    "parameter": "muzzle_velocity_mps",
+    "page_value": "960 ± 10 m/s",
+    "our_value": "960 ± 10 m/s"
+   },
+   {
+    "status": "caught",
+    "parameter": "SD Timing",
+    "page_value": "09 to 14 sec",
+    "our_value": "09 to 14 sec"
+   },
+   {
+    "status": "caught",
+    "parameter": "Ballistic Time",
+    "page_value": "0.007 Sec",
+    "our_value": "0.007 Sec"
+   },
+   {
+    "status": "caught",
+    "parameter": "Shelf Life",
+    "page_value": "07 Years",
+    "our_value": "07 Years"
+   }
+  ],
+  "output": [
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "main_armament",
+    "value": "30mm Automatic Gun 2A42",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "ammunition_type",
+    "value": "High Explosive Incendiary Shell (HE/I)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "effective_range_m",
+    "value": "4000 meters",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "engagement_altitude_km",
+    "value": "2000 meters",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "rate_of_fire_rpm",
+    "value": "single shot firing as well as automatic firing both at rapid and slow rates",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "feed_system",
+    "value": "double belt feed system. One belt with an AP/T and the other with both HE/I and HE/T rounds generally in the ratio 4:1.",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "material_of_empty_shell",
+    "value": "Hot rolled cold drawn Steel 50-TY 14-1-2884-80 or JSS 9510-1, SSA-21 with S & P 0.03 max, hardness 229 NLT.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "material_of_cartridge_case",
+    "value": "Cold drawn low carbon Steel 1110A TY 14-1-3455-82 or Steel 11YUA / GOST 19032-73 or JSS-1402 with C=0.09 to 0.13 %",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "fuze_type",
+    "value": "A670M (DASD Type)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "primer_type",
+    "value": "KB-30 (Percussion Type)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "other_main_compts",
+    "value": "Shell , Cartridge Case, Propellant, Packing Box H-60 (Steel)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "nature_of_he_filling",
+    "value": "(ME 305) (RDX : Al : Wax = 74 : 20 : 6 )",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "mass_of_burst_charge",
+    "value": "0.0485 ± 0.001 Kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "projectile_weight_kg",
+    "value": "0.389 ± 0.006 Kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "mass_of_round",
+    "value": "0.837 Kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "length_of_round",
+    "value": "H = 292.84, L = 289.45",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "max_chamber_pressure",
+    "value": "3600 kg/cm2 (Propellant), 3800 kg/cm2 (Separate Round)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "muzzle_velocity_mps",
+    "value": "960 ± 10 m/s",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "sd_timing",
+    "value": "09 to 14 sec",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "ballistic_time",
+    "value": "0.007 Sec",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "shelf_life",
+    "value": "07 Years",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "range",
+    "value": "04 Km (Ground Target), 02 Km (Ariel Target/Altitude)",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "end_use",
+    "value": "High Explosive Incendiary Shell (HE/I) is used against man power and non-armoured ground and Ariel targets.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "intended_use",
+    "value": "It is a fixed type & intended for use against light armored targets, soft skinned targets and against personnel at ranges up to 4000 meters.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "aircraft_target",
+    "value": "It is also used against aircraft flying at low altitude up to 2000 meters.",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "30mm Automatic Gun 2A42",
+    "parameter": "mounting",
+    "value": "30mm Automatic Gun 2A42 usually mounted on Infantry Combat Vehicle Bmp-II",
+    "found_by": "step 6",
+    "flag": ""
+   }
+  ]
+ },
+ {
+  "id": "E340",
+  "name": "Maritime Heron",
+  "dropped": 0,
+  "total": 18,
+  "old_dropped": 7,
+  "structure": "specs in prose only",
+  "url": "https://www.iai.co.il/product/maritime-heron",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "mtow_kg",
+    "page_value": "1,270 kg",
+    "our_value": "1,270 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "endurance_h",
+    "page_value": "Up to 45 h",
+    "our_value": "Up to 45 h (continuous"
+   },
+   {
+    "status": "caught",
+    "parameter": "payload_capacity_kg",
+    "page_value": "470 kg",
+    "our_value": "470 kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "LOS<250 km",
+    "our_value": "LOS<250 km, BLOS > 1000 km"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "BLOS > 1000 km",
+    "our_value": "LOS<250 km, BLOS > 1000 km"
+   },
+   {
+    "status": "caught",
+    "parameter": "length_overall_m",
+    "page_value": "8.5 m",
+    "our_value": "8.5 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "service_ceiling_m",
+    "page_value": "> 35,000 ft",
+    "our_value": "> 35,000 ft"
+   },
+   {
+    "status": "caught",
+    "parameter": "wing_span_m",
+    "page_value": "16.6 m",
+    "our_value": "16.6 m"
+   },
+   {
+    "status": "caught",
+    "parameter": "Loiter speed",
+    "page_value": "60-80 KTAS",
+    "our_value": "60-80 KTAS"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_knots",
+    "page_value": ">140 KTAS",
+    "our_value": ">140 KTAS"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_knots",
+    "page_value": "150 knots",
+    "our_value": "150 knots"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "aviation-certified engine",
+    "our_value": "aviation-certified engine"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Maritime Patrol Radar (MPR)",
+    "our_value": "Maritime Patrol Radar (MPR), Automatic Identification System (AIS), Electro Optics (EO), Electronic Support Measures (ESM), and Communications Intelligence (COMINT)"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Automatic Identification System (AIS)",
+    "our_value": "Maritime Patrol Radar (MPR), Automatic Identification System (AIS), Electro Optics (EO), Electronic Support Measures (ESM), and Communications Intelligence (COMINT)"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Electro Optics (EO)",
+    "our_value": "Maritime Patrol Radar (MPR), Automatic Identification System (AIS), Electro Optics (EO), Electronic Support Measures (ESM), and Communications Intelligence (COMINT)"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Electronic Support Measures (ESM)",
+    "our_value": "Maritime Patrol Radar (MPR), Automatic Identification System (AIS), Electro Optics (EO), Electronic Support Measures (ESM), and Communications Intelligence (COMINT)"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "Communications Intelligence (COMINT)",
+    "our_value": "Maritime Patrol Radar (MPR), Automatic Identification System (AIS), Electro Optics (EO), Electronic Support Measures (ESM), and Communications Intelligence (COMINT)"
+   },
+   {
+    "status": "caught",
+    "parameter": "sensor_payload_suite",
+    "page_value": "SATCOM",
+    "our_value": "Line of Sight or SATCOM datalinks"
+   }
+  ],
+  "output": [
+   {
+    "product": "Maritime Heron",
+    "parameter": "mtow_kg",
+    "value": "1,270 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "endurance_h",
+    "value": "Up to 45 h (continuous",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "payload_capacity_kg",
+    "value": "470 kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "range_nm",
+    "value": "LOS<250 km, BLOS > 1000 km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "length_overall_m",
+    "value": "8.5 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "service_ceiling_m",
+    "value": "> 35,000 ft",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "wing_span_m",
+    "value": "16.6 m",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "loiter_speed",
+    "value": "60-80 KTAS",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "max_speed_knots",
+    "value": ">140 KTAS",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "avionics",
+    "value": "State-of-the-art avionics and communications",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "mission_payloads",
+    "value": "Maritime Patrol Radar (MPR), Automatic Identification System (AIS), Electro Optics (EO), Electronic Support Measures (ESM), and Communications Intelligence (COMINT)",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "datalink",
+    "value": "Line of Sight or SATCOM datalinks",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "engine",
+    "value": "aviation-certified engine",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "max_speed_knots",
+    "value": "150 knots",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "operational_conditions",
+    "value": "Proven in extreme weather – cold, humid, hot, icy, snowy",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "design_features",
+    "value": "robust design, proven in over 2,200,000 operational flight hours, features a wide and strong aerostructure, quick and efficient maintenance, short turnarounds, remote operability, and rapid payload configuration to ensure high availability and all-weather operability",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "Maritime Heron",
+    "parameter": "endurance_h",
+    "value": "45 consecutive hours",
+    "found_by": "step 7",
+    "flag": "extra"
+   }
+  ]
+ },
+ {
+  "id": "E991",
+  "name": "LRV 400 `Mk2`",
+  "dropped": 0,
+  "total": 8,
+  "old_dropped": 0,
+  "structure": "scattered key/value lines",
+  "url": "http://supacat.com/?p=1071",
+  "answer_key": [
+   {
+    "status": "caught",
+    "parameter": "payload_capacity_kg",
+    "page_value": "1700kg",
+    "our_value": "1700kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "vehicle_weight_t",
+    "page_value": "4200kg",
+    "our_value": "4200kg"
+   },
+   {
+    "status": "caught",
+    "parameter": "max_speed_kmh",
+    "page_value": "100mph/160km",
+    "our_value": "160km"
+   },
+   {
+    "status": "caught",
+    "parameter": "operational_range_km",
+    "page_value": "800km",
+    "our_value": "800km"
+   },
+   {
+    "status": "caught",
+    "parameter": "launch_platform",
+    "page_value": "CH-47 Chinook",
+    "our_value": "CH-47 Chinook"
+   },
+   {
+    "status": "caught",
+    "parameter": "propulsion_type",
+    "page_value": "V6 3.0 turbo diesel",
+    "our_value": "V6 3.0 turbo diesel"
+   },
+   {
+    "status": "caught",
+    "parameter": "engine_power_hp",
+    "page_value": "256 bhp",
+    "our_value": "256 bhp"
+   },
+   {
+    "status": "caught",
+    "parameter": "Torque",
+    "page_value": "600Nm",
+    "our_value": "600Nm Torque"
+   }
+  ],
+  "output": [
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "max_speed_kmh",
+    "value": "160km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "operational_range_km",
+    "value": "800km",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "crew_count",
+    "value": "3 or 4",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "payload_capacity_kg",
+    "value": "1700kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "vehicle_weight_t",
+    "value": "4200kg",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "compatible_weapon_system",
+    "value": "CH-47 Chinook",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "propulsion_type",
+    "value": "V6 3.0 turbo diesel",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "engine_power_hp",
+    "value": "256 bhp",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "transmission",
+    "value": "8 speed automatic transmission",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "drive_type",
+    "value": "high and low permanent 4WD with centre diff lock",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "suspension_type",
+    "value": "front and rear independent double wishbone air suspension with variable ride height and lock out – bump stops",
+    "found_by": "step 6",
+    "flag": "extra"
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "torque",
+    "value": "600Nm Torque",
+    "found_by": "step 6",
+    "flag": ""
+   },
+   {
+    "product": "LRV 400 `Mk2`",
+    "parameter": "cross_axle_diff_locks",
+    "value": "Cross-axle diff locks are also available as an option",
+    "found_by": "step 6",
+    "flag": "extra"
+   }
+  ]
+ }
+]

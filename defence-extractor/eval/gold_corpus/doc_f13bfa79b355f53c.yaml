@@ -1,0 +1,33 @@
+doc_id: doc_f13bfa79b355f53c
+url: https://www.solargroup.com/ProductDisplay.html?title=SolarPrime+Gold
+level: 1
+format: html
+products:
+  P1: {name: SolarPrime Gold, aliases: [Solarprime Gold, SOLARPRIME GOLD]}
+facts:
+  - {p: P1, param: density, alt: [nominal_density], v: "1.20 ± 0.05", nums: [1.2, 0.05]}
+  - {p: P1, param: relative_weight_strength, v: "95 %", nums: [95], cond: "compared to ANFO @ 0.85 g/cc"}
+  - {p: P1, param: relative_bulk_strength, v: "125 %", nums: [125], cond: "compared to ANFO @ 0.85 g/cc"}
+  - {p: P1, param: velocity_of_detonation, alt: [detonation_velocity, min_velocity_of_detonation], v: "3.8", nums: [3.8]}
+  - {p: P1, param: max_ground_temperature, alt: [operating_temperature, max_operating_temperature], v: "up to 65ºC", nums: [65]}
+  - {p: P1, param: initiation, alt: [initiation_requirement, initiator], v: "Detonator of No. 8 Strength/Detonating Cord", any: ["No. 8 Strength", "No. 8"]}
+  - {p: P1, param: shelf_life, v: "6 Months", nums: [6]}
+  - {p: P1, param: box_weight, alt: [package_weight, packaging_weight, net_weight], v: "nominally 25kg", nums: [25]}
+  - {p: P1, param: cartridge_diameter, alt: [diameter], v: "83", nums: [83]}
+  - {p: P1, param: cartridge_length, alt: [length], v: "460", nums: [460], cond: "83 mm"}
+  - {p: P1, param: cartridge_mass, alt: [cartridge_weight, weight], v: "2780", nums: [2780], cond: "83 mm"}
+  - {p: P1, param: cartridges_per_box, v: "9", nums: [9], cond: "83 mm"}
+  - {p: P1, param: cartridge_diameter, alt: [diameter], v: "125", nums: [125]}
+  - {p: P1, param: cartridge_length, alt: [length], v: "460", nums: [460], cond: "125 mm"}
+  - {p: P1, param: cartridge_mass, alt: [cartridge_weight, weight], v: "6250", nums: [6250], cond: "125 mm"}
+  - {p: P1, param: cartridges_per_box, v: "4", nums: [4], cond: "125 mm"}
+  - {p: P1, param: proper_shipping_name, alt: [shipping_name, explosive_classification], v: "EXPLOSIVE, BLASTING, TYPE E", any: ["TYPE E"]}
+  - {p: P1, param: hazard_class, alt: [hazard_division, class_division], v: "1.1D"}
+  - {p: P1, param: un_number, alt: [un_no], v: "0241"}
+  - {p: P1, k: text, v: "high strength cap sensitive packaged slurry explosives", any: ["cap sensitive packaged slurry explosive"]}
+  - {p: P1, k: text, v: "chemically gassed and then cross-linked"}
+  - {p: P1, k: text, v: "blasts in open cut mines, quarries and construction", any: ["open cut mines"]}
+  - {p: P1, k: text, v: "relatively insensitive to accidental initiation due to impact, friction and fire", any: ["insensitive to accidental initiation"]}
+  - {p: P1, k: text, v: "Excellent water resistance", any: ["water resistance"]}
+  - {p: P1, k: text, v: "excellent fume characteristics post detonation", any: ["fume characteristics"]}
+negatives: ["2.30 MJ/kg", "0.85 g/cc"]

@@ -1,0 +1,44 @@
+doc_id: doc_6e1d0c3d81160802
+url: https://www.autelrobotics.com/productdetail/evo-max-4t
+level: 4
+format: html
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Autel EVO Max 4T V2 product page. 0.00-0.28 is nav menus only, so start = overview highlights + SkyLink 3.0 (0.30-0.32); middle = V2 spec listing (aircraft rows, Fusion 4T V2 gimbal camera); end = older "EVO Max Series" listing (Autel Smart Controller V3, ABX40 battery). Values shared by several gimbals/cameras in the same window, and the RC weight (1194 g vs 1195 g), are deliberately not labelled; "EVO Max 4T" is avoided as a name because it also prefixes EVO Max 4T V2 / 4T XE.
+products:
+  P1: {name: "EVO Max 4T V2", aliases: ["EVO Max Series V2"], pos: middle}
+  P2: {name: "SkyLink 3.0", aliases: ["Autel SkyLink 3.0"], pos: start}
+  P3: {name: "Fusion 4T V2", aliases: ["Gimbal-Fusion 4T V2"], pos: middle}
+  P4: {name: "Autel Smart Controller V3", aliases: ["Smart Controller V3"], pos: end}
+  P5: {name: "ABX40", aliases: ["ABX40 Smart battery"], pos: end}
+facts:
+  - {p: P1, param: max_flight_time, alt: [flight_time, endurance, max_endurance], v: "42 Min", nums: [42], any: ["42 minutes"], b: b353, pos: start}
+  - {p: P1, k: text, v: "Hot-Swappable Battery", any: ["Hot Swap Battery"], b: b351, pos: start}
+  - {p: P1, param: weight, alt: [takeoff_weight, aircraft_weight, mass], v: "1665 g", nums: [1665], b: b551}
+  - {p: P1, param: max_takeoff_mass, alt: [mtom, max_takeoff_weight], v: "1999 g", nums: [1999], b: b554}
+  - {p: P1, param: dimensions_unfolded, alt: [dimensions, fuselage_dimensions, size], v: "563×657×147 mm", nums: [563, 657, 147], b: b555}
+  - {p: P1, param: diagonal_wheelbase, alt: [wheelbase, diagonal_size], v: "467 mm", nums: [467], b: b556}
+  - {p: P1, param: max_propeller_speed, alt: [max_propeller_rotational_speed, propeller_rpm], v: "7500 RPM", nums: [7500], b: b561}
+  - {p: P1, param: service_ceiling, alt: [max_service_ceiling, max_altitude_above_sea_level, ceiling], v: "4500 meters", nums: [4500], b: b572}
+  - {p: P1, param: max_hover_time, alt: [hover_time, hovering_time], v: "37 minutes", nums: [37], b: b576}
+  - {p: P2, param: antennas, alt: [antenna_count, number_of_antennas], v: "6 antennas", nums: [6], b: b373}
+  - {p: P2, param: frequency_band_count, alt: [frequency_bands, number_of_frequency_bands], v: "4 frequency bands", nums: [4], b: b373}
+  - {p: P2, param: encryption, alt: [link_encryption, data_encryption], v: "AES-256 encryption", nums: [256], any: ["AES-256"], b: b373}
+  - {p: P2, param: cellular_integration, alt: [lte_4g_integration, network_integration], v: "optional 4G integration", nums: [4], any: ["4G integration"], b: b373}
+  - {p: P3, param: gimbal_weight, alt: [weight, payload_weight], v: "215 g", nums: [215], b: b602}
+  - {p: P3, param: zoom_camera_dfov, alt: [zoom_dfov, zoom_camera_fov, diagonal_fov], v: "40°-10.3°", nums: [40, 10.3], b: b610}
+  - {p: P3, param: zoom_camera_equivalent_focal_length, alt: [zoom_focal_length, equivalent_focal_length], v: "64 - 234 mm", nums: [64, 234], b: b610}
+  - {p: P3, param: optical_zoom, alt: [zoom_camera_optical_zoom, continuous_optical_zoom, zoom], v: "2.7 - 10x continuous optical zoom", nums: [2.7, 10], any: ["10x continuous optical zoom"], b: b613}
+  - {p: P3, param: wide_camera_dfov, alt: [wide_angle_dfov, wide_camera_fov], v: "83.4°", nums: [83.4], b: b624}
+  - {p: P3, param: laser_rangefinder_wavelength, alt: [lrf_wavelength, laser_wavelength, wavelength], v: "905 nm", nums: [905], b: b657}
+  - {p: P4, param: dimensions, alt: [rc_dimensions, size], v: "269×189×87 mm", nums: [269, 189, 87], b: b1048}
+  - {p: P4, param: display_size, alt: [screen_size, display_dimensions], v: "7.9 inches", nums: [7.9], b: b1052}
+  - {p: P4, param: max_brightness, alt: [display_brightness, brightness], v: "2000 nits", nums: [2000], b: b1052}
+  - {p: P4, param: touch_control, alt: [touchscreen, multi_touch], v: "Supports 10-point touch", nums: [10], any: ["10-point touch"], b: b1052}
+  - {p: P4, param: battery_capacity, alt: [rated_capacity, capacity], v: "5800mAh", nums: [5800], b: b1053}
+  - {p: P4, param: battery_endurance, alt: [operating_time, battery_life, endurance], v: "2.5 hours (Max brightness), 4.0 hours", nums: [2.5, 4.0], any: ["2.5 hours"], b: b1053}
+  - {p: P4, param: wifi_mimo, alt: [wifi, wifi_protocol, mimo], v: "2 x 2 MIMO Wi-Fi", nums: [2, 2], any: ["2 x 2 MIMO"], b: b1059}
+  - {p: P5, param: rated_capacity, alt: [capacity, battery_capacity], v: "8070mAh", nums: [8070], b: b1066}
+  - {p: P5, param: voltage, alt: [rated_voltage, nominal_voltage], v: "14.88V", nums: [14.88], b: b1067}
+  - {p: P5, param: battery_energy, alt: [rated_energy, energy], v: "120Wh", nums: [120], b: b1068}
+  - {p: P5, param: weight, alt: [battery_weight, mass], v: "520g", nums: [520], any: ["1.15 lbs"], b: b1069}
+negatives: ["0% capacity", "8 m/s at sea level"]

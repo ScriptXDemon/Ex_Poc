@@ -1,0 +1,31 @@
+doc_id: E252
+url: https://www.hii.com/products/ROMULUS-7
+products:
+  P1: {name: ROMULUS™ 7, aliases: [ROMULUS 7, HII ROMULUS™ 7]}
+facts:
+  - {p: P1, param: length_overall, v: "7ft", any: ["7-foot"]}
+  - {p: P1, param: max_speed, v: "Sprint 19 kt", any: ["19kn", "19 kt"], nums: [19]}
+  - {p: P1, param: cruise_speed, v: "Cruise 14 kt", nums: [14]}
+  - {p: P1, param: operational_range, v: "30+ nm operational range", any: ["30nm", "30+ nm"], nums: [30]}
+  - {p: P1, param: beam, v: "2ft"}
+  - {p: P1, param: endurance, v: "Cruise 4+ hrs", nums: [4], cond: cruise}
+  - {p: P1, param: endurance, v: "Loiter 24+ hrs", nums: [24], cond: loiter}
+  - {p: P1, param: payload_capacity, v: "60 lb capacity", nums: [60]}
+  - {p: P1, param: payload_volume, v: "4.6+ cu ft volume", nums: [4.6]}
+  - {p: P1, param: payload_interface, v: "Mod Payload Interface"}
+  - {p: P1, param: communications, v: "Line of Sight (LOS)/Beyond Line of Sight (BLOS)", any: ["Line of Sight (LOS)", "Beyond Line of Sight (BLOS)"]}
+  - {p: P1, param: navigation_modes, v: "Waypoint, Line Follow, Loiter, RC", any: ["Waypoint"]}
+  - {p: P1, param: propulsion_type, v: "all-electric propulsion", any: ["All-electric architecture"]}
+  - {p: P1, param: battery_capacity, v: "9 kWh Li-ion battery"}
+  - {p: P1, param: payload_power_interface, alt: [interfaces], v: "Regulated payload rails (12V/150W; 28V/360W)", nums: [12, 150]}
+  - {p: P1, param: interfaces, v: "multiple Ethernet LAN/WAN ports"}
+  - {p: P1, param: compatible_weapon_system, k: compat, v: "Odyssey™", any: ["Odyssey"]}
+  - {p: P1, k: text, v: "Intelligence, Surveillance, Reconnaissance (ISR)"}
+  - {p: P1, k: text, v: "Bathymetry and hydrographic survey"}
+  - {p: P1, k: text, v: "Electronic warfare and signals operations"}
+  - {p: P1, k: text, v: "Payload delivery and extraction"}
+  - {p: P1, k: text, v: "Vessel interdiction and maritime security"}
+  - {p: P1, k: text, v: "RF-acoustic communication relay"}
+  - {p: P1, k: text, v: "man-portable"}
+  - {p: P1, k: text, v: "Open architecture"}
+negatives: ["Four New ROMULUS Vessels"]

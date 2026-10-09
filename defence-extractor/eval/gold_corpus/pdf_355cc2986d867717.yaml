@@ -1,0 +1,71 @@
+doc_id: pdf_355cc2986d867717
+url: https://www.rheinmetall.com/Rheinmetall%20Group/brochure-download/Vehicle-Systems/B334e1122-brochure-30-years-Buffalo-ARV.pdf
+level: 4
+format: pdf
+# 30-year history brochure: specifications are in prose (system description), mixed with development history,
+# procurement figures and user-nation fleet counts (not specifications).
+products:
+  P1: {name: Bergepanzer3 Büffel, aliases: [Bergepanzer 3 Büffel, BPz3, Buffalo, Büffel, Bergepanzer3, Buffalo ARV, Bergepanzer3 Büffel armoured recovery vehicle, BPz3 Büffel, Bergepanzer3A0, Bergepanzer3A0 Büffel, BERGEPANZER3 BÜFFEL (BUFFALO)]}
+  P2: {name: Bergepanzer3A1 Büffel, aliases: [Bergepanzer3A1, BPz3A1, Bergepanzer3A1 Büffel armoured recovery vehicle]}
+  P3: {name: Bergepanzer3A0A1 Büffel, aliases: [Bergepanzer3A0A1]}
+  P4: {name: Bergepanzer3A0A2 Büffel, aliases: [Bergepanzer3A0A2]}
+  P5: {name: Bergepanzer3A0A4 Büffel, aliases: [Bergepanzer3A0A4]}
+  P6: {name: Leopard2ARV3HU, aliases: [Leopard2ARV 3HU, Leopard 2 ARV 3 HU]}
+facts:
+  - {p: P1, param: chassis, alt: [base_platform, platform, base_vehicle], v: "Leopard2", any: ["Leopard2 main battle tank", "Leopard 2"]}
+  - {p: P1, param: crane_slew_angle, alt: [crane_traverse, crane_rotation, crane_swivel_angle], v: "270°", nums: [270]}
+  - {p: P1, param: crane_capacity, alt: [lifting_capacity, max_hook_load, crane_lifting_capacity, crane_load], v: "30 tonnes", nums: [30]}
+  - {p: P1, param: crane_outreach, alt: [crane_reach], v: "90 centimetres", nums: [90]}
+  - {p: P1, param: main_winch, alt: [winch, winch_type, winch_model], v: "Rotzler Treibmatic TR 650/3", any: ["TR 650/3"]}
+  - {p: P1, param: winch_pulling_force, alt: [main_winch_pulling_force, winch_capacity, max_winch_pull, winch_pull], v: "35 tonnes", nums: [35]}
+  - {p: P1, param: max_recovery_load, alt: [winch_load_multi_pull, towing_capacity, recovery_capacity], v: "70 to 105 tonnes", nums: [70, 105], cond: double and triple pull}
+  - {p: P1, param: winch_pulling_force, alt: [main_winch_pulling_force, winch_capacity, winch_pull], v: "343kN", nums: [343], cond: first gear}
+  - {p: P1, param: winch_cable_speed, alt: [main_winch_cable_speed, cable_speed], v: "16m/min", nums: [16], cond: first gear}
+  - {p: P1, param: winch_pulling_force, alt: [main_winch_pulling_force, winch_capacity, winch_pull], v: "47kN", nums: [47], cond: second gear}
+  - {p: P1, param: winch_cable_speed, alt: [main_winch_cable_speed, cable_speed], v: "83m/min", nums: [83], cond: second gear}
+  - {p: P1, param: main_winch_cable_diameter, alt: [winch_cable_diameter, cable_diameter], v: "33mm", nums: [33]}
+  - {p: P1, param: main_winch_cable_length, alt: [winch_cable_length, cable_length], v: "160m", nums: [160]}
+  - {p: P1, param: usable_cable_length, alt: [usable_winch_cable_length, cable_length], v: "140m", nums: [140]}
+  - {p: P1, param: auxiliary_winch_pulling_force, alt: [auxiliary_winch, auxiliary_winch_pull], v: "13.5 to 15.5kN", nums: [13.5, 15.5]}
+  - {p: P1, param: auxiliary_winch_pulling_force, alt: [auxiliary_winch, auxiliary_winch_pull], v: "7 to 8.3kN", nums: [7, 8.3], cond: first delivered vehicles}
+  - {p: P1, param: auxiliary_winch_cable_speed, alt: [cable_speed], v: "between 50 and 59m/min", nums: [50, 59]}
+  - {p: P1, param: auxiliary_winch_cable_length, alt: [cable_length], v: "230m", nums: [230]}
+  - {p: P1, param: auxiliary_winch_cable_diameter, alt: [cable_diameter], v: "7.2mm", nums: [7.2]}
+  - {p: P1, param: crew, alt: [crew_capacity], v: "3-person crew", any: ["three-man crew", "3 (driver, commander, mechanic)"], nums: [3]}
+  - {p: P1, param: engine_type, alt: [engine, engine_model, powerplant], v: "MTU MB 873 Ka 501", any: ["MB 873 Ka 501"]}
+  - {p: P1, param: engine_displacement, alt: [displacement], v: "47.6-litre", nums: [47.6]}
+  - {p: P1, param: engine_cylinders, alt: [cylinders, number_of_cylinders], v: "12-cylinder", nums: [12]}
+  - {p: P1, param: fuel_type, alt: [engine_fuel], v: "multi-fuel diesel", any: ["multi-fuel"]}
+  - {p: P1, param: engine_power, alt: [power], v: "1,100kW (1,500hp)", nums: [1100]}
+  - {p: P1, param: engine_speed, alt: [rated_speed, rpm, engine_rpm], v: "2,600rpm", nums: [2600]}
+  - {p: P1, param: transmission, alt: [gearbox, transmission_type], v: "Renk HSWL 354", any: ["HSWL 354"]}
+  - {p: P1, param: number_of_gears, alt: [gears, transmission_speeds], v: "4-speed", any: ["4-speed automatic"]}
+  - {p: P1, param: suspension, alt: [suspension_type], v: "torsion bar", any: ["torsion bar-suspended"]}
+  - {p: P1, param: fire_suppression_system, alt: [fire_suppression, fire_extinguishing_system], v: "DeuGen-N (FE36)", any: ["FE36", "DeuGen-N"]}
+  - {p: P1, param: fire_suppression_response_time, alt: [extinguishing_time, response_time], v: "50ms", nums: [50]}
+  - {p: P1, param: secondary_armament, alt: [armament, main_armament, machine_gun], v: "7.62x51mm MG3A1T machine gun", any: ["MG3A1T"]}
+  - {p: P1, param: smoke_grenade_launchers, alt: [smoke_dischargers, smoke_grenade_launcher], v: "76mm smoke grenade launcher", any: ["76mm"]}
+  - {p: P1, param: max_recovery_load, alt: [recovery_capacity, mlc, military_load_class], v: "up to MLC80", any: ["MLC80"]}
+  - {p: P1, k: text, v: "support and clearing blade", any: ["clearing blade"]}
+  - {p: P1, k: text, v: "NBC protective ventilation system", any: ["NBC"]}
+  - {p: P1, k: text, v: "electric cutting and welding device that works without an additional power generator", any: ["cutting and welding"]}
+  - {p: P1, k: text, v: "load torque limiter", any: ["load torque limiter"]}
+  - {p: P1, k: text, v: "engine designed as a complete engine block; installation and removal within a few minutes", any: ["complete engine block"]}
+  - {p: P1, k: text, v: "recovering tracked vehicles in difficult terrain and also from bodies of water, towing heavy tracked vehicles off-road and on roads, securing tracked vehicles when crossing bodies of water, support for maintenance work, transporting engines and refuelling and defuelling tracked vehicles", any: ["towing heavy tracked vehicles", "refuelling and defuelling"]}
+  - {p: P2, param: combat_weight, alt: [weight, max_weight, gross_vehicle_weight], v: "a maximum of 64.5 tonnes", nums: [64.5]}
+  - {p: P2, param: military_load_class, alt: [mlc], v: "MLC 72", any: ["72", "MLC72"]}
+  - {p: P2, param: platform_payload, alt: [payload, cargo_capacity, utp_payload], v: "up to four tonnes", any: ["four tonnes", "4 tonnes"]}
+  - {p: P2, k: text, v: "lattice spacer armouring (SLAT)", any: ["SLAT"]}
+  - {p: P2, k: text, v: "mine protection plate underneath the hull floor and IED protection modules", any: ["mine protection plate", "IED protection"]}
+  - {p: P2, k: text, v: "spall liner panels", any: ["spall liner"]}
+  - {p: P2, k: text, v: "add-on armour modules for protection against RPG-7 anti-tank weapons", any: ["RPG-7"]}
+  - {p: P2, k: text, v: "CG-12 protective equipment against radio controlled improvised explosive devices (RCIEDs)", any: ["CG-12"]}
+  - {p: P2, k: text, v: "PLCU600 cooling unit", any: ["PLCU600"]}
+  - {p: P2, k: text, v: "multi-spectral driver's sight system SPECTUS", any: ["SPECTUS"]}
+  - {p: P2, k: text, v: "universal transport platform (UTP)", any: ["universal transport platform"]}
+  - {p: P3, k: text, v: "multi-spectral driver's sight system SPECTUS", any: ["SPECTUS"]}
+  - {p: P4, k: text, v: "new battlefield recovery equipment at the rear and the universal transport platform (UTP)", any: ["battlefield recovery equipment", "universal transport platform"]}
+  - {p: P4, k: text, v: "mains separation device", any: ["mains separation"]}
+  - {p: P5, k: text, v: "SEM 90 radios and the FüInfoSysH command and control system", any: ["SEM 90"]}
+  - {p: P6, k: text, v: "does not come with the heavy armour packages", any: ["heavy armour packages"]}
+negatives: ["more than 200 series production", "280; kits", "75; vehicles", "100 Bergepanzer3", "55 tonnes", "42 tonnes"]

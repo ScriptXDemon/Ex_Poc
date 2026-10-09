@@ -1,0 +1,94 @@
+doc_id: pdf_7e0267178b098988
+url: https://iwi.net/wp-content/uploads/2023/12/IWI_negev_and_ulmg_brochure_04102021_8Pg20_compressed.pdf
+level: 3
+format: pdf
+products:
+  P1: {name: NEGEV 5.56X45mm LMG, aliases: [NEGEV LMG 5.56X45mm, NEGEV 5.56, NEGEV LMG, NEGEV 5.56X45mm]}
+  P2: {name: NEGEV SF, aliases: [NEGEV SF 5.56X45mm LMG, NEGEV SF WITH NATO MAGAZINE, NEGEV SF 5.56X45mm]}
+  P3: {name: NEGEV NG-7 SF 13, aliases: [NG-7 SF 13, NEGEV NG7 SF 13]}
+  P4: {name: NEGEV NG-7 SF, aliases: [NG-7 SF, NEGEV NG7 SF]}
+  P5: {name: NEGEV NG-7, aliases: [NEGEV NG-7 LMG 7.62X51mm, NEGEV NG7, NG-7, NG7, NEGEV NG-7 7.62X51mm LMG]}
+  P6: {name: NEGEV 7 ULMG, aliases: [NEGEV ULMG, NEGEV 7, NEGEV 7 Ultra-Light Machine Gun, NEGEV7 ULMG]}
+  P7: {name: NEGEV7 ULMG SF, aliases: [NEGEV 7 ULMG SF, NEGEV ULMG SF]}
+  P8: {name: Assault Drum, aliases: [ASSAULT DRUM]}
+  P9: {name: MEPRO 21, aliases: []}
+  P10: {name: MEPRO MOR, aliases: []}
+  P11: {name: MEPRO X4, aliases: []}
+  P12: {name: MEPRO STING, aliases: []}
+facts:
+  - {p: P1, param: calibre, alt: [caliber], v: "5.56X45mm", nums: [5.56]}
+  - {p: P1, param: rifling, alt: [barrel_rifling, twist_rate], v: "6 RH Grooves, 1:7\" twist", any: ["1:7\" twist"]}
+  - {p: P1, param: barrel_length, v: "460 (18\")", nums: [460]}
+  - {p: P1, param: length_overall, alt: [length_extended, total_length_extended, length], v: "1,020", nums: [1020], cond: stock extended}
+  - {p: P1, param: length_folded, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "810", nums: [810], cond: stock folded/retracted}
+  - {p: P1, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "8", nums: [8]}
+  - {p: P1, param: rate_of_fire, alt: [cyclic_rate_of_fire, rate_of_fire_cyclic], v: "850 ~ 1,050", nums: [850, 1050], cond: "magazine"}
+  - {p: P1, param: rate_of_fire, alt: [cyclic_rate_of_fire, rate_of_fire_cyclic], v: "850 ~ 1,050", nums: [850, 1050], cond: "belt"}
+  - {p: P2, param: calibre, alt: [caliber], v: "5.56X45mm", nums: [5.56]}
+  - {p: P2, param: rifling, alt: [barrel_rifling, twist_rate], v: "6 RH Grooves, 1:7\" twist", any: ["1:7\" twist"]}
+  - {p: P2, param: barrel_length, v: "330 (13\")", nums: [330]}
+  - {p: P2, param: length_overall, alt: [length_extended, total_length_extended, length], v: "890", nums: [890], cond: stock extended}
+  - {p: P2, param: length_folded, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "680", nums: [680], cond: stock folded/retracted}
+  - {p: P2, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "7.6", nums: [7.6]}
+  - {p: P2, param: rate_of_fire, alt: [cyclic_rate_of_fire, rate_of_fire_cyclic], v: "950 ~ 1,150", nums: [950, 1150], cond: "belt, extreme conditions"}
+  - {p: P3, param: calibre, alt: [caliber], v: "7.62X51 mm", nums: [7.62]}
+  - {p: P3, param: rifling, alt: [barrel_rifling, twist_rate], v: "4 RH Grooves, 1:12\" twist", any: ["1:12\" twist"]}
+  - {p: P3, param: barrel_length, v: "330 (13\")", nums: [330]}
+  - {p: P3, param: length_overall, alt: [length_extended, total_length_extended, length], v: "920", nums: [920], cond: stock extended}
+  - {p: P3, param: length_retracted, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "840", nums: [840], cond: stock folded/retracted}
+  - {p: P3, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "7.8", nums: [7.8]}
+  - {p: P4, param: calibre, alt: [caliber], v: "7.62X51 mm", nums: [7.62]}
+  - {p: P4, param: rifling, alt: [barrel_rifling, twist_rate], v: "4 RH Grooves, 1:12\" twist", any: ["1:12\" twist"]}
+  - {p: P4, param: barrel_length, v: "420 (16.5\")", nums: [420]}
+  - {p: P4, param: length_overall, alt: [length_extended, total_length_extended, length], v: "1,010", nums: [1010], cond: stock extended}
+  - {p: P4, param: length_retracted, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "930", nums: [930], cond: stock folded/retracted}
+  - {p: P4, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "8", nums: [8]}
+  - {p: P4, param: rate_of_fire, alt: [cyclic_rate_of_fire, rate_of_fire_cyclic], v: "600 ~ 750", nums: [600, 750], cond: "position 1 & 2"}
+  - {p: P5, param: calibre, alt: [caliber], v: "7.62X51 mm", nums: [7.62]}
+  - {p: P5, param: rifling, alt: [barrel_rifling, twist_rate], v: "4 RH Grooves, 1:12\" twist", any: ["1:12\" twist"]}
+  - {p: P5, param: barrel_length, v: "508 (20\")", nums: [508]}
+  - {p: P5, param: length_overall, alt: [length_extended, total_length_extended, length], v: "1,100", nums: [1100], cond: stock extended}
+  - {p: P5, param: length_retracted, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "1,020", nums: [1020], cond: stock folded/retracted}
+  - {p: P5, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "8.2", nums: [8.2]}
+  - {p: P6, param: calibre, alt: [caliber], v: "7.62X51mm", nums: [7.62]}
+  - {p: P6, param: rifling, alt: [barrel_rifling, twist_rate], v: "4 RH Grooves, 1:12\" twist", any: ["1:12\" twist"]}
+  - {p: P6, param: barrel_length, v: "420 (16.5\")", nums: [420]}
+  - {p: P6, param: length_overall, alt: [length_extended, total_length_extended, length], v: "1,000", nums: [1000], cond: stock extended}
+  - {p: P6, param: length_retracted, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "920", nums: [920], cond: stock folded/retracted}
+  - {p: P6, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "6.6 (14.55n lbs)", nums: [6.6]}
+  - {p: P6, param: rate_of_fire, alt: [cyclic_rate_of_fire, rate_of_fire_cyclic], v: "600 ~ 800", nums: [600, 800], cond: "position 1 & 2"}
+  - {p: P7, param: calibre, alt: [caliber], v: "7.62X51mm", nums: [7.62]}
+  - {p: P7, param: rifling, alt: [barrel_rifling, twist_rate], v: "4 RH Grooves, 1:12\" twist", any: ["1:12\" twist"]}
+  - {p: P7, param: barrel_length, v: "330 (13\")", nums: [330]}
+  - {p: P7, param: length_overall, alt: [length_extended, total_length_extended, length], v: "910", nums: [910], cond: stock extended}
+  - {p: P7, param: length_retracted, alt: [length_folded, length_retracted, length_stock_folded, total_length_folded, total_length_retracted, length_overall], v: "830", nums: [830], cond: stock folded/retracted}
+  - {p: P7, param: weight, alt: [empty_weight, weapon_weight, weight_empty], v: "6.4 (14.10 lbs)", nums: [6.4]}
+  - {p: P1, param: fire_modes, alt: [firing_modes, modes_of_fire, operation_modes], v: "Semi-automatic and automatic", any: ["semi-automatic", "Two operation modes"]}
+  - {p: P1, param: feed_system, alt: [feed, ammunition_feed, feeding], v: "belt, assault drum or NATO magazine", any: ["NATO magazine", "assault drum, belt chain and NATO magazine"]}
+  - {p: P1, param: standard_compliance, alt: [mil_standard, environmental_standard], v: "Mill Spec 810", any: ["MIL-STD-810", "Mil Spec 810"]}
+  - {p: P1, k: text, v: "fired from an open bolt", any: ["open bolt"]}
+  - {p: P1, k: text, v: "Can be fired from a variety of mounts, special helicopter airborne mounts, vehicle or naval mounts", any: ["helicopter airborne mounts", "vehicle or naval mounts"]}
+  - {p: P1, k: text, v: "Tritium night sights"}
+  - {p: P1, k: text, v: "Picatinny rails for optical devices and diverse accessories", any: ["Picatinny rails"]}
+  - {p: P1, k: text, v: "Enables firing with folded butt stock", any: ["folded butt stock"]}
+  - {p: P1, k: text, v: "Gas regulator for continued operation in adverse conditions", any: ["Gas regulator"]}
+  - {p: P1, k: text, v: "Quick and easy disassembly for field maintenance", any: ["disassembly for field maintenance"]}
+  - {p: P1, k: text, v: "Multiple safety mechanisms"}
+  - {p: P1, k: text, v: "Built in Back up iron sights", any: ["back up iron sight"]}
+  - {p: P1, k: text, v: "Low silhouette keeping weapon and operator close to the ground", any: ["Low silhouette"]}
+  - {p: P1, k: text, v: "Foldable bipod"}
+  - {p: P1, k: text, v: "foldable butt stock or telescopic & foldable butt stock", any: ["telescopic"]}
+  - {p: P5, k: text, v: "fired belt fed or from an assault drum", any: ["belt fed"]}
+  - {p: P6, k: target, param: target_type, v: "walls and light-armored vehicles", any: ["light-armored vehicles"]}
+  - {p: P6, k: text, v: "substantial weight reduction", any: ["weight reduction"]}
+  - {p: P6, k: text, v: "tested to withstand extreme environmental and adverse battlefield conditions, including mud, dirt, sand, rain, and snow", any: ["mud, dirt, sand, rain, and snow"]}
+  - {p: P6, k: text, v: "semi-automatic firing mode", any: ["semi-automatic"]}
+  - {p: P6, k: text, v: "Lower Picatinny rails", any: ["LOWER PICATINNY RAILS"]}
+  - {p: P6, k: text, v: "M-LOK"}
+  - {p: P8, param: magazine_capacity, alt: [drum_capacity, feed_capacity, capacity], v: "100/125 drum", nums: [100, 125], cond: NEGEV NG7 7.62X51mm}
+  - {p: P8, param: magazine_capacity, alt: [drum_capacity, feed_capacity, capacity], v: "150/200 drum", nums: [150, 200], cond: NEGEV 5.56X45mm}
+  - {p: P9, k: text, v: "Day / night self illuminated reflex sight", any: ["self illuminated", "Red dot weapon sight"]}
+  - {p: P10, k: text, v: "Multi-purpose reflex sight with two laser pointers (Visible and IR)", any: ["two laser pointers"]}
+  - {p: P11, param: magnification, v: "x4 magnification", any: ["x4"]}
+  - {p: P12, k: text, v: "Dual wavelength laser pointer"}
+negatives: ["Israel Defense Forces"]

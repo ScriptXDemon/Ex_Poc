@@ -1,0 +1,19 @@
+doc_id: doc_84dddc7d1d21a1c5
+url: https://www.hdtglobal.com/product/17-ton-mining-unit
+level: 1
+format: html
+products:
+  P1: {name: 17 Ton Mining Unit, aliases: [HDT's 17 Ton Mining Unit, HDT 17 Ton Mining Unit, 17-Ton Mining Unit]}
+facts:
+  - {p: P1, param: operating_temperature, alt: [max_operating_temperature, ambient_temperature], v: "35°C (95°F)", nums: [35]}
+  - {p: P1, param: relative_humidity, alt: [operating_humidity, humidity], v: "95% (or higher)", nums: [95]}
+  - {p: P1, param: operating_depth, v: "nearly 3.2 km (2 miles) underground", nums: [3.2]}
+  - {p: P1, param: airflow, alt: [air_flow_rate, air_flow], v: "2,000-4,000 ACFM", nums: [2000, 4000]}
+  - {p: P1, param: inlet_air_temperature, v: "37°C (98.6°F) DB/34°C (93.2°F) WB", nums: [37, 34]}
+  - {p: P1, param: outlet_air_temperature, v: "24.5°C (76.1°F) DB/23.7°C (74.7°F) WB", nums: [24.5, 23.7]}
+  - {p: P1, param: air_outlets, v: "two air outlets", any: ["two"]}
+  - {p: P1, k: text, v: "mobile, self-contained, air-cooled mine shaft air conditioner", any: ["air-cooled mine shaft air conditioner", "mine shaft air conditioner"]}
+  - {p: P1, k: text, v: "Ideal for deep shaft work environments"}
+  - {p: P1, k: text, v: "Temperature control wherever it is needed"}
+  - {p: P1, k: text, v: "Provides critical wet bulb humidity control", any: ["wet bulb humidity control"]}
+negatives: []
