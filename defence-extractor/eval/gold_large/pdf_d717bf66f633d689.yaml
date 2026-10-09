@@ -1,0 +1,52 @@
+doc_id: pdf_d717bf66f633d689
+url: "https://future-forces-forum.org/download/FUTURE_FORCES_FORUM_Catalogue_2022.pdf"
+level: 4
+format: pdf
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Future Forces Forum 2022 exhibition catalogue (132 pages): mostly exhibitor company profiles with very few explicit
+# specs. Pages 5-30 hold only forewords and the programme, so the start sample comes from the first exhibitor pages
+# (p46-49, pos 0.14-0.18). Middle sample: p68-72 (pos 0.47-0.54). Pages 105-132 hold conference programmes and ads with
+# no spec-bearing product; the end sample is the only two products presented there (p100 GORE-TEX ad, p106 Aruba ESP (dropped: an IT platform, not a defence product),
+# Czech text), text facts only. Ownership tests: Arbit Data Diode vs Arbit RUGGED C4ISTAR Gateway (same paragraph,
+# different accreditation levels); FOTAS vs OPTTA-PP62X (same paragraph, 100 km belongs to FOTAS); company facts of each
+# exhibitor are negatives. "Arbit Data Diode" also covers "Arbit Data Diode CORE": the document states the values for both.
+products:
+  P1: {name: "Arbit Data Diode", aliases: ["Arbit Data Diode CORE"], pos: start, page: 46}
+  P2: {name: "Arbit RUGGED C4ISTAR Gateway", aliases: ["RUGGED C4ISTAR Gateway"], pos: start, page: 46}
+  P3: {name: "Versatys®", aliases: ["Versatys", "Versatys® connectors"], pos: start, page: 49}
+  P4: {name: "FOTAS distributed acoustic sensor system", aliases: ["FOTAS"], pos: middle, page: 68}
+  P5: {name: "Rescue Trailer", aliases: ["Rescue trailer"], pos: middle, page: 71}
+  P6: {name: "Falcon 4G", aliases: [], pos: middle, page: 72}
+  P7: {name: "GORE-TEX stretch rain suits", aliases: ["GORE-TEX STRETCH RAIN SUITS", "GORE-TEX stretch rain suit"], pos: end, page: 100}
+facts:
+  - {p: P1, param: common_criteria_level, alt: [certification, security_certification, assurance_level], v: "EAL 7+", nums: [7], b: b474}
+  - {p: P1, param: nato_accreditation, alt: [security_accreditation, classification_level, accreditation], v: "NATO COSMIC TOP SECRET", any: ["COSMIC TOP SECRET"], b: b474}
+  - {p: P1, param: eu_accreditation, alt: [security_accreditation, classification_level, accreditation], v: "EU TOP SECRET", b: b474}
+  - {p: P2, param: nato_accreditation, alt: [security_accreditation, classification_level, accreditation], v: "NATO SECRET", b: b474}
+  - {p: P2, param: eu_accreditation, alt: [security_accreditation, classification_level, accreditation], v: "EU SECRET", b: b474}
+  - {p: P3, param: connector_type, alt: [product_type, type], v: "compact power connectors", any: ["power connectors"], b: b597}
+  - {p: P3, param: latching_system, alt: [latching, locking_system, coupling_system], v: "fast-latching D-Click system", any: ["D-Click"], b: b597}
+  - {p: P3, param: contact_configuration, alt: [contacts, interchangeable_lines, customization], v: "interchangeable lines (power contacts and wire)", any: ["interchangeable lines"], b: b597}
+  - {p: P3, k: text, v: "substantial space and weight saving", any: ["space and weight saving"], b: b597}
+  - {p: P4, param: detection_range_per_segment, alt: [detection_range, range, max_range], v: "up to 100 km away", nums: [100], any: ["100 km"], b: b1590}
+  - {p: P4, param: sensing_principle, alt: [detection_principle, sensor_type, technology], v: "analysis of the signal in the optical cable", any: ["optical cable"], b: b1590}
+  - {p: P4, k: text, v: "protection of the perimeter", any: ["perimeter"], b: b1590}
+  - {p: P4, k: text, v: "evaluates the characteristics based on the vibrations in the given area", any: ["vibrations"], b: b1590}
+  - {p: P5, param: folded_pallet_size, alt: [pallet_compatibility, transport_pallet, folded_dimensions], v: "NATO pallet size type 463L", nums: [463], any: ["463L"], b: b1743}
+  - {p: P5, param: suspension, alt: [suspension_type, wheel_suspension], v: "independent wheel suspension", b: b1743}
+  - {p: P5, param: drawbar, alt: [hitch, towing_drawbar], v: "adjustable drawbar", b: b1743}
+  - {p: P5, param: power_source, alt: [power_supply, onboard_power, generator], v: "own power source (battery + generator)", any: ["battery + generator"], b: b1743}
+  - {p: P5, k: text, v: "unique folding concept", any: ["folding"], b: b1743}
+  - {p: P5, k: text, v: "can be towed behind cars and trucks", any: ["towed behind cars and trucks"], b: b1743}
+  - {p: P5, k: text, v: "can also serve as a mobile base, providing its crew with facilities, power, water and equipment", any: ["mobile base"], b: b1743}
+  - {p: P6, param: power_consumption, alt: [power, power_draw, consumption], v: "consumption bellow 25W", nums: [25], any: ["25W"], b: b1832}
+  - {p: P6, param: detection_technology, alt: [technology, sensor_type, laser_type], v: "pulsed - low energy lasers", any: ["low energy lasers"], b: b1832}
+  - {p: P6, param: detector_type, alt: [type, detection_mode], v: "stand-off detector", any: ["stand-off"], b: b1832}
+  - {p: P6, param: battery_endurance, alt: [endurance, operating_time, battery_life], v: "for the whole day on the battery", any: ["whole day"], b: b1832}
+  - {p: P6, k: text, v: "visualize cloud in 3D image", any: ["3D image"], b: b1832}
+  - {p: P6, k: text, v: "will see the secondary cloud", any: ["secondary cloud"], b: b1832}
+  - {p: P6, k: text, v: "undetectable on the battlefield", b: b1832}
+  - {p: P7, k: text, v: "combine optimized comfort, high durability and protection", any: ["high durability"], b: b3013}
+  - {p: P7, k: text, v: "increases breathability to significantly reduce thermal burden", any: ["breathability"], b: b3013}
+  - {p: P7, k: text, v: "improves the garments evaporative resistance", any: ["evaporative resistance"], b: b3013}
+negatives: ["82,500 people", "over 330 employees", "more than 16 years", "since 1965", "1583G", "more than 9,500 people", "v roce 2002", "94 %"]

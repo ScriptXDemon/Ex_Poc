@@ -1,0 +1,10 @@
+doc_id: doc_ea9543d8cb971d07
+url: https://oshkoshdefense.com/wp-json/wp/v2/pages/133740
+level: 4
+format: html
+# Oshkosh Defense "News & Updates" listing page: headlines, dates and category links only (eJLTV, FMTV A2,
+# ROGUE-Fires Block 2 are named but no specification is stated). Negative control: whole page judged, any accepted
+# product fact counts as other_product_facts (precision signal).
+products: {}
+facts: []
+negatives: ["$142 Million", "September 16, 2026", "August 24, 2026", "August 12, 2026", "June 14, 2026", "June 3, 2026", "June 1, 2026"]

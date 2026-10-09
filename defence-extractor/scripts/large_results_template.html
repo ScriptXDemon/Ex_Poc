@@ -1,0 +1,132 @@
+<title>Large-File Test Results</title>
+{fonts}
+{style}
+<style>
+.pos td:first-child {{ white-space: nowrap; }}
+.pos td {{ min-width: 150px; }}
+.split {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }}
+.fixlist {{ display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }}
+.fixlist li {{ display: grid; grid-template-columns: 7.5rem 1fr; gap: 12px; align-items: baseline; }}
+.fixlist li b {{ font: 600 12px/1.3 var(--mono); color: var(--accent); }}
+@media (max-width: 560px) {{ .fixlist li {{ grid-template-columns: 1fr; gap: 2px; }} }}
+</style>
+<main>
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Defence product intelligence · extraction engine · large-file test, 2026-10-09</div>
+  <h1>Large-File Test Results</h1>
+  <p class="lede">The engine after the D1–D8 changes, run on {n_docs} large documents from the corpus: PDF catalogues up to 294 pages and
+  1M characters, image-only catalogue pages, and long HTML articles and listings. Each was scored against a partial answer key written
+  from the parsed source before any output was seen, with products sampled at the start, middle and end of the document.</p>
+</header>
+
+<div class="strip" role="list">{kpis}</div>
+
+<section>
+  <h2>Can the large-file test set run now?</h2>
+  <div class="verdict">
+    <p><b>Yes.</b> {verdict}</p>
+  </div>
+</section>
+
+<section>
+  <h2>Accuracy by position in the document</h2>
+  <p>Share of the answer-key specs found on the right product, by where the sampled product sits in the document. The old run lost
+  accuracy the deeper it read; the product map, local entity lists and full-length parsing remove most of that drop.</p>
+  <div class="wrap"><table class="pos"><thead><tr><th>Run</th><th>Start</th><th>Middle</th><th>End</th></tr></thead><tbody>{pos}</tbody></table></div>
+  <p class="small">"Wrong product" counts answer-key values that the engine accepted, but on another product that does not have that value.</p>
+</section>
+
+<section>
+  <h2>Per document</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Document</th><th>Size</th><th>Found</th><th>Recall</th><th>Wrong product</th><th>Unresolved</th><th>Before</th><th>By position</th><th>Cost</th><th>Notes</th></tr></thead>
+    <tbody>{docs}</tbody>
+  </table></div>
+  <p class="small">{doc_note}</p>
+</section>
+
+<section>
+  <h2>Specs outside the catalogue, on the right product</h2>
+  <div class="split">
+    <div class="note"><h3>What the engine accepted</h3>
+      <p>{acc_total} specifications were accepted on these documents: {canon_share} map to a catalogue parameter, {cand_share} to a
+      candidate parameter from the A14 extension, and {dyn_share} are dynamic, named from the document's own label.
+      Among the answer-key specs the engine found, {dyn_matched} were dynamic parameters on the right product; {dyn_mis} dynamic values
+      landed on a wrong product.</p></div>
+    <div class="note"><h3>How a value is tied to its product</h3>
+      <ul>
+        <li>The product map gives every section its product from headings, page titles, running headers and the page map, and the
+        extraction prompt shows it next to each section ("describes: …").</li>
+        <li>Rows and columns of product-keyed tables (one row or column per model) are assigned to that model without asking the model.</li>
+        <li>Each call sees only the 40 entities relevant to its pages, not a list of hundreds.</li>
+        <li>A part's values (controller, battery, camera, launcher) stay on the part and roll up into the product's sheet as a subsystem.</li>
+        <li>The verifier checks every accepted value against its evidence and owner.</li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Vision with the same Qwen 27B</h2>
+  <div class="split">
+    <div class="note"><h3>How it works</h3>
+      <ul>
+        <li>Routing is per page: only pages with no text layer, or mostly image with little text, are rendered (1,600 px long side) and
+        transcribed. The text layer stays the source of truth everywhere else.</li>
+        <li>The model returns typed blocks (heading, table row, label–value, paragraph), inserted in reading order on their own page, so
+        every later agent reads them in place.</li>
+        <li>Values read from images get a lower evidence confidence and go through the same verification.</li>
+        <li>At most 40 pages per document; about $0.002 per page on OpenRouter.</li>
+      </ul></div>
+    <div class="note"><h3>Result</h3>
+      <p>{vision_text}</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>What changed</h2>
+  <div class="split">
+    <div class="note"><h3>Planned changes D1–D8</h3>
+      <ul class="fixlist">
+        <li><b>D1 product map</b><span>Section, page and table ownership before extraction; windowed page map over the whole document.</span></li>
+        <li><b>D2 local entities</b><span>At most 40 relevant entities per call instead of the whole registry.</span></li>
+        <li><b>D3 full PDFs</b><span>40-page windows with a disk cache, no page limit; tables continued across a page break keep their header.</span></li>
+        <li><b>D4 vision</b><span>Page-level transcription of image pages with the main model.</span></li>
+        <li><b>D5 checkpoints</b><span>Heartbeats from long stages, per-document spend kept on disk, finished calls replayed from the cache.</span></li>
+        <li><b>D6 product sheet</b><span>Duplicates merged, conflicting values flagged, page provenance, subsystems rolled up.</span></li>
+        <li><b>D7 spend order</b><span>Specification-dense chunks first, so a budget cap cuts narrative, not tables.</span></li>
+        <li><b>D8 answer keys</b><span>Position-aware partial keys for the 15 documents, written blind.</span></li>
+      </ul></div>
+    <div class="note"><h3>Found and fixed while testing</h3>
+      <ul class="fixlist">
+        <li><b>hyphens</b><span>The verifier model writes non-breaking hyphens; every such value failed the evidence check (204 in the old run).</span></li>
+        <li><b>table units</b><span>"IMU: 259; Units: mm" read as "259 mm" was rejected; about 2,900 such table values in the old run are now kept.</span></li>
+        <li><b>roles</b><span>Product-type entities left without a role lost their values from the output; re-asked, typed, kept.</span></li>
+        <li><b>parts</b><span>Named parts in spec tables become components of their product; a section label no longer pulls a part's values onto the product.</span></li>
+        <li><b>throughput</b><span>Attribution and parameter mapping ran one call at a time, and mapping overflowed on catalogues; both now batch in parallel.</span></li>
+        <li><b>PDF threads</b><span>The PDF library is not thread-safe; parallel documents now share one lock.</span></li>
+        <li><b>scoring</b><span>Product names must agree on model numbers, so variants such as M322 and M338 are told apart.</span></li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Short documents still hold</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Set</th><th>Before</th><th>Now</th><th>Notes</th></tr></thead>
+    <tbody>{regression}</tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Cost, time and capacity</h2>
+  <div class="split">
+    <div class="note"><h3>This run</h3><p>{cost_text}</p></div>
+    <div class="note"><h3>For the data centre</h3><p>{dc_text}</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Still weak, and next</h2>
+  <div class="note"><ul>{next_items}</ul></div>
+</section>
+</main>

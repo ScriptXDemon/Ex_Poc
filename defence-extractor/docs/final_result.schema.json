@@ -1,0 +1,1361 @@
+{
+ "$defs": {
+  "Applicability": {
+   "properties": {
+    "variant_entity_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Variant Entity Id"
+    },
+    "conditions": {
+     "items": {
+      "$ref": "#/$defs/Condition"
+     },
+     "title": "Conditions",
+     "type": "array"
+    }
+   },
+   "title": "Applicability",
+   "type": "object"
+  },
+  "Comparator": {
+   "enum": [
+    "eq",
+    "lt",
+    "le",
+    "gt",
+    "ge",
+    "approx",
+    "up_to",
+    "at_least"
+   ],
+   "title": "Comparator",
+   "type": "string"
+  },
+  "Condition": {
+   "description": "Configuration / variant scope of a value, e.g. {dimension: \"powerplant\", value_text: \"CT7-2E1\"}.",
+   "properties": {
+    "dimension": {
+     "title": "Dimension",
+     "type": "string"
+    },
+    "value_text": {
+     "title": "Value Text",
+     "type": "string"
+    }
+   },
+   "required": [
+    "dimension",
+    "value_text"
+   ],
+   "title": "Condition",
+   "type": "object"
+  },
+  "Confidence": {
+   "properties": {
+    "evidence": {
+     "default": 0.0,
+     "title": "Evidence",
+     "type": "number"
+    },
+    "attribution": {
+     "default": 0.0,
+     "title": "Attribution",
+     "type": "number"
+    },
+    "mapping": {
+     "default": 0.0,
+     "title": "Mapping",
+     "type": "number"
+    },
+    "value": {
+     "default": 0.0,
+     "title": "Value",
+     "type": "number"
+    },
+    "overall": {
+     "default": 0.0,
+     "title": "Overall",
+     "type": "number"
+    }
+   },
+   "title": "Confidence",
+   "type": "object"
+  },
+  "Coverage": {
+   "properties": {
+    "ledger_items": {
+     "default": 0,
+     "title": "Ledger Items",
+     "type": "integer"
+    },
+    "extracted": {
+     "default": 0,
+     "title": "Extracted",
+     "type": "integer"
+    },
+    "rejected": {
+     "default": 0,
+     "title": "Rejected",
+     "type": "integer"
+    },
+    "unresolved": {
+     "default": 0,
+     "title": "Unresolved",
+     "type": "integer"
+    },
+    "duplicate": {
+     "default": 0,
+     "title": "Duplicate",
+     "type": "integer"
+    },
+    "open": {
+     "default": 0,
+     "title": "Open",
+     "type": "integer"
+    },
+    "inventory_items": {
+     "default": 0,
+     "title": "Inventory Items",
+     "type": "integer"
+    },
+    "inventory_found_by_discovery": {
+     "default": 0,
+     "title": "Inventory Found By Discovery",
+     "type": "integer"
+    },
+    "recovered_by_audit": {
+     "default": 0,
+     "title": "Recovered By Audit",
+     "type": "integer"
+    }
+   },
+   "title": "Coverage",
+   "type": "object"
+  },
+  "DefenceEntity": {
+   "properties": {
+    "entity_id": {
+     "title": "Entity Id",
+     "type": "string"
+    },
+    "name": {
+     "title": "Name",
+     "type": "string"
+    },
+    "aliases": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Aliases",
+     "type": "array"
+    },
+    "entity_type": {
+     "$ref": "#/$defs/EntityType",
+     "default": "other"
+    },
+    "specific_model": {
+     "default": true,
+     "title": "Specific Model",
+     "type": "boolean"
+    },
+    "role": {
+     "$ref": "#/$defs/Role",
+     "default": "other"
+    },
+    "parent_entity_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Parent Entity Id"
+    },
+    "product_classes": {
+     "items": {
+      "$ref": "#/$defs/ProductClass"
+     },
+     "title": "Product Classes",
+     "type": "array"
+    },
+    "mention_block_ids": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Mention Block Ids",
+     "type": "array"
+    },
+    "confidence": {
+     "default": 0.8,
+     "title": "Confidence",
+     "type": "number"
+    },
+    "note": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Note"
+    }
+   },
+   "required": [
+    "entity_id",
+    "name"
+   ],
+   "title": "DefenceEntity",
+   "type": "object"
+  },
+  "EntityType": {
+   "enum": [
+    "company",
+    "product",
+    "product_family",
+    "variant",
+    "subsystem",
+    "component",
+    "weapon",
+    "ammunition",
+    "sensor",
+    "engine",
+    "platform",
+    "technology",
+    "organization",
+    "target",
+    "generic_class",
+    "other"
+   ],
+   "title": "EntityType",
+   "type": "string"
+  },
+  "EvidenceRef": {
+   "description": "Pointer into the SemanticDocument. ``quote`` is a verbatim substring of the block text.",
+   "properties": {
+    "block_id": {
+     "title": "Block Id",
+     "type": "string"
+    },
+    "quote": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Quote"
+    },
+    "char_start": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Char Start"
+    },
+    "char_end": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Char End"
+    },
+    "page": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Page"
+    }
+   },
+   "required": [
+    "block_id"
+   ],
+   "title": "EvidenceRef",
+   "type": "object"
+  },
+  "ExecutionManifest": {
+   "properties": {
+    "pipeline_version": {
+     "title": "Pipeline Version",
+     "type": "string"
+    },
+    "ontology_version": {
+     "title": "Ontology Version",
+     "type": "string"
+    },
+    "parser_version": {
+     "title": "Parser Version",
+     "type": "string"
+    },
+    "run_id": {
+     "title": "Run Id",
+     "type": "string"
+    },
+    "models": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "title": "Models",
+     "type": "object"
+    },
+    "providers_used": {
+     "additionalProperties": {
+      "type": "integer"
+     },
+     "title": "Providers Used",
+     "type": "object"
+    },
+    "usage": {
+     "$ref": "#/$defs/Usage"
+    },
+    "stages": {
+     "items": {
+      "$ref": "#/$defs/StageTiming"
+     },
+     "title": "Stages",
+     "type": "array"
+    },
+    "duration_s": {
+     "default": 0.0,
+     "title": "Duration S",
+     "type": "number"
+    },
+    "status": {
+     "default": "completed",
+     "title": "Status",
+     "type": "string"
+    },
+    "errors": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Errors",
+     "type": "array"
+    }
+   },
+   "required": [
+    "pipeline_version",
+    "ontology_version",
+    "parser_version",
+    "run_id"
+   ],
+   "title": "ExecutionManifest",
+   "type": "object"
+  },
+  "FactClass": {
+   "enum": [
+    "technical_specification",
+    "performance_specification",
+    "physical_specification",
+    "configuration",
+    "capability",
+    "feature",
+    "compatibility",
+    "component",
+    "payload",
+    "armament",
+    "ammunition",
+    "mission",
+    "target",
+    "protection",
+    "operational_characteristic",
+    "technology",
+    "marketing_claim",
+    "procurement_information",
+    "operational_event",
+    "other"
+   ],
+   "title": "FactClass",
+   "type": "string"
+  },
+  "LedgerItem": {
+   "properties": {
+    "item_id": {
+     "title": "Item Id",
+     "type": "string"
+    },
+    "origin": {
+     "title": "Origin",
+     "type": "string"
+    },
+    "block_id": {
+     "title": "Block Id",
+     "type": "string"
+    },
+    "section_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Section Id"
+    },
+    "text": {
+     "title": "Text",
+     "type": "string"
+    },
+    "char_start": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Char Start"
+    },
+    "char_end": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Char End"
+    },
+    "technical_candidate": {
+     "default": true,
+     "title": "Technical Candidate",
+     "type": "boolean"
+    },
+    "status": {
+     "$ref": "#/$defs/LedgerStatus",
+     "default": "open"
+    },
+    "reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reason"
+    },
+    "fact_ids": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Fact Ids",
+     "type": "array"
+    },
+    "reviewed_by": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Reviewed By",
+     "type": "array"
+    }
+   },
+   "required": [
+    "item_id",
+    "origin",
+    "block_id",
+    "text"
+   ],
+   "title": "LedgerItem",
+   "type": "object"
+  },
+  "LedgerStatus": {
+   "enum": [
+    "open",
+    "extracted",
+    "rejected",
+    "unresolved",
+    "duplicate"
+   ],
+   "title": "LedgerStatus",
+   "type": "string"
+  },
+  "LedgerSummary": {
+   "properties": {
+    "total": {
+     "default": 0,
+     "title": "Total",
+     "type": "integer"
+    },
+    "open": {
+     "default": 0,
+     "title": "Open",
+     "type": "integer"
+    },
+    "extracted": {
+     "default": 0,
+     "title": "Extracted",
+     "type": "integer"
+    },
+    "rejected": {
+     "default": 0,
+     "title": "Rejected",
+     "type": "integer"
+    },
+    "unresolved": {
+     "default": 0,
+     "title": "Unresolved",
+     "type": "integer"
+    },
+    "duplicate": {
+     "default": 0,
+     "title": "Duplicate",
+     "type": "integer"
+    },
+    "rejected_by_reason": {
+     "additionalProperties": {
+      "type": "integer"
+     },
+     "title": "Rejected By Reason",
+     "type": "object"
+    }
+   },
+   "title": "LedgerSummary",
+   "type": "object"
+  },
+  "OntologyStatus": {
+   "enum": [
+    "canonical",
+    "candidate",
+    "dynamic"
+   ],
+   "title": "OntologyStatus",
+   "type": "string"
+  },
+  "ParameterRef": {
+   "properties": {
+    "id": {
+     "title": "Id",
+     "type": "string"
+    },
+    "status": {
+     "$ref": "#/$defs/OntologyStatus"
+    },
+    "source_label": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Source Label"
+    },
+    "display_name": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Display Name"
+    },
+    "category_path": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Category Path",
+     "type": "array"
+    }
+   },
+   "required": [
+    "id",
+    "status"
+   ],
+   "title": "ParameterRef",
+   "type": "object"
+  },
+  "Predicate": {
+   "enum": [
+    "manufactures",
+    "variant_of",
+    "part_of",
+    "mounted_on",
+    "carries",
+    "fires",
+    "uses",
+    "integrated_with",
+    "launched_from",
+    "compatible_with",
+    "targets",
+    "replaces",
+    "compares_with",
+    "powered_by",
+    "equipped_with",
+    "transportable_by",
+    "incorporates_technology",
+    "supplied_to",
+    "other"
+   ],
+   "title": "Predicate",
+   "type": "string"
+  },
+  "ProductClass": {
+   "properties": {
+    "domain": {
+     "title": "Domain",
+     "type": "string"
+    },
+    "category": {
+     "title": "Category",
+     "type": "string"
+    },
+    "subcategory": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Subcategory"
+    }
+   },
+   "required": [
+    "domain",
+    "category"
+   ],
+   "title": "ProductClass",
+   "type": "object"
+  },
+  "ProductRecord": {
+   "properties": {
+    "entity_id": {
+     "title": "Entity Id",
+     "type": "string"
+    },
+    "name": {
+     "title": "Name",
+     "type": "string"
+    },
+    "aliases": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Aliases",
+     "type": "array"
+    },
+    "entity_type": {
+     "$ref": "#/$defs/EntityType"
+    },
+    "role": {
+     "$ref": "#/$defs/Role"
+    },
+    "manufacturer": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Manufacturer"
+    },
+    "manufacturer_entity_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Manufacturer Entity Id"
+    },
+    "parent_entity_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Parent Entity Id"
+    },
+    "classification": {
+     "items": {
+      "$ref": "#/$defs/ProductClass"
+     },
+     "title": "Classification",
+     "type": "array"
+    },
+    "specifications": {
+     "items": {
+      "$ref": "#/$defs/SpecRecord"
+     },
+     "title": "Specifications",
+     "type": "array"
+    },
+    "capabilities": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Capabilities",
+     "type": "array"
+    },
+    "features": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Features",
+     "type": "array"
+    },
+    "technologies": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Technologies",
+     "type": "array"
+    },
+    "components": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Components",
+     "type": "array"
+    },
+    "compatibility": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Compatibility",
+     "type": "array"
+    },
+    "missions": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Missions",
+     "type": "array"
+    },
+    "targets": {
+     "items": {
+      "$ref": "#/$defs/TextFactRecord"
+     },
+     "title": "Targets",
+     "type": "array"
+    },
+    "unresolved": {
+     "items": {
+      "additionalProperties": true,
+      "type": "object"
+     },
+     "title": "Unresolved",
+     "type": "array"
+    },
+    "relations": {
+     "items": {
+      "$ref": "#/$defs/RelationEdge"
+     },
+     "title": "Relations",
+     "type": "array"
+    },
+    "conflicts": {
+     "items": {
+      "additionalProperties": true,
+      "type": "object"
+     },
+     "title": "Conflicts",
+     "type": "array"
+    },
+    "subsystems": {
+     "items": {
+      "additionalProperties": true,
+      "type": "object"
+     },
+     "title": "Subsystems",
+     "type": "array"
+    }
+   },
+   "required": [
+    "entity_id",
+    "name",
+    "entity_type",
+    "role"
+   ],
+   "title": "ProductRecord",
+   "type": "object"
+  },
+  "RelationEdge": {
+   "properties": {
+    "edge_id": {
+     "title": "Edge Id",
+     "type": "string"
+    },
+    "subject_entity_id": {
+     "title": "Subject Entity Id",
+     "type": "string"
+    },
+    "predicate": {
+     "$ref": "#/$defs/Predicate"
+    },
+    "object_entity_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Object Entity Id"
+    },
+    "object_literal": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Object Literal"
+    },
+    "evidence_block_ids": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Block Ids",
+     "type": "array"
+    },
+    "confidence": {
+     "default": 0.8,
+     "title": "Confidence",
+     "type": "number"
+    }
+   },
+   "required": [
+    "edge_id",
+    "subject_entity_id",
+    "predicate"
+   ],
+   "title": "RelationEdge",
+   "type": "object"
+  },
+  "Role": {
+   "enum": [
+    "focal_product",
+    "related_product",
+    "variant",
+    "family",
+    "subsystem",
+    "component",
+    "weapon",
+    "ammunition",
+    "launch_platform",
+    "carrier_platform",
+    "compatible_system",
+    "sensor",
+    "engine",
+    "technology",
+    "reference_product",
+    "competitor",
+    "legacy_product",
+    "accessory",
+    "manufacturer",
+    "customer",
+    "target",
+    "generic_class",
+    "other"
+   ],
+   "title": "Role",
+   "type": "string"
+  },
+  "SpecRecord": {
+   "description": "Final, verified (or low-confidence verified) record inside a product.",
+   "properties": {
+    "spec_id": {
+     "title": "Spec Id",
+     "type": "string"
+    },
+    "parameter": {
+     "$ref": "#/$defs/ParameterRef"
+    },
+    "fact_class": {
+     "$ref": "#/$defs/FactClass"
+    },
+    "value_text": {
+     "title": "Value Text",
+     "type": "string"
+    },
+    "value": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/StructuredValue"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "applies_when": {
+     "$ref": "#/$defs/Applicability"
+    },
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/EvidenceRef"
+     },
+     "title": "Evidence",
+     "type": "array"
+    },
+    "confidence": {
+     "$ref": "#/$defs/Confidence"
+    },
+    "verification": {
+     "$ref": "#/$defs/VerificationStatus",
+     "default": "verified"
+    },
+    "notes": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Notes"
+    }
+   },
+   "required": [
+    "spec_id",
+    "parameter",
+    "fact_class",
+    "value_text"
+   ],
+   "title": "SpecRecord",
+   "type": "object"
+  },
+  "StageTiming": {
+   "properties": {
+    "stage": {
+     "title": "Stage",
+     "type": "string"
+    },
+    "seconds": {
+     "title": "Seconds",
+     "type": "number"
+    },
+    "usage": {
+     "$ref": "#/$defs/Usage"
+    },
+    "note": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Note"
+    }
+   },
+   "required": [
+    "stage",
+    "seconds"
+   ],
+   "title": "StageTiming",
+   "type": "object"
+  },
+  "StructuredValue": {
+   "description": "Derived, optional machine-readable reading of ``value_text``. Never replaces the source text.",
+   "properties": {
+    "kind": {
+     "default": "text",
+     "enum": [
+      "scalar",
+      "range",
+      "bound",
+      "set",
+      "composite",
+      "count",
+      "ratio",
+      "text",
+      "boolean"
+     ],
+     "title": "Kind",
+     "type": "string"
+    },
+    "comparator": {
+     "$ref": "#/$defs/Comparator",
+     "default": "eq"
+    },
+    "nominal": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/ValuePart"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "min": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/ValuePart"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "max": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/ValuePart"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null
+    },
+    "components": {
+     "items": {
+      "$ref": "#/$defs/ValuePart"
+     },
+     "title": "Components",
+     "type": "array"
+    },
+    "alternates": {
+     "items": {
+      "$ref": "#/$defs/ValuePart"
+     },
+     "title": "Alternates",
+     "type": "array"
+    },
+    "dimension": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Dimension"
+    },
+    "multiplier": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Multiplier"
+    },
+    "text": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Text"
+    }
+   },
+   "title": "StructuredValue",
+   "type": "object"
+  },
+  "TextFactRecord": {
+   "description": "Capabilities, features, missions, targets, components ... (non-numeric product facts).",
+   "properties": {
+    "fact_id": {
+     "title": "Fact Id",
+     "type": "string"
+    },
+    "text": {
+     "title": "Text",
+     "type": "string"
+    },
+    "fact_class": {
+     "$ref": "#/$defs/FactClass"
+    },
+    "source_parameter": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Source Parameter"
+    },
+    "related_entity_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Related Entity Id"
+    },
+    "applies_when": {
+     "$ref": "#/$defs/Applicability"
+    },
+    "evidence": {
+     "items": {
+      "$ref": "#/$defs/EvidenceRef"
+     },
+     "title": "Evidence",
+     "type": "array"
+    },
+    "confidence": {
+     "default": 0.0,
+     "title": "Confidence",
+     "type": "number"
+    },
+    "verification": {
+     "$ref": "#/$defs/VerificationStatus",
+     "default": "verified"
+    }
+   },
+   "required": [
+    "fact_id",
+    "text",
+    "fact_class"
+   ],
+   "title": "TextFactRecord",
+   "type": "object"
+  },
+  "Usage": {
+   "properties": {
+    "calls": {
+     "default": 0,
+     "title": "Calls",
+     "type": "integer"
+    },
+    "prompt_tokens": {
+     "default": 0,
+     "title": "Prompt Tokens",
+     "type": "integer"
+    },
+    "completion_tokens": {
+     "default": 0,
+     "title": "Completion Tokens",
+     "type": "integer"
+    },
+    "reasoning_tokens": {
+     "default": 0,
+     "title": "Reasoning Tokens",
+     "type": "integer"
+    },
+    "cached_tokens": {
+     "default": 0,
+     "title": "Cached Tokens",
+     "type": "integer"
+    },
+    "cost_usd": {
+     "default": 0.0,
+     "title": "Cost Usd",
+     "type": "number"
+    },
+    "cache_hits": {
+     "default": 0,
+     "title": "Cache Hits",
+     "type": "integer"
+    }
+   },
+   "title": "Usage",
+   "type": "object"
+  },
+  "ValuePart": {
+   "properties": {
+    "value": {
+     "title": "Value",
+     "type": "number"
+    },
+    "unit": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Unit"
+    },
+    "normalized_value": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Normalized Value"
+    },
+    "normalized_unit": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Normalized Unit"
+    }
+   },
+   "required": [
+    "value"
+   ],
+   "title": "ValuePart",
+   "type": "object"
+  },
+  "VerificationStatus": {
+   "enum": [
+    "verified",
+    "verified_low_confidence",
+    "unresolved",
+    "rejected",
+    "pending"
+   ],
+   "title": "VerificationStatus",
+   "type": "string"
+  }
+ },
+ "properties": {
+  "document": {
+   "additionalProperties": true,
+   "title": "Document",
+   "type": "object"
+  },
+  "companies": {
+   "items": {
+    "$ref": "#/$defs/DefenceEntity"
+   },
+   "title": "Companies",
+   "type": "array"
+  },
+  "entities": {
+   "items": {
+    "$ref": "#/$defs/DefenceEntity"
+   },
+   "title": "Entities",
+   "type": "array"
+  },
+  "products": {
+   "items": {
+    "$ref": "#/$defs/ProductRecord"
+   },
+   "title": "Products",
+   "type": "array"
+  },
+  "relations": {
+   "items": {
+    "$ref": "#/$defs/RelationEdge"
+   },
+   "title": "Relations",
+   "type": "array"
+  },
+  "unattributed": {
+   "items": {
+    "additionalProperties": true,
+    "type": "object"
+   },
+   "title": "Unattributed",
+   "type": "array"
+  },
+  "coverage": {
+   "$ref": "#/$defs/Coverage"
+  },
+  "ledger_summary": {
+   "$ref": "#/$defs/LedgerSummary"
+  },
+  "ledger": {
+   "items": {
+    "$ref": "#/$defs/LedgerItem"
+   },
+   "title": "Ledger",
+   "type": "array"
+  },
+  "execution": {
+   "$ref": "#/$defs/ExecutionManifest"
+  }
+ },
+ "required": [
+  "document",
+  "execution"
+ ],
+ "title": "FinalDocumentResult",
+ "type": "object"
+}

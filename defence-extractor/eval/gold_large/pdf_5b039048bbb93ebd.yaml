@@ -1,0 +1,78 @@
+doc_id: pdf_5b039048bbb93ebd
+url: https://www.elbitsystems.com/sites/default/files/2025-02/catalog-tanks_17_noimi_web_compressed_0.pdf
+level: 4
+format: pdf
+partial: true
+# Elbit Systems Land tank-ammunition catalogue (24 pages): one page section per cartridge, each with the same spec
+# layout, so neighbouring cartridges share labels and sometimes values. Sample: 3 cartridges at the start (p4-6),
+# 3 in the middle (p10-13), 3 at the end (p18-21). Values shared by two sampled cartridges are kept only where each
+# cartridge states them itself (the test is that each cartridge gets its own row of values).
+products:
+  P1: {name: M322, aliases: [M322 APFSDS-T], pos: start, page: 4}
+  P2: {name: M339, aliases: [M339 HE-MP-T], pos: start, page: 5}
+  P3: {name: M324, aliases: [M324 TPCSDS-T], pos: start, page: 6}
+  P4: {name: M110, aliases: [M110 HE-MP-T], pos: middle, page: 10}
+  P5: {name: M156, aliases: [M156 HESH-T, M156 HEP-T], pos: middle, page: 11}
+  P6: {name: M420/4, aliases: [M420/4 TPCSDS-T], pos: middle, page: 13}
+  P7: {name: M710/2, aliases: [M710/2 HE-PD-T], pos: end, page: 18}
+  P8: {name: M309, aliases: [M309 tank cartridge, M309 APFSDS-T], pos: end, page: 20}
+  P9: {name: M310, aliases: [M310 HE-MP-T], pos: end, page: 21}
+facts:
+  - {p: P1, param: muzzle_velocity, v: "1,705 m/s", nums: [1705], b: b30}
+  - {p: P1, param: nsn, alt: [nato_stock_number, national_stock_number], v: "1315-15-150-0168", b: b31}
+  - {p: P1, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 20kg", nums: [20], b: b32}
+  - {p: P1, param: cartridge_length, alt: [length, round_length], v: "984mm", nums: [984], b: b33}
+  - {p: P1, param: penetrator_material, alt: [penetrator, material], v: "Tungsten alloy", b: b34}
+  - {p: P1, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 8kg", nums: [8], b: b36}
+  - {p: P1, param: dispersion, alt: [accuracy, accuracy_dispersion], v: "0.2X0.2 mil", nums: [0.2], b: b31}
+  - {p: P2, param: muzzle_velocity, v: "900 m/s", nums: [900], b: b53}
+  - {p: P2, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 27 kg", nums: [27], b: b54}
+  - {p: P2, param: projectile_weight, alt: [projectile_mass], v: "17kg", nums: [17], b: b56}
+  - {p: P2, param: explosive_weight, alt: [high_explosive, explosive_fill, filling_weight, explosive_type], v: "2.3kg", nums: [2.3], b: b57}
+  - {p: P2, param: fuze, alt: [fuze_type], v: "Electronic/programmable/ multifunctional", any: ["programmable"], b: b58}
+  - {p: P2, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 4.5kg", nums: [4.5], b: b60}
+  - {p: P3, param: muzzle_velocity, v: "1,730 m/s", nums: [1730], b: b89}
+  - {p: P3, param: nsn, alt: [nato_stock_number, national_stock_number], v: "1315-31-016-9687", b: b91}
+  - {p: P3, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 18.3kg", nums: [18.3], b: b92}
+  - {p: P3, param: safety_zone, alt: [safety_range, danger_area], v: "7.5km", nums: [7.5], b: b92}
+  - {p: P3, param: cartridge_length, alt: [length, round_length], v: "925mm", nums: [925], b: b93}
+  - {p: P3, param: training_range, alt: [effective_range, max_range], v: "Up to 2km", nums: [2], b: b93}
+  - {p: P3, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 7.8kg", nums: [7.8], b: b96}
+  - {p: P4, param: muzzle_velocity, v: "800 m/s", nums: [800], b: b155}
+  - {p: P4, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 23.5kg", nums: [23.5], b: b156}
+  - {p: P4, param: cartridge_length, alt: [length, round_length], v: "990mm", nums: [990], b: b157}
+  - {p: P4, param: projectile_weight, alt: [projectile_mass], v: "13.6kg", nums: [13.6], b: b158}
+  - {p: P4, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 3kg", nums: [3], b: b162}
+  - {p: P4, param: effective_range, alt: [max_range, range], v: "> 5km", nums: [5], b: b153}
+  - {p: P4, param: concrete_penetration, alt: [penetration, wall_penetration], v: "double reinforced concrete walls >200mm", any: [">200mm"], nums: [200], b: b153}
+  - {p: P5, param: muzzle_velocity, v: "731 m/s", nums: [731], b: b180}
+  - {p: P5, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 21.2kg", nums: [21.2], b: b181}
+  - {p: P5, param: dispersion, alt: [accuracy, accuracy_dispersion], v: "171cm", nums: [171], b: b181}
+  - {p: P5, param: cartridge_length, alt: [length, round_length], v: "939mm", nums: [939], b: b182}
+  - {p: P5, param: max_range, alt: [maximum_range, range], v: "9,500m", nums: [9500], b: b182}
+  - {p: P5, param: explosive_weight, alt: [high_explosive, explosive_fill, filling_weight, explosive_type], v: "Approx. 2.2kg", nums: [2.2], b: b183}
+  - {p: P6, param: muzzle_velocity, v: "1,630 m/s", nums: [1630], b: b212}
+  - {p: P6, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 16.8 kg", nums: [16.8], b: b213}
+  - {p: P6, param: cartridge_length, alt: [length, round_length], v: "885mm", nums: [885], b: b214}
+  - {p: P6, param: safety_zone, alt: [safety_range, danger_area], v: "7.5 km", nums: [7.5], b: b214}
+  - {p: P6, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 5.7kg", nums: [5.7], b: b217}
+  - {p: P6, param: cartridge_case, alt: [case_material, cartridge_case_material, material], v: "Brass", b: b216}
+  - {p: P7, param: muzzle_velocity, v: "870 m/s", nums: [870], b: b283}
+  - {p: P7, param: projectile_weight, alt: [projectile_mass], v: "Approx. 23kg", nums: [23], b: b284}
+  - {p: P7, param: projectile_length, alt: [length], v: "675mm", nums: [675], b: b285}
+  - {p: P7, param: explosive_weight, alt: [high_explosive, explosive_fill, filling_weight, explosive_type], v: "2.5kg", nums: [2.5], b: b286}
+  - {p: P7, param: storage_temperature, alt: [temperature_limits, operating_temperature, temperature_range], v: "-40 to +70ºC", nums: [-40, 70], b: b285}
+  - {p: P7, param: concrete_penetration, alt: [penetration, wall_penetration], v: "200mm double reinforced concrete walls", any: ["200mm double reinforced concrete"], nums: [200], b: b281}
+  - {p: P8, param: muzzle_velocity, v: "1,400 m/s", nums: [1400], b: b296}
+  - {p: P8, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 21.3kg", nums: [21.3], b: b297}
+  - {p: P8, param: cartridge_length, alt: [length, round_length], v: "1,060mm", nums: [1060], b: b298}
+  - {p: P8, param: penetrator_material, alt: [penetrator, material], v: "Tungsten alloy", b: b299}
+  - {p: P8, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 6kg", nums: [6], b: b301}
+  - {p: P8, param: compatible_platforms, alt: [compatibility, compatible_vehicles, platforms], k: compat, v: "T54/T54B/T55", any: ["T55"], b: b294}
+  - {p: P9, param: muzzle_velocity, v: "800 m/s", nums: [800], b: b307}
+  - {p: P9, param: cartridge_weight, alt: [weight, round_weight], v: "Approx. 22kg", nums: [22], b: b308}
+  - {p: P9, param: cartridge_length, alt: [length, round_length], v: "1000mm", nums: [1000], b: b309}
+  - {p: P9, param: explosive_weight, alt: [high_explosive, explosive_fill, filling_weight, explosive_type], v: "1.4kg", nums: [1.4], b: b310}
+  - {p: P9, param: propellant_weight, alt: [propellant, propellant_mass, propellant_type], v: "Approx. 3.2kg", nums: [3.2], b: b312}
+  - {p: P9, param: effective_range, alt: [max_range, range], v: "more than 4km", nums: [4], b: b305}
+negatives: ["170 guns were adapted and produced", "five facilities"]

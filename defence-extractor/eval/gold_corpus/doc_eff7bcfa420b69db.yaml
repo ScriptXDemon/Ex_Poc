@@ -1,0 +1,34 @@
+doc_id: doc_eff7bcfa420b69db
+url: https://www.gdls.com/stryker
+level: 2
+format: html
+products:
+  P1: {name: Stryker, aliases: [Stryker Family of Vehicles, STRYKER]}
+  P2: {name: Stryker A1 (DVH), aliases: [Stryker A1, STRYKER A1, Stryker DVH, STRYKER A1 (DVH)]}
+  P3: {name: NEXUS, aliases: [NGC2-ready Expeditionary X-domain Undetectable Stryker]}
+  P4: {name: Stryker Leonidas, aliases: [STRYKER LEONIDAS, Leonidas]}
+  P5: {name: Sgt Stout, aliases: [SGT STOUT, Sgt. Stout]}
+facts:
+  - {p: P1, param: drive_configuration, alt: [configuration, wheel_configuration, chassis], v: "8×8", any: ["8x8 wheeled chassis"]}
+  - {p: P2, param: engine_power, alt: [engine], v: "450-horsepower", any: ["450 hp", "450-horsepower engine"], nums: [450]}
+  - {p: P2, param: gross_vehicle_weight, alt: [combat_weight, weight, max_weight, gross_weight], v: "60,000 lbs", nums: [60000]}
+  - {p: P2, param: alternator_output, alt: [alternator, alternator_capacity, electrical_power], v: "910-amp", any: ["910-amp alternator", "910 A"], nums: [910]}
+  - {p: P2, k: text, v: "smart power management"}
+  - {p: P2, k: text, v: "In-vehicle digital backbone with smart displays and upgraded ethernet", any: ["digital backbone"]}
+  - {p: P2, k: text, v: "Upgraded suspension and driveline, matched to the powerpack", any: ["upgraded suspension"]}
+  - {p: P3, k: text, v: "reduce signatures (visual, radar, acoustic, thermal and, most significant, electromagnetic)", any: ["reduce signatures"]}
+  - {p: P3, k: text, v: "mission command on the move"}
+  - {p: P3, k: text, v: "Lattice-enabled and NGC2-ready", any: ["Lattice-enabled", "NGC2-ready"]}
+  - {p: P4, k: text, v: "advanced counter-drone payload", any: ["counter-drone payload"]}
+  - {p: P4, k: text, v: "mobile, forward-deployed counter-UAS capability", any: ["counter-UAS capability", "counter-UAS"]}
+  - {p: P4, k: text, v: "software-defined design supports updates and evolution as threats change", any: ["software-defined design"]}
+  - {p: P5, param: platform, alt: [chassis, base_platform, launch_platform], k: compat, v: "Stryker A1 chassis", any: ["Stryker A1"]}
+  - {p: P5, param: radar, alt: [sensors, radar_coverage, radar_type], v: "360-degree hemispheric radar", any: ["360-degree"], nums: [360]}
+  - {p: P5, param: main_armament, alt: [armament, secondary_armament, cannon, gun], v: "30 mm cannon", nums: [30]}
+  - {p: P5, param: missile_armament, alt: [armament, missiles, main_armament, compatible_munitions, secondary_armament], k: compat, v: "Hellfire", any: ["Hellfire missiles"]}
+  - {p: P5, param: missile_armament, alt: [armament, missiles, main_armament, compatible_munitions, secondary_armament], k: compat, v: "Stinger", any: ["Stinger missiles"]}
+  - {p: P5, param: target_type, k: target, v: "aerial threats from unmanned drones to fixed-wing aircraft", any: ["unmanned drones", "fixed-wing aircraft", "aerial threats"]}
+  - {p: P5, k: text, v: "on-board target-acquisition sensors", any: ["target-acquisition sensors"]}
+  - {p: P5, k: text, v: "sensor fusion"}
+  - {p: P5, k: text, v: "reconfigurable weapons turret"}
+negatives: ["45%"]

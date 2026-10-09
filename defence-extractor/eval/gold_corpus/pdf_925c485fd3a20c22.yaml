@@ -1,0 +1,28 @@
+doc_id: pdf_925c485fd3a20c22
+url: https://new.diehl.com/controls/en/content/download/6725/file/Charger_2_2KW_120VDC_Datasheet_EN.pdf
+level: 1
+format: pdf
+products:
+  P1: {name: CHARGER 2.2KW 120VDC, aliases: [Charger 2.2KW 120VDC, Charger 2.2 kW 120 VDC, on-board charger, Charger 2.2KW]}
+facts:
+  - {p: P1, param: charger_power, alt: [power_output, output_power, rated_power, charging_power], v: "2,2kW", any: ["2.2 kW", "2.2kW"], nums: [2.2]}
+  - {p: P1, param: output_voltage, alt: [charging_voltage, battery_voltage], v: "60 - 120Vdc", nums: [60, 120]}
+  - {p: P1, param: dc_dc_converter_power, v: "450W", nums: [450]}
+  - {p: P1, param: dc_dc_output_voltage, alt: [output_voltage], v: "12V-14.4V", nums: [12, 14.4]}
+  - {p: P1, param: input_voltage, v: "110V/230V", any: ["110V", "230V", "110 V/230 V"]}
+  - {p: P1, param: input_frequency, alt: [frequency], v: "50/60Hz", nums: [50, 60]}
+  - {p: P1, param: output_voltage, v: "80V - 120V", nums: [80, 120]}
+  - {p: P1, param: power_factor, alt: [input_power_factor], v: ">0.99", nums: [0.99]}
+  - {p: P1, param: interfaces, alt: [communication_interface], v: "CAN"}
+  - {p: P1, param: ip_rating, alt: [ingress_protection], v: "IP 67", any: ["IP67"], nums: [67]}
+  - {p: P1, param: cooling, alt: [cooling_system, cooling_type, cooling_concept], v: "Smart Active Air Cooling"}
+  - {p: P1, param: dimensions, alt: [length_overall, width, height], v: "220 x 230 x 110 [mm]", nums: [220]}
+  - {p: P1, param: weight, v: "Lower than 3,5 KG", any: ["less than 3.5 kg"], nums: [3.5]}
+  - {p: P1, k: text, v: "Under- and overvoltage protection Short circuits and overcurrent protection Under- and overtemperature protection", any: ["overvoltage protection", "overcurrent protection"]}
+  - {p: P1, k: text, v: "Charger with Integrated DC/DC Converter", any: ["Integrated DC/DC Converter"]}
+  - {p: P1, k: text, v: "Own integrated software libraries (customizable) with self-diagnostic and data logging capabilities", any: ["self-diagnostic and data logging"]}
+  - {p: P1, k: text, v: "High efficiency and power factor through Active Power Factor Correction (APFC)", any: ["Active Power Factor Correction"]}
+  - {p: P1, k: text, v: "dust- and water-proof enclosure", any: ["dust- and water-proof"]}
+  - {p: P1, k: text, v: "Scalable platform for on-board and off-board applications"}
+  - {p: P1, k: text, v: "on-board charger for two-wheelers", any: ["two-wheelers", "two- or three-wheeler"]}
+negatives: ["+49 7522 73-737"]

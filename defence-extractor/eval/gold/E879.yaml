@@ -1,0 +1,26 @@
+doc_id: E879
+url: https://roshel.com/products/defense/senator-apc
+products:
+  P1: {name: Senator APC, aliases: [Senator Armored Personnel Carrier, Roshel Senator, Senator]}
+facts:
+  - {p: P1, param: propulsion_type, v: "6.7L Diesel V8"}
+  - {p: P1, param: engine_power, v: "330 @ 2,600 rpm", nums: [330]}
+  - {p: P1, param: torque, v: "750 @ 2,000 rpm", nums: [750]}
+  - {p: P1, param: drive_configuration, v: "4X4"}
+  - {p: P1, param: transmission, v: "10-speed automatic"}
+  - {p: P1, param: tyres, alt: [tyre_size, wheels], v: "335/85/R20"}
+  - {p: P1, param: dimensions, alt: [length_overall], v: "5945 x 2340 x 2450 mm", nums: [5945]}
+  - {p: P1, param: wheelbase, v: "3683 mm"}
+  - {p: P1, param: troop_capacity, alt: [seating_capacity], v: "Up to 12", nums: [12]}
+  - {p: P1, param: protection_level, v: "CEN B7 ballistic protection level", any: ["CEN B7", "B7"]}
+  - {p: P1, param: armour_type, v: "lightweight composite materials"}
+  - {p: P1, param: side_slope, v: "39-degree", nums: [39]}
+  - {p: P1, param: sensor_suite, k: text, v: "external view cameras"}
+  - {p: P1, k: text, v: "perimeter gun ports"}
+  - {p: P1, k: text, v: "escape hatches"}
+  - {p: P1, k: text, v: "siren/PA system"}
+  - {p: P1, k: text, v: "remote surveillance"}
+  - {p: P1, k: text, v: "fully air-conditioned"}
+  - {p: P1, k: text, v: "heat and noise insulation"}
+  - {p: P1, k: text, v: "Mine Protected Seats"}
+negatives: ["47QSWA22D001R", "L0FQ3"]

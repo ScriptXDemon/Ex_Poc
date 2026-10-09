@@ -1,0 +1,32 @@
+doc_id: doc_5a93f5203ebff67d
+url: https://www.navylookout.com/a-guide-to-the-type-26-frigate
+level: 4
+format: html
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Navy Lookout T26 guide. The article body only spans 0.05-0.08; 0.10-0.99 is the reader-comment thread
+# (790 blocks, parsed as related_content). Comments are not a source of product specifications, so only the
+# article's products are labelled (all at the start); comment-derived specs accepted by the system show up as
+# extras / other-product facts (precision).
+products:
+  P1: {name: "Type 26", aliases: ["T26", "T-26", "City class", "Type 26 frigate"], pos: start}
+  P2: {name: "Artisan", aliases: [], pos: start}
+  P3: {name: "Mission Bay Handling System", aliases: ["MBHS"], pos: start}
+facts:
+  - {p: P1, param: length, alt: [length_overall, overall_length], v: "149.9m", nums: [149.9], b: b53}
+  - {p: P1, param: displacement, alt: [full_load_displacement, standard_displacement], v: "6,900 tonnes", nums: [6900], b: b53}
+  - {p: P1, param: crew, alt: [core_crew, complement, crew_size], v: "core crew of 157", nums: [157], any: ["157"], b: b56}
+  - {p: P1, param: mk41_vls_cells, alt: [vertical_launch_cells, strike_length_cells, vls_cells], v: "24 Mk 41 cells", nums: [24, 41], any: ["24 Mk 41"], b: b63}
+  - {p: P1, param: max_missile_load, alt: [theoretical_max_missiles, max_combined_missile_load, total_missile_capacity], v: "theoretical maximum combined load of 144 missiles", nums: [144], any: ["144 missiles"], b: b63}
+  - {p: P1, param: sea_ceptor_missile_load, alt: [sea_ceptor_cells, air_defence_missiles, sam_capacity], v: "48 missiles", nums: [48], b: b64}
+  - {p: P1, param: mission_bay_teu_capacity, alt: [mission_bay_capacity, teu_container_capacity], v: "space for up to 12 TEU containers", nums: [12], any: ["12 TEU containers"], b: b78}
+  - {p: P1, k: text, v: "anti-submarine frigate", any: ["anti-submarine warfare", "ASW"], b: m2}
+  - {p: P2, param: max_range, alt: [range, instrumented_range, detection_range], v: "maximum range of about 200km", nums: [200], any: ["200km"], b: b73}
+  - {p: P2, param: small_target_detection_range, alt: [small_fast_target_detection_range, mach3_target_detection_range, small_target_range], v: "detect small objects travelling at Mach 3 more than 25km away", nums: [3, 25], any: ["25km away"], b: b73}
+  - {p: P2, param: max_tracks, alt: [tracking_capacity, simultaneous_tracks, track_capacity], v: "track up to 800 objects simultaneously", nums: [800], any: ["800 objects"], b: b73}
+  - {p: P2, param: antenna_type, alt: [scan_type, antenna_rotation, antenna], v: "rotating", nums: [], b: b72}
+  - {p: P2, k: text, v: "highly resistant to ECM and interference", any: ["resistant to ECM"], b: b73}
+  - {p: P3, param: max_load, alt: [max_lift_weight, lifting_capacity, max_payload], v: "maximum weight of 15 tonnes", nums: [15], any: ["15 tonnes"], b: b67}
+  - {p: P3, param: actuators, alt: [actuator_type, actuation, drive_type], v: "hydraulic and electro-mechanical actuators", nums: [], b: b67}
+  - {p: P3, param: winch_type, alt: [winch, recovery_winch], v: "constant tension winch", nums: [], b: b67}
+  - {p: P3, param: heave_compensation, alt: [motion_compensation, active_heave_compensation], v: "Active Heave Compensation system", nums: [], any: ["Active Heave Compensation"], b: b67}
+negatives: ["£10bn", "at least five ships", "December 2025", "194 Comments", "£3million each", "416 cells", "at least 20 of them"]

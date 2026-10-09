@@ -1,0 +1,64 @@
+doc_id: doc_5a4cfa2b110b8e65
+url: https://www.defenseindustrydaily.com/adding-arleigh-burkes-northrop-grumman-underway-06007
+level: 4
+format: html
+# ~100k-character contract-news log. Contract values, ship counts, dates and work locations are procurement
+# information (not specifications); the technical statements scattered through it are below.
+products:
+  P1: {name: Arleigh Burke class, aliases: [DDG-51, DDG 51, Arleigh Burke-class destroyer, Arleigh Burke Class destroyers, DDG-51 Arleigh Burke Class, Arleigh Burke]}
+  P2: {name: DDG-51 Flight III, aliases: [Flight III, DDG 51 Flight III, Flight III Arleigh Burke]}
+  P3: {name: AN/SPY-6(V) Air and Missile Defense Radar, aliases: [AMDR, AN/SPY-6(V), Air and Missile Defense Radar, AMDR-S, SPY-6]}
+  P4: {name: HELIOS, aliases: [High Energy Laser with Integrated Optical-dazzler and Surveillance]}
+  P5: {name: MK 45 MOD 4, aliases: [MK 45 MOD 4 gun mount, Mk 45]}
+  P6: {name: Main Reduction Gears, aliases: [MRG, MRGs, Main Reduction Gear, main reduction gear shipsets]}
+  P7: {name: Zumwalt class, aliases: [DDG-1000, DDG-1000 Zumwalt Class, USS Zumwalt, Zumwalt, Zumwalt-class destroyer, USS Michael Monsoor]}
+  P8: {name: AN/SQS-53, aliases: [AN/SQS-53 hull mounted sonar]}
+  P9: {name: MK 99 Fire Control System, aliases: [MK-99 Fire Control System, MK 99, MK 99 Mod 8]}
+  P10: {name: integrated power node center, aliases: [integrated power node centers]}
+facts:
+  - {p: P1, param: propulsion_type, alt: [engine_type, engine, powerplant, gas_turbines, engine_model], v: "four GE LM 2500 gas turbines", any: ["LM 2500", "LM2500"]}
+  - {p: P1, param: engine_power, alt: [power_per_turbine, turbine_power, power], v: "33,600hp", nums: [33600], cond: each turbine}
+  - {p: P1, param: power_turbine_speed, alt: [turbine_speed, engine_speed], v: "3,600rpm", nums: [3600]}
+  - {p: P1, param: number_of_shafts, alt: [shafts, propulsion_shafts], v: "two shafts", any: ["2 shafts"]}
+  - {p: P1, param: propeller_type, alt: [propellers, propulsion], v: "controllable pitch propellers", any: ["controllable pitch"]}
+  - {p: P1, param: aircraft_capacity, alt: [embarked_aircraft, helicopters, aviation_facilities, helicopter], k: compat, v: "two embarked SH-60 helicopters", any: ["SH-60"]}
+  - {p: P1, param: service_life, alt: [design_service_life, design_life], v: "35-year", any: ["35 years"], nums: [35]}
+  - {p: P1, param: radar, alt: [sensors, radar_type, primary_radar], v: "SPY-1D multifunction passive electronically scanned array radar", any: ["SPY-1D"]}
+  - {p: P1, param: combat_system, alt: [combat_management_system], v: "Aegis Combat System", any: ["AEGIS combat system", "Aegis Weapon System"]}
+  - {p: P1, param: vls, alt: [missile_launcher, launcher, vertical_launching_system], v: "Vertical Launching System", any: ["MK 41", "Mk41 VLS"]}
+  - {p: P1, param: missile_armament, alt: [armament, compatible_munitions, missiles], k: compat, v: "Tomahawk missiles", any: ["Tomahawk"]}
+  - {p: P1, param: main_armament, alt: [gun, armament, main_gun], v: "MK 45 MOD 4", any: ["MK 45"]}
+  - {p: P1, param: sonar, alt: [sensors, sonar_system], v: "AN/SQS-53", any: ["AN/SQS-53", "AN/SQQ-89"]}
+  - {p: P1, k: text, v: "two gear assemblies, one for each propulsion shaft", any: ["two gear sets", "two gear assemblies"]}
+  - {p: P1, k: text, v: "multi-mission offensive and defensive capabilities", any: ["multi-mission"]}
+  - {p: P1, k: text, v: "strategic land strike role with Tomahawk missiles, antiaircraft warfare role with powerful Aegis radar and surface-to-air missiles, antisubmarine warfare and antisurface warfare", any: ["antisubmarine warfare", "land strike"]}
+  - {p: P1, k: text, v: "can operate independently or as part of carrier strike groups, surface action groups, amphibious ready groups, and underway replenishment groups", any: ["carrier strike groups"]}
+  - {p: P1, k: text, v: "advanced anti-aircraft missiles and land-attack missiles", any: ["land-attack missiles"]}
+  - {p: P2, param: radar, alt: [sensors, radar_type], v: "Air and Missile Defense Radar (AMDR-S) dual-band active array", any: ["AMDR", "SPY-6"]}
+  - {p: P2, k: text, v: "upgraded power and cooling systems", any: ["power and cooling"]}
+  - {p: P2, k: text, v: "hybrid propulsion drives", any: ["hybrid propulsion"]}
+  - {p: P3, k: text, v: "dual-band active array", any: ["dual-band"]}
+  - {p: P3, param: sensitivity, alt: [detection_performance], v: "30 times more sensitive than the search radars on the Flight II Arleigh Burkes", any: ["30 times more sensitive"]}
+  - {p: P4, param: laser_power, alt: [output_power, power, beam_power], v: "in excess of the 60 kW requirement", any: ["60 kW"], nums: [60]}
+  - {p: P4, k: text, v: "integrated component of the destroyer's Aegis combat system", any: ["Aegis combat system"]}
+  - {p: P5, param: calibre, alt: [caliber], v: "5-inch/ 127mm", any: ["127mm", "5-inch"], nums: [127]}
+  - {p: P6, param: weight, v: "over 100,000 pounds", nums: [100000]}
+  - {p: P6, param: power_rating, alt: [rated_power, power, max_power], v: "51,550 shp", nums: [51550]}
+  - {p: P6, param: reduction_ratio, alt: [gear_ratio], v: "21.3746 to 1", nums: [21.3746]}
+  - {p: P6, k: text, v: "transmit the power from two main propulsion gas turbines to the propulsion shaft", any: ["propulsion shaft"]}
+  - {p: P7, param: length_overall, alt: [length], v: "610 feet long", nums: [610]}
+  - {p: P7, param: beam, alt: [width], v: "80 feet wide", any: ["80 feet"]}
+  - {p: P7, param: vls_cells, alt: [missile_cells, vertical_launch_cells, vls], v: "80 vertical launch cells", any: ["80 vertical launch"]}
+  - {p: P7, param: main_armament, alt: [gun, armament], v: "155mm Advanced Gun System", nums: [155]}
+  - {p: P7, param: aircraft_capacity, alt: [embarked_aircraft, uav, helicopter], k: compat, v: "MQ-8C Fire Scout", any: ["Fire Scout"]}
+  - {p: P7, param: propulsion_type, alt: [engine_type, gas_turbines, engine], v: "two Rolls Royce MT30 maritime gas turbines", any: ["MT30"]}
+  - {p: P7, param: missile_armament, alt: [armament, compatible_munitions, missiles], k: compat, v: "Tomahawk cruise missiles, ESSMs, and Raytheon's Standard Missiles", any: ["ESSM"]}
+  - {p: P7, param: vls, alt: [missile_launcher, launcher], v: "MK 57 Vertical Launching System", any: ["MK 57"]}
+  - {p: P7, k: text, v: "electric-drive propulsion"}
+  - {p: P7, k: text, v: "stealthy shape"}
+  - {p: P8, k: text, v: "active and passive operating capabilities", any: ["active and passive"]}
+  - {p: P8, k: text, v: "large bulb-like structure built into the bows below the water line", any: ["bulb-like structure"]}
+  - {p: P9, k: text, v: "controls the continuous wave illuminating radar", any: ["continuous wave illuminating radar"]}
+  - {p: P9, k: text, v: "provides terminal guidance for AAW missiles", any: ["terminal guidance"]}
+  - {p: P10, k: text, v: "combines power transfer, frequency conversion, voltage transformation, power conditioning, and fault protection into one cabinet", any: ["one cabinet", "frequency conversion"]}
+negatives: ["$3.9 billion", "$936 million", "67 delivered ships", "seventy-two", "62 more ships"]

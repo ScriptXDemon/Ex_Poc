@@ -1,0 +1,37 @@
+doc_id: doc_d1633831056afb66
+url: https://www.rafael.co.il/wp-json/wp/v2/news/14066
+level: 3
+format: html
+# WordPress REST API response (JSON viewer page) of a trade-show news release; many products, few hard numbers.
+products:
+  P1: {name: ICE BREAKER, aliases: [ICE-BREAKER, Ice Breaker]}
+  P2: {name: ROCKS, aliases: [Rocks]}
+  P3: {name: SPICE 250, aliases: []}
+  P4: {name: LITENING 5, aliases: [LITENING 5 targeting pod]}
+  P5: {name: Iron Dome, aliases: []}
+  P6: {name: Iron Beam, aliases: [Iron Beam high-power laser system]}
+  P7: {name: David's Sling, aliases: [David’s Sling, Davids Sling]}
+  P8: {name: SPYDER, aliases: [SPYDER family]}
+  P9: {name: MiCAD, aliases: []}
+facts:
+  - {p: P1, param: max_range, alt: [range, effective_range, strike_range], v: "up to 300 kilometers", nums: [300]}
+  - {p: P1, param: launch_platform, alt: [launch_platforms, compatible_platforms, platform], k: compat, v: "air, sea, and land launch platforms", any: ["air, sea, and land"]}
+  - {p: P1, k: text, v: "fifth-generation cruise missile"}
+  - {p: P1, k: text, v: "low radar cross-section"}
+  - {p: P1, k: text, v: "terrain-following navigation"}
+  - {p: P1, k: text, v: "AI-based scene-matching"}
+  - {p: P1, k: text, v: "man-in-the-loop control"}
+  - {p: P1, k: text, v: "precision strike across all weather conditions", any: ["all weather"]}
+  - {p: P2, k: text, v: "long-range air-to-surface missile", any: ["air-to-surface missile"]}
+  - {p: P2, param: target_type, k: target, v: "hardened and deeply buried targets", any: ["deeply buried targets"]}
+  - {p: P3, k: text, v: "engage multiple targets in a single sortie without requiring GPS or laser designation", any: ["without requiring GPS or laser designation", "multiple targets in a single sortie"]}
+  - {p: P4, k: text, v: "automatic detection, tracking, identification, and terminal guidance", any: ["terminal guidance"]}
+  - {p: P4, k: text, v: "real-time connectivity and data-sharing capabilities", any: ["data-sharing"]}
+  - {p: P4, param: compatible_aircraft, alt: [platform, compatible_platforms, launch_platform], k: compat, v: "Eurofighter Typhoon", any: ["Eurofighter"]}
+  - {p: P5, param: target_type, k: target, v: "rockets, cruise missiles, and UAVs", any: ["rockets"]}
+  - {p: P6, k: text, v: "high-power laser system", any: ["laser-based aerial interception"]}
+  - {p: P7, param: target_type, k: target, v: "medium-to-long-range ballistic missile and cruise missile threat layer", any: ["ballistic missile and cruise missile"]}
+  - {p: P8, k: text, v: "short-to-medium range mobile air defense", any: ["short-to-medium range"]}
+  - {p: P9, k: text, v: "battle management C4I system", any: ["C4I"]}
+  - {p: P9, k: text, v: "open architecture"}
+negatives: ["90 LITENING 5", "Romania"]

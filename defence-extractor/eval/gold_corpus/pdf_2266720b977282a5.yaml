@@ -1,0 +1,32 @@
+doc_id: pdf_2266720b977282a5
+url: https://prd-sc102-cdn.rtx.com/collinsaerospace/-/media/ca/product-assets/marketing/a/aces-5/aces-5-t-7a-red-hawk-data-sheet.pdf
+level: 3
+format: pdf
+products:
+  P1: {name: ACES 5, aliases: [ACES 5 ejection seat, ACES 5® advanced concept ejection seats, ACES5, ACES 5®]}
+facts:
+  - {p: P1, param: compatible_aircraft, alt: [platform, launch_platform, compatible_platforms, aircraft], k: compat, v: "T-7A Red Hawk", any: ["Boeing T-7A Red Hawk", "T-7A"]}
+  - {p: P1, param: max_ejection_speed, alt: [max_speed, speed, ejection_speed, speed_envelope], v: "Up to 550 KEAS", nums: [550]}
+  - {p: P1, param: max_ejection_altitude, alt: [max_altitude, altitude, altitude_envelope, service_ceiling], v: "Up to 50,000 feet", nums: [50000]}
+  - {p: P1, param: survival_kit_volume, v: "1,200 cubic inches", nums: [1200]}
+  - {p: P1, param: spinal_injury_rate, v: "<1%", any: ["< 1%"]}
+  - {p: P1, param: aircrew_weight_range, alt: [occupant_weight_range, crew_accommodation, aircrew_accommodation], v: "103-245 lb.", any: ["JPATS cases 1-7", "103-245 lb"], nums: [103, 245]}
+  - {p: P1, param: standard_compliance, alt: [safety_standard, head_and_neck_protection], v: "2016 update of MIL-HDBK-516C injury requirements", any: ["MIL-HDBK-516C"]}
+  - {p: P1, param: catapult, alt: [rocket_catapult, propulsion_type, components], v: "CKU-12", any: ["CKU-12 rocket catapult"]}
+  - {p: P1, param: recovery_parachute, alt: [main_parachute, parachute, components], v: "GR7000", any: ["GR7000 main recovery parachute"]}
+  - {p: P1, k: text, v: "STAPAC active pitch stabilization system", any: ["STAPAC"]}
+  - {p: P1, k: text, v: "Passive head and neck protection", any: ["head and neck protection"]}
+  - {p: P1, k: text, v: "Passive leg and arm restraints", any: ["leg and arm restraint"]}
+  - {p: P1, k: text, v: "Improved drogue system provides unsurpassed high-speed stability", any: ["drogue system", "faster deploying drogue parachute"]}
+  - {p: P1, k: text, v: "Common cartridge-actuated/ propellant-actuated devices (CAD/PAD)", any: ["CAD/PAD"]}
+  - {p: P1, k: text, v: "Electronic sequencing provides enhanced performance at all altitudes and airspeeds", any: ["Electronic sequencing"]}
+  - {p: P1, k: text, v: "Corrosion-resistant structure"}
+  - {p: P1, k: text, v: "Automatic height-adjusting headrest", any: ["height-adjusting headrest"]}
+  - {p: P1, k: text, v: "Proven mortar deployed parachute", any: ["mortar deployed parachute"]}
+  - {p: P1, k: text, v: "Modernized ACES seat sequencer (MASS)", any: ["MASS", "seat sequencer"]}
+  - {p: P1, k: text, v: "Compatible with standard U.S. military aircrew interfaces", any: ["aircrew interfaces"]}
+  - {p: P1, k: text, v: "Compatible with U.S. Air Force personnel flight equipment (PFE)", any: ["personnel flight equipment"]}
+  - {p: P1, k: text, v: "Berry Amendment compliant", any: ["Berry Amendment"]}
+  - {p: P1, k: text, v: "entire seat can be removed without having to remove the aircraft canopy", any: ["without having to remove the aircraft canopy"]}
+  - {p: P1, k: text, v: "Improved instructor-forward visibility in tandem trainer aircraft", any: ["instructor-forward visibility"]}
+negatives: ["720 lives", "29 air forces", "+1-757.902-2803"]

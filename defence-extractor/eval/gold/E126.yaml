@@ -1,0 +1,20 @@
+doc_id: E126
+url: https://bdl-india.in/qrsam
+products:
+  P1: {name: Quick Reaction Surface to Air Missile (QRSAM), aliases: [QRSAM, Quick Reaction Surface - To - Air Missile]}
+facts:
+  - {p: P1, param: length_overall, v: "4364 mm", any: ["4.4 m"]}
+  - {p: P1, param: weight, v: "270 kgs"}
+  - {p: P1, param: max_range, v: "05 to 30 Km", nums: [5, 30]}
+  - {p: P1, param: engagement_altitude, v: "6 Km"}
+  - {p: P1, param: sskp, alt: [kill_probability, single_shot_kill_probability], v: "80%"}
+  - {p: P1, param: diameter, v: "0.225 m"}
+  - {p: P1, param: propulsion_type, v: "Single Stage Solid Rocket Motor"}
+  - {p: P1, param: guidance_type, v: "Mid Course Inertial + Target Update Terminal Active Homing Seeker"}
+  - {p: P1, param: warhead_type, v: "Pre-Fragmented & High Energy"}
+  - {p: P1, param: launch_type, alt: [launch_method, launch], v: "Canisterized Inclined Launch"}
+  - {p: P1, param: max_tracked_targets, alt: [engagement, simultaneous_engagement], v: "Simultaneous 6 Targets"}
+  - {p: P1, k: text, v: "Search on Move"}
+  - {p: P1, k: text, v: "Track on Move"}
+  - {p: P1, k: text, v: "Fire on Short halts"}
+negatives: ["845,483", "500032"]

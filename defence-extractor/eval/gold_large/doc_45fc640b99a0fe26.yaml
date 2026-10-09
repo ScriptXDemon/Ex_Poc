@@ -1,0 +1,57 @@
+doc_id: doc_45fc640b99a0fe26
+url: https://www.thedefensenews.com/index.php?pageno=3
+level: 4
+format: html
+partial: true          # only sampled products are labelled; other products' values are not judged
+# News-listing page (thedefensenews.com page 3): 16 short news items, each about a different product. Tests that each
+# item's specs land on its own product, incl. neighbours inside one item: ASEV vs Maya-class (b17), ESSM Block 2 vs
+# KNM Otto Sverdrup (b57) vs the adjacent SM-6 item (b62), MeduzaX vs IronWeb (b107). Start = items at 0.09-0.20,
+# middle = items at 0.41-0.59. Window 0.80-1.00 holds only pagination/sidebar headings (no items), so the "end" sample is
+# the last two news items (NOMADS 0.73, MeduzaX 0.77). Skipped: ASEV crew "around 240" and SM-6 "64-kilogram" warhead
+# (their bare numbers collide with SM-6 "240 kilometers" / ASEV "64 forward and 64 aft" under numeric matching) and
+# ASEV radar AN/SPY-7(V)1 (numerically matches AN/SPY-1F). nums omitted on model designations and digit-free values.
+products:
+  P1: {name: "Aegis System Equipped Vessel", aliases: ["ASEV", "CG-191"], pos: start}
+  P2: {name: "Maya-class", aliases: ["Maya-class destroyers"], pos: start}
+  P3: {name: "MK 82 Penetrator", aliases: [], pos: start}
+  P4: {name: "ESSM Block 2", aliases: ["Evolved SeaSparrow Missile (ESSM) Block 2"], pos: middle}
+  P5: {name: "KNM Otto Sverdrup", aliases: ["Otto Sverdrup", "Fridtjof Nansen-class"], pos: middle}
+  P6: {name: "SM-6", aliases: ["Standard Missile-6"], pos: middle}
+  P7: {name: "NOMADS", aliases: ["National Manoeuvre Air Defence System"], pos: end}
+  P8: {name: "MeduzaX", aliases: [], pos: end}
+facts:
+  # --- start: Japan ASEV item (Maya-class values in the same paragraph are the linkage trap) ---
+  - {p: P1, param: length_overall, alt: [length], v: "approximately 190 meters", nums: [190], b: b17}
+  - {p: P1, param: standard_displacement, alt: [displacement], v: "around 12,000 tonnes", nums: [12000], b: b17}
+  - {p: P1, param: max_speed, alt: [speed, design_speed], v: "approximately 30 knots", nums: [30], b: b17}
+  - {p: P1, param: beam, alt: [width, breadth], v: "25 meters wide", nums: [25], b: b17}
+  - {p: P1, param: vls_cells, alt: [vertical_launch_cells, missile_cells, vls], v: "128 Mk 41 vertical-launch cells", nums: [128, 41], any: ["128 Mk 41"], b: b17}
+  - {p: P1, param: vls_arrangement, alt: [vls_layout, vls_cells_forward_aft], v: "64 forward and 64 aft", nums: [64, 64], b: b17}
+  - {p: P2, param: length_overall, alt: [length], v: "about 170 meters", nums: [170], b: b17}
+  - {p: P2, param: standard_displacement, alt: [displacement], v: "approximately 8,200 tonnes", nums: [8200], b: b17}
+  - {p: P2, param: vls_cells, alt: [vertical_launch_cells, missile_cells], v: "96 cells", nums: [96], b: b17}
+  # --- start: EDGE MK 82 Penetrator item ---
+  - {p: P3, param: penetration, alt: [penetration_capability, concrete_penetration], v: "reinforced concrete more than one metre thick", any: ["more than one metre"], b: b22}
+  - {p: P3, param: compatible_guidance_kits, alt: [guidance_kits, compatible_kits, guidance_system], v: "AL TARIQ and THUNDER guidance families", any: ["AL TARIQ", "THUNDER"], b: b22}
+  # --- middle: ESSM Block 2 / KNM Otto Sverdrup item, then the adjacent SM-6 item ---
+  - {p: P4, param: max_speed, alt: [speed, top_speed], v: "More than Mach 4", nums: [4], b: b57}
+  - {p: P4, param: operational_range, alt: [max_range, range], v: "More than 50 kilometres", nums: [50], any: ["27 nautical miles"], b: b57}
+  - {p: P4, param: weight, alt: [launch_weight, mass], v: "Approximately 280 kilograms", nums: [280], b: b57}
+  - {p: P4, param: warhead, alt: [warhead_type, warhead_weight], v: "39-kilogram blast-fragmentation warhead", nums: [39], any: ["39-kilogram"], b: b57}
+  - {p: P4, param: quad_pack, alt: [missiles_per_cell, quad_pack_capability], v: "Four missiles can fit into one compatible launch cell", any: ["Quad-pack"], b: b57}
+  - {p: P5, param: radar, alt: [sensors, radar_type], v: "AN/SPY-1F radar", any: ["AN/SPY-1F"], b: b57}
+  - {p: P5, param: vls_cells, alt: [vertical_launch_cells, vls, missile_cells], v: "eight-cell Mk 41 VLS", nums: [8, 41], any: ["eight-cell"], b: b57}
+  - {p: P5, param: essm_capacity, alt: [missile_capacity, magazine_capacity, missile_load], v: "up to 32 ESSM missiles", nums: [32], b: b57}
+  - {p: P6, param: weight, alt: [launch_weight, mass], v: "around 1,500 kilograms", nums: [1500], any: ["3,300 pounds"], b: b62}
+  - {p: P6, param: max_speed, alt: [speed, top_speed], v: "Mach 3.5", nums: [3.5], any: ["exceeds Mach 3"], b: b62}
+  - {p: P6, param: max_range, alt: [range, operational_range], v: "exceeding 240 kilometers", nums: [240], any: ["150 miles"], b: b62}
+  - {p: P6, param: propulsion, alt: [propulsion_type, rocket_motor, booster], v: "Mk 72 booster and Mk 104 dual-thrust rocket motor", any: ["Mk 72 booster", "Mk 104 dual-thrust rocket motor"], b: b62}
+  # --- end (last items): Kongsberg NOMADS item, ThirdEye IronWeb item (MeduzaX values must not go to IronWeb) ---
+  - {p: P7, param: radar, alt: [sensors, radar_type], v: "3D AESA radar", b: b102}
+  - {p: P7, param: missile_armament, alt: [armament, missiles, ready_to_fire_missiles], v: "four AIM-9X Block 2 Sidewinder missiles", nums: [4, 9, 2], any: ["AIM-9X Block 2 Sidewinder"], b: b102}
+  - {p: P7, param: secondary_armament, alt: [armament, machine_gun, gun], v: "0.50-caliber heavy machine gun", nums: [0.5], b: b102}
+  - {p: P7, k: text, v: "highly mobile short-range air defense system", any: ["short-range air defense"], b: b102}
+  - {p: P8, param: coverage, alt: [azimuth_coverage, field_of_regard, scan_coverage], v: "360-degree scanning", nums: [360], b: b107}
+  - {p: P8, param: thermal_camera, alt: [thermal_imager, ir_sensor, sensors], v: "cooled mid-wave infrared (MWIR) thermal camera", any: ["cooled mid-wave infrared"], b: b107}
+  - {p: P8, k: text, v: "passive optical drone-detection platform", any: ["passive optical"], b: b107}
+negatives: ["approximately 98%", "1 trillion yen", "July 18, 2025", "$24.4 billion", "540 Standard Missiles", "80 SM-6 interceptors", "NOK 1.5 billion", "NOK 12 billion"]

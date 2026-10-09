@@ -1,0 +1,26 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# data / run artifacts (never commit documents or results)
+data/
+runs/
+var/
+models/
+extraction_outputs/
+spec_pages_1000/
+*.log
+*.zip
+*.docx
+
+# os
+.DS_Store

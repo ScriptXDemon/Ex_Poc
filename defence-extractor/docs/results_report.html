@@ -1,0 +1,171 @@
+<title>Defence Extractor Corpus Run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one technical-report column; summary strip, then evidence tables in the order a reviewer checks them. */
+:root {
+  --bg: #f3f5f3; --surface: #ffffff; --ink: #18201d; --muted: #59655f; --rule: #d6ddd9; --accent: #8a4f12;
+  --good: #2c7a4b; --warn: #a36d0f; --bad: #a8382c; --track: #e3e8e5;
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+main { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 34px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 4.4vw, 44px); font-weight: 700; letter-spacing: .2px; }
+h2 { font-size: 25px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0; max-width: 72ch; }
+a { color: var(--accent); }
+section { display: grid; gap: 12px; min-width: 0; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); font-size: 17px; }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 16px 18px; display: grid; gap: 4px; }
+.kpi b { font: 600 30px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.kpi span { color: var(--muted); font-size: 14px; }
+.wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 11.5px/1.3 var(--mono); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13px; }
+td.mono, .mono { font-family: var(--mono); font-size: 13px; }
+td.url { max-width: 340px; overflow-wrap: anywhere; font-size: 13px; }
+.of { color: var(--muted); }
+.bar { display: inline-block; width: 70px; height: 7px; background: var(--track); border-radius: 4px; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--good); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.note { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+.note ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.tag { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; }
+.tag.fixed { color: var(--good); } .tag.open { color: var(--warn); }
+code { font-family: var(--mono); font-size: 13px; background: var(--track); padding: 1px 5px; border-radius: 4px; }
+pre { font: 13px/1.5 var(--mono); background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; overflow-x: auto; margin: 0; }
+.small { font-size: 13.5px; color: var(--muted); }
+</style>
+<main>
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Defence product intelligence · extraction engine v1.1 · test report</div>
+  <h1>Defence Extractor Corpus Run</h1>
+  <p class="lede">The full agentic pipeline (deterministic parsing, Qwen3.8-27B extraction, gpt-oss-120b audit and verification, Temporal orchestration)
+  run on the server over the curated <span class="mono">spec_pages_1000</span> corpus until the OpenRouter budget ran out,
+  plus strict scoring against hand-written answer keys.</p>
+</header>
+
+<div class="strip" role="list">
+  <div class="kpi" role="listitem"><b>459</b><span>documents processed of 792 in the corpus (27 cut short by the budget stop)</span></div>
+  <div class="kpi" role="listitem"><b>91.1%</b><span>specs found on 16 hand-labelled corpus documents</span></div>
+  <div class="kpi" role="listitem"><b>97.0%</b><span>specs found on the 17-page benchmark (old v3 answer key: 189/203 vs 164)</span></div>
+  <div class="kpi" role="listitem"><b>8,653</b><span>verified specifications in the output JSON</span></div>
+  <div class="kpi" role="listitem"><b>$0.044</b><span>average LLM cost per processed document</span></div>
+</div>
+
+<section>
+  <h2>Accuracy on hand-labelled corpus documents</h2>
+  <p>Two documents per level and format were labelled from the parsed page text before looking at the output
+  (16 documents; a 100+ page catalogue was swapped for a brochure). A gold fact counts as found only when its value appears
+  among the <em>accepted</em> facts of the right product, or of a subsystem record linked to it. Misattributed: found on another product. Unresolved: the system abstained.</p>
+  <div class="wrap"><table>
+    <tr><th>Level</th><th>Format</th><th>Docs</th><th>Specs found</th><th>Recall</th><th>Text facts</th><th>Misattributed</th><th>Unresolved</th></tr>
+    <tr><td>L1</td><td>HTML</td><td class='n'>2</td><td class='n'>24/26</td><td><span class='bar' aria-hidden='true'><span style='width:92.3%'></span></span> 92%</td><td class='n'>9/10</td><td class='n'>0</td><td class='n'>0</td></tr><tr><td>L1</td><td>PDF</td><td class='n'>2</td><td class='n'>26/27</td><td><span class='bar' aria-hidden='true'><span style='width:96.3%'></span></span> 96%</td><td class='n'>13/14</td><td class='n'>0</td><td class='n'>0</td></tr><tr><td>L2</td><td>HTML</td><td class='n'>2</td><td class='n'>36/37</td><td><span class='bar' aria-hidden='true'><span style='width:97.3%'></span></span> 97%</td><td class='n'>20/22</td><td class='n'>0</td><td class='n'>0</td></tr><tr><td>L2</td><td>PDF</td><td class='n'>2</td><td class='n'>30/35</td><td><span class='bar' aria-hidden='true'><span style='width:85.7%'></span></span> 86%</td><td class='n'>17/19</td><td class='n'>2</td><td class='n'>3</td></tr><tr><td>L3</td><td>HTML</td><td class='n'>2</td><td class='n'>6/6</td><td><span class='bar' aria-hidden='true'><span style='width:100.0%'></span></span> 100%</td><td class='n'>14/14</td><td class='n'>0</td><td class='n'>0</td></tr><tr><td>L3</td><td>PDF</td><td class='n'>2</td><td class='n'>58/63</td><td><span class='bar' aria-hidden='true'><span style='width:92.1%'></span></span> 92%</td><td class='n'>34/36</td><td class='n'>2</td><td class='n'>0</td></tr><tr><td>L4</td><td>HTML</td><td class='n'>2</td><td class='n'>22/29</td><td><span class='bar' aria-hidden='true'><span style='width:75.9%'></span></span> 76%</td><td class='n'>9/17</td><td class='n'>1</td><td class='n'>1</td></tr><tr><td>L4</td><td>PDF</td><td class='n'>2</td><td class='n'>54/58</td><td><span class='bar' aria-hidden='true'><span style='width:93.1%'></span></span> 93%</td><td class='n'>27/30</td><td class='n'>0</td><td class='n'>1</td></tr>
+    <tr><td colspan="3"><b>All</b></td><td class="n"><b>256/281</b></td><td><span class='bar' aria-hidden='true'><span style='width:91.1%'></span></span> <b>91.1%</b></td>
+    <td class="n">143/162</td><td class="n">5</td><td class="n">5</td></tr>
+  </table></div>
+  <p class="small">14 of the found specs sit on a linked subsystem record (for example a recovery vehicle's winch pulling force on the winch, which the output links to the vehicle).
+  Verbatim share 92%; must-not-extract violations 4.</p>
+  <details><summary class="small">Per-document results</summary>
+  <div class="wrap" style="margin-top:8px"><table>
+    <tr><th>Doc</th><th>Source</th><th>Specs</th><th>Via subsystem</th><th>Misattr.</th><th>Unres.</th><th>Missed</th><th>Text</th><th>Other-product facts</th><th>Cost</th></tr>
+    <tr><td>L1 HTML</td><td class='url'><a href='https://www.hdtglobal.com/product/17-ton-mining-unit' target='_blank' rel='noopener'>https://www.hdtglobal.com/product/17-ton-mining-unit</a></td><td class='n'>5/7</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>2</td><td class='n'>4/4</td><td class='n'>0</td><td class='n'>$0.009</td></tr><tr><td>L1 HTML</td><td class='url'><a href='https://www.solargroup.com/ProductDisplay.html?title=SolarPrime+Gold' target='_blank' rel='noopener'>https://www.solargroup.com/ProductDisplay.html?title=SolarPrime+Gold</a></td><td class='n'>19/19</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>5/6</td><td class='n'>2</td><td class='n'>$0.016</td></tr><tr><td>L1 PDF</td><td class='url'><a href='https://new.diehl.com/controls/zh/content/download/2642/file/3Sense_Datasheet_EN.pdf' target='_blank' rel='noopener'>https://new.diehl.com/controls/zh/content/download/2642/file/3Sense_Datasheet_EN.pdf</a></td><td class='n'>13/14</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>1</td><td class='n'>7/7</td><td class='n'>0</td><td class='n'>$0.011</td></tr><tr><td>L1 PDF</td><td class='url'><a href='https://new.diehl.com/controls/en/content/download/6725/file/Charger_2_2KW_120VDC_Datasheet_EN.pdf' target='_blank' rel='noopener'>https://new.diehl.com/controls/en/content/download/6725/file/Charger_2_2KW_120VDC_Datasheet_EN.pdf</a></td><td class='n'>13/13</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>6/7</td><td class='n'>0</td><td class='n'>$0.015</td></tr><tr><td>L2 HTML</td><td class='url'><a href='https://www.boeing.com/defense/tankers-and-transports/kc-46-pegasus' target='_blank' rel='noopener'>https://www.boeing.com/defense/tankers-and-transports/kc-46-pegasus</a></td><td class='n'>26/27</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>1</td><td class='n'>8/10</td><td class='n'>0</td><td class='n'>$0.084</td></tr><tr><td>L2 HTML</td><td class='url'><a href='https://www.gdls.com/stryker' target='_blank' rel='noopener'>https://www.gdls.com/stryker</a></td><td class='n'>10/10</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>12/12</td><td class='n'>0</td><td class='n'>$0.029</td></tr><tr><td>L2 PDF</td><td class='url'><a href='https://www.diehl.com/cms/files/202507_Brochure_SHARKY_Series_EN_DP_view.pdf?download=1' target='_blank' rel='noopener'>https://www.diehl.com/cms/files/202507_Brochure_SHARKY_Series_EN_DP_view.pdf?download=1</a></td><td class='n'>19/24</td><td class='n'>0</td><td class='n'>2</td><td class='n'>3</td><td class='n'>0</td><td class='n'>7/9</td><td class='n'>0</td><td class='n'>$0.078</td></tr><tr><td>L2 PDF</td><td class='url'><a href='https://media.northropgrumman.com/3395026a-ceff-4b9e-9e82-b44f0115fe10/datasheet-pegasus_Original%20file.pdf' target='_blank' rel='noopener'>https://media.northropgrumman.com/3395026a-ceff-4b9e-9e82-b44f0115fe10/datasheet-pegasus_Original%20file.pdf</a></td><td class='n'>11/11</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>10/10</td><td class='n'>0</td><td class='n'>$0.020</td></tr><tr><td>L3 HTML</td><td class='url'><a href='https://www.leonardodrs.com/who-we-are/our-commitment/community-involvement/mli-mine-detection-dog-partnership-program' target='_blank' rel='noopener'>https://www.leonardodrs.com/who-we-are/our-commitment/community-involvement/mli-mine-detection-dog-partnership-program</a></td><td class='n'>0/0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0/0</td><td class='n'>8</td><td class='n'>$0.024</td></tr><tr><td>L3 HTML</td><td class='url'><a href='https://www.rafael.co.il/wp-json/wp/v2/news/14066' target='_blank' rel='noopener'>https://www.rafael.co.il/wp-json/wp/v2/news/14066</a></td><td class='n'>6/6</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>14/14</td><td class='n'>6</td><td class='n'>$0.072</td></tr><tr><td>L3 PDF</td><td class='url'><a href='https://prd-sc102-cdn.rtx.com/collinsaerospace/-/media/ca/product-assets/marketing/a/aces-5/aces-5-t-7a-red-hawk-data-sheet.pdf?hash=30CD6701A400150D22EB626A02BEC5EE&amp;rev=a20367d7d9df4450b12f59d31c6d0d8c&amp;rid=56c45a5d1c97408aa54725b4ecea641c' target='_blank' rel='noopener'>https://prd-sc102-cdn.rtx.com/collinsaerospace/-/media/ca/product-assets/marketing/a/aces-5/aces-5-t-7a-red-hawk-data-sheet.pdf?hash=30CD6701A400150D22EB626A02BEC5EE&amp;rev=a20367d7d9df4450b12f59d31c6d0d8c&amp;rid=56c45a5d1c97408aa54725b4ecea641c</a></td><td class='n'>7/9</td><td class='n'>1</td><td class='n'>0</td><td class='n'>0</td><td class='n'>2</td><td class='n'>14/15</td><td class='n'>3</td><td class='n'>$0.024</td></tr><tr><td>L3 PDF</td><td class='url'><a href='https://iwi.net/wp-content/uploads/2023/12/IWI_negev_and_ulmg_brochure_04102021_8Pg20_compressed.pdf' target='_blank' rel='noopener'>https://iwi.net/wp-content/uploads/2023/12/IWI_negev_and_ulmg_brochure_04102021_8Pg20_compressed.pdf</a></td><td class='n'>51/54</td><td class='n'>0</td><td class='n'>2</td><td class='n'>0</td><td class='n'>1</td><td class='n'>20/21</td><td class='n'>0</td><td class='n'>$0.155</td></tr><tr><td>L4 HTML</td><td class='url'><a href='https://www.defenseindustrydaily.com/adding-arleigh-burkes-northrop-grumman-underway-06007' target='_blank' rel='noopener'>https://www.defenseindustrydaily.com/adding-arleigh-burkes-northrop-grumman-underway-06007</a></td><td class='n'>21/28</td><td class='n'>1</td><td class='n'>1</td><td class='n'>1</td><td class='n'>5</td><td class='n'>9/17</td><td class='n'>53</td><td class='n'>$0.296</td></tr><tr><td>L4 HTML</td><td class='url'><a href='https://www.navylookout.com/is-the-royal-navy-indo-pacific-ready-or-should-the-carrier-strike-group-stay-closer-to-home' target='_blank' rel='noopener'>https://www.navylookout.com/is-the-royal-navy-indo-pacific-ready-or-should-the-carrier-strike-group-stay-closer-to-home</a></td><td class='n'>1/1</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0</td><td class='n'>0/0</td><td class='n'>20</td><td class='n'>$0.301</td></tr><tr><td>L4 PDF</td><td class='url'><a href='https://www.rheinmetall.com/Rheinmetall%20Group/brochure-download/Vehicle-Systems/B334e1122-brochure-30-years-Buffalo-ARV.pdf' target='_blank' rel='noopener'>https://www.rheinmetall.com/Rheinmetall%20Group/brochure-download/Vehicle-Systems/B334e1122-brochure-30-years-Buffalo-ARV.pdf</a></td><td class='n'>36/37</td><td class='n'>11</td><td class='n'>0</td><td class='n'>0</td><td class='n'>1</td><td class='n'>18/19</td><td class='n'>21</td><td class='n'>$0.146</td></tr><tr><td>L4 PDF</td><td class='url'><a href='https://www.saab.com/globalassets/markets/colombia/brochure-Gripen-Brasil.pdf' target='_blank' rel='noopener'>https://www.saab.com/globalassets/markets/colombia/brochure-Gripen-Brasil.pdf</a></td><td class='n'>18/21</td><td class='n'>1</td><td class='n'>0</td><td class='n'>1</td><td class='n'>2</td><td class='n'>9/11</td><td class='n'>15</td><td class='n'>$0.057</td></tr>
+  </table></div></details>
+</section>
+
+<section>
+  <h2>Benchmark progression (17 pages from the old v3 report)</h2>
+  <p>Same pages, strict scorer. The last column re-scores the old v3 answer key product-aware (v3 itself caught 164 of 203 that way).</p>
+  <div class="wrap"><table>
+    <tr><th>Run</th><th>Change</th><th>Specs found</th><th>Recall</th><th>Misattr.</th><th>Text facts</th><th>Parameter OK</th><th>Wrong canonical</th><th>Old key</th></tr>
+    <tr><td>bench1</td><td>first full pipeline</td><td class='n'>243/267</td><td><span class='bar' aria-hidden='true'><span style='width:91.0%'></span></span> 91.0%</td><td class='n'>7</td><td class='n'>75/93</td><td class='n'>95%</td><td class='n'>7</td><td class='n'>185/203</td></tr><tr><td>bench2</td><td>after error-class fixes</td><td class='n'>260/267</td><td><span class='bar' aria-hidden='true'><span style='width:97.4%'></span></span> 97.4%</td><td class='n'>0</td><td class='n'>89/93</td><td class='n'>95%</td><td class='n'>3</td><td class='n'>191/203</td></tr><tr><td>bench3</td><td>label-first mapping (regressed)</td><td class='n'>258/267</td><td><span class='bar' aria-hidden='true'><span style='width:96.6%'></span></span> 96.6%</td><td class='n'>1</td><td class='n'>88/93</td><td class='n'>87%</td><td class='n'>11</td><td class='n'>189/203</td></tr><tr><td>bench4</td><td>mapping fix (final)</td><td class='n'>259/267</td><td><span class='bar' aria-hidden='true'><span style='width:97.0%'></span></span> 97.0%</td><td class='n'>0</td><td class='n'>89/93</td><td class='n'>94%</td><td class='n'>8</td><td class='n'>189/203</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Corpus run by level and format</h2>
+  <p>Order: a random quarter of every level/format group first (so a budget stop still covers all groups, large documents included), then the rest smallest-first.
+  Languages: en 414, pl 9, de 7, ko 7, tr 5, pt 3, fr 2, hi 2, es 2, it 2, ru 2, ja 2, id 1, nl 1. Page types: manufacturer product page 107, datasheet 102, defence news 84, press release 50, brochure 37, product family page 23, company page 19, manufacturer catalogue 16.</p>
+  <div class="wrap"><table>
+    <tr><th>Level</th><th>Format</th><th>Done</th><th>Products</th><th>Specs</th><th>Specs/doc</th><th>Dynamic</th><th>Text facts</th><th>No product</th><th>Index products found</th><th>Cost/doc</th></tr>
+    <tr><td>L1</td><td>HTML</td><td class='n'>76<span class='of'>/92</span></td><td class='n'>106</td><td class='n'>870</td><td class='n'>11.4</td><td class='n'>55%</td><td class='n'>706</td><td class='n'>1</td><td class='n'>71/75</td><td class='n'>$0.018</td></tr><tr><td>L1</td><td>PDF</td><td class='n'>48<span class='of'>/59</span></td><td class='n'>58</td><td class='n'>672</td><td class='n'>14.0</td><td class='n'>68%</td><td class='n'>700</td><td class='n'>0</td><td class='n'>48/48</td><td class='n'>$0.018</td></tr><tr><td>L2</td><td>HTML</td><td class='n'>77<span class='of'>/135</span></td><td class='n'>330</td><td class='n'>1447</td><td class='n'>18.8</td><td class='n'>52%</td><td class='n'>1013</td><td class='n'>1</td><td class='n'>278/331</td><td class='n'>$0.031</td></tr><tr><td>L2</td><td>PDF</td><td class='n'>38<span class='of'>/73</span></td><td class='n'>158</td><td class='n'>1085</td><td class='n'>28.6</td><td class='n'>61%</td><td class='n'>889</td><td class='n'>0</td><td class='n'>85/128</td><td class='n'>$0.034</td></tr><tr><td>L3</td><td>HTML</td><td class='n'>138<span class='of'>/250</span></td><td class='n'>515</td><td class='n'>1232</td><td class='n'>8.9</td><td class='n'>41%</td><td class='n'>966</td><td class='n'>18</td><td class='n'>31/36</td><td class='n'>$0.024</td></tr><tr><td>L3</td><td>PDF</td><td class='n'>55<span class='of'>/98</span></td><td class='n'>195</td><td class='n'>1321</td><td class='n'>24.0</td><td class='n'>68%</td><td class='n'>1016</td><td class='n'>3</td><td class='n'>–</td><td class='n'>$0.036</td></tr><tr><td>L4</td><td>HTML</td><td class='n'>19<span class='of'>/65</span></td><td class='n'>220</td><td class='n'>1116</td><td class='n'>58.7</td><td class='n'>78%</td><td class='n'>903</td><td class='n'>3</td><td class='n'>–</td><td class='n'>$0.141</td></tr><tr><td>L4</td><td>PDF</td><td class='n'>8<span class='of'>/20</span></td><td class='n'>185</td><td class='n'>910</td><td class='n'>113.8</td><td class='n'>78%</td><td class='n'>679</td><td class='n'>1</td><td class='n'>–</td><td class='n'>$0.255</td></tr>
+  </table></div>
+  <p class="small">Dynamic: specs whose parameter is not in the v0 baseline list (kept with the page's own label). Index products found: products the corpus gate
+  (a different model) named for level-1/2 pages, matched by name against the extracted products — a label-free check of product identification.
+  No product: documents where the system found no product (e.g. a safety notice, a charity page).</p>
+</section>
+
+<section class="grid2">
+  <div class="note"><h3>New parameters seen across documents (A14 proposals)</h3>
+  <p class="small">Dynamic properties clustered across documents; each needs approval before joining the catalogue. 186 proposals in total.</p>
+  <div class="wrap"><table><tr><th>Proposed id</th><th>Docs</th><th>Uses</th><th>Page labels</th><th>Examples</th></tr><tr><td class='mono'>material</td><td class='n'>41</td><td class='n'>79</td><td>material, Material, material composition, Penetrator</td><td>C103 Niobium alloy · plastic · Polymer</td></tr><tr><td class='mono'>operational_environment</td><td class='n'>33</td><td class='n'>55</td><td>operational environment, operating environment, Operating Environment Directions, Operating environment temperature</td><td>high-altitude regions where reduced air density affects lift and engine performa · island airstrips with limited infrastructure · all weather conditions</td></tr><tr><td class='mono'>protection_level_other</td><td class='n'>32</td><td class='n'>61</td><td>protection level other, protection feature, JLTV Protection Features, protection system</td><td>Active protection system · scalable protection levels · Patented blast-protected seats</td></tr><tr><td class='mono'>dimensions</td><td class='n'>31</td><td class='n'>100</td><td>Dimensions, Fuselage Dimensions, Weights and dimensions, Car Size</td><td>25,500 · 23,500×3,100×3,700(mm) · Control car : 26,250×3,150×4,000(mm)</td></tr><tr><td class='mono'>configuration</td><td class='n'>24</td><td class='n'>45</td><td>configuration, antenna configuration</td><td>4 adet sabit yüze sahip · single LRU · Up to three combined applications within one casing</td></tr><tr><td class='mono'>weight_other</td><td class='n'>20</td><td class='n'>38</td><td>Weight (approx. Kg) (weapon only), Weight (Kg) (weapon only), Weight, Weight (pounds)</td><td>2 · 3T · 7.6</td></tr><tr><td class='mono'>operational_characteristic</td><td class='n'>19</td><td class='n'>30</td><td>operational characteristic, Operational characteristics, operating characteristic, characteristic</td><td>flies hundreds of sorties and offloads more than 5 million pounds (22.7 million  · all-weather · high-flying</td></tr><tr><td class='mono'>manufacturer</td><td class='n'>17</td><td class='n'>24</td><td>manufacturer, engine_manufacturer, mosp_manufacturer, manufacturer_location</td><td>BrahMos Aerospace Pvt. Ltd. · Retia · Rafael Advanced Defense Systems</td></tr><tr><td class='mono'>operational_range_other</td><td class='n'>17</td><td class='n'>22</td><td>operational range other, Range, Operational Range, Operational range</td><td>arttırılmış menzil · 4800 m · 100 meters to 20,000 meters</td></tr><tr><td class='mono'>color</td><td class='n'>16</td><td class='n'>27</td><td>Color, color, Available colors, color_difference</td><td>Flat Dark Earth (FDE) · Orange · Black</td></tr><tr><td class='mono'>product_type_other</td><td class='n'>14</td><td class='n'>19</td><td>product type other, product_type</td><td>factory original Glock G22 magazine · laser rangefinding technology · Advanced Anti-Radiation Guided Missile Extended Range (AARGM-ER)</td></tr><tr><td class='mono'>total_length</td><td class='n'>12</td><td class='n'>51</td><td>Length mm, Total length (mm), Total length (approx.), Total length retracted (mm)</td><td>606 · 120.0–154.1 In · 5175</td></tr><tr><td class='mono'>uns_number</td><td class='n'>12</td><td class='n'>42</td><td>UNS No., JIS No., Order number, Product Number</td><td>24 British F-35Bs will be embarked on HMS Prince of Wales · 3 · two stage</td></tr><tr><td class='mono'>operational_mode</td><td class='n'>12</td><td class='n'>19</td><td>operational mode, Typical Operational Mode</td><td>Long duration burns · autonomous · remote-control</td></tr></table></div></div>
+  <div class="note"><h3>Output health</h3><ul>
+    <li>Ledger: every value-like item on every page ends as extracted, rejected (with a reason) or unresolved — 0 left open.</li>
+    <li>Accepted specs: 6,329 verified, 2,324 verified with low confidence.</li>
+    <li>Documents that hit the per-document spend cap: 1 (catalogues; 274 values marked <code>not_processed_document_budget</code>).</li>
+    <li>Run budget stop: 27 documents finished while the money ran out (some verification or mapping calls were refused, so those values stay unresolved), 7 stopped mid-way. Failed documents: 0.</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Problems found on real inputs, and what changed</h2>
+  <div class="grid2">
+    <div class="note"><ul>
+      <li><span class="tag fixed">fixed</span> 50 of 559 HTML pages (9%) were decoded as Latin-1 because the charset tag came after a large inline style; ° ± – × became garbage. Pages are now decoded as UTF-8 first.</li>
+      <li><span class="tag fixed">fixed</span> 8 pages were saved WordPress API responses (JSON in a viewer). They are unwrapped into the article HTML.</li>
+      <li><span class="tag fixed">fixed</span> Two IWI brochures map ligatures to byte-swapped code points ("Ri昀氀ing"). Repaired inside Latin words.</li>
+      <li><span class="tag fixed">fixed</span> Reader comments (about 1,000 blocks on one page) were read as product facts. Blocks outside the main content are now read only when the page map says they are product content.</li>
+    </ul></div>
+    <div class="note"><ul>
+      <li><span class="tag fixed">fixed</span> Dense catalogue tables overflowed the output limit. Chunks are now capped by value count, a cut-off answer is retried on half the chunk, and the role step is batched for large entity lists.</li>
+      <li><span class="tag fixed">fixed</span> A 1,514-block ammunition catalogue would have cost as much as a hundred ordinary pages. A per-document cap ($0.40) now stops new extraction work and reports what was skipped.</li>
+      <li><span class="tag fixed">fixed</span> Parameter mapping regressed when a group heading such as "Dimensions" or "Performance" outranked the model's specific parameter. Generic, composite and refined labels now defer to it.</li>
+      <li><span class="tag open">open</span> Bare table cells with the unit in the header ("Weight (approx. Kg)" → "8") fall back to dynamic parameters (about 0.7% of facts). Fixed in code after this run; it applies from the next run.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="grid2">
+  <div class="note"><h3>Where it is still weak</h3><ul>
+    <li>Two products in one spec table (SHARKY 774/775): a few values land on the sibling product or are left unresolved.</li>
+    <li>News and analysis pages: operational statements (readiness, ports visited) are still accepted as product facts more often than they should be.</li>
+    <li>Components named inside a sentence (an ejection seat's catapult and parachute) are recorded as entities rather than as facts of the main product.</li>
+    <li>Qwen3.8-27B with thinking off returns an empty list on about a quarter of extraction calls; each one is retried with light thinking, about 12% of the LLM cost.</li>
+    <li>The hand-labelled sample is small (16 documents). Treat the per-level numbers as indicative.</li>
+  </ul></div>
+  <div class="note"><h3>Next steps</h3><ul>
+    <li>Run the remaining documents and the capped catalogues on the data-centre models, where token cost is not a constraint.</li>
+    <li>Review and approve the A14 parameter proposals into the catalogue.</li>
+    <li>Label 20 to 30 more documents, weighted toward news, multi-product tables and non-English pages.</li>
+    <li>Roll subsystem specs up into the parent product record in the output JSON, so consumers don't have to follow links.</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Run it again</h2>
+  <pre>ssh algotest
+cd ~/projects/defence-extractor && source .venv/bin/activate
+ORDER=budget bash scripts/run_corpus.sh &lt;run_id&gt; 40     # Temporal batch, resumable
+python scripts/progress.py &lt;run_id&gt;                     # progress, spend, stage errors
+dx report &lt;run_id&gt;                                      # corpus statistics + A14 proposals
+dx eval &lt;run_id&gt; --gold eval/gold_corpus --bench none  # score against the answer keys</pre>
+  <p class="small">Per-document outputs: <code>runs/&lt;run_id&gt;/docs/&lt;doc&gt;/result.json</code> (products, specifications with evidence and verification, the closed ledger, cost).
+  Temporal UI: <code>ssh -L 8233:localhost:8233 algotest</code>, then open localhost:8233.</p>
+</section>
+</main>

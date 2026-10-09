@@ -1,0 +1,284 @@
+# Defence product ontology — seed v1.0.0
+# Canonical parameters come from the v0 prompt's parameter list (cleaned: unit-free ids, duplicates merged,
+# legacy ids kept as aliases). "candidate" parameters are common specs missing from v0: they are mapped
+# consistently but need approval to become canonical. Anything else found on a page is kept as "dynamic".
+version: "1.0.0"
+
+families: [identity, physical, mass, mobility, propulsion, armament, ammunition, protection, sensor, fire_control,
+           guidance_navigation, communication_c2, payload, performance, operating_environment, automation_autonomy,
+           compatibility, mission_target, survivability, maintainability_support, other_technical]
+
+taxonomy:
+  land: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, ugv, artillery, air_defence_system, engineering_vehicle]
+  air: [combat_aircraft, trainer_aircraft, transport_aircraft, special_mission_aircraft, helicopter, uav, loitering_munition, aerostat]
+  naval: [surface_combatant, patrol_vessel, auxiliary_vessel, submarine, usv, uuv, naval_gun_system]
+  weapon: [small_arm, sniper_rifle, machine_gun, grenade_launcher, gun_cannon, mortar, missile, rocket, launcher, turret_rws, ammunition, torpedo, mine, bomb_guidance_kit, directed_energy]
+  sensor: [radar, eo_ir, sonar, laser_rangefinder, night_vision, acoustic_sensor]
+  electronics: [electronic_warfare, communication_c2, antenna, navigation, computing_rugged, power_system, battery]
+  protection: [armour_protection_kit, active_protection_system, cbrn, signature_management, personal_protection]
+  space: [satellite, launch_vehicle, ground_segment]
+  other: [simulation_training, support_equipment, component_subsystem, other]
+
+# core parameters the known-spec hunter (A5A) looks for, per category (any domain)
+core_parameters:
+  armoured_vehicle: [crew, troop_capacity, combat_weight, length_overall, width, height, max_road_speed, operational_range, engine_power, protection_level, main_armament, payload_capacity]
+  tank: [crew, combat_weight, length_overall, width, height, max_road_speed, operational_range, engine_power, main_armament, secondary_armament, protection_level]
+  apc_ifv: [crew, troop_capacity, combat_weight, length_overall, width, height, max_road_speed, operational_range, engine_power, protection_level, main_armament]
+  mrap: [crew, troop_capacity, combat_weight, max_road_speed, operational_range, engine_power, protection_level]
+  light_tactical_vehicle: [crew, payload_capacity, combat_weight, max_road_speed, operational_range, engine_power, length_overall, width, height]
+  logistics_truck: [payload_capacity, combat_weight, max_road_speed, operational_range, engine_power, drive_configuration]
+  ugv: [weight, payload_capacity, max_speed, endurance, operational_range, propulsion_type, sensor_suite]
+  artillery: [calibre, barrel_length_calibres, max_range, rate_of_fire, crew, combat_weight, elevation_range, traverse_range, deployment_time, ammunition_type]
+  mortar: [calibre, max_range, rate_of_fire, crew, weight, elevation_range, traverse_range, deployment_time]
+  air_defence_system: [max_range, engagement_altitude, max_tracked_targets, rate_of_fire, deployment_time, guidance_type, launch_platform]
+  combat_aircraft: [max_takeoff_weight, max_speed, service_ceiling, combat_radius, operational_range, length_overall, wingspan, engine_power, hardpoints, crew]
+  trainer_aircraft: [max_takeoff_weight, max_speed, service_ceiling, operational_range, endurance, wingspan, length_overall, crew]
+  transport_aircraft: [max_takeoff_weight, payload_capacity, max_speed, cruise_speed, operational_range, service_ceiling, troop_capacity, crew]
+  special_mission_aircraft: [max_takeoff_weight, endurance, operational_range, service_ceiling, sensor_suite, crew]
+  helicopter: [max_takeoff_weight, max_speed, cruise_speed, operational_range, endurance, service_ceiling, hover_ceiling_oge, hover_ceiling_ige, rotor_diameter, length_overall, crew, troop_capacity, engine_power]
+  uav: [max_takeoff_weight, payload_capacity, endurance, operational_range, max_speed, service_ceiling, wingspan, sensor_suite, launch_platform]
+  loitering_munition: [weight, warhead_weight, endurance, operational_range, max_speed, warhead_type, launch_platform, sensor_suite, target_type]
+  surface_combatant: [length_overall, beam, draft, displacement, max_speed, operational_range, crew_complement, propulsion_type, main_armament]
+  patrol_vessel: [length_overall, beam, draft, displacement, max_speed, operational_range, crew_complement, propulsion_type, main_armament]
+  submarine: [length_overall, beam, displacement, operating_depth, max_speed, endurance, crew_complement, propulsion_type]
+  usv: [length_overall, beam, weight, max_speed, endurance, operational_range, payload_capacity, propulsion_type]
+  uuv: [length_overall, diameter, weight, max_speed, endurance, operating_depth, sensor_suite, propulsion_type]
+  small_arm: [calibre, action_type, barrel_length, length_overall, weight, magazine_capacity, rate_of_fire, effective_range, muzzle_velocity]
+  sniper_rifle: [calibre, action_type, barrel_length, length_overall, weight, magazine_capacity, effective_range, twist_rate]
+  machine_gun: [calibre, rate_of_fire, weight, length_overall, barrel_length, effective_range, muzzle_velocity]
+  grenade_launcher: [calibre, weight, length_overall, effective_range, rate_of_fire]
+  gun_cannon: [calibre, rate_of_fire, muzzle_velocity, effective_range, weight, ammunition_type, barrel_length]
+  missile: [max_range, weight, length_overall, diameter, guidance_type, seeker_type, warhead_type, warhead_weight, propulsion_type, max_speed, launch_platform, target_type]
+  rocket: [calibre, max_range, weight, length_overall, warhead_type, guidance_type, launch_platform]
+  launcher: [ammunition_type, max_range, rate_of_fire, deployment_time, crew, launch_platform, magazine_capacity]
+  turret_rws: [calibre, main_armament, secondary_armament, elevation_range, traverse_range, weight, protection_level, magazine_capacity]
+  ammunition: [calibre, projectile_weight, muzzle_velocity, ammunition_type, effective_range, penetration, fuze_type, warhead_type]
+  torpedo: [weight, length_overall, diameter, max_range, max_speed, operating_depth, guidance_type, warhead_weight, propulsion_type]
+  radar: [frequency_band, detection_range, max_tracked_targets, power_output, antenna_type, weight]
+  eo_ir: [detection_range, sensor_suite, weight, power_output]
+  sonar: [frequency_band, detection_range, operating_depth, weight]
+  electronic_warfare: [frequency_band, power_output, effective_range, weight]
+  communication_c2: [frequency_band, power_output, operational_range, weight]
+  antenna: [frequency_band, weight]
+  satellite: [weight, orbit_type, power_output, payload_type]
+
+relation_predicates:
+  manufactures: "company -> product it makes"
+  variant_of: "variant -> base product"
+  part_of: "subsystem/component -> system it belongs to"
+  mounted_on: "weapon/turret/sensor -> platform it is mounted on"
+  carries: "platform -> payload/system it carries"
+  fires: "launcher/gun -> munition it fires"
+  uses: "system -> item it uses (ammunition, fuel, ...)"
+  integrated_with: "system -> system it is integrated with"
+  launched_from: "munition/uav -> launch platform"
+  compatible_with: "system -> compatible system/platform"
+  targets: "weapon -> target class"
+  replaces: "new product -> legacy product"
+  compares_with: "product -> compared product"
+  powered_by: "platform -> engine/powerplant"
+  equipped_with: "platform -> weapon/sensor/subsystem"
+  transportable_by: "system -> carrier (aircraft, truck, ship)"
+  incorporates_technology: "product -> technology it uses"
+  supplied_to: "product -> customer/user"
+
+parameters:
+  # ---------------- identity / general ----------------
+  - {id: action_type, name: Action Type, family: identity, type: text, classes: [small_arm, sniper_rifle, machine_gun], legacy: [action_type],
+     aliases: [action, operating system, operation, mechanism], description: "Operating mechanism of a firearm (gas-operated, bolt action, short recoil...)."}
+  - {id: product_type, name: Product Type, family: identity, type: text, classes: ["*"], status: candidate,
+     aliases: [type, vehicle type, system type, class], description: "Generic class designation stated for the product (e.g. 'self-propelled howitzer')."}
+  # ---------------- physical / dimensions ----------------
+  - {id: length_overall, name: Length Overall, family: physical, dimension: length, classes: ["*"], legacy: [length_overall_m],
+     aliases: [length, overall length, total length, length overall, hull length, l, length with gun, length (overall)],
+     anti: [wheelbase, barrel length, width, height, beam], description: "Overall length of the system (not wheelbase, barrel, width or height)."}
+  - {id: width, name: Width, family: physical, dimension: length, classes: ["*"], status: candidate,
+     aliases: [width, overall width, total width, breadth, w], anti: [beam (naval)], description: "Overall width."}
+  - {id: height, name: Height, family: physical, dimension: length, classes: ["*"], status: candidate,
+     aliases: [height, overall height, total height, h, height to hull roof], description: "Overall height."}
+  - {id: ground_clearance, name: Ground Clearance, family: mobility, dimension: length, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, ugv], status: candidate,
+     aliases: [ground clearance, clearance], description: "Distance between ground and lowest point of the vehicle."}
+  - {id: wheelbase, name: Wheelbase, family: physical, dimension: length, classes: [armoured_vehicle, apc_ifv, mrap, light_tactical_vehicle, logistics_truck], status: candidate,
+     aliases: [wheelbase, wheel base], description: "Distance between front and rear axles."}
+  - {id: diameter, name: Diameter, family: physical, dimension: length, classes: [missile, rocket, torpedo, uuv, ammunition], status: candidate,
+     aliases: [diameter, dia, body diameter, calibre (missile body)], description: "Body diameter of a missile, torpedo, UUV or projectile."}
+  - {id: barrel_length, name: Barrel Length, family: armament, dimension: length, classes: [small_arm, sniper_rifle, machine_gun, gun_cannon, artillery], legacy: [barrel_length_mm],
+     aliases: [barrel length, barrel, barrel length (physical)], anti: [L52, calibre ratio], description: "Physical barrel length (mm / inches)."}
+  - {id: barrel_length_calibres, name: Barrel Length (calibres), family: armament, type: text, classes: [artillery, gun_cannon, tank], legacy: [barrel_length_cal],
+     aliases: [barrel length (calibres), calibre length, l/52, barrel length in calibres], description: "Barrel length as a ratio in calibres, e.g. 'L52', '155mm/39 cal'."}
+  - {id: beam, name: Beam, family: physical, dimension: length, classes: [surface_combatant, patrol_vessel, auxiliary_vessel, submarine, usv], legacy: [beam_m],
+     aliases: [beam, breadth (vessel), width (vessel)], description: "Width of a vessel."}
+  - {id: draft, name: Draft, family: physical, dimension: length, classes: [surface_combatant, patrol_vessel, auxiliary_vessel, submarine, usv], legacy: [draft_m],
+     aliases: [draft, draught], description: "Vessel draught."}
+  - {id: wingspan, name: Wingspan, family: physical, dimension: length, classes: [combat_aircraft, trainer_aircraft, transport_aircraft, special_mission_aircraft, uav, loitering_munition, missile], legacy: [wing_span_m],
+     aliases: [wing span, wingspan, span], description: "Wing span."}
+  - {id: rotor_diameter, name: Rotor Diameter, family: physical, dimension: length, classes: [helicopter, uav], status: candidate,
+     aliases: [rotor diameter, main rotor diameter], description: "Main rotor diameter."}
+  # ---------------- mass ----------------
+  - {id: weight, name: Weight, family: mass, dimension: mass, classes: ["*"], legacy: [weight_kg, missile_weight_kg, gun_weight_t],
+     aliases: [weight, mass, total weight, missile weight, launch weight, gun weight, system weight, weight (empty magazine)], description: "Weight of the item (for vehicles prefer combat_weight / empty_weight)."}
+  - {id: combat_weight, name: Combat / Gross Weight, family: mass, dimension: mass, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, artillery], legacy: [vehicle_weight_t],
+     aliases: [combat weight, gross vehicle weight, gvw, gvwr, max weight, all-up weight, combat loaded weight, gross weight, max. gvw, vehicle weight], description: "Combat / gross vehicle weight."}
+  - {id: empty_weight, name: Empty Weight, family: mass, dimension: mass, classes: ["*"], legacy: [empty_weight_kg],
+     aliases: [empty weight, curb weight, kerb weight, dry weight, unladen weight, tare weight], description: "Kerb / empty weight without payload."}
+  - {id: max_takeoff_weight, name: Max Take-Off Weight, family: mass, dimension: mass, classes: [combat_aircraft, trainer_aircraft, transport_aircraft, special_mission_aircraft, helicopter, uav], legacy: [mtow_kg],
+     aliases: [mtow, maximum take-off weight, max take off weight, max. take-off weight, maximum takeoff weight, mtom], description: "Maximum take-off weight."}
+  - {id: payload_capacity, name: Payload Capacity, family: payload, dimension: mass, classes: ["*"], legacy: [payload_capacity_kg],
+     aliases: [payload, payload capacity, load capacity, max payload, useful load, carrying capacity], description: "Payload / load the platform can carry."}
+  - {id: projectile_weight, name: Projectile Weight, family: ammunition, dimension: mass, classes: [ammunition, artillery, gun_cannon, small_arm], legacy: [projectile_weight_kg, shell_weight_kg],
+     aliases: [projectile weight, bullet weight, shell weight, projectile mass, round weight, cartridge weight], description: "Weight of the projectile / shell / bullet."}
+  - {id: warhead_weight, name: Warhead Weight, family: armament, dimension: mass, classes: [missile, rocket, loitering_munition, torpedo], legacy: [warhead_weight_kg],
+     aliases: [warhead weight, warhead mass, warhead], description: "Weight of the warhead."}
+  - {id: displacement, name: Displacement, family: mass, dimension: mass, classes: [surface_combatant, patrol_vessel, auxiliary_vessel, submarine], legacy: [displacement_t],
+     aliases: [displacement, full load displacement, standard displacement], description: "Vessel displacement."}
+  # ---------------- mobility / performance ----------------
+  - {id: max_speed, name: Maximum Speed, family: performance, dimension: speed, classes: ["*"], legacy: [maximum_speed_kmh, max_speed_knots],
+     aliases: [max speed, maximum speed, top speed, speed, max. speed, vmax, dash speed, sprint speed], description: "Maximum speed (any medium; use conditions for water/road/sea state)."}
+  - {id: max_road_speed, name: Maximum Road Speed, family: mobility, dimension: speed, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, artillery, ugv], legacy: [max_speed_kmh],
+     aliases: [max road speed, maximum road speed, road speed, speed on road], description: "Maximum road speed of a land vehicle."}
+  - {id: cruise_speed, name: Cruise Speed, family: performance, dimension: speed, classes: [combat_aircraft, trainer_aircraft, transport_aircraft, special_mission_aircraft, helicopter, uav, loitering_munition, surface_combatant, patrol_vessel], status: candidate,
+     aliases: [cruise speed, cruising speed, max cruise speed, economical speed, loiter speed], description: "Cruise / loiter speed."}
+  - {id: operational_range, name: Operational Range, family: performance, dimension: length, classes: ["*"], legacy: [operational_range_km, range_nm],
+     aliases: [range, operational range, cruising range, road range, ferry range, max range (platform), driving range, autonomy (distance), radius of action], anti: [weapon firing range], description: "Distance the PLATFORM can travel / operate (not weapon reach)."}
+  - {id: combat_radius, name: Combat Radius, family: performance, dimension: length, classes: [combat_aircraft, uav, loitering_munition], legacy: [combat_radius_km],
+     aliases: [combat radius, mission radius, radius], description: "Combat radius."}
+  - {id: endurance, name: Endurance, family: performance, dimension: time, classes: ["*"], legacy: [endurance_h],
+     aliases: [endurance, flight endurance, loiter time, flight time, mission endurance, autonomy (time), operating time, battery life], description: "Time the system can operate."}
+  - {id: service_ceiling, name: Service Ceiling, family: performance, dimension: length, classes: [combat_aircraft, trainer_aircraft, transport_aircraft, special_mission_aircraft, helicopter, uav, loitering_munition], legacy: [service_ceiling_m],
+     aliases: [service ceiling, ceiling, max altitude, operating altitude, maximum altitude, altitude], description: "Service ceiling / maximum operating altitude."}
+  - {id: hover_ceiling_oge, name: Hover Ceiling OGE, family: performance, dimension: length, classes: [helicopter, uav], status: candidate,
+     aliases: [hoge, hover ceiling oge, hover out of ground effect, hover ceiling out of ground effect], description: "Hover ceiling out of ground effect."}
+  - {id: hover_ceiling_ige, name: Hover Ceiling IGE, family: performance, dimension: length, classes: [helicopter, uav], status: candidate,
+     aliases: [hige, hover ceiling ige, hover in ground effect], description: "Hover ceiling in ground effect."}
+  - {id: operating_depth, name: Operating Depth, family: performance, dimension: length, classes: [submarine, uuv, torpedo, sonar], legacy: [operating_depth_m],
+     aliases: [operating depth, diving depth, max depth, depth rating, test depth], description: "Operating / maximum diving depth."}
+  - {id: max_range, name: Maximum Range (weapon), family: performance, dimension: length, classes: [artillery, mortar, missile, rocket, launcher, gun_cannon, air_defence_system, torpedo, loitering_munition, ammunition], legacy: [maximum_range_km],
+     aliases: [max range, maximum range, firing range, strike range, max. range, range (weapon), maximum firing range], anti: [platform driving range], description: "Maximum reach of a weapon / munition."}
+  - {id: effective_range, name: Effective Range, family: performance, dimension: length, classes: [small_arm, sniper_rifle, machine_gun, grenade_launcher, gun_cannon, ammunition, electronic_warfare], legacy: [effective_range_km, effective_range_m],
+     aliases: [effective range, effective firing range, max effective range], description: "Effective range of a weapon."}
+  - {id: detection_range, name: Detection Range, family: sensor, dimension: length, classes: [radar, eo_ir, sonar, acoustic_sensor, air_defence_system], legacy: [detection_range_km],
+     aliases: [detection range, instrumented range, recognition range, identification range, detection], description: "Sensor detection range."}
+  - {id: engagement_altitude, name: Engagement Altitude, family: performance, dimension: length, classes: [air_defence_system, missile], legacy: [engagement_altitude_km],
+     aliases: [engagement altitude, interception altitude, altitude coverage, max altitude (engagement)], description: "Altitude coverage of an air-defence engagement."}
+  - {id: rate_of_fire, name: Rate of Fire, family: armament, dimension: rate, classes: [artillery, mortar, gun_cannon, machine_gun, small_arm, launcher, turret_rws, air_defence_system], legacy: [rate_of_fire_rpm],
+     aliases: [rate of fire, firing rate, cyclic rate, rounds per minute, rof, burst rate, sustained rate of fire], description: "Rate of fire (rounds per minute)."}
+  - {id: muzzle_velocity, name: Muzzle Velocity, family: ammunition, dimension: speed, classes: [ammunition, small_arm, sniper_rifle, machine_gun, gun_cannon, artillery], legacy: [muzzle_velocity_mps, muzzle_velocity_mps2],
+     aliases: [muzzle velocity, v0, velocity at muzzle], description: "Muzzle velocity."}
+  - {id: penetration, name: Penetration, family: ammunition, dimension: length, classes: [ammunition, missile, loitering_munition, gun_cannon], legacy: [penetration_capacity_mm],
+     aliases: [penetration, armour penetration, rha penetration, penetration capacity], description: "Armour penetration."}
+  - {id: deployment_time, name: Deployment Time, family: performance, dimension: time, classes: ["*"], legacy: [deployment_time_min],
+     aliases: [deployment time, into action time, set-up time, time to fire, emplacement time, reaction time, launch ready time], description: "Time to deploy / become ready."}
+  - {id: elevation_range, name: Elevation Range, family: armament, dimension: angle, type: text, classes: [artillery, mortar, gun_cannon, turret_rws, launcher, radar], legacy: [elevation_deg],
+     aliases: [elevation, elevation range, elevation arc, elevation limits], description: "Elevation arc / limits."}
+  - {id: traverse_range, name: Traverse Range, family: armament, dimension: angle, type: text, classes: [artillery, mortar, gun_cannon, turret_rws, launcher, radar], legacy: [traverse_deg],
+     aliases: [traverse, azimuth, traverse range, azimuth arc], description: "Traverse / azimuth arc."}
+  - {id: gradient, name: Gradient, family: mobility, type: text, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, ugv, artillery], status: candidate,
+     aliases: [gradient, max gradient, gradeability, slope], description: "Maximum climbable gradient."}
+  - {id: side_slope, name: Side Slope, family: mobility, type: text, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, ugv], status: candidate,
+     aliases: [side slope, side slope performance, lateral slope], description: "Maximum side slope."}
+  - {id: fording_depth, name: Fording Depth, family: mobility, dimension: length, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, artillery], status: candidate,
+     aliases: [fording, fording depth, ford, wading depth], description: "Fording depth (use conditions for with/without preparation)."}
+  - {id: trench_crossing, name: Trench Crossing, family: mobility, dimension: length, classes: [armoured_vehicle, tank, apc_ifv, artillery, ugv], status: candidate,
+     aliases: [trench, trench crossing, trench width], description: "Trench crossing width."}
+  - {id: vertical_obstacle, name: Vertical Obstacle, family: mobility, dimension: length, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, artillery, ugv], status: candidate,
+     aliases: [vertical obstacle, step, step climbing, vertical step], description: "Vertical obstacle / step height."}
+  - {id: turning_radius, name: Turning Radius, family: mobility, dimension: length, classes: [armoured_vehicle, mrap, light_tactical_vehicle, logistics_truck, ugv], status: candidate,
+     aliases: [turning radius, turning circle, turning diameter], description: "Turning radius / circle."}
+  # ---------------- crew / capacity ----------------
+  - {id: crew, name: Crew, family: identity, dimension: count, type: text, classes: ["*"], legacy: [crew_count],
+     aliases: [crew, crew count, operators, crew members], description: "Number (and composition) of crew."}
+  - {id: troop_capacity, name: Troop Capacity, family: payload, dimension: count, type: text, classes: [armoured_vehicle, apc_ifv, mrap, light_tactical_vehicle, helicopter, transport_aircraft], legacy: [troop_capacity],
+     aliases: [troops, passengers, dismounts, seats, troop capacity, seating capacity], description: "Number of troops / passengers carried."}
+  - {id: crew_complement, name: Complement, family: identity, dimension: count, type: text, classes: [surface_combatant, patrol_vessel, auxiliary_vessel, submarine], legacy: [complement],
+     aliases: [complement, accommodation, crew complement], description: "Ship's company / accommodation."}
+  - {id: magazine_capacity, name: Magazine Capacity, family: armament, dimension: count, type: text, classes: [small_arm, sniper_rifle, machine_gun, gun_cannon, artillery, launcher, turret_rws], legacy: [magazine_capacity],
+     aliases: [magazine capacity, magazine, ammunition capacity, rounds stowed, ammunition stowage, ready rounds, capacity], description: "Rounds in magazine / stowed ammunition."}
+  - {id: hardpoints, name: Hardpoints, family: armament, dimension: count, type: text, classes: [combat_aircraft, uav, helicopter, trainer_aircraft], legacy: [hardpoints],
+     aliases: [hardpoints, weapon stations, pylons, store stations], description: "Number of weapon hardpoints."}
+  - {id: max_tracked_targets, name: Max Tracked Targets, family: sensor, dimension: count, type: text, classes: [radar, air_defence_system, fire_control], legacy: [tracked_targets],
+     aliases: [tracked targets, simultaneous targets, targets tracked, track capacity, engagement capacity], description: "Number of targets tracked / engaged simultaneously."}
+  # ---------------- propulsion / power ----------------
+  - {id: propulsion_type, name: Propulsion Type, family: propulsion, type: text, classes: ["*"], legacy: [propulsion_type],
+     aliases: [propulsion, engine, engine type, motor, powerplant, power plant, power pack, rocket motor, propulsion system], description: "Engine / motor / propulsion described (type or model)."}
+  - {id: engine_power, name: Engine Power, family: propulsion, dimension: power, classes: ["*"], legacy: [engine_power_hp],
+     aliases: [engine power, power, horsepower, horse power, engine performance, engine output, rated power, max power, power output (engine)], description: "Engine / powerplant power output."}
+  - {id: power_output, name: Power Output (non-engine), family: other_technical, dimension: power, classes: [radar, electronic_warfare, communication_c2, power_system, directed_energy, satellite], legacy: [power_kw, power_output_kw],
+     aliases: [output power, transmit power, power consumption, peak power, rf power, power output, power handling], description: "Electrical / RF power output or consumption (not engine power)."}
+  - {id: beam_power, name: Beam Power, family: armament, dimension: power, classes: [directed_energy], legacy: [beam_power_kw],
+     aliases: [beam power, laser power, laser output], description: "Directed-energy beam power."}
+  - {id: torque, name: Torque, family: propulsion, dimension: torque, classes: ["*"], status: candidate,
+     aliases: [torque, max torque, engine torque], description: "Engine torque."}
+  - {id: power_to_weight_ratio, name: Power-to-Weight Ratio, family: mobility, type: text, classes: [armoured_vehicle, tank, apc_ifv, mrap], status: candidate,
+     aliases: [power to weight ratio, power-to-weight, specific power], description: "Power-to-weight ratio."}
+  - {id: transmission, name: Transmission, family: propulsion, type: text, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, artillery, ugv], status: candidate,
+     aliases: [transmission, gearbox, gears], description: "Transmission / gearbox."}
+  - {id: suspension, name: Suspension, family: mobility, type: text, classes: [armoured_vehicle, tank, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, ugv], status: candidate,
+     aliases: [suspension, suspension system, running gear], description: "Suspension type."}
+  - {id: drive_configuration, name: Drive Configuration, family: mobility, type: text, classes: [armoured_vehicle, apc_ifv, mrap, light_tactical_vehicle, logistics_truck, ugv, artillery], status: candidate,
+     aliases: [drive, drive configuration, drivetrain, driveline, wheel configuration, 4x4, 6x6, 8x8], description: "Drive configuration (e.g. 8x8, permanent 4WD)."}
+  - {id: fuel_capacity, name: Fuel Capacity, family: propulsion, dimension: volume, classes: ["*"], status: candidate,
+     aliases: [fuel capacity, fuel, fuel tank, tank capacity], description: "Fuel capacity."}
+  - {id: chassis, name: Chassis, family: mobility, type: text, classes: [armoured_vehicle, artillery, launcher, air_defence_system, logistics_truck, ugv], status: candidate,
+     aliases: [chassis, base vehicle, carrier vehicle, platform vehicle, hull], description: "Chassis / base vehicle the system is built on."}
+  - {id: battery_capacity, name: Battery Capacity, family: propulsion, type: text, classes: ["*"], status: candidate,
+     aliases: [battery, battery capacity, energy storage], description: "Battery capacity / type."}
+  # ---------------- armament / ammunition ----------------
+  - {id: calibre, name: Calibre, family: armament, dimension: length, type: text, classes: [small_arm, sniper_rifle, machine_gun, grenade_launcher, gun_cannon, artillery, mortar, ammunition, rocket, turret_rws, tank], legacy: [calibre_mm],
+     aliases: [calibre, caliber, cal, bore, cartridge, chambering], description: "Calibre (also when stated inside the product name, e.g. 'K9 155mm howitzer')."}
+  - {id: main_armament, name: Main Armament, family: armament, type: text, classes: ["*"], legacy: [main_armament],
+     aliases: [main armament, main gun, primary weapon, armament, weapon, gun], description: "Principal weapon (gun / cannon / launcher)."}
+  - {id: secondary_armament, name: Secondary Armament, family: armament, type: text, classes: ["*"], legacy: [secondary_armament],
+     aliases: [secondary armament, coaxial, secondary weapon, coaxial machine gun, aa machine gun, self-defence weapon], description: "Secondary weapons (coaxial MG, RCWS, ...)."}
+  - {id: ammunition_type, name: Ammunition Type, family: ammunition, type: text, classes: ["*"], legacy: [ammunition_type],
+     aliases: [ammunition, ammunition type, rounds, munitions, ammo, compatible ammunition, projectile type], description: "Round / rocket / missile / shell the system fires or uses (not the gun, not the vehicle)."}
+  - {id: warhead_type, name: Warhead Type, family: armament, type: text, classes: [missile, rocket, loitering_munition, torpedo, ammunition], legacy: [warhead_type],
+     aliases: [warhead, warhead type], description: "Warhead type."}
+  - {id: explosive_type, name: Explosive Type, family: ammunition, type: text, classes: [ammunition, missile, rocket, torpedo, mine], legacy: [explosive_type],
+     aliases: [explosive, filling, explosive fill, filler], description: "Explosive filling."}
+  - {id: fuze_type, name: Fuze Type, family: ammunition, type: text, classes: [ammunition, missile, rocket, artillery, mortar], legacy: [fuze_type],
+     aliases: [fuze, fuse, fuze type, fuzing], description: "Fuze."}
+  - {id: guidance_type, name: Guidance Type, family: guidance_navigation, type: text, classes: [missile, rocket, loitering_munition, torpedo, uav, uuv, bomb_guidance_kit], legacy: [guidance_type],
+     aliases: [guidance, guidance system, navigation (guidance)], description: "How it is guided (GPS/INS, laser, radar, inertial...)."}
+  - {id: seeker_type, name: Seeker Type, family: guidance_navigation, type: text, classes: [missile, loitering_munition, torpedo], legacy: [seeker_type],
+     aliases: [seeker, seeker head, homing head], description: "Seeker type."}
+  - {id: fire_control_system, name: Fire Control System, family: fire_control, type: text, classes: ["*"], legacy: [fire_control_system],
+     aliases: [fire control, fire control system, fcs, sighting system], description: "Named fire-control system / computer."}
+  - {id: twist_rate, name: Twist Rate, family: armament, type: text, classes: [small_arm, sniper_rifle, machine_gun], status: candidate,
+     aliases: [twist rate, twist, rifling twist, rifling], description: "Barrel rifling twist rate."}
+  - {id: accuracy, name: Accuracy (CEP), family: performance, type: text, classes: [missile, rocket, loitering_munition, artillery, bomb_guidance_kit, small_arm, sniper_rifle], status: candidate,
+     aliases: [accuracy, cep, precision, precision accuracy, dispersion, max dispersion], description: "Accuracy / CEP / dispersion."}
+  - {id: mrsi, name: MRSI, family: performance, type: text, classes: [artillery, mortar], status: candidate,
+     aliases: [mrsi, multiple round simultaneous impact, multiple rounds simultaneous impact], description: "MRSI capability with its number of rounds."}
+  # ---------------- protection ----------------
+  - {id: protection_level, name: Protection Level, family: protection, type: text, classes: ["*"], legacy: [protection_level, protection_class],
+     aliases: [protection, protection level, ballistic protection, mine protection, stanag 4569, protection class, armour level, nij level, cen level],
+     anti: [mobility statements, generic claims like 'superior protection', features, capabilities, programme names],
+     description: "A STATED protection standard / level or threat protected against (e.g. 'STANAG 4569 Level 4', 'protection against 7.62 mm AP')."}
+  - {id: armour_type, name: Armour Type, family: protection, type: text, classes: ["*"], legacy: [armour_type],
+     aliases: [armour, armor, armour type, armour material, hull material, armour protection], description: "Type / material of armour (e.g. 'composite', 'welded steel hull')."}
+  # ---------------- sensors / electronics ----------------
+  - {id: sensor_suite, name: Sensor / Payload Suite, family: sensor, type: text, multi: true, classes: ["*"], legacy: [sensor_payload_suite, sensor_acoustic_system],
+     aliases: [sensors, sensor suite, payload sensors, sensor payload, sonar, mission sensors, optronics, sights, sight], description: "Sensors / mission payloads carried (one record per sensor)."}
+  - {id: frequency_band, name: Frequency Band, family: communication_c2, type: text, classes: [radar, electronic_warfare, communication_c2, antenna, sonar], legacy: [frequency_band],
+     aliases: [frequency, frequency band, frequency range, band, operating frequency], description: "Operating frequency band / range."}
+  - {id: antenna_type, name: Antenna Type, family: sensor, type: text, classes: [radar, antenna, communication_c2, electronic_warfare], legacy: [antenna_type],
+     aliases: [antenna, antenna type], description: "Antenna type."}
+  - {id: detection_type, name: Detection Type, family: sensor, type: text, classes: [radar, eo_ir, sonar, acoustic_sensor, cbrn], legacy: [detection_type],
+     aliases: [detection type, detection method, sensing method], description: "Detection principle."}
+  - {id: payload_type, name: Payload Type, family: payload, type: text, multi: true, classes: ["*"], legacy: [payload_type],
+     aliases: [payload type, payload options, payloads], description: "Kind of payload carried."}
+  - {id: orbit_type, name: Orbit Type, family: performance, type: text, classes: [satellite], legacy: [orbit_type],
+     aliases: [orbit, orbit type], description: "Orbit (LEO, GEO...)."}
+  - {id: operating_temperature, name: Operating Temperature, family: operating_environment, dimension: temperature, type: text, classes: ["*"], status: candidate,
+     aliases: [operating temperature, temperature range, temperatures, service temperature, operating range (temperature)], description: "Operating temperature range."}
+  # ---------------- compatibility / mission (relation-type, projected) ----------------
+  - {id: launch_platform, name: Launch / Carrier Platform, family: compatibility, type: text, multi: true, classes: ["*"], legacy: [launch_platform],
+     aliases: [launch platform, launched from, platforms, carrier, mounted on, can be mounted on, integrated on], relation: launched_from,
+     description: "Vehicle / aircraft / ship that launches, carries or mounts IT (one record per platform)."}
+  - {id: compatible_weapon_system, name: Compatible System, family: compatibility, type: text, multi: true, classes: ["*"], legacy: [compatible_weapon_system],
+     aliases: [compatible with, integrated with, compatible systems, interoperable with], relation: integrated_with,
+     description: "Other weapon / system it is integrated or compatible with (not munitions it fires, not sensors)."}
+  - {id: target_type, name: Target Type, family: mission_target, type: text, multi: true, classes: ["*"], legacy: [target_type],
+     aliases: [targets, target type, target classes, effective against], description: "Target classes (one record per class)."}
+  - {id: amphibious_capability, name: Amphibious Capability, family: mobility, type: text, classes: [armoured_vehicle, apc_ifv, light_tactical_vehicle, ugv], legacy: [amphibious_capability],
+     aliases: [amphibious, amphibious capability, swim capability], description: "Amphibious capability as stated."}

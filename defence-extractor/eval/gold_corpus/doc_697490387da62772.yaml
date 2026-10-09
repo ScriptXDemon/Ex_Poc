@@ -1,0 +1,11 @@
+doc_id: doc_697490387da62772
+url: https://www.navylookout.com/is-the-royal-navy-indo-pacific-ready-or-should-the-carrier-strike-group-stay-closer-to-home
+level: 4
+format: html
+# Long analysis article (plus ~1000 reader-comment blocks). Only one product characteristic is stated; deployment
+# composition, fleet sizes and durations are not specifications. Precision signal: other_product_facts.
+products:
+  P1: {name: HNoMS Maud, aliases: [Maud, KNM Maud]}
+facts:
+  - {p: P1, param: cargo_capacity, alt: [payload, ammunition_capacity, stores_capacity, dry_cargo_capacity], v: "around 200 tonnes of ammunition or dry stores", nums: [200]}
+negatives: ["24 British F-35Bs", "395 vessels", "8 months", "55 warships", "12 jets"]

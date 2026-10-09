@@ -1,0 +1,45 @@
+doc_id: doc_4cf3a9466288d75c
+url: https://www.boeing.com/defense/tankers-and-transports/kc-46-pegasus
+level: 2
+format: html
+products:
+  P1: {name: KC-46A Pegasus, aliases: [KC-46, KC-46A, KC-46 Pegasus, Boeing KC-46A Pegasus]}
+facts:
+  - {p: P1, param: wingspan, alt: [width], v: "156 feet, 1 inch (47.5 meters)", nums: [156]}
+  - {p: P1, param: length_overall, alt: [length], v: "165 feet, 10 inches (50.5 meters)", nums: [165]}
+  - {p: P1, param: height, v: "52 feet, 10 inches (16.1 meters)", nums: [52]}
+  - {p: P1, param: engine_type, alt: [engine, engine_model, propulsion_type, powerplant], v: "Two Pratt & Whitney PW4062", any: ["Pratt & Whitney PW4062", "PW4062"]}
+  - {p: P1, param: thrust, alt: [engine_thrust, max_thrust], v: "62,000 pound-force (289.13 kilonewtons)", nums: [62000]}
+  - {p: P1, param: max_takeoff_weight, alt: [mtow], v: "415,000 pounds (188,241 kilograms)", nums: [415000]}
+  - {p: P1, param: max_landing_weight, v: "310,000 pounds (140,614 kilograms)", nums: [310000]}
+  - {p: P1, param: fuel_capacity, v: "212,299 pounds (96,297 kilograms)", nums: [212299]}
+  - {p: P1, param: fuel_capacity, v: "212,000 pounds (96,162 kilograms)", nums: [212000]}
+  - {p: P1, param: max_speed, alt: [maximum_air_speed, max_air_speed], v: "0.86 Mach (637 mph)", nums: [0.86]}
+  - {p: P1, param: offload_rate, alt: [fuel_transfer_rate, fuel_offload_rate], v: "400 gallons per minute (GPM)", nums: [400], cond: Wing Air Refueling Pods}
+  - {p: P1, param: offload_rate, alt: [fuel_transfer_rate, fuel_offload_rate], v: "400 GPM", nums: [400], cond: Centerline Drogue System}
+  - {p: P1, param: offload_rate, alt: [fuel_transfer_rate, fuel_offload_rate], v: "1,200 GPM", nums: [1200], cond: Advanced Fly-By-Wire Refueling Boom}
+  - {p: P1, param: receptacle_rate, alt: [offload_rate, onload_rate, fuel_transfer_rate, air_refueling_receptacle], v: "1,200 GPM", nums: [1200], cond: Air Refueling Receptacle}
+  - {p: P1, param: crew, alt: [crew_capacity], v: "15 crew members", nums: [15]}
+  - {p: P1, param: passenger_capacity, alt: [passengers], v: "58 passengers", nums: [58]}
+  - {p: P1, param: passenger_capacity, alt: [passengers], v: "114 for contingency operations", nums: [114], cond: contingency operations}
+  - {p: P1, param: cargo_capacity, alt: [pallet_capacity, pallets], v: "Eighteen 463L pallets", any: ["18 463L pallets"]}
+  - {p: P1, param: cargo_capacity, alt: [pallet_capacity, pallets], v: "10 pallets centerline configuration", nums: [10], cond: centerline}
+  - {p: P1, param: patient_capacity, alt: [aeromedical_capacity, aeromedical_evacuation_capacity], v: "Fifty-four patients with patient support pallets", any: ["Fifty-four patients", "54 patients"]}
+  - {p: P1, param: patient_capacity, alt: [aeromedical_capacity, aeromedical_evacuation_capacity], v: "24 litter/30 ambulatory", nums: [24, 30]}
+  - {p: P1, param: conversion_time, alt: [reconfiguration_time, role_change_time], v: "two hours", any: ["2 hours"]}
+  - {p: P1, param: certified_receivers, alt: [receiver_certifications], v: "Twenty-eight boom and drogue receivers", nums: [28]}
+  - {p: P1, param: compatible_aircraft, alt: [compatible_platforms, receiver_aircraft, compatible_receivers], k: compat, v: "F-35, F-18, AV-8, F-16, F-15QA and P-8", any: ["F-35", "F-15QA"]}
+  - {p: P1, param: display_size, alt: [displays, cockpit_displays], v: "15-inch", any: ["15-inch displays"], nums: [15]}
+  - {p: P1, param: electrical_power_generation, alt: [generator_capacity, electrical_power, generators], v: "120 kilovolt-amperes", nums: [120]}
+  - {p: P1, param: base_platform, alt: [platform, airframe], v: "767 Freighter", any: ["Boeing 767"]}
+  - {p: P1, k: text, v: "fly-by-wire boom with independent disconnect and automatic load alleviation", any: ["fly-by-wire boom"]}
+  - {p: P1, k: text, v: "centerline and wing-mounted hose-and-drogue systems", any: ["hose-and-drogue"]}
+  - {p: P1, k: text, v: "can also receive fuel", any: ["receive fuel"]}
+  - {p: P1, k: text, v: "Large cargo doors and cargo rollers", any: ["cargo rollers"]}
+  - {p: P1, k: text, v: "Infrared countermeasures, radio frequency warning and night vision lighting", any: ["Infrared countermeasures"]}
+  - {p: P1, k: text, v: "Electromagnetic pulse; nuclear, chemical and biological hardening; flight deck armor", any: ["biological hardening", "flight deck armor"]}
+  - {p: P1, k: text, v: "Onboard aircraft health diagnostic systems", any: ["health diagnostic"]}
+  - {p: P1, k: text, v: "Advanced Battle Management System (ABMS)", any: ["ABMS"]}
+  - {p: P1, k: text, v: "cargo, passenger and aeromedical evacuation modes", any: ["aeromedical evacuation"]}
+  - {p: P1, k: text, v: "Emergency oxygen and electrical power for medevac support", any: ["emergency oxygen"]}
+negatives: ["168 on contract", "5 million pounds", "37,000", "650 American businesses", "more than 100"]

@@ -1,0 +1,43 @@
+doc_id: doc_743031a2b7a8dd0b
+url: https://www.thinkdefence.co.uk/docs/aster-surface-to-air-missile-sea-viper
+level: 4
+format: html
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Think Defence Aster / Sea Viper page. 0.00-0.20 is cookie banner + nav only (article starts at 0.27), so start = first article paragraphs (0.29-0.33); middle = FAMS variant list (one range per variant) + a test target; end = Aster 15 vs Aster 30 data (0.78-0.80) + SAMPSON radar. Values shared by Aster 15 and Aster 30 (Mach 3.5, two-stage, seeker, 60g, fuze, Avio motor) are deliberately not labelled.
+products:
+  P1: {name: "Aster 15", aliases: ["ASTER 15"], pos: end}
+  P2: {name: "Aster 30", aliases: ["ASTER 30"], pos: end}
+  P3: {name: "NFR-90", aliases: ["NFR90", "NATO Frigate Replacement"], pos: start}
+  P4: {name: "SAMP/T", aliases: ["Sol-Air Moyenne Portee Terrain"], pos: middle}
+  P5: {name: "SAMP/N", aliases: ["Sol-Air Moyenne Portee Naval"], pos: middle}
+  P6: {name: "GQM-163A Coyote", aliases: ["ATK GQM-163A Coyote"], pos: middle}
+  P7: {name: "SAMPSON", aliases: ["Sampson", "SAMPSON Multi-Function Radar"], pos: end}
+facts:
+  - {p: P1, k: text, v: "short to medium range", b: b91, pos: start}
+  - {p: P1, param: weight, alt: [launch_weight, missile_weight, mass], v: "310 kg", nums: [310], b: b250}
+  - {p: P1, param: length, alt: [missile_length, overall_length], v: "4.2m", nums: [4.2], any: ["4.2m long"], b: b250}
+  - {p: P1, param: range, alt: [engagement_range, max_range, min_max_range], v: "1.7 km to 40 plus km", nums: [1.7, 40], any: ["40 plus km"], b: b252}
+  - {p: P1, param: max_altitude, alt: [altitude, ceiling, engagement_altitude], v: "13 km", nums: [13], b: b252}
+  - {p: P2, k: text, v: "short to long range", b: b91, pos: start}
+  - {p: P2, param: weight, alt: [launch_weight, missile_weight, mass], v: "450 kg", nums: [450], b: b250}
+  - {p: P2, param: length, alt: [missile_length, overall_length], v: "4.9m", nums: [4.9], any: ["4.9m long"], b: b250}
+  - {p: P2, param: range, alt: [engagement_range, max_range, min_max_range], v: "3 km to 120 plus km", nums: [3, 120], any: ["120 plus km"], b: b255}
+  - {p: P2, param: max_altitude, alt: [altitude, ceiling, engagement_altitude], v: "20 km", nums: [20], b: b255}
+  - {p: P3, param: displacement, alt: [design_displacement, full_load_displacement], v: "3,500 tonnes displacement", nums: [3500], any: ["3,500 tonnes"], b: b104}
+  - {p: P3, param: construction_method, alt: [construction, build_method], v: "constructed using modular techniques", nums: [], any: ["modular techniques"], b: b104}
+  - {p: P4, param: range, alt: [max_range, engagement_range], v: "40km plus range", nums: [40], any: ["40km plus"], b: b131}
+  - {p: P4, param: launch_platform, alt: [basing, launch_mode, deployment], v: "Land launched", nums: [], b: b131}
+  - {p: P4, k: text, v: "ground-based air defence system", b: b190}
+  - {p: P5, param: range, alt: [max_range, engagement_range], v: "25km plus range", nums: [25], any: ["25km plus"], b: b130}
+  - {p: P5, k: text, v: "Medium Range Surface to Air Missile (MRSAM)", any: ["MRSAM"], b: b130}
+  - {p: P6, param: flight_altitude, alt: [sea_skimming_altitude, cruise_altitude, altitude], v: "5m", nums: [5], any: ["flying at 5m"], b: b182}
+  - {p: P6, param: speed, alt: [max_speed, flight_speed, cruise_speed], v: "Mach 2.5", nums: [2.5], b: b182}
+  - {p: P6, k: text, v: "supersonic sea-skimming target", b: b182}
+  - {p: P7, param: frequency_band, alt: [band, operating_band, radar_band], v: "S-Band", nums: [], b: b291}
+  - {p: P7, param: functions, alt: [radar_functions, modes, roles], v: "search, precision tracking and fire control", nums: [], b: b291}
+  - {p: P7, param: number_of_arrays, alt: [arrays, antenna_arrays], v: "two arrays", nums: [2], b: b292}
+  - {p: P7, param: radiating_elements_per_array, alt: [elements_per_array, radiation_elements, array_elements], v: "two thousand radiation elements", nums: [2000], b: b292}
+  - {p: P7, param: rotation_rate, alt: [antenna_rotation_speed, rotation_speed, rpm], v: "rotates at 30rpm", nums: [30], any: ["30rpm"], b: b292}
+  - {p: P7, param: azimuth_coverage, alt: [coverage, field_of_view], v: "360-degree coverage", nums: [360], b: b292}
+  - {p: P7, k: text, v: "heavy clutter and ECM environment", b: b292}
+negatives: ["Anti Aircraft Missiles: 9", "quantity of 59", "£4.5 million", "€3 billion", "1,400 ASTER 15 and 30 missiles", "£2.6 Billion", "February 23, 2026"]

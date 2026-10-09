@@ -1,0 +1,19 @@
+doc_id: E1020
+url: https://www.tataadvancedsystems.com/HMV-12X12-platform
+products:
+  P1: {name: Tata LPTA 6260 12x12, aliases: [LPTA 6260, Tata LPTA 6260, HMV 12x12]}
+facts:
+  - {p: P1, param: drive_configuration, v: "12x12"}
+  - {p: P1, param: engine_power, v: "600 HP @ 2200 rpm", nums: [600]}
+  - {p: P1, param: torque, v: "Min 1900 Nm at 1400 rpm", nums: [1900]}
+  - {p: P1, param: transmission, v: "Automatic transmission System"}
+  - {p: P1, param: chassis, v: "Heavy Chassis frame for Higher Payload"}
+  - {p: P1, param: steering, v: "Rear Two axles are Steerable"}
+  - {p: P1, k: text, v: "Longer Loading Span"}
+  - {p: P1, k: text, v: "NBC kit"}
+  - {p: P1, k: text, v: "Self recovery Winch"}
+  - {p: P1, k: text, v: "CTIS"}
+  - {p: P1, k: text, v: "ABS"}
+  - {p: P1, k: text, v: "Launcher"}
+  - {p: P1, k: text, v: "Command post"}
+negatives: ["0-8067859929"]

@@ -1,0 +1,29 @@
+doc_id: pdf_6475af122f6d78e7
+url: https://new.diehl.com/controls/zh/content/download/2642/file/3Sense_Datasheet_EN.pdf
+level: 1
+format: pdf
+products:
+  P1: {name: 3Sense Technology, aliases: [3SENSE, 3SENSE technology, 3Sense]}
+facts:
+  - {p: P1, param: function, v: "3 States in one Button - MOVE TOUCH PRESS", any: ["3 States in one Button"]}
+  - {p: P1, param: input_method, v: "Gesture, Touch with finger, Touch with gloves", any: ["Touch with gloves"]}
+  - {p: P1, param: adjustable_parameters, v: "Activation Force, Detection of approach"}
+  - {p: P1, param: activation_force, v: "0,05 N", nums: [0.05], cond: TOUCH}
+  - {p: P1, param: activation_force, v: "> 1 N", nums: [1], cond: PRESS}
+  - {p: P1, param: detection_range, alt: [detection_distance, proximity_detection_range], v: "50 mm", nums: [50]}
+  - {p: P1, param: response_time, v: "< 100 ms", nums: [100]}
+  - {p: P1, param: min_button_size, alt: [button_size], v: "18 mm", nums: [18]}
+  - {p: P1, param: min_button_distance, alt: [button_to_button_distance, button_spacing], v: "20 mm", nums: [20]}
+  - {p: P1, param: operating_voltage, alt: [supply_voltage], v: "3,3 V -32 V", nums: [3.3, 32]}
+  - {p: P1, param: operating_temperature, alt: [temperature_range, operating_temperature_range], v: "-20 °C up to 85 °C", nums: [20, 85]}
+  - {p: P1, param: processor, alt: [cpu], v: "Microcontroller"}
+  - {p: P1, param: interfaces, alt: [communication_interface, data_interface], v: "Digital Output, I2C, UART, SPI", any: ["I2C, UART, SPI"]}
+  - {p: P1, param: software, v: "3Sense Basic Software"}
+  - {p: P1, k: text, v: "Each key can be assigned with 3 different states - MOVE, TOUCH and PRESS", any: ["3 different states"]}
+  - {p: P1, k: text, v: "Detection of approach, light touch and firm pressure"}
+  - {p: P1, k: text, v: "Suitable for operation with gloves"}
+  - {p: P1, k: text, v: "New designs with completely black operating front", any: ["completely black operating front"]}
+  - {p: P1, k: text, v: "Easy and cost-efficient realization of sliders, double assignment of buttons or wiping gestures", any: ["sliders, double assignment of buttons or wiping gestures"]}
+  - {p: P1, k: text, v: "Applicable for household appliances, hygiene products, industrial products, emobility", any: ["household appliances"]}
+  - {p: P1, k: text, v: "Optional delivery as complete panel system or as individual components", any: ["complete panel system"]}
+negatives: ["+49 7522 73-737"]

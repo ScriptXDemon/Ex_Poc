@@ -1,0 +1,16 @@
+doc_id: E467
+url: https://www.kongsberg.com/what-we-do/defence-and-security/missile-systems/nsm-naval-strike-missile
+products:
+  P1: {name: NSM Naval Strike Missile (NSM), aliases: [NSM, Naval Strike Missile]}
+facts:
+  - {p: P1, param: max_speed, v: "High Subsonic"}
+  - {p: P1, param: weight, v: "407 kg (897 lbs)", nums: [407]}
+  - {p: P1, param: length_overall, v: "3,96 m (156 inches)", nums: [3.96]}
+  - {p: P1, param: max_range, v: ">300 km (162 nm)", nums: [300]}
+  - {p: P1, param: target_type, k: target, v: "sea and land targets", any: ["sea targets", "sea"]}
+  - {p: P1, param: seeker_type, v: "Autonomous Target Recognition (ATR)"}
+  - {p: P1, param: guidance_type, k: text, v: "completely passive", any: ["passive"]}
+  - {p: P1, k: text, v: "sea-skimming"}
+  - {p: P1, k: text, v: "advanced terminal manoeuvres"}
+  - {p: P1, k: text, v: "high thrust to weight ratio"}
+negatives: ["+ 47 32 28 82 50"]

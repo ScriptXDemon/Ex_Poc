@@ -1,0 +1,87 @@
+doc_id: pdf_b7c2369cde80f556
+url: https://admin.interlinkcs.cz/uploads/Product_Catalog_2024_2025_e71ddc58fe.pdf
+level: 4
+format: pdf
+partial: true
+# L3Harris Tactical Communications 2024-2025 worldwide product catalogue (Interlink CS copy, 294 pages, 574 tables):
+# radio / accessory sections with "Label: value" spec tables, some multi-model tables. Page windows set by the
+# requester: start p5-50, middle p130-170, end p250-294. Start = three adjacent radios with near-identical spec-table
+# layouts (AN/PRC-167 p16-17, KIV-335A p35-36, AN/PRC-165 p37-38; immersion / weight / power differ per model).
+# Middle = RF-7850A-MR and RF-7850A-UA (one column each of the shared RF-7850A spec table, p149) and RF-7800W-AT202
+# (one column of the 7-antenna RF-7800W table, p163, headers written "RF-7800W- AT202 2-FOOT"). End = Secure Field
+# Programmer (p255), Locust RF-7980-ST001 (p262), RF-5057-AN004 (row of the p264 charger table + own section p267).
+# Left out: values shared by two products of a window (0.5 ppm, 6 dB NF, MIL-STD-810G, Black, Green, ~6 hours, RS-232,
+# USB 2.0, 30 dB), RF-7850A rows filled only in the MR column (probably merged cells), antenna rows given only under
+# AT201 (merged cells), the RF-7800W VSWR row (one column missing, alignment not certain), and products repeated
+# elsewhere in the catalogue (HF power-amplifier table p53 = p132, RF-410D-PA050, RF-5902-CH208).
+products:
+  P1: {name: "AN/PRC-167", aliases: ["Next Generation Manpack Radio"], pos: start, page: 16}
+  P2: {name: "KIV-335A", aliases: ["KIV-335A ISR Mission Module", "ISR Mission Module"], pos: start, page: 35}
+  P3: {name: "AN/PRC-165", aliases: ["Hand-Held Video Data Link", "HHVDL", "HH-VDL Transceiver"], pos: start, page: 37}
+  P4: {name: "RF-7850A-MR", aliases: ["Multi-channel Airborne Networking Radio"], pos: middle, page: 149}
+  P5: {name: "RF-7850A-UA", aliases: ["Unmanned Aircraft Networking Radio", "Unmanned Networking Aircraft Radio"], pos: middle, page: 149}
+  P6: {name: "RF-7800W-AT202", aliases: ["RF-7800W- AT202", "RF-7800W- AT202 2-FOOT", "RF-7800W-AT202 TWO-FOOT PANEL ANTENNA"], pos: middle, page: 163}
+  P7: {name: "Secure Field Programmer", aliases: ["Secure Field Programmer (SFP)", "12164-5000-02", "SFP"], pos: end, page: 255}
+  P8: {name: "RF-7980-ST001", aliases: ["Locust", "Locust Field Terminal and Speaker", "12260-1000-01"], pos: end, page: 262}
+  P9: {name: "RF-5057-AN004", aliases: ["RF-5057-AN004 Analyzer"], pos: end, page: 267}
+facts:
+  # --- start: AN/PRC-167 (p16-17)
+  - {p: P1, param: power_output, alt: [output_power, transmit_power, rf_power_output], v: "250 mW up to 20 W, 20 W VHF/UHF and SATCOM modes", nums: [250, 20], any: ["250 mW up to 20 W"], b: b215}
+  - {p: P1, param: receiver_sensitivity, alt: [sensitivity, rx_sensitivity], v: "-116 dBm, 12 dB, SINAD", nums: [-116, 12], any: ["-116 dBm"], b: b219}
+  - {p: P1, param: power_consumption, alt: [max_power_consumption, power_draw], v: "Up to 180 W (while powering audio accessory, EUD and ISR MM)", nums: [180], any: ["180 W"], b: b224, page: 17}
+  - {p: P1, param: weight, alt: [weight_with_battery, mass], v: "12.9 lbs (with battery) 5.85 kg", nums: [12.9, 5.85], any: ["12.9 lbs", "5.85 kg"], b: b236, page: 17}
+  - {p: P1, param: immersion_depth, alt: [immersion, submersion_depth, waterproof_depth], v: "2 meters salt water", nums: [2], any: ["2 meters"], b: b241, page: 17}
+  - {p: P1, k: text, v: "Multiple Independent Levels of Security up to TOP SECRET", any: ["TOP SECRET"], b: b201}
+  # --- start: KIV-335A (p35-36)
+  - {p: P2, param: power_consumption, alt: [power_draw, max_power_consumption], v: "<8 W", nums: [8], b: b906}
+  - {p: P2, param: weight, alt: [mass], v: "<18.6 oz (0.53 kg)", nums: [18.6, 0.53], any: ["18.6 oz"], b: b917, page: 36}
+  - {p: P2, param: immersion_depth, alt: [immersion, submersion_depth, waterproof_depth], v: "65 feet (20 meter)", nums: [65, 20], any: ["65 feet", "20 meter"], b: b921, page: 36}
+  - {p: P2, param: dimensions, alt: [size, dimensions_lxwxd], v: "6.04 L x 2.68 W x 1.97 D in (15.34 L x 6.81 x 5.00 cm)", nums: [6.04, 2.68, 1.97, 15.34, 6.81, 5.0], any: ["6.04 L x 2.68 W x 1.97 D in"], b: b915, page: 36}
+  - {p: P2, param: data_mode, alt: [data_modes, operating_mode, mode], v: "Receive only", b: b910}
+  - {p: P2, k: text, v: "secure ISR video to be disseminated into tactical MANET waveforms", any: ["stream forwarding"], b: b863}
+  # --- start: AN/PRC-165 (p37-38)
+  - {p: P3, param: power_output, alt: [output_power, transmit_power], v: "3.2 watts (35 dBm) maximum", nums: [3.2, 35], any: ["3.2 watts"], b: b1000}
+  - {p: P3, param: weight, alt: [mass], v: "<20 oz (0.566 kg)", nums: [20, 0.566], any: ["20 oz"], b: b1018, page: 38}
+  - {p: P3, param: immersion_depth, alt: [immersion, submersion_depth, waterproof_depth], v: "3.31 feet (1 meter)", nums: [3.31, 1], any: ["3.31 feet"], b: b1022, page: 38}
+  - {p: P3, param: transmit_frequency_s_band, alt: [transmit_frequency_range, tx_frequency_range, tx_frequency_bands], v: "2025 to 2500 MHz S-band", nums: [2025, 2500], b: b972}
+  - {p: P3, param: hmi, alt: [display, user_interface, controls], v: "OLED display and keypad", any: ["OLED"], b: b1031, page: 38}
+  - {p: P3, k: text, v: "Simultaneous Transmit and Receive", any: ["full duplex"], b: b956}
+  # --- middle: RF-7850A spec table (p149), one column per model
+  - {p: P4, param: channels, alt: [number_of_channels, channel_count], v: "2", nums: [2], b: b5113}
+  - {p: P4, param: power_input, alt: [power, input_power, supply_voltage], v: "28 VDC per MIL-STD-704F", nums: [28, 704], any: ["28 VDC"], b: b5117}
+  - {p: P4, param: dimensions, alt: [size], v: "6.2 H x 5.95 W x 10.14 D in. (15.75 H x 15.1 W x 25.75 D cm)", nums: [6.2, 5.95, 10.14, 15.75, 15.1, 25.75], any: ["6.2 H x 5.95 W x 10.14 D in."], b: b5119}
+  - {p: P4, param: weight, alt: [mass], v: "11.75 lbs (5.34 kg)", nums: [11.75, 5.34], any: ["11.75 lbs"], b: b5120}
+  - {p: P4, k: text, v: "airborne certified for fixed wing and rotary-wing aircraft", any: ["rotary-wing"], b: b5066, page: 148}
+  - {p: P5, param: channels, alt: [number_of_channels, channel_count], v: "1", nums: [1], b: b5113}
+  - {p: P5, param: power_input, alt: [power, input_power, supply_voltage], v: "Independent power provided by 12 VDC", nums: [12], any: ["12 VDC"], b: b5117}
+  - {p: P5, param: dimensions, alt: [size], v: "3.3 H x 5.3 W x 1.75 D in. (8.13 H x 13.46 W x 4.44 D cm)", nums: [3.3, 5.3, 1.75, 8.13, 13.46, 4.44], any: ["3.3 H x 5.3 W x 1.75 D in."], b: b5119}
+  - {p: P5, param: weight, alt: [mass], v: "18.5 oz. (524.5 g)", nums: [18.5, 524.5], any: ["18.5 oz"], b: b5120}
+  - {p: P5, param: color, alt: [colour, finish], v: "Olive Drab Green", b: b5121}
+  - {p: P5, k: text, v: "range extension, retransmission capabilities", any: ["retransmission"], b: b5086, page: 148}
+  # --- middle: RF-7800W antenna table (p163), AT202 column
+  - {p: P6, param: gain, alt: [antenna_gain], v: "26.0 dBi", nums: [26.0], b: b5426}
+  - {p: P6, param: beamwidth, alt: [beamwidth_vxh, beam_width], v: "6° x 6°", nums: [6], b: b5428}
+  - {p: P6, param: dimensions, alt: [dimensions_lxwxd, size], v: "24.0 x 24.0 x 2.9 in. (~61 x 61 x 7.3 cm)", nums: [24.0, 2.9, 61, 7.3], any: ["24.0 x 24.0 x 2.9 in."], b: b5436}
+  - {p: P6, param: weight, alt: [mass], v: "12.6 lbs. (~5.7 kg)", nums: [12.6, 5.7], any: ["12.6 lbs"], b: b5437}
+  # --- end: Secure Field Programmer 12164-5000-02 (p255)
+  - {p: P7, param: storage_capacity, alt: [storage, memory, capacity], v: "64G", nums: [64], b: b8018}
+  - {p: P7, param: encryption, alt: [hardware_encryption, encryption_standard], v: "Hardware encryption AES 256", nums: [256], any: ["AES 256"], b: b8019}
+  - {p: P7, param: certification, alt: [security_certification, fips_certification, fips], v: "FIPS 140-2 Level 3 certified", nums: [140, 2, 3], any: ["FIPS 140-2 Level 3"], b: b8020}
+  - {p: P7, param: os_compatibility, alt: [supported_operating_systems, compatible_os, operating_systems], v: "Windows, Mac and LINUX", any: ["LINUX"], b: b8025}
+  - {p: P7, param: compatible_radios, alt: [compatibility, supported_radios, compatible_equipment], v: "RF-7800V, RF-7850M, RF-7850S, RF-7850D and RF-7850A radios", any: ["RF-7850D"], b: b8017}
+  - {p: P7, k: text, v: "Auto lock, as soon as device is removed from the computer", any: ["Auto lock"], b: b8024}
+  # --- end: Locust RF-7980-ST001 (p262)
+  - {p: P8, param: field_wire_range, alt: [field_wire_distance, max_field_wire_length, range], v: "4 km of field wire", nums: [4], any: ["4 km"], b: b8214}
+  - {p: P8, param: audio_cable_range, alt: [audio_cable_length, max_audio_cable_distance], v: "330 ft using audio cables", nums: [330], any: ["330 ft"], b: b8214}
+  - {p: P8, param: max_nodes, alt: [number_of_nodes, nodes], v: "up to 5 nodes", nums: [5], any: ["5 nodes"], b: b8214}
+  - {p: P8, param: dimensions, alt: [size], v: "~ 7.4 x 2.3 x 3.0 inches", nums: [7.4, 2.3, 3.0], any: ["7.4 x 2.3 x 3.0"], b: b8219}
+  - {p: P8, param: weight_without_battery, alt: [weight, empty_weight], v: "~ 1.2 lbs (without battery)", nums: [1.2], any: ["1.2 lbs"], b: b8219}
+  - {p: P8, param: field_wire_posts, alt: [field_wire_winding_posts, binding_posts, field_wire_terminals], v: "Two binding posts capable of accepting stranded 1.25 mm diameter wire", nums: [2, 1.25], any: ["1.25 mm"], b: b8231}
+  - {p: P8, k: text, v: "call tone generation and detection", any: ["call tone"], b: b8214}
+  # --- end: RF-5057-AN004 battery analyzer (p267 section + p264 charger-table row)
+  - {p: P9, param: preprogrammed_routines, alt: [number_of_preprogrammed_routines, test_routines, programmed_routines], v: "13 preprogrammed", nums: [13], b: b8400}
+  - {p: P9, param: user_programmed_routines, alt: [number_of_user_programmed_routines, user_routines], v: "four user-programmed routines", nums: [4], any: ["four user-programmed"], b: b8400}
+  - {p: P9, param: charging_bays, alt: [number_of_bays, bays], v: "four charging bays", nums: [4], any: ["4 bays"], b: b8401}
+  - {p: P9, param: input_power, alt: [power_input, input_voltage, operating_voltage], v: "100-240 VAC, 50-60 Hz", nums: [100, 240, 50, 60], any: ["100 to 240 VAC"], b: b8288, page: 264}
+  - {p: P9, k: text, v: "three-level password-protection hierarchy", any: ["password-protection"], b: b8401}
+negatives: ["(+1 585) 242-3561", "FM29196", "September 1994", "376-88/2017", "06/2024", "L24348"]

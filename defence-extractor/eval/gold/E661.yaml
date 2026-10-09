@@ -1,0 +1,16 @@
+doc_id: E661
+url: https://www.nammo.com/products/ammunition/small-caliber-ammunition/7-62mm-series/7-62-mm-x-51-ball-non-toxic-9-hp
+products:
+  P1: {name: 7.62 mm x 51 Ball Non Toxic 9 HP, aliases: [Ball Non Toxic 9 HP, AC/116-32A]}
+facts:
+  - {p: P1, param: calibre, v: "7.62 mm x 51", any: ["7.62 mm"]}
+  - {p: P1, param: projectile_weight, v: "9 g (139 grain)"}
+  - {p: P1, param: muzzle_velocity, v: "860 m/s"}
+  - {p: P1, param: accuracy, v: "SD ≤ 150 mm at 550 m"}
+  - {p: P1, param: penetration, v: "3.5 mm NATO plate at 900 m"}
+  - {p: P1, param: operating_temperature, alt: [service_temperature], v: "-54°C to +52°C"}
+  - {p: P1, param: safety_temperature, v: "-54°C to +71°C"}
+  - {p: P1, param: lead_free_content, alt: [lead_free], v: "100 percent lead free", nums: [100]}
+  - {p: P1, param: nato_qualification, alt: [standard_compliance], v: "AC/116-32A"}
+  - {p: P1, k: text, v: "ball and tracer"}
+negatives: ["186 pages"]

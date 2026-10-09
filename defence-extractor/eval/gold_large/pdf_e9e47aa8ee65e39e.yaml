@@ -1,0 +1,62 @@
+doc_id: pdf_e9e47aa8ee65e39e
+url: https://iwi.net/wp-content/uploads/2021/03/IWI-2020-Catalog-Web-Ready.pdf
+level: 3
+format: pdf
+partial: true
+# IWI US 2020 catalogue (32 pages, 28 image-heavy, 19 without a text layer). The text layer holds only short product
+# blurbs (start / middle); the specs per item number are in the image-only "IWI PRODUCT LIST" tables (pages 24-27),
+# so the end-of-document facts (src: image) can only be found through page-level vision. Key written from the page
+# renders. Item rows within one family differ (calibre, barrel, magazine), so sampled items are keyed per item number;
+# a family alias is given only where all items of the family share the sampled values.
+products:
+  P1: {name: ZION 15, aliases: [Z15TAC16, ZION 15 Tactical Rifle, ZION-15], pos: start, page: 7}
+  P2: {name: TAVOR TS12, aliases: [TS12B, TAVOR TS12 bullpup shotgun, TS12], pos: middle, page: 15}
+  P3: {name: UZI PRO, aliases: [UZI PRO pistol, UZI PRO Pistols], pos: middle, page: 19}
+  P4: {name: M9ORP17, aliases: [MASADA, MASADA M9ORP17, MASADA pistol], pos: end, page: 24}
+  P5: {name: T7B16, aliases: [TAVOR 7, TAVOR 7 T7B16, TAVOR 7 Bullpup Rifle], pos: end, page: 24}
+  P6: {name: XB17-9, aliases: [TAVOR X95 XB17-9, XB17-9 TAVOR X95], pos: end, page: 25}
+  P7: {name: XB13SBR, aliases: [TAVOR X95 XB13SBR, XB13SBR TAVOR X95 SBR], pos: end, page: 25}
+  P8: {name: UPP9S, aliases: [UZI PRO UPP9S, UZI PRO Pistol UPP9S], pos: end, page: 26}
+  P9: {name: GAR1651, aliases: [GALIL ACE GAR1651, GALIL ACE Rifle GAR1651], pos: end, page: 27}
+  P10: {name: GAP39-II, aliases: [GALIL ACE GAP39-II, GALIL ACE Pistol GAP39-II], pos: end, page: 27}
+facts:
+  # text layer
+  - {p: P1, param: calibre, alt: [caliber, cartridge, ammunition_type], v: "5.56 NATO", nums: [5.56], b: b7}
+  - {p: P1, param: barrel_length, alt: [length], v: "16in", any: ['16"', "16 in", "16-inch"], nums: [16], b: b7}
+  - {p: P1, param: handguard, alt: [handguard_length, rail], v: "15in Free Float Handguard", any: ["15in Free Float", "15in Freefloat"], nums: [15], b: b7}
+  - {p: P1, param: stock, alt: [buttstock, stock_type, furniture], v: "B5 Systems Stock", any: ["B5 Systems", "B5 Stock"], b: b7}
+  - {p: P1, param: magazine_capacity, alt: [magazine, capacity], v: "30 round Magpul PMAG", any: ["30 round", "30rd PMAG", "1-30rd PMAG"], nums: [30], b: b7}
+  - {p: P2, param: magazine_capacity, alt: [capacity, ammunition_capacity], v: "15-round", any: ["15rd", "15 rd", "15 round"], nums: [15], b: b15}
+  - {p: P2, param: operating_system, alt: [action_type, operation], v: "gas regulated", any: ["self-loading, gas regulated", "gas-regulated"], b: b15}
+  - {p: P3, param: operating_system, alt: [action_type, operation], v: "blow-back operated", any: ["blowback", "blow-back"], b: b18}
+  - {p: P3, param: calibre, alt: [caliber, cartridge, ammunition_type], v: "9mm", nums: [9], b: b18}
+  # image-only product list (pages 24-27)
+  - {p: P2, param: calibre, alt: [caliber, gauge, cartridge], v: "12GA", any: ["12 GA", "12 gauge", "12-gauge"], nums: [12], pos: end, page: 24, src: image}
+  - {p: P2, param: barrel_length, alt: [length], v: '18.5"', any: ["18.5 in", "18.5-inch", "18.5 inch", "18.5″"], nums: [18.5], pos: end, page: 24, src: image}
+  - {p: P2, param: chamber_length, alt: [chamber, shell_length], v: '3"', any: ['3" chamber', "3 in", "3-inch", "3 inch"], nums: [3], pos: end, page: 24, src: image}
+  - {p: P2, param: feed_system, alt: [magazine_type, magazine_capacity, magazine], v: "15rd Tube Feed", any: ["Tube Feed", "15rd tube"], nums: [15], pos: end, page: 24, src: image}
+  - {p: P4, param: calibre, alt: [caliber, cartridge], v: "9mm", nums: [9], src: image}
+  - {p: P4, param: barrel_length, alt: [length], v: '4.1"', any: ["4.1 in", "4.1-inch", "4.1 inch", "4.1″"], nums: [4.1], src: image}
+  - {p: P4, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "2-17rd Magazine", any: ["17rd", "17 rd", "17-round", "17 round"], src: image}
+  - {p: P4, param: sights, alt: [sight, sight_type], v: "3-Dot Sight", any: ["3-Dot", "3 dot"], src: image}
+  - {p: P5, param: calibre, alt: [caliber, cartridge], v: "308 Winchester", any: [".308 Winchester", "308 Win"], nums: [308], src: image}
+  - {p: P5, param: barrel_length, alt: [length], v: '16.5"', any: ["16.5 in", "16.5-inch", "16.5 inch", "16.5″"], nums: [16.5], src: image}
+  - {p: P5, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "1-20rd", any: ["20rd", "20 rd", "20-round", "20 round"], src: image}
+  - {p: P6, param: calibre, alt: [caliber, cartridge], v: "9MM Luger", any: ["9mm Luger", "9 mm Luger"], nums: [9], src: image}
+  - {p: P6, param: barrel_length, alt: [length], v: '17"', any: ["17 in", "17-inch", "17 inch", "17″"], nums: [17], src: image}
+  - {p: P6, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "1-32rd", any: ["32rd", "32 rd", "32-round", "32 round"], src: image}
+  - {p: P7, param: barrel_length, alt: [length], v: '13"', any: ["13 in", "13-inch", "13 inch", "13″"], nums: [13], src: image}
+  - {p: P7, param: calibre, alt: [caliber, cartridge], v: "5.56 Nato", nums: [5.56], src: image}
+  - {p: P7, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "1-30rd", any: ["30rd", "30 rd", "30-round", "30 round"], src: image}
+  - {p: P8, param: calibre, alt: [caliber, cartridge], v: "9mm Luger", any: ["9MM Luger", "9 mm Luger"], nums: [9], src: image}
+  - {p: P8, param: barrel_length, alt: [length], v: '4.5"', any: ["4.5 in", "4.5-inch", "4.5 inch", "4.5″"], nums: [4.5], src: image}
+  - {p: P8, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "2-25rd", any: ["25rd", "25 rd", "25-round", "25 round"], src: image}
+  - {p: P8, param: sights, alt: [sight, sight_type], v: "Adj Sights", any: ["Adjustable Sights", "Adj Sight"], src: image}
+  - {p: P9, param: calibre, alt: [caliber, cartridge], v: "7.62 NATO", nums: [7.62], src: image}
+  - {p: P9, param: barrel_length, alt: [length], v: '16"', any: ["16 in", "16-inch", "16 inch", "16″"], nums: [16], src: image}
+  - {p: P9, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "1-20rd (SR25)", any: ["20rd (SR25)", "SR25", "20 rd"], src: image}
+  - {p: P9, param: stock, alt: [buttstock, stock_type], v: "Side Folding Adj Buttstock", any: ["Side Folding", "side-folding"], src: image}
+  - {p: P10, param: calibre, alt: [caliber, cartridge], v: "7.62x39mm", nums: [7.62, 39], src: image}
+  - {p: P10, param: barrel_length, alt: [length], v: '8.3"', any: ["8.3 in", "8.3-inch", "8.3 inch", "8.3″"], nums: [8.3], src: image}
+  - {p: P10, param: magazine_capacity, alt: [magazine, capacity, magazines_included], v: "1-30rd", any: ["30rd", "30 rd", "30-round", "30 round"], src: image}
+negatives: ["2,000,000 units", "20% off MSRP", "(717) 695-2081"]

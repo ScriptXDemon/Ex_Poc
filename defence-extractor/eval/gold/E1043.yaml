@@ -1,0 +1,26 @@
+doc_id: E1043
+url: https://www.tkmsgroup.com/atlas-elektronik/uncrewed-naval-systems/seacat-mk1
+products:
+  P1: {name: SeaCat MK1, aliases: [SeaCat, Sea Cat, Hybrid Autonomous Underwater Vehicle System SeaCat MK1]}
+facts:
+  - {p: P1, param: length_overall, v: "3.0 m to 4.5 m", nums: [3.0, 4.5]}
+  - {p: P1, param: diameter, v: "324 mm"}
+  - {p: P1, param: weight, v: "200 kg to 350 kg"}
+  - {p: P1, param: cruise_speed, alt: [max_speed, operating_speed, typical_operating_speed], v: "3 – 4 knots", nums: [3, 4]}
+  - {p: P1, param: endurance, v: "7 hrs to more than 24 hrs", nums: [7, 24]}
+  - {p: P1, param: operating_depth, v: "600 metres"}
+  - {p: P1, param: modes_of_operation, alt: [operating_modes], v: "manual (WiFi)"}
+  - {p: P1, param: modes_of_operation, alt: [operating_modes], v: "remotely operated (with 1000 m fibreoptic cable)", any: ["remotely operated"]}
+  - {p: P1, param: modes_of_operation, alt: [operating_modes], v: "fully autonomous"}
+  - {p: P1, param: fibre_optic_cable_length, v: "up to 1,000 metres", nums: [1000]}
+  - {p: P1, param: sensor_suite, v: "standard high-resolution sidescan or synthetic aperture sonar payloads", any: ["sidescan", "synthetic aperture sonar"]}
+  - {p: P1, param: sensor_suite, v: "multi-beam echosounders"}
+  - {p: P1, param: sensor_suite, v: "sub-bottom profilers"}
+  - {p: P1, param: sensor_suite, v: "optical imaging systems"}
+  - {p: P1, param: guidance_type, alt: [navigation], v: "inertial navigation"}
+  - {p: P1, k: text, v: "real-time onboard data processing"}
+  - {p: P1, k: text, v: "Vertical and lateral thrusters"}
+  - {p: P1, k: text, v: "Remotely Operated Vehicle (ROV) functionality"}
+  - {p: P1, k: text, v: "SwapHead"}
+  - {p: P1, k: text, v: "seafloor mapping and pipeline inspection"}
+negatives: []

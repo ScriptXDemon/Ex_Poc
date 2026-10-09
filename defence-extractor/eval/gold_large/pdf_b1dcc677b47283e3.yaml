@@ -1,0 +1,93 @@
+doc_id: pdf_b1dcc677b47283e3
+url: "https://poongsan.co.kr/include/images/cs/제품기술자료_Copper_Alloy_Products_2025.pdf"
+level: 4
+format: pdf
+partial: true          # only sampled products are labelled; other products' values are not judged
+# Poongsan copper-alloy strip catalogue (113 pages): one 3-page section per alloy (composition, physical and per-temper
+# mechanical tables). Units sit in their own table column (MPa, Hv, %IACS, W/(m·K), ℃, wt%), so `v` is the cell value
+# only; the temper of mechanical values is in the param name. Only values unique to that alloy within its window are
+# used (neighbouring sections repeat many numbers). Ownership tests: C2600 (B1, p24), P425 (p90), P19005 (p99) and P70
+# (p111) have no title heading in the parse, only "UNS No. ..." and the name in the Features text, so their values
+# must not drift to the previous alloy; NS2/NS3 share identical Features/Applications text and differ only in tables.
+# Names avoid the prefix pairs P26/P26HYPER, P1000HS/P1000HS2/P1000HS3, P90/P90HYPER, P194/P194HSL.
+products:
+  P1: {name: "C2100 Red Brass (RB1)", aliases: ["C2100", "C21000", "Red Brass (RB1)"], pos: start, page: 15}
+  P2: {name: "C2300 Red Brass (RB3)", aliases: ["C2300", "C23000", "Red Brass (RB3)"], pos: start, page: 21}
+  P3: {name: "C2600", aliases: ["C26000", "Brass (B1)", "C2600 cartridge"], pos: start, page: 24}
+  P4: {name: "C5240 Phosphor Bronze (Super Spring)", aliases: ["C5240", "C52400", "Phosphor Bronze (Super Spring)"], pos: middle, page: 51}
+  P5: {name: "C7451 Nickel Silver (NS2)", aliases: ["C7451", "C74500", "Nickel Silver (NS2)"], pos: middle, page: 57}
+  P6: {name: "C7521 Nickel Silver (NS3)", aliases: ["C7521", "C75200", "Nickel Silver (NS3)"], pos: middle, page: 60}
+  P7: {name: "P425", aliases: ["C42500", "C4250"], pos: end, page: 90}
+  P8: {name: "P19005", aliases: ["C19005"], pos: end, page: 99}
+  P9: {name: "P70", aliases: ["C70250", "C7025"], pos: end, page: 111}
+facts:
+  # --- start: C2100 Red Brass (RB1), p15
+  - {p: P1, param: cu_content, alt: [copper_content, chemical_composition_cu, composition], v: "Cu 94-96", nums: [94, 96], b: b340}
+  - {p: P1, param: melting_temperature, alt: [melting_point], v: "1066", nums: [1066], b: b345}
+  - {p: P1, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "234", nums: [234], b: b347}
+  - {p: P1, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "56", nums: [56], b: b351}
+  - {p: P1, param: tensile_strength_h, alt: [tensile_strength, tensile_strength_h_temper], v: "≥340", nums: [340], b: b354}
+  - {p: P1, param: yield_strength_h, alt: [yield_strength, yield_strength_0_2, yield_strength_h_temper], v: "≥280", nums: [280], b: b357}
+  - {p: P1, k: text, v: "Bullet Jackets", b: b334}
+  # --- start: C2300 Red Brass (RB3), p21
+  - {p: P2, param: cu_content, alt: [copper_content, chemical_composition_cu, composition], v: "Cu 84-86", nums: [84, 86], b: b476}
+  - {p: P2, param: melting_temperature, alt: [melting_point], v: "1027", nums: [1027], b: b481}
+  - {p: P2, param: specific_gravity, alt: [density], v: "8.75", nums: [8.75], b: b482}
+  - {p: P2, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "37", nums: [37], b: b487}
+  - {p: P2, param: tensile_strength_h, alt: [tensile_strength, tensile_strength_h_temper], v: "≥355", nums: [355], b: b490}
+  - {p: P2, param: hardness_h, alt: [hardness, vickers_hardness, hardness_h_temper], v: "≥115", nums: [115], b: b492}
+  - {p: P2, k: text, v: "highly resistant to stress corrosion cracking", any: ["stress corrosion cracking"], b: b462}
+  # --- start: C2600 (Brass B1, UNS C26000), p24 -- no title heading in the parse
+  - {p: P3, param: cu_content, alt: [copper_content, chemical_composition_cu, composition], v: "Cu 68.5-71.5", nums: [68.5, 71.5], b: b540}
+  - {p: P3, param: melting_temperature, alt: [melting_point], v: "954", nums: [954], b: b545}
+  - {p: P3, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "121", nums: [121], b: b547}
+  - {p: P3, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "28", nums: [28], b: b551}
+  - {p: P3, param: tensile_strength_eh, alt: [tensile_strength, tensile_strength_eh_temper], v: "520-620", nums: [520, 620], b: b554}
+  - {p: P3, param: hardness_eh, alt: [hardness, vickers_hardness, hardness_eh_temper], v: "145-200", nums: [145, 200], b: b556}
+  - {p: P3, k: text, v: "Ammunition cartridge cases", any: ["cartridge cases"], b: b538}
+  # --- middle: C5240 Phosphor Bronze (Super Spring), p51
+  - {p: P4, param: sn_content, alt: [tin_content, chemical_composition_sn, composition], v: "9.0-11.0", nums: [9.0, 11.0], b: b1116}
+  - {p: P4, param: p_content, alt: [phosphorus_content, chemical_composition_p, composition], v: "0.05-0.35", nums: [0.05, 0.35], b: b1117}
+  - {p: P4, param: melting_temperature, alt: [melting_point], v: "999", nums: [999], b: b1122}
+  - {p: P4, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "50", nums: [50], b: b1124}
+  - {p: P4, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "11", nums: [11], b: b1128}
+  - {p: P4, param: tensile_strength_xsh, alt: [tensile_strength, tensile_strength_xsh_temper], v: "1000-1200", nums: [1000, 1200], b: b1131}
+  - {p: P4, k: text, v: "hardened copper alloy containing 10% tin", any: ["10% tin"], b: b1106}
+  # --- middle: C7451 Nickel Silver (NS2), p57
+  - {p: P5, param: cu_content, alt: [copper_content, chemical_composition_cu, composition], v: "Cu 63-67", nums: [63, 67], b: b1251}
+  - {p: P5, param: ni_content, alt: [nickel_content, chemical_composition_ni, composition], v: "Ni 8.5-11.0", nums: [8.5, 11.0], b: b1253}
+  - {p: P5, param: melting_temperature, alt: [melting_point], v: "1021", nums: [1021], b: b1258}
+  - {p: P5, param: specific_gravity, alt: [density], v: "8.69", nums: [8.69], b: b1259}
+  - {p: P5, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "45", nums: [45], b: b1260}
+  - {p: P5, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "9", nums: [9], b: b1264}
+  # --- middle: C7521 Nickel Silver (NS3), p60
+  - {p: P6, param: cu_content, alt: [copper_content, chemical_composition_cu, composition], v: "Cu 62.0-66.0", nums: [62.0, 66.0], b: b1315}
+  - {p: P6, param: melting_temperature, alt: [melting_point], v: "1071", nums: [1071], b: b1322}
+  - {p: P6, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "33", nums: [33], b: b1324}
+  - {p: P6, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "6", nums: [6], b: b1328}
+  - {p: P6, param: tensile_strength_h, alt: [tensile_strength, tensile_strength_h_temper], v: "510-595", nums: [510, 595], b: b1331}
+  - {p: P6, param: hardness_h, alt: [hardness, vickers_hardness, hardness_h_temper], v: "170-210", nums: [170, 210], b: b1333}
+  # --- end: P425 (UNS C42500), p90 -- no title heading in the parse
+  - {p: P7, param: cu_content, alt: [copper_content, chemical_composition_cu, composition], v: "Cu 87-90", nums: [87, 90], b: b1951}
+  - {p: P7, param: sn_content, alt: [tin_content, chemical_composition_sn, composition], v: "1.5-3.0", nums: [1.5, 3.0], b: b1953}
+  - {p: P7, param: melting_temperature, alt: [melting_point], v: "1030", nums: [1030], b: b1956}
+  - {p: P7, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "120", nums: [120], b: b1958}
+  - {p: P7, param: electrical_conductivity, alt: [conductivity, electrical_conductivity_iacs], v: "28", nums: [28], b: b1962}
+  - {p: P7, param: tensile_strength_h, alt: [tensile_strength, tensile_strength_h_temper], v: "480-570", nums: [480, 570], b: b1965}
+  - {p: P7, k: text, v: "dispersion and solid solution strengthening alloy", any: ["solid solution strengthening"], b: b1942}
+  # --- end: P19005 (UNS C19005), p99 -- no title heading in the parse
+  - {p: P8, param: ni_content, alt: [nickel_content, chemical_composition_ni, composition], v: "Ni 1.4-1.7", nums: [1.4, 1.7], b: b2151}
+  - {p: P8, param: si_content, alt: [silicon_content, chemical_composition_si, composition], v: "Si 0.2-0.35", nums: [0.2, 0.35], b: b2152}
+  - {p: P8, param: zn_content, alt: [zinc_content, chemical_composition_zn, composition], v: "Zn 0.2-0.7", nums: [0.2, 0.7], b: b2154}
+  - {p: P8, param: melting_temperature, alt: [melting_point], v: "1062", nums: [1062], b: b2160}
+  - {p: P8, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "190", nums: [190], b: b2162}
+  - {p: P8, param: tensile_strength_h, alt: [tensile_strength, tensile_strength_h_temper], v: "590-630", nums: [590, 630], b: b2169}
+  # --- end: P70 (UNS C70250), p111 -- no title heading in the parse
+  - {p: P9, param: ni_content, alt: [nickel_content, chemical_composition_ni, composition], v: "2.2-4.2", nums: [2.2, 4.2], b: b2416}
+  - {p: P9, param: mg_content, alt: [magnesium_content, chemical_composition_mg, composition], v: "0.05-0.3", nums: [0.05, 0.3], b: b2418}
+  - {p: P9, param: melting_temperature, alt: [melting_point], v: "1095", nums: [1095], b: b2421}
+  - {p: P9, param: thermal_conductivity, alt: [thermal_conductivity_w_mk], v: "168", nums: [168], b: b2423}
+  - {p: P9, param: modulus_of_elasticity, alt: [elastic_modulus, youngs_modulus], v: "131", nums: [131], b: b2425}
+  - {p: P9, param: tensile_strength_h, alt: [tensile_strength, tensile_strength_h_temper], v: "710-810", nums: [710, 810], b: b2430}
+  - {p: P9, param: standard_designation, alt: [uns_designation, standard, specification], v: "UNS C7025", any: ["C7025"], b: b2403}
+negatives: ["Strip thickness ≤0.5mm", "Test sample width 10mm", "100,000,000 cycles", "Initial Stress is 80% of Yield Strength", "1/3 of the tensile strength"]
