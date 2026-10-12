@@ -11,8 +11,9 @@ from ..contracts.facts import CandidateFact
 from ..ontology.values import dimension_of
 from ..pipeline.render import Chunk, build_chunks, render_blocks
 from ..pipeline.state import DocState
+from ..llm.gateway import SchemaError
 from .base import Runtime, ask, norm_text, value_in_blocks
-from .discovery import doc_header, evidence, link_inventory, to_candidate
+from .discovery import doc_header, evidence, link_inventory, to_candidate, value_grounded
 from .segments import related, structural_owner
 
 _STRONG_STRUCTURE = {"table_row", "table_column", "section:heading", "section:page_header", "section:page_map"}
@@ -48,8 +49,10 @@ async def a10_audit(rt: Runtime, st: DocState, only_chunks: set[str] | None = No
             facts_by_block.setdefault(e.block_id, []).append(f)
     emap = st.kg.entity_map()
 
-    async def audit(c: Chunk) -> tuple[str, list[CandidateFact], int]:
-        unmatched = [it for b in c.block_ids for it in items_by_block.get(b, [])]
+    cap = max(10, rt.settings.audit_max_items)
+
+    async def audit(c: Chunk, subset: list | None = None) -> tuple[str, list[CandidateFact], int]:
+        unmatched = subset if subset is not None else [it for b in c.block_ids for it in items_by_block.get(b, [])]
         if not unmatched and not (set(c.roles) & _AUDIT_ROLES):
             return c.chunk_id, [], 0
         extracted, seen = [], set()
@@ -61,10 +64,17 @@ async def a10_audit(rt: Runtime, st: DocState, only_chunks: set[str] | None = No
                 owner = emap.get(f.owner_entity_id or f.subject_entity_id or "")
                 extracted.append(f"{f.fact_id} | {owner.name if owner else '?'} | {f.source_parameter or f.parameter_hint} | "
                                  f"{f.value_text[:120]} | {','.join(e.block_id for e in f.evidence)}")
-        un_lines = [f"{it.item_id} | {it.block_id} | {it.text[:100]}" for it in unmatched[:120]]
-        task = A10_TASK.replace("{extracted}", "\n".join(extracted) or "(none)").replace("{unmatched}", "\n".join(un_lines) or "(none)")
-        res = await ask(rt, agent="A10", role="verifier", header=doc_header(st, c.block_ids), evidence=evidence(st, c.block_ids),
-                        task=task, schema=A10Out, doc_id=doc.doc_id, reasoning="medium", max_tokens=12000)
+        un_lines = [f"{it.item_id} | {it.block_id} | {it.text[:100]}" for it in unmatched[:cap]]
+        task = A10_TASK.replace("{extracted}", "\n".join(extracted[:cap]) or "(none)").replace("{unmatched}", "\n".join(un_lines) or "(none)")
+        try:
+            res = await ask(rt, agent="A10", role="verifier", header=doc_header(st, c.block_ids), evidence=evidence(st, c.block_ids),
+                            task=task, schema=A10Out, doc_id=doc.doc_id, reasoning="medium", max_tokens=12000)
+        except SchemaError:
+            if len(unmatched) < 8:
+                raise
+            mid = len(unmatched) // 2  # the answer does not fit the context window: audit each half of the values
+            a, b = await audit(c, unmatched[:mid]), await audit(c, unmatched[mid:])
+            return c.chunk_id, a[1] + b[1], a[2] + b[2]
         recovered: list[CandidateFact] = []
         issues = 0
         valid_items = {it.item_id for it in unmatched}
@@ -174,7 +184,7 @@ def _gate(st: DocState, f: CandidateFact) -> str | None:
     bmap = doc.block_map()
     if not f.evidence or not all(e.block_id in bmap for e in f.evidence):
         return "unsupported"
-    if not value_in_blocks(doc, [e.block_id for e in f.evidence], f.value_text):
+    if not value_grounded(doc, [e.block_id for e in f.evidence], f.value_text):  # verbatim, or its unit in the labels
         return "unsupported"
     if "placeholder" in f.anomalies:
         return "placeholder"
@@ -294,7 +304,17 @@ async def a12_verify(rt: Runtime, st: DocState) -> None:
                 f.verification = VerificationStatus.unresolved
                 f.confidence = Confidence.combine(1.0, att, mapc, val)
 
-    results = await asyncio.gather(*[verify(b) for b in batches], return_exceptions=True)
+    async def verify_split(batch: list[CandidateFact]) -> None:
+        """A batch whose facts and evidence do not fit the endpoint's context is verified in halves."""
+        try:
+            await verify(batch)
+        except SchemaError:
+            if len(batch) < 2:
+                raise
+            mid = len(batch) // 2
+            await asyncio.gather(verify_split(batch[:mid]), verify_split(batch[mid:]))
+
+    results = await asyncio.gather(*[verify_split(b) for b in batches], return_exceptions=True)
     for b, r in zip(batches, results):
         if isinstance(r, BaseException):
             st.errors.append(f"A12: {type(r).__name__}: {r}")

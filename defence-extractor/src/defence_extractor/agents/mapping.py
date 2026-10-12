@@ -266,6 +266,7 @@ _LWH = re.compile(r"(?i)l\s*[x×]\s*w\s*[x×]\s*h|length\s*[x×,/]\s*width|dimen
 
 _ALT_SPLIT = re.compile(r"(?<=[\*\)\s])/(?=[\s\d])|\s/(?=\S)")
 _MARKER_END = re.compile(r"(\*{1,4}|†{1,2}|‡|[¹²³⁴⁵⁶⁷⁸⁹])\s*$")
+_ALT_START = re.compile(r"^[<>≈~±≤≥]?\s*[-−+]?\d")  # an alternative value starts with its number
 
 
 def _split_alternatives(st: DocState, f: CandidateFact) -> list[tuple[str, list]]:
@@ -280,10 +281,16 @@ def _split_alternatives(st: DocState, f: CandidateFact) -> list[tuple[str, list]
     parts = [p.strip() for p in _ALT_SPLIT.split(v) if p and p.strip()]
     if len(parts) < 2 or len(parts) > 6 or not all(re.search(r"\d", p) for p in parts):
         return []
+    if any(not _ALT_START.match(p) for p in parts[1:]):
+        return []  # "910 m / sec; 2985 fps": the slash is part of a unit, not a choice between values
     ms = find_measurements(v)
     if len(ms) == 1 and ms[0].kind == "dual" and ms[0].end - ms[0].start >= len(v) - 3:
         return []  # same quantity in two units ("100mph/160km")
-    legends = {m.marker: m.legend_text for m in (st.kg.markers if st.kg else [])}
+    ev = {e.block_id for e in f.evidence}
+    legends: dict[str, str] = {}
+    for m in (st.kg.markers if st.kg else []):  # a marker can have several legends: the one bound to this evidence
+        if m.marker not in legends or ev & set(m.used_in_block_ids):
+            legends[m.marker] = m.legend_text
     out = []
     for p in parts:
         conds = []

@@ -78,3 +78,16 @@ def test_case_sensitive_units_do_not_collide():
     assert dimension_of("120 kN") == "force"
     assert dimension_of("35 kn") == "speed"
     assert dimension_of("12 kts") == "speed"
+
+
+def test_compound_units_with_spaced_slashes():
+    ms = find_measurements("Muzzle velocity: 910 m / sec; 2985 fps; rate of fire 650 rds / min")
+    assert [m.text for m in ms] == ["910 m / sec", "2985 fps", "650 rds / min"]
+    assert ms[0].dimension == "speed" and ms[2].dimension == "rate"
+
+
+def test_width_in_a_size_string_is_not_watts():
+    from defence_extractor.ontology.values import dimension_of
+
+    assert dimension_of("6.2 H x 5.95 W x 10.14 D in. (15.75 H x 15.1 W x 25.75 D cm)") != "power"
+    assert dimension_of("Power output: 500 W") == "power"

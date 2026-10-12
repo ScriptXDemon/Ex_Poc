@@ -157,7 +157,7 @@ for _u in UNITS:
 
 
 def lookup_unit(form: str) -> UnitDef | None:
-    form = form.strip()
+    form = re.sub(r"\s*/\s*", "/", form.strip())  # "m / sec" is "m/sec"
     if form in _FORM_INDEX:
         return _FORM_INDEX[form]
     return _FORM_INDEX_CI.get(form.lower())
@@ -165,7 +165,7 @@ def lookup_unit(form: str) -> UnitDef | None:
 
 def _form_regex(form: str) -> str:
     esc = re.escape(form).replace(r"\ ", r"\s?")
-    return esc
+    return esc.replace("/", r"\s?/\s?")  # spec cards and tables print "m / sec", "rds / min"
 
 
 def unit_alternation() -> str:
@@ -179,6 +179,8 @@ def unit_alternation() -> str:
     for f, ci in forms:
         if f == "in":  # bare "in" is only an inch mark before a bracket/separator ("26.25 in [667 mm]")
             rx = r"in(?=\s?[\[\(/,;x×]|\s*$)"
+        elif f in ("W", "H", "D", "L"):  # "6.2 H x 5.95 W x 10.14 D in.": height / width / depth labels, not watts
+            rx = re.escape(f) + r"(?!\s?[x×*])"
         else:
             rx = _form_regex(f)
         parts.append(f"(?i:{rx})" if ci else rx)

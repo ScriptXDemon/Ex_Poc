@@ -29,8 +29,16 @@ def ingest(ref: DocRef, pdf_ocr: bool = True, pdf_threads: int = 8, cache_dir: s
     if ref.format == "pdf":
         from .pdf_adapter import PdfAdapter
 
-        doc = PdfAdapter(ocr=pdf_ocr, threads=pdf_threads, window_pages=window_pages, cache_dir=cache_dir).parse(
-            path, ref.doc_id, ref.url)
+        from .corpus import parse_pages
+
+        doc = PdfAdapter(ocr=pdf_ocr, threads=pdf_threads, window_pages=window_pages, cache_dir=cache_dir,
+                         pages=parse_pages(ref.pages)).parse(path, ref.doc_id, ref.url)
+        try:  # which known PDF challenges the file shows, page by page (recorded in the result; never fatal)
+            from .pdf_scan import file_challenges
+
+            doc.metadata["challenges"] = file_challenges(path, parse_pages(ref.pages))
+        except Exception as e:
+            doc.metadata["challenges"] = {"status": "scan_error", "error": f"{type(e).__name__}: {str(e)[:120]}"}
     else:
         doc = HtmlAdapter().parse(path.read_bytes(), ref.doc_id, ref.url, str(path), fmt=ref.format)
     return analyse(doc)

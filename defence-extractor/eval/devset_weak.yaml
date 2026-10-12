@@ -1,0 +1,10 @@
+# Weak set (quick, about 2-3 h on the farm): only the pages whose answer-key facts score low today. Every change is
+# measured here first. Baseline (large1 / large1p, same pages, core facts): 42/83, 8 on a wrong product.
+# Run:   dx run --devset eval/devset_weak.yaml --run-id <id> --concurrency 2
+# Score: dx eval <id> --gold eval/gold_large,eval/gold_corpus,eval/gold --devset eval/devset_weak.yaml
+docs:
+  - {id: pdf_d802f1477a652544, pages: "4,6", why: "Lapua: spec cards (label, unit and number in separate boxes), 10/23"}
+  - {id: pdf_b1dcc677b47283e3, pages: "15,21,51,57,60", why: "copper-alloy catalogue, first page of five alloys, 8/30"}
+  - {id: pdf_d01bfafbe389a5f8, pages: "10,15,23", why: "motor catalogue: summary table and dot-leader spec pages, 11/13"}
+  - {id: pdf_d717bf66f633d689, pages: "68,72", why: "forum catalogue middle: exhibitor entries, 4/6"}
+  - {id: pdf_e9e47aa8ee65e39e, pages: "24", why: "IWI: image-only product list (OCR + vision), 9/11"}

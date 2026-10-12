@@ -309,6 +309,7 @@ def score_doc(gold: Gold, res: dict) -> dict[str, Any]:
             by_pos[pos] = {"n": len(rs), "matched": sum(1 for r in rs if r["outcome"] == "matched"),
                            "misattributed": sum(1 for r in rs if r["outcome"] == "misattributed"),
                            "unresolved": sum(1 for r in rs if r["outcome"] == "unresolved")}
+    unit_errors = _unit_errors(rows)
     spec_rows = [r for r in rows if r["outcome"] == "matched" and r.get("param") not in (None, "n/a")]
     pc = {k: sum(1 for r in spec_rows if r["param"] == k) for k in ("correct", "dynamic_ok", "dynamic_other", "wrong_canonical")}
     exact = sum(1 for r in rows if r["outcome"] == "matched" and r["match"] in ("exact", "contains", "alt"))
@@ -317,8 +318,28 @@ def score_doc(gold: Gold, res: dict) -> dict[str, Any]:
         "core": core, "text": text, "param": pc, "verbatim_matches": exact, "by_pos": by_pos,
         "merged_pred_facts": merged, "extras": len(extras), "other_product_facts": 0 if gold.partial else len(other_products),
         "negative_violations": violations, "rows": rows, "extra_list": extras[:200], "other_list": other_products[:100],
-        "accepted": len(accepted), "unresolved_out": len(unresolved),
+        "accepted": len(accepted), "unresolved_out": len(unresolved), "unit_errors": unit_errors,
     }
+
+
+def _unit_errors(rows: list[dict]) -> list[dict]:
+    """Matched values whose unit measures something other than their parameter ("910 m" for a muzzle velocity, after a
+    bad split of "910 m / sec"): matching compares numbers, so these count as found but would mislead a reader."""
+    from ..ontology import load_ontology
+    from ..ontology.values import dimension_of
+
+    onto = load_ontology()
+    out = []
+    for r in rows:
+        if r["outcome"] != "matched" or not r.get("pred"):
+            continue
+        p = onto.get(r["gold"].get("param"))
+        want = p.dimension if p is not None else None
+        got = dimension_of(str(r["pred"].get("value") or ""), expected=want) if want else None
+        if want and got and got != want:
+            out.append({"param": r["gold"].get("param"), "gold": r["gold"]["v"], "pred": r["pred"].get("value"),
+                        "expected": want, "found": got})
+    return out
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -338,11 +359,25 @@ def old_key_compare(page: dict, res: dict, gold: Gold | None) -> dict[str, Any]:
     return {"n": n, "value_only": vo, "product_aware": pa, "v3_value_only": v3_caught}
 
 
-def score_run(run_dir: Path, gold_dir: Path, bench_json: Path | None = None) -> dict[str, Any]:
+def score_run(run_dir: Path, gold_dir: Path | list[Path], bench_json: Path | None = None,
+              page_subsets: dict[str, set[int]] | None = None) -> dict[str, Any]:
+    """Score every document of the run that has an answer key. ``gold_dir`` may be several folders (the first one
+    holding a document's key wins); ``page_subsets`` limits a document's key to the pages that were processed."""
     bench = {p["id"]: p for p in json.loads(bench_json.read_text())} if bench_json and bench_json.exists() else {}
     docs = []
-    for gp in sorted(gold_dir.glob("*.yaml")):
+    seen: set[str] = set()
+    paths: list[Path] = []
+    for gd in ([gold_dir] if isinstance(gold_dir, Path) else list(gold_dir)):
+        for gp in sorted(Path(gd).glob("*.yaml")):
+            if gp.stem not in seen:
+                seen.add(gp.stem)
+                paths.append(gp)
+    for gp in paths:
         gold = load_gold(gp)
+        if page_subsets and gold.doc_id in page_subsets:
+            keep = page_subsets[gold.doc_id]
+            gold.facts = [f for f in gold.facts if f.page is None or int(f.page) in keep]
+            gold.partial = True  # products outside the processed pages are not judged
         rp = run_dir / "docs" / gold.doc_id / "result.json"
         if not rp.exists():
             docs.append({"doc_id": gold.doc_id, "missing_result": True})
@@ -378,5 +413,6 @@ def score_run(run_dir: Path, gold_dir: Path, bench_json: Path | None = None) -> 
         "negative_violations": sum(len(d["negative_violations"]) for d in ok),
         "merged_pred_facts": sum(d["merged_pred_facts"] for d in ok),
         "ledger_open": sum(d["ledger"]["open"] for d in ok),
+        "unit_errors": sum(len(d.get("unit_errors", [])) for d in ok),
         "old_key": old, "cost_usd": round(sum(d.get("cost_usd", 0) for d in ok), 4), "docs": docs,
     }

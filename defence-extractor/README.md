@@ -50,8 +50,8 @@ git clone <this repo> && cd defence-extractor
 bash scripts/server_setup.sh            # uv, .venv (Python 3.12), CPU torch, docling, Temporal CLI; idempotent
 source .venv/bin/activate
 cp .env.example .env                     # then set LLM_BASE_URL, LLM_API_KEY and the model names
-python scripts/llm_probe.py              # checks the endpoint: chat, JSON schema, image input, throughput
-python -m pytest -q tests/unit           # 39 unit tests, no LLM calls
+python scripts/llm_probe.py              # checks the endpoint: chat, JSON schema, image input, thinking switch, throughput
+python -m pytest -q tests/unit           # 70 unit tests, no LLM calls
 ```
 
 ### Run on your own chunk of documents
@@ -82,6 +82,14 @@ verification still run.
 - `runs/<run>/llm_calls.jsonl`: every model call (agent, tokens, latency, cost)
 - `python3 scripts/export_outputs.py [out_dir]`: one folder per document with the input file, `output.json` and a readable `summary.md`
 - `dx report <run>`: corpus statistics and catalogue proposals (A14) as HTML
+- `runs/<run>/review.json` (also `dx review <run>`): documents a person should look at, with reasons (stages that fell back,
+  risky files, image pages read by OCR only, unreadable pages, tenders / manuals / papers, many agent errors)
+
+Every `result.json` also records how the document was read: `document.source` (URL, path, format, `document_kind`:
+product sheet, catalogue, news, tender, manual, academic paper, slides... with the signals behind it, kept so a
+later cleaning step can filter), `document.pages` (per PDF page: text layer, OCR, vision or figures; text quality;
+challenge flags), `document.challenges` (the PDF challenge scan) and `document.failed_stages` (a stage that failed is
+replaced by its fallback and named here; only a failed ingest fails a document).
 
 ### Evaluate
 
@@ -95,15 +103,46 @@ python scripts/dump_pages.py <doc_id> --pages 10-14 --out dump.txt   # parsed te
 python3 scripts/gold_check.py eval/gold_large/<doc>.yaml dump.txt    # every key value must occur in the source
 ```
 
+The scorer also reports matched values whose unit measures the wrong thing ("910 m" for a muzzle velocity), since
+matching compares numbers.
+
+Quick test sets for every change (PDF page subsets keep them short):
+
+```bash
+DOC_CONCURRENCY=4 bash scripts/run_devsets.sh <tag> "weak guard"   # runs weak_<tag> then guard_<tag> and scores both
+python scripts/devset_summary.py weak_<tag> guard_<tag>            # per document; --diff <run_a> <run_b> for changes
+```
+
+`eval/devset_weak.yaml` holds the pages where accuracy was low, `eval/devset_guard.yaml` documents that already score
+well: a change ships when the guard set does not drop and the weak set rises. `*_full.yaml` are the longer nightly
+versions.
+
+### PDF challenge scan
+
+```bash
+dx pdf-scan --root /data/pdfs --out runs/scan_pdfs --workers 8   # no model calls; about 180 pages per second
+```
+
+Flags 48 known PDF problems per file and page (scans, bad text layers, rotated or tiny text, multi-column pages, dot
+leaders, spec cards, forms, attachments, encryption, tender / manual wording...) and writes `summary.md` with the share
+of files and pages per problem. The same scan runs on every PDF at ingest and is stored in its result.
+
 ## LLM endpoints
 
 The gateway speaks the OpenAI chat-completions API with strict JSON-schema output.
 
 - **Self-hosted** (`LLM_API_FLAVOR=openai`): GPU farm, vLLM, SGLang or llama.cpp behind LiteLLM. Responses are streamed by
-  default, so long JSON answers survive a proxy request timeout. Qwen3 thinking is requested off with
-  `chat_template_kwargs`; servers that ignore it still work (the model then thinks on every call). Set
-  `LLM_CONCURRENCY` to the number of requests the server really runs in parallel: llama.cpp with one slot serves
-  requests one at a time, vLLM / SGLang batch dozens.
+  default, so long JSON answers survive a proxy request timeout. Thinking is switched per call: off with
+  `chat_template_kwargs: {enable_thinking: false}`, on with `enable_thinking: true` plus `reasoning_effort`. Set
+  `LLM_CONCURRENCY` to the number of requests the endpoint really runs in parallel (one per llama.cpp slot or node;
+  vLLM / SGLang batch dozens).
+- Endpoint limits: `CONTEXT_WINDOW` (tokens per request; the gateway caps each answer to what the prompt leaves and
+  splits an input that does not fit, so a server that truncates silently never sees an oversized prompt),
+  `THINKING_OVERHEAD_TOKENS` (only for servers that think even when asked not to). For small windows (8k) the chunk and
+  batch sizes can be lowered: `SECTION_CHUNK_TOKENS`, `DISCOVERY_MAX_ITEMS`, `A2_WINDOW_SECTIONS`, `A3_CHUNK_TOKENS`,
+  `A4_EVIDENCE_TOKENS`, `A4_BATCH`, `A6_BATCH`, `A7_BATCH_BLOCKS`, `AUDIT_MAX_ITEMS`, `VERIFY_BATCH_SIZE` (see `.env.example`).
+- `VISION_ENABLED=false` when no model of the endpoint accepts images: image pages are then read by OCR only and listed
+  in the review list.
 - **OpenRouter** (`LLM_API_FLAVOR=openrouter`): provider pinning, cost accounting per call and document, budget guard on
   the key balance.
 

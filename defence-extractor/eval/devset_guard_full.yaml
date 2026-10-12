@@ -1,0 +1,11 @@
+# Guard set, full (nightly): documents that already score well.
+# Score: dx eval <run> --gold eval/gold_large,eval/gold_corpus,eval/gold --devset eval/devset_guard_full.yaml
+docs:
+  - {id: E661, why: "benchmark ammunition page, 9/9"}
+  - {id: E662, why: "benchmark ammunition page, 13/14"}
+  - {id: E526, why: "benchmark helicopter page (values with footnote markers), 13/15"}
+  - {id: E1043, why: "benchmark UGV page, modes of operation"}
+  - {id: pdf_62fb98a79ebc86a0, why: "two products in one spec table, 24/24"}
+  - {id: pdf_355cc2986d867717, why: "recovery-vehicle brochure with named components, 34/37"}
+  - {id: pdf_5b039048bbb93ebd, pages: "4-6,10-13,18-21", why: "tank-ammunition catalogue, near-identical cartridges, 51/57"}
+  - {id: pdf_b7c2369cde80f556, pages: "15-17,34-38,148-150,162-164,254-256,261-268", why: "294-page radio catalogue, 42/43"}

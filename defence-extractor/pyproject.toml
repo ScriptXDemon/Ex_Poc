@@ -29,6 +29,8 @@ ml = [
   "FlagEmbedding>=1.2.10",
   "docling>=2.5",
   "pypdfium2>=4.30",
+  "rapidocr>=3.4,<4",  # docling's OCR engine for pages without a text layer
+  "onnxruntime>=1.18",  # runtime rapidocr needs; without it OCR fails
 ]
 dev = [
   "pytest>=8.2",

@@ -106,13 +106,19 @@ def run(source: str = typer.Option("corpus", help="corpus | benchmark"),
         run_id: str = typer.Option(None), levels: str = typer.Option(None), fmt: str = typer.Option(None, help="html|pdf"),
         limit: int = typer.Option(None), ids: str = typer.Option(None), per_level: int = typer.Option(None),
         seed: int = typer.Option(7), concurrency: int = typer.Option(4), budget_cap: float = typer.Option(None),
-        order: str = typer.Option("default", help="default | interleave | budget"), verbose: bool = typer.Option(False)):
+        order: str = typer.Option("default", help="default | interleave | budget"), verbose: bool = typer.Option(False),
+        devset: str = typer.Option(None, help="devset YAML (documents + PDF page subsets); overrides the selection")):
     """Run the full pipeline (local async runner) on a selection of documents."""
     logging.basicConfig(level=logging.INFO if verbose else logging.WARNING, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     s = get_settings()
-    root = root or str(s.data_dir / ("benchmark" if source == "benchmark" else "spec_pages_1000"))
-    refs = load_benchmark(root) if source == "benchmark" else load_corpus(root)
-    refs = _select(refs, levels, fmt, limit, ids, seed, per_level, order)
+    if devset:
+        from .evaluation.devset import devset_refs, load_devset
+
+        refs = devset_refs(load_devset(s.project_root / devset), s.data_dir / "spec_pages_1000", s.data_dir / "benchmark")
+    else:
+        root = root or str(s.data_dir / ("benchmark" if source == "benchmark" else "spec_pages_1000"))
+        refs = load_benchmark(root) if source == "benchmark" else load_corpus(root)
+        refs = _select(refs, levels, fmt, limit, ids, seed, per_level, order)
     run_id = run_id or time.strftime("run_%Y%m%d_%H%M%S")
     console.print(f"[bold]run {run_id}[/bold]: {len(refs)} documents, concurrency {concurrency}")
     from .pipeline.runner import build_runtime, run_batch
@@ -141,6 +147,42 @@ def run(source: str = typer.Option("corpus", help="corpus | benchmark"),
     ok = sum(1 for o in out if o.get("status") == "completed")
     console.print(f"[bold]done[/bold] {ok}/{len(out)} completed in {time.time() - t0:.0f}s, cost ${cost:.4f}, "
                   f"budget {rt.gw.budget.snapshot()}")
+    rv = write_review(run_dir)
+    console.print(f"review list: {len(rv)} document(s) to look at -> {run_dir / 'review.json'}")
+
+
+def write_review(run_dir: Path) -> list[dict]:
+    """Documents of a run that a person should look at, with the reasons (failed or fallen-back stages, risky files,
+    image pages read by OCR only, unreadable pages, non-product documents, many agent errors)."""
+    from .pipeline.provenance import review_reasons
+
+    out = []
+    for d in sorted((run_dir / "docs").iterdir() if (run_dir / "docs").exists() else []):
+        rp = d / "result.json"
+        if not rp.exists():
+            sp = d / "state.json"
+            status = json.loads(sp.read_text()).get("status") if sp.exists() else "missing"
+            out.append({"doc_id": d.name, "status": status, "reasons": [f"no result (status {status})"]})
+            continue
+        res = json.loads(rp.read_text())
+        reasons = review_reasons(res)
+        if reasons:
+            out.append({"doc_id": d.name, "status": (res.get("execution") or {}).get("status"),
+                        "kind": ((res.get("document") or {}).get("source") or {}).get("document_kind"), "reasons": reasons})
+    (run_dir / "review.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    return out
+
+
+@app.command()
+def review(run_id: str):
+    """Write and print the review list of a run: documents a person should look at, and why."""
+    s = get_settings()
+    rv = write_review(s.runs_dir / run_id)
+    for r in rv:
+        console.print(f"[bold]{r['doc_id']}[/bold] ({r.get('status')}, {r.get('kind') or '-'})")
+        for reason in r["reasons"]:
+            console.print(f"   - {reason}")
+    console.print(f"{len(rv)} document(s) -> {s.runs_dir / run_id / 'review.json'}")
 
 
 @app.command("temporal-worker")
@@ -202,14 +244,22 @@ def summary(run_id: str):
 
 
 @app.command("eval")
-def evaluate(run_id: str, gold: str = typer.Option("eval/gold"), bench: str = typer.Option("eval/old_benchmark/bench.json")):
+def evaluate(run_id: str, gold: str = typer.Option("eval/gold", help="answer-key folder(s), comma-separated"),
+             bench: str = typer.Option("eval/old_benchmark/bench.json"),
+             devset: str = typer.Option(None, help="devset YAML: limits PDF keys to the pages that were processed")):
     """Score a run against gold labels (+ old answer key) and write eval.json / eval_report.html into the run folder."""
     from .evaluation.report import render
     from .evaluation.scorer import score_run
 
     s = get_settings()
     run_dir = s.runs_dir / run_id
-    sc = score_run(run_dir, s.project_root / gold, s.project_root / bench)
+    subsets = None
+    if devset:
+        from .evaluation.devset import load_devset, page_subsets
+
+        subsets = page_subsets(load_devset(s.project_root / devset))
+    sc = score_run(run_dir, [s.project_root / g.strip() for g in gold.split(",") if g.strip()], s.project_root / bench,
+                   page_subsets=subsets)
     (run_dir / "eval.json").write_text(json.dumps(sc, indent=1, default=str))
     (run_dir / "eval_report.html").write_text(render(run_id, sc))
     c, t, p, o = sc["core"], sc["text"], sc["param"], sc["old_key"]
@@ -222,6 +272,7 @@ def evaluate(run_id: str, gold: str = typer.Option("eval/gold"), bench: str = ty
                                                      for k, v in sc["by_pos"].items()))
     console.print(f"  params: {p} | verbatim share {sc['verbatim_share']} | merged {sc['merged_pred_facts']}")
     console.print(f"  extras {sc['extras']} | other-product facts {sc['other_product_facts']} | negative violations {sc['negative_violations']} | ledger open {sc['ledger_open']}")
+    console.print(f"  matched values with a unit of the wrong dimension: {sc.get('unit_errors', 0)}")
     console.print(f"  old answer key: value-only {o['value_only']}/{o['n']} (v3 {o['v3_value_only']}), product-aware {o['product_aware']}/{o['n']}")
     console.print(f"  cost ${sc['cost_usd']}  -> {run_dir / 'eval_report.html'}")
 
@@ -250,6 +301,28 @@ def budget():
     b = BudgetGuard(s.openrouter_base_url, s.openrouter_api_key)
     asyncio.run(b.refresh())
     console.print(b.snapshot())
+
+
+@app.command("pdf-scan")
+def pdf_scan(root: str = typer.Option(..., help="folder searched recursively for *.pdf"),
+             out: str = typer.Option(..., help="output folder (scan.jsonl, summary.json, summary.md)"),
+             workers: int = typer.Option(8), limit: int = typer.Option(None)):
+    """Challenge scan of PDFs (no model calls): prevalence of every known PDF problem across files and pages."""
+    from .ingest.pdf_scan import scan_corpus
+
+    paths = sorted(p for p in Path(root).rglob("*") if p.is_file() and p.suffix.lower() == ".pdf")[: limit or None]
+    console.print(f"scanning {len(paths)} PDF files with {workers} workers")
+    t0 = time.time()
+    sm = scan_corpus(paths, Path(out), workers=workers, progress=lambda k, n: console.print(f"  {k}/{n}"))
+    lines = [f"# PDF challenge scan: {root}", "",
+             f"{sm['files']} files, {sm['pages_scanned']} pages scanned ({sm['pages_per_file']} per file), status {sm['status']}",
+             f"languages (sampled pages): {sm['languages']}", "",
+             "| challenge | files | % files | pages | % pages | examples |", "|---|---:|---:|---:|---:|---|"]
+    for r in sm["flags"]:
+        lines.append(f"| {r['flag']}: {r['description']} | {r['files']} | {r['files_pct']} | {r['pages'] or ''} | "
+                     f"{r['pages_pct'] or ''} | {', '.join(r['examples'][:3])} |")
+    (Path(out) / "summary.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    console.print(f"done in {time.time() - t0:.0f}s -> {out}/summary.md")
 
 
 @app.command()

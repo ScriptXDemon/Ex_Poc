@@ -158,6 +158,14 @@ def test_table_unit_from_label_and_odd_hyphens():
     assert _unit_from_context("32 in", ["fits in 32 slots"]) is None            # "in" as a word is not a unit label
     assert _unit_from_context("12 km", ["Range: 12 nm at 30 km/h"]) is None     # "km" only inside "km/h"
     assert _unit_from_context("Class 7", ["Class 7"]) is None
+    # units at the end of a label, dot leaders, spaced slashes, a unit in a cited header (motor catalogue, Lapua cards)
+    assert _unit_from_context("179.5 in", ["Overall motor length (incl nozzle/fairing),: in.......179.5"]) == "179.5"
+    assert _unit_from_context("53.6 sec", ["Burn time, sec: 53.6"]) == "53.6"
+    assert _unit_from_context("922 psia", ["Average chamber pressure,: psia..........................922"]) == "922"
+    assert _unit_from_context("910 m/sec", ["Muzzle velocity: 910 m / sec; 2985 fps"]) == "910"
+    cited = ["WEIGHTS, lbm", "Burnout....................745"]
+    assert _unit_from_context("745 lbm", cited, cited=cited) == "745"
+    assert _unit_from_context("745 kg", cited, cited=cited) is None  # a unit the page does not print
     assert norm_text("DeuGen‑N (FE36) lock‐up") == norm_text("DeuGen-N (FE36) lock-up")
 
 
@@ -188,3 +196,46 @@ def test_continuation_stops_at_an_unknown_model_heading():
     sec = {s.heading: s.section_id for s in doc.sections}
     assert st.segments[sec["C2720 Brass"]] == ["E1"] and st.segments[sec["Features"]] == ["E1"]
     assert sec["C7451 Nickel Silver (NS2)"] not in st.segments and sec["Typical Applications"] not in st.segments
+
+
+
+def test_a_retyped_value_is_anchored_to_the_printed_text():
+    from defence_extractor.agents.discovery import _printed_form
+
+    page = ["Small and robust, with low power consumption bellow 25W, working the whole day on one battery"]
+    assert _printed_form("below 25W", page) == "bellow 25W"
+    assert _printed_form("120 km", ["Range: 1,200 km"]) is None  # different digits: never re-anchored
+    assert _printed_form("Thermal imager", ["Laser rangefinder"]) is None
+
+
+def test_a_slash_inside_a_unit_is_not_a_choice_between_values():
+    from types import SimpleNamespace
+
+    from defence_extractor.agents.mapping import _split_alternatives
+    from defence_extractor.contracts.common import FactClass
+
+    st = SimpleNamespace(kg=SimpleNamespace(markers=[]))
+
+    def fact(v):
+        return SimpleNamespace(value_text=v, fact_class=FactClass.performance_specification, evidence=[])
+
+    assert _split_alternatives(st, fact("910 m / sec; 2985 fps")) == []  # one speed in two units (Lapua card)
+    alts = _split_alternatives(st, fact("3,948 m (12,953 ft)*/4,572 m (15,000 ft)**"))  # two ceilings, two engines
+    assert [p for p, _ in alts] == ["3,948 m (12,953 ft)*", "4,572 m (15,000 ft)**"]
+
+
+
+def test_a_unit_printed_on_the_label_line_above_grounds_the_value():
+    from defence_extractor.agents.discovery import value_grounded
+    from defence_extractor.contracts.document import BlockType
+    from defence_extractor.ingest.pdf_adapter import _Builder
+
+    b = _Builder("D")
+    b.heading("ORION 32XL", 2, 15, None)
+    b.block("WEIGHTS, lbm", BlockType.paragraph, 15, None)
+    b.block("Total loaded ........................ 13,850", BlockType.paragraph, 15, None)
+    b.block("Burnout .............................. 745", BlockType.paragraph, 15, None)
+    doc = b.build(fmt="pdf", url=None, path="/x.pdf", sha="0" * 64, title="t", warnings=[], parser="t")
+    burnout = next(x.block_id for x in doc.blocks if x.text.startswith("Burnout"))
+    assert value_grounded(doc, [burnout], "745 lbm")
+    assert not value_grounded(doc, [burnout], "745 kg")

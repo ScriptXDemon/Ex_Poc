@@ -1,0 +1,220 @@
+<title>PDF Pipeline Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+/* Layout: one reading column for a decision memo; evidence tables inline where each claim is made. Same identity as the results report. */
+:root {
+  --bg: #f3f5f3; --surface: #ffffff; --ink: #18201d; --muted: #59655f; --rule: #d6ddd9; --accent: #8a4f12;
+  --good: #2c7a4b; --warn: #a36d0f; --bad: #a8382c; --track: #e3e8e5;
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111513; --surface: #181e1b; --ink: #e5ebe7; --muted: #9aa69f; --rule: #2a332f; --accent: #e09a4a;
+  --good: #5cbf85; --warn: #e0b04a; --bad: #e57a6c; --track: #26302b; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--body); }
+main { max-width: 1080px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; gap: 34px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 4.4vw, 44px); font-weight: 700; }
+h2 { font-size: 25px; font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+p { margin: 0; max-width: 74ch; }
+a { color: var(--accent); }
+section { display: grid; gap: 12px; min-width: 0; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--muted); font-size: 17px; }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 15px 17px; display: grid; gap: 4px; align-content: start; }
+.kpi b { font: 600 28px/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.kpi b.bad { color: var(--bad); } .kpi b.warn { color: var(--warn); }
+.kpi span { color: var(--muted); font-size: 14px; }
+.wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 600 11.5px/1.3 var(--mono); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.n, .n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 13px; }
+.mono { font-family: var(--mono); font-size: 13px; }
+td.url { max-width: 300px; overflow-wrap: anywhere; font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.note { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+.note ul, .note ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.verdict { border-left: 3px solid var(--accent); background: var(--surface); padding: 12px 16px; border-radius: 0 10px 10px 0; display: grid; gap: 6px; }
+.tag { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.tag.done { color: var(--good); } .tag.new { color: var(--warn); } .tag.crit { color: var(--bad); }
+code { font-family: var(--mono); font-size: 13px; background: var(--track); padding: 1px 5px; border-radius: 4px; }
+.small { font-size: 13.5px; color: var(--muted); }
+.bar { display: inline-block; width: 80px; height: 7px; background: var(--track); border-radius: 4px; vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--bad); }
+.bar.ok span { background: var(--good); }
+</style>
+<style>
+.chip { display: inline-block; font: 600 11px/1 var(--mono); padding: 4px 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.chip.done { color: var(--good); } .chip.part { color: var(--warn); } .chip.miss { color: var(--bad); }
+.chip.hi { color: var(--ink); } .chip.med { color: var(--muted); } .chip.lo, .chip.nr { color: var(--muted); border-style: dashed; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { font: 600 12px/1 var(--mono); padding: 8px 11px; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.filters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#items td:nth-child(5), #items td:nth-child(6) { min-width: 220px; }
+ol.steps { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+</style>
+<main>
+<header style="display:grid;gap:10px">
+  <div class="eyebrow">Defence product intelligence · extraction engine · review, 2026-10-09</div>
+  <h1>PDF Pipeline Review</h1>
+  <p class="lede">A critical check of the PDF suggestions from your network: the six-stage processing diagram and the list of 70 PDF
+  problems with proposed solutions. Each item is compared with what the engine does today, checked in the code and against the
+  large-file test, and rated for how much it matters for our documents (vendor brochures, catalogues, news and analysis).</p>
+</header>
+
+<div class="strip" role="list">
+  <div class="kpi" role="listitem"><b>25</b><span>of the 70 items are already handled</span></div>
+  <div class="kpi" role="listitem"><b class="warn">23</b><span>are handled in part</span></div>
+  <div class="kpi" role="listitem"><b class="bad">22</b><span>are not handled</span></div>
+  <div class="kpi" role="listitem"><b class="warn">29</b><span>of the 45 partial or missing items matter for our documents (high or medium); the other 16 are rare here</span></div>
+</div>
+
+<section>
+  <h2>Are we tackling all of them?</h2>
+  <div class="verdict"><p><b>No, and not all of them should be tackled now.</b> The engine already covers the items that decide accuracy on our
+  documents: no full-text prompts, structure before extraction, products assigned to sections and table rows, tables continued across
+  pages, units from table headers, conditions, news and procurement filtering, completeness auditing and dynamic specifications. The
+  gaps that matter are concentrated in the first three stages (page routing, figures, layout of spec cards, text clean-up) and in
+  entity discovery on large catalogues. Handwriting, redaction, equations, fold-outs, watermarks, encryption and poor scans are rare
+  in this corpus and can wait.</p></div>
+</section>
+
+<section>
+  <h2>The six-stage diagram against our pipeline</h2>
+  <p>We already have all six stages; no new architecture is needed. The diagram is a useful checklist for stages 1–3, which are
+  our weakest. Two corrections to it: stages 4 and 5 are not a straight line (products in stage 4 need the entities from stage 5,
+  so we run entities, roles and then the product map), and accuracy is decided after stage 6, in attribution and verification,
+  which the diagram does not show. It also has no measurement step; we keep one (answer keys by position in the document).</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Stage</th><th>What we do today</th><th>Status</th><th>What to add</th></tr></thead>
+    <tbody><tr><td><b>1. Document inspection</b></td><td>Page count, characters and image share per page; text-layer check on the first five pages.</td><td><span class="chip part">Partial</span></td><td>Per-page text-quality score (garbage characters, swapped ligatures, empty pages) so every page gets its own route.</td></tr><tr><td><b>2. Page processing</b></td><td>Docling native text; Docling OCR (RapidOCR) for the whole file when the first pages have no text; Qwen 27B vision for pages with no text or mostly image.</td><td><span class="chip part">Partial</span></td><td>Per-page OCR as well as per-page vision; figure-region transcription on text pages.</td></tr><tr><td><b>3. Layout recovery</b></td><td>Docling layout (headings, paragraphs, lists, captions, footnotes, page headers/footers) and TableFormer tables with header cells.</td><td><span class="chip part">Partial</span></td><td>Keep figures and bind captions; join label/unit/value cards; dehyphenation; sidebars.</td></tr><tr><td><b>4. Structure recovery</b></td><td>Sections with heading paths; page map (section roles and subjects); product map assigning sections, pages, table rows and columns to products; tables continued across pages.</td><td><span class="chip done">Done</span></td><td>This stage is ahead of the diagram: products are assigned to structure before extraction. Add model-number headings as products.</td></tr><tr><td><b>5. Document intelligence</b></td><td>Entities, aliases, roles and parents (family / variant / subsystem), relations, references (&quot;the system&quot;, footnote legends).</td><td><span class="chip done">Done</span></td><td>Weak on catalogues with hundreds of models and on long news logs (roles labelled &quot;other&quot;).</td></tr><tr><td><b>6. Common semantic model</b></td><td>One typed document model (blocks with ids, pages, boxes, scopes) feeding extraction; every fact carries evidence, conditions and an owner; one JSON schema.</td><td><span class="chip done">Done</span></td><td>Expose bounding boxes in the output evidence.</td></tr></tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>The 70 items</h2>
+  <div class="filters" role="group" aria-label="Filter items">
+    <button type="button" id="f-all" data-f="all" aria-pressed="true">All 70</button>
+    <button type="button" id="f-gaps" data-f="gaps" aria-pressed="false">Gaps that matter (29)</button>
+    <button type="button" id="f-miss" data-f="Missing" aria-pressed="false">Missing (22)</button>
+    <button type="button" id="f-part" data-f="Partial" aria-pressed="false">Partial (23)</button>
+    <button type="button" id="f-done" data-f="Done" aria-pressed="false">Done (25)</button>
+  </div>
+  <div class="wrap"><table id="items">
+    <thead><tr><th>#</th><th>Issue</th><th>Status</th><th>Relevance</th><th>What the engine does today</th><th>Action</th></tr></thead>
+    <tbody><tr data-status="Done" data-rel="High"><td class="n">1</td><td><b>Very long PDFs</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>40-page parsing windows, no page limit. No prompt ever holds the whole text: the page map runs in windows, extraction in ~3.5k-token chunks, and a product map and local entity lists carry context. 294-page catalogue: 42/43 sampled specs, last pages 18/18.</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">2</td><td><b>No semantic structure</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Docling layout plus our document model: title, headings with levels, paragraphs, lists, captions, footnotes, tables with header cells; sections with heading paths.</td><td>Keep; add sidebars (27).</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">3</td><td><b>Scanned / image-only PDFs</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Pages without text go to the vision model page by page. OCR, however, is switched on for the whole file from its first five pages. 3.1% of corpus PDF pages have no text layer.</td><td>Route every page on its own: native, OCR or vision, using a text-quality score (56).</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">4</td><td><b>Mixed digital and scanned pages</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Vision is per page; OCR is per document. 41% of corpus PDFs have at least one image-only or image-heavy page.</td><td>Same change as 3.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">5</td><td><b>Multi-column reading order</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Docling orders text with its layout model. We have never measured reading-order errors.</td><td>Check a sample of multi-column brochures; send pages with broken order to vision.</td></tr><tr data-status="Partial" data-rel="High"><td class="n">6</td><td><b>Tables</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>TableFormer (accurate mode), header cells kept, product-keyed rows and columns, continuation across pages. Fails on dense merged columns (Lapua: &quot;100 yd 2525 786&quot;) and multi-row headers.</td><td>Keep header lineage per cell; re-read badly parsed tables from the page image.</td></tr><tr data-status="Partial" data-rel="High"><td class="n">7</td><td><b>Specs embedded in images</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>Image-heavy pages are transcribed (IWI catalogue: 35/37, the product-list values exist only in images). Figures on ordinary text pages are dropped.</td><td>Crop figures that carry technical labels or captions and transcribe the crop.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">8</td><td><b>Text inside figures</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Docling picture regions are skipped, so diagram annotations are lost.</td><td>Region-level OCR / vision of figures, tied to caption and page.</td></tr><tr data-status="Done" data-rel="Low"><td class="n">9</td><td><b>Product photographs</b></td><td><span class="chip done">Done</span></td><td><span class="chip lo">Low</span></td><td>We never infer a model from appearance; only printed or transcribed text counts as evidence.</td><td>Keep.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">10</td><td><b>Charts and graphs</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Skipped with the figures.</td><td>Transcribe title, axes and labels only for charts inside specification sections.</td></tr><tr data-status="Done" data-rel="High"><td class="n">11</td><td><b>Repeated headers and footers</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Docling page headers/footers become non-content; running headers that name a product are used as ownership evidence by the product map.</td><td>Keep; add repeated-text detection for files where Docling misses them.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">12</td><td><b>Watermarks</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Not detected.</td><td>Defer: rare in vendor brochures.</td></tr><tr data-status="Done" data-rel="Medium"><td class="n">13</td><td><b>Page numbers</b></td><td><span class="chip done">Done</span></td><td><span class="chip med">Medium</span></td><td>Header/footer text never enters the fact inventory, and every value must be quoted from a content block.</td><td>Keep.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">14</td><td><b>Broken words (hyphenation)</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Line breaks become spaces, so &quot;manu-\nfacturer&quot; becomes &quot;manu- facturer&quot;.</td><td>Conservative dehyphenation that keeps the original text.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">15</td><td><b>Sentences across pages</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Paragraphs stay split at page breaks.</td><td>Join a paragraph continued on the next page (no final punctuation, lowercase start).</td></tr><tr data-status="Done" data-rel="High"><td class="n">16</td><td><b>Tables across pages</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>A header-less table on the next page with the same columns inherits the headers (copper-alloy catalogue: 30 continued tables, 90 rows).</td><td>Add a check for continued tables that repeat their header.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">17</td><td><b>References like &quot;see Table 7&quot;</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Not resolved.</td><td>Build a reference graph only if evaluation shows misses.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">18</td><td><b>Footnotes and endnotes</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Marker legends are bound to values (&quot;*GE CT7-2E1 / **Safran Aneto-1K&quot;); footnote blocks are kept.</td><td>Copy footnote qualifiers into the fact&#x27;s conditions every time.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">19</td><td><b>Acronyms</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Aliases come from the entity agent; duplicate names are merged by the role agent.</td><td>Deterministic &quot;Full Name (ACR)&quot; dictionary before merging.</td></tr><tr data-status="Partial" data-rel="High"><td class="n">20</td><td><b>Product names spread across sections</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>One entity registry per document; every chunk shows which product its section describes.</td><td>Keep; improves with the catalogue entity fix (21).</td></tr><tr data-status="Done" data-rel="High"><td class="n">21</td><td><b>Many products per PDF</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>The product map assigns sections, pages, table rows and table columns to products (L3Harris catalogue: 1,642 of 1,768 sections, 1,197 rows). Weak where entity discovery misses models: the copper-alloy catalogue found 16-22 of 55.</td><td>Promote model-number headings and table row labels to entities before roles are assigned.</td></tr><tr data-status="Done" data-rel="High"><td class="n">22</td><td><b>Family vs model vs variant</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Roles family / variant / subsystem with parent links; a part&#x27;s values roll up into the product sheet.</td><td>Fix entities labelled &quot;other&quot; (66 of 127 on one long article).</td></tr><tr data-status="Partial" data-rel="High"><td class="n">23</td><td><b>Specs shared across variants</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>Column-keyed tables give each variant its own values. A column shared by all variants is not recognised.</td><td>Treat a common column as applying to every variant.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">24</td><td><b>Cross-page coreference</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>References agent (&quot;the system&quot;, &quot;its&quot;) plus section ownership.</td><td>Keep; measure on the bigger evaluation set.</td></tr><tr data-status="Done" data-rel="High"><td class="n">25</td><td><b>Section ambiguity</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Every block carries its heading path; every section its product.</td><td>Keep.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">26</td><td><b>Captions detached from figures</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Captions are kept in reading order, but figures are dropped, so nothing binds to them.</td><td>Bind captions to figure and table boxes (needed for 7 and 8).</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">27</td><td><b>Sidebars and callouts</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Not separated in PDFs.</td><td>Use layout labels and geometry; give sidebars their own section.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">28</td><td><b>Rotated text</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Not handled explicitly.</td><td>Defer.</td></tr><tr data-status="Partial" data-rel="Low"><td class="n">29</td><td><b>Landscape pages</b></td><td><span class="chip part">Partial</span></td><td><span class="chip lo">Low</span></td><td>Docling lays out each page with its own geometry.</td><td>Keep.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">30</td><td><b>Fold-outs and oversized pages</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Vision renders a whole page at 1,600 px.</td><td>Tile very large pages when one appears.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">31</td><td><b>Tiny fonts</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Fixed render size.</td><td>Render dense regions at higher resolution or in tiles.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">32</td><td><b>Poor scans</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>No image clean-up.</td><td>Defer: few scans in this corpus.</td></tr><tr data-status="Missing" data-rel="Not relevant"><td class="n">33</td><td><b>Handwritten annotations</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip nr">Not relevant</span></td><td>None in the corpus.</td><td>Defer.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">34</td><td><b>Redaction</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Not detected.</td><td>Record black boxes as unavailable if government documents arrive.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">35</td><td><b>Classification markings</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Not separated from content.</td><td>Treat banner markings (UNCLASSIFIED, CONFIDENTIAL) as metadata.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">36</td><td><b>Formulas and equations</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Formula regions become plain text.</td><td>Defer.</td></tr><tr data-status="Done" data-rel="High"><td class="n">37</td><td><b>Units separated from numbers</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Units are taken from table labels (&quot;IMU: 259; Units: mm&quot; becomes 259 mm); about 2,900 such values were rejected before this fix.</td><td>Extend to captions and multi-row headers.</td></tr><tr data-status="Done" data-rel="High"><td class="n">38</td><td><b>Table header context</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Every table row carries its column headers (&quot;Row — Column: value&quot;).</td><td>Multi-row header lineage.</td></tr><tr data-status="Done" data-rel="Medium"><td class="n">39</td><td><b>Multiple units</b></td><td><span class="chip done">Done</span></td><td><span class="chip med">Medium</span></td><td>The value parser keeps both (&quot;407 kg (897 lbs)&quot;).</td><td>Keep.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">40</td><td><b>Superscript markers</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Marker legends are resolved; a condition glued to a value is cut off into a condition.</td><td>Carry marker conditions into the fact&#x27;s conditions every time.</td></tr><tr data-status="Done" data-rel="High"><td class="n">41</td><td><b>Conditional specifications</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Value plus conditions (&quot;with auxiliary tanks&quot;).</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">42</td><td><b>Configuration-dependent values</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Variant, engine and configuration conditions per value.</td><td>Keep.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">43</td><td><b>Narrative vs table disagree</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>Both values are kept; the product sheet flags conflicting single-valued numbers.</td><td>Add context to the flag (approximate vs exact, which source).</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">44</td><td><b>Original vs upgraded values</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>No time or version attribution beyond variants.</td><td>Version, block and year cues as conditions.</td></tr><tr data-status="Partial" data-rel="High"><td class="n">45</td><td><b>Comparison tables</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>Column-keyed tables keep a competitor&#x27;s column on the competitor.</td><td>Keep; add comparison pages to the evaluation set.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">46</td><td><b>Tender documents</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>A requirement would be extracted as if it were a product specification.</td><td>Mark documents and sections as requirement or product specification; output them separately.</td></tr><tr data-status="Done" data-rel="High"><td class="n">47</td><td><b>News and report PDFs</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>News-page verification rule; operational events rejected; each item&#x27;s values stay on its own product.</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">48</td><td><b>Procurement numbers</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Contract values, quantities and dates are classified and excluded; answer keys check them as negatives.</td><td>Keep.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">49</td><td><b>References and bibliography</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Not marked in PDFs (web comments and related links are).</td><td>Page-map role &quot;references&quot; as non-content.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">50</td><td><b>Index and table of contents</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>The page map can mark navigation, but Docling&#x27;s index label is not mapped, so contents lines can create mentions.</td><td>Map the index label to navigation.</td></tr><tr data-status="Done" data-rel="Medium"><td class="n">51</td><td><b>Appendices</b></td><td><span class="chip done">Done</span></td><td><span class="chip med">Medium</span></td><td>Never down-ranked; spending follows specification density.</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">52</td><td><b>Corrupted characters</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Unicode normalisation, non-breaking hyphens, byte-swapped ligatures, mojibake repair.</td><td>Keep.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">53</td><td><b>OCR digit errors (0/O, 1/l)</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Values read from images get lower confidence, and nothing else checks them.</td><td>Sanity checks on units and ranges; cross-check against the text layer where both exist.</td></tr><tr data-status="Done" data-rel="High"><td class="n">54</td><td><b>Negative signs and ranges</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>The measurement parser handles minus signs, ranges and inequalities.</td><td>Keep.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">55</td><td><b>Decimal and thousands conventions</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>European separators are parsed (&quot;1.000,5&quot;, &quot;3,6 g&quot;); &quot;10,600&quot; is decided by rules.</td><td>Use the document language to decide.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">56</td><td><b>Bad text layers</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Only the presence of a text layer is checked.</td><td>Text-quality score per page; route poor pages to OCR or vision.</td></tr><tr data-status="Partial" data-rel="Low"><td class="n">57</td><td><b>Duplicate text layers</b></td><td><span class="chip part">Partial</span></td><td><span class="chip lo">Low</span></td><td>Transcribed text that repeats the text layer is marked as a duplicate.</td><td>Spatial de-duplication of overlapping text.</td></tr><tr data-status="Missing" data-rel="Low"><td class="n">58</td><td><b>Encrypted or restricted PDFs</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip lo">Low</span></td><td>Failures fall back to the plain text layer silently.</td><td>Detect permissions and report an explicit status.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">59</td><td><b>Corrupt PDFs</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>A failed conversion falls back to the plain text layer for the file.</td><td>Isolate failures per page window.</td></tr><tr data-status="Done" data-rel="High"><td class="n">60</td><td><b>Huge files</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Text and layout first; vision only on routed pages; windows cached on disk.</td><td>Keep.</td></tr><tr data-status="Partial" data-rel="Medium"><td class="n">61</td><td><b>Thousands of pages</b></td><td><span class="chip part">Partial</span></td><td><span class="chip med">Medium</span></td><td>No page limit; cost grows linearly; the densest sections are read first under a cap.</td><td>Skip legal, contents and pure marketing sections before extraction.</td></tr><tr data-status="Done" data-rel="Medium"><td class="n">62</td><td><b>Repeated product sections</b></td><td><span class="chip done">Done</span></td><td><span class="chip med">Medium</span></td><td>Duplicate facts are merged per product with every source kept.</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">63</td><td><b>Specification completeness</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Open discovery, expected-parameter hunt, coverage audit and a ledger: every value ends extracted, rejected or unresolved.</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">64</td><td><b>Unknown specification types</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Dynamic parameters (68% of accepted specs on the large files).</td><td>Keep; improve naming and linkage.</td></tr><tr data-status="Partial" data-rel="High"><td class="n">65</td><td><b>Evidence traceability</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>Block id, page, verbatim quote and character offsets per fact. Bounding boxes are stored on blocks but not in the output.</td><td>Put bounding box and table cell into every evidence item.</td></tr><tr data-status="Missing" data-rel="Medium"><td class="n">66</td><td><b>Visual verification</b></td><td><span class="chip miss">Missing</span></td><td><span class="chip med">Medium</span></td><td>Not done.</td><td>For low-confidence or image-read numbers: crop the region and ask the vision model to confirm.</td></tr><tr data-status="Partial" data-rel="Low"><td class="n">67</td><td><b>Retrieval across 500 pages</b></td><td><span class="chip part">Partial</span></td><td><span class="chip lo">Low</span></td><td>By design we read every chunk instead of retrieving: retrieval would miss specifications. Lexical retrieval is used only for the expected-parameter hunt.</td><td>Keep exhaustive reading; use hybrid retrieval for cross-references and Q&amp;A only.</td></tr><tr data-status="Partial" data-rel="High"><td class="n">68</td><td><b>Context fragmentation</b></td><td><span class="chip part">Partial</span></td><td><span class="chip hi">High</span></td><td>Registry, section notes and the references agent bring distant context in.</td><td>Keep; improves with 21.</td></tr><tr data-status="Done" data-rel="High"><td class="n">69</td><td><b>Context explosion</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Each call has an evidence budget (~3.5k tokens) and at most 40 entities.</td><td>Keep.</td></tr><tr data-status="Done" data-rel="High"><td class="n">70</td><td><b>LLM cost</b></td><td><span class="chip done">Done</span></td><td><span class="chip hi">High</span></td><td>Deterministic parsing, then per-page vision, then the model; response cache; per-document caps.</td><td>Keep.</td></tr></tbody>
+  </table></div>
+  <p class="small">Relevance is judged for our corpus: 250 PDFs, 2,203 pages, of which 3.1% have no text layer and 11.3% are mostly image;
+  most files are vendor brochures and catalogues, not scans, tenders or government documents.</p>
+</section>
+
+<section>
+  <h2>What we learn from the list</h2>
+  <div class="note"><ul>
+    <li>It confirms the direction already taken: structure first, products bound to sections and table cells, evidence for every value,
+    dynamic specifications, and a cheap-to-expensive cascade.</li>
+    <li>It names three gaps our tests also found: figures on text pages are dropped, spec cards with labels and numbers in separate boxes
+    lose values (Lapua: 12/26), and page routing is partly per document instead of per page.</li>
+    <li>It adds risks we had not tested: tender documents (requirements read as specifications), bad text layers, OCR digit errors,
+    contents pages and sidebars.</li>
+    <li>One recommendation does not fit our goal: retrieving only the relevant passages (items 1, 67) suits question answering, but
+    exhaustive extraction must read every chunk, or it misses specifications. We keep exhaustive reading, densest chunks first.</li>
+    <li>The list says how to fix things but not how to know they are fixed. Every item we take on gets a test document and a check in the
+    answer keys.</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2>Changes to the framework</h2>
+  <div class="grid2">
+    <div class="note"><h3>Now: highest effect on accuracy</h3><ol class="steps">
+      <li><b>Catalogue entities.</b> Model-number headings and table row labels become products before roles are assigned (items 21, 22).
+      Copper-alloy catalogue today: 16–22 of 55.</li>
+      <li><b>Spec cards.</b> Join label, unit and number boxes into one field using their positions (items 2, 37, 38). Lapua today: 12 of 26.</li>
+      <li><b>Figures.</b> Keep figure regions, bind captions, transcribe figures that carry technical labels (items 7, 8, 26).</li>
+      <li><b>Per-page routing.</b> A text-quality score per page decides native text, OCR or vision (items 3, 4, 56).</li>
+      <li><b>Text clean-up.</b> Dehyphenation, paragraph continuation across pages, contents and index marked as navigation (items 14, 15, 50).</li>
+      <li><b>Roles.</b> Entities the role model calls "other" get the role their type implies (item 22).</li>
+    </ol></div>
+    <div class="note"><h3>Next: after the bigger evaluation set</h3><ol class="steps">
+      <li>Requirement vs product-specification role for tenders (46).</li>
+      <li>Visual confirmation of low-confidence and image-read numbers (53, 66).</li>
+      <li>Bounding box and table cell in every evidence item (65).</li>
+      <li>Acronym dictionary, footnote conditions, version and upgrade conditions (19, 18, 40, 44).</li>
+      <li>Sidebars, common variant columns, multi-row headers (27, 23, 38).</li>
+      <li>Explicit status for encrypted or corrupt files; page-window isolation (58, 59).</li>
+    </ol></div>
+  </div>
+  <p class="small">Deferred until such documents appear: watermarks, rotated text, fold-outs, poor scans, handwriting, redaction, classification
+  banners, equations, charts, reference graphs (12, 28, 30, 32, 33, 34, 35, 36, 10, 17).</p>
+</section>
+
+<section>
+  <h2>How we raise accuracy</h2>
+  <div class="grid2">
+    <div class="note"><h3>Where the errors are today</h3><ul>
+      <li>Large files: 77.8% of sampled specs found, 5.4% of found values on a wrong product; middle of documents 67%, start 83%, end 78%.</li>
+      <li>Three documents carry most of the misses: the copper-alloy catalogue (entity discovery), Lapua (spec cards) and a long news log
+      (roles labelled "other").</li>
+      <li>14 of the 20 wrong-product values were dynamic specifications.</li>
+    </ul></div>
+    <div class="note"><h3>What moves the number</h3><ul>
+      <li>Fix the three error sources above first (changes 1, 2 and 6).</li>
+      <li>Give the verifier an independent model: the farm's 72B once it has a large enough context and speed (now every verifier call falls back to the 27B).</li>
+      <li>Use light thinking from the start for entity finding on big PDFs (47% of those calls came back empty with thinking off).</li>
+      <li>Measure every change on the benchmark, the corpus keys and the large-file keys, by position in the document.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Next steps and blockers</h2>
+  <div class="grid2">
+    <div class="note"><h3>Plan</h3><ol class="steps">
+      <li>Re-run the benchmark on the farm to confirm the switch from OpenRouter at full scale (the two-page smoke test matched: 22/23 on both).</li>
+      <li>Build the six "now" changes, each with a unit test and a test document.</li>
+      <li>Re-run the 15 large documents on the farm and compare by position.</li>
+      <li>Fold in your bigger evaluation set, then take the "next" changes.</li>
+    </ol></div>
+    <div class="note"><h3>Blockers</h3><ul>
+      <li><b>Farm throughput.</b> qwen3.8:27b serves one request at a time at about 40 tokens/s: about 6–7 minutes per small page, days for
+      a 500-document chunk. Needs batching (vLLM or SGLang, or more llama.cpp slots) and more replicas.</li>
+      <li><b>72B not usable yet.</b> qwen2.5-72b-instruct is served with a 2,048-token context window, smaller than any audit or
+      verification prompt (5,000–15,000 tokens), and answers at about 0.5 tokens/s. Every verifier call falls back to the 27B until the
+      farm serves it with a 32k context on enough GPU memory.</li>
+      <li><b>Thinking cannot be switched off</b> on the farm, which adds reasoning tokens to every call. The server needs to honour
+      <code>chat_template_kwargs</code>.</li>
+      <li><b>Proxy timeout of 95 s.</b> Handled by streaming; raising it to 15 minutes would also protect queued requests.</li>
+      <li><b>Evaluation set.</b> The current keys sample 446 specs on 15 large documents; the bigger set will narrow the error bars.</li>
+      <li><b>Code review.</b> Pull request #2 on ScriptXDemon/Ex_Poc waits for the owner to merge.</li>
+    </ul></div>
+  </div>
+</section>
+</main>
+<script>
+(function () {
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#items tbody tr'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+  function apply(f) {
+    rows.forEach(function (r) {
+      var s = r.getAttribute('data-status'), rel = r.getAttribute('data-rel');
+      var show = f === 'all' || s === f || (f === 'gaps' && s !== 'Done' && (rel === 'High' || rel === 'Medium'));
+      r.hidden = !show;
+    });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === f)); });
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-f')); }); });
+})();
+</script>

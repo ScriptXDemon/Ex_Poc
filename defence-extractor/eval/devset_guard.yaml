@@ -1,0 +1,13 @@
+# Guard set (quick, about 2-3 h on the farm): documents that already score well. A change ships only if these do not
+# get worse. Baseline (bench6 / gold4 / large1, same pages, core facts): 146/153, 3 on a wrong product.
+# Run:   dx run --devset eval/devset_guard.yaml --run-id <id> --concurrency 2
+# Score: dx eval <id> --gold eval/gold_large,eval/gold_corpus,eval/gold --devset eval/devset_guard.yaml
+docs:
+  - {id: E661, why: "benchmark ammunition page, 9/9"}
+  - {id: E662, why: "benchmark ammunition page, 13/14"}
+  - {id: E526, why: "benchmark helicopter page (values with footnote markers), 20/20"}
+  - {id: E1043, why: "benchmark UGV page, modes of operation, 15/15"}
+  - {id: pdf_62fb98a79ebc86a0, why: "two products in one spec table, figures, 24/24"}
+  - {id: pdf_355cc2986d867717, why: "recovery vehicle with named variants and components, 34/37"}
+  - {id: pdf_5b039048bbb93ebd, pages: "4,13,18", why: "tank-ammunition catalogue, near-identical cartridges, 16/19"}
+  - {id: pdf_b7c2369cde80f556, pages: "149,262", why: "294-page radio catalogue, 15/15"}

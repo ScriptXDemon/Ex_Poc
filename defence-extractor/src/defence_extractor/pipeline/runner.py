@@ -219,6 +219,19 @@ def summarize(st: DocState, res) -> dict:
     }
 
 
+def _fall_back(st: DocState, stage: str) -> None:
+    """A stage that raised is replaced by its fallback, so one failure degrades part of a document, never all of it."""
+    from ..agents.understanding import default_page_map, fallback_kg, fallback_roles
+
+    if stage == "page_map" and st.page_map is None:
+        st.page_map = default_page_map(st)
+    elif stage == "entities" and st.kg is None:
+        st.kg = fallback_kg(st)
+    elif stage == "roles" and st.kg is not None:
+        fallback_roles(st.kg)
+    # discovery, attribution, mapping, audit, verification: the facts found so far stay; vision: the text layer / OCR stays
+
+
 async def run_document(rt, ref: DocRef, run_id: str, runs_dir: Path, resume: bool = True) -> dict:
     st = DocState.load(runs_dir, run_id, ref.doc_id) if resume else None
     if st is None:
@@ -238,11 +251,13 @@ async def run_document(rt, ref: DocRef, run_id: str, runs_dir: Path, resume: boo
         except Exception as e:
             log.exception("stage %s failed for %s", stage, ref.doc_id)
             st.errors.append(f"{stage}: {type(e).__name__}: {str(e)[:300]}")
-            if stage in ("ingest", "page_map", "entities", "roles", "discovery"):
+            if stage == "ingest" or st.ingest is None:  # nothing to read: the document fails
                 st.status = "failed"
                 st.save(runs_dir)
                 return {"doc_id": ref.doc_id, "status": "failed", "stage": stage, "error": str(e)[:300]}
-            st.done.append(stage)  # non-critical stage: continue, error recorded
+            _fall_back(st, stage)  # the stage's deterministic fallback: later stages still run, the result says so
+            st.failed_stages.append(stage)
+            st.done.append(stage)
             st.save(runs_dir)
     return await assemble(rt, st, runs_dir)
 

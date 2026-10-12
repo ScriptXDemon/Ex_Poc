@@ -1,0 +1,9 @@
+# Weak set, full (nightly): where accuracy is low today, with surrounding pages for context.
+# Score: dx eval <run> --gold eval/gold_large,eval/gold_corpus,eval/gold --devset eval/devset_weak_full.yaml
+docs:
+  - {id: pdf_d802f1477a652544, pages: "4-7", why: "Lapua: spec cards (labels, units, numbers in separate boxes), 12/26"}
+  - {id: pdf_b1dcc677b47283e3, pages: "14-26,50-61", why: "copper-alloy catalogue: alloys missing from the entity list, 16/55"}
+  - {id: pdf_d01bfafbe389a5f8, pages: "8-10,14-16,22-25", why: "motor catalogue: dot-leader spec lines and summary tables, 41/56"}
+  - {id: pdf_e9e47aa8ee65e39e, pages: "5-8,24-27", why: "IWI: image-only product lists and photos (vision, figures), 35/37"}
+  - {id: pdf_d717bf66f633d689, pages: "66-73", why: "forum catalogue middle window: 11/18 there"}
+  - {id: doc_5a4cfa2b110b8e65, why: "long contracts log: roles labelled other, middle 15/27"}

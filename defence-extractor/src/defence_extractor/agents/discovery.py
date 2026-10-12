@@ -7,6 +7,7 @@ import logging
 import re
 
 from rapidfuzz import fuzz
+from rapidfuzz.distance import Levenshtein
 
 from ..contracts.common import PRODUCT_LIKE_ROLES, EntityType, EvidenceRef, FactClass, Role
 from ..contracts.document import BlockType
@@ -14,9 +15,11 @@ from ..contracts.entities import DefenceEntity, KnowledgeGraph
 from ..contracts.facts import Applicability, CandidateFact, Condition
 from ..ingest.measurements import find_measurements
 from ..pipeline.render import Chunk, build_chunks, est_tokens, extractable_blocks, header, render_blocks
+from ..llm.gateway import SchemaError
 from ..pipeline.state import DocState
 from ..retrieval import BlockIndex
-from .base import Runtime, ask, bisect_on_overflow, find_quote, mention_scan, norm_name, norm_text, over_doc_budget
+from .base import (Runtime, ask, bisect_on_overflow, find_quote, mention_scan, norm_name, norm_text, over_doc_budget,
+                   value_in_blocks)
 from .segments import context_notes, local_entities, related, structural_owner
 from .prompts import A5A_TASK, A5B_TASK, A6_TASK
 from .schemas import A6Out, FactOut, FactsOut
@@ -105,28 +108,108 @@ _MEASURE = re.compile(r"^(?P<num>[<>≥≤~±+-]?\s*\d[\d.,]*(?:\s*(?:-|–|to|~
 _SHORT_UNITS = {"in", "m", "h", "s", "g", "l", "t", "ft", "a", "v", "w", "c", "k"}  # also plain words / letters
 
 
-def _unit_from_context(value: str, texts: list[str]) -> str | None:
+_LEADER = re.compile(r"[.…]{2,}")
+
+
+def _slash(s: str) -> str:
+    return re.sub(r"\s*/\s*", "/", s)  # "m / sec" and "m/sec" are the same unit
+
+
+def _unit_rx(nu: str) -> re.Pattern:
+    if nu in _SHORT_UNITS:  # a one- or two-letter unit counts only as a label: "[in]", "(m)", "Units: h", "Diameter, in: 32.5"
+        e = re.escape(nu)
+        return re.compile(r"[\[(]\s*" + e + r"\s*[\])]|units?\s*:?\s*" + e + r"(?![a-z])|[,:]\s*" + e + r"\s*(?:[.…]{2,}|:|$)")
+    return re.compile(r"(?<![a-z/])" + re.escape(nu) + r"(?![a-z/²³])")  # not part of "km/h"
+
+
+def _unit_from_context(value: str, texts: list[str], cited: list[str] | None = None) -> str | None:
     """For a measurement "<number> <unit>" not printed as one string: the number as printed, when one block prints the
-    number and also its unit in its labels ("Depth — EU: 250; IMU: 259; Units: mm", "Velocity [fps]"). A one- or
-    two-letter unit must appear as a label ("[in]", "(m)", "Units: h"), not as a word of the text."""
+    number and also its unit in its labels ("Depth — EU: 250; IMU: 259; Units: mm", "Velocity [fps]", "Burn time, sec:
+    53.6", "Overall length, in.......179.5"), or when a short cited heading or table header carries the unit
+    ("WEIGHTS, lbm" over "Burnout ........ 745"). A one- or two-letter unit must appear as a label, not as a word."""
     m = _MEASURE.match(value.strip())
     if not m:
         return None
     num, unit = m.group("num").strip(), m.group("unit").strip()
-    nn, nu = norm_text(num), norm_text(unit)
+    nn, nu = norm_text(num), _slash(norm_text(unit))
     if not nn or not nu or not re.search(r"[a-z%°µ]", nu) or len(nu.split()) > 3:
         return None
     num_rx = re.compile(r"(?<![\d.,])" + re.escape(nn) + r"(?![\d.,])")
-    if nu in _SHORT_UNITS:
-        unit_rx = re.compile(r"[\[(]\s*" + re.escape(nu) + r"\s*[\])]|units?\s*:?\s*" + re.escape(nu) + r"(?![a-z])")
-    else:
-        unit_rx = re.compile(r"(?<![a-z/])" + re.escape(nu) + r"(?![a-z/²³])")  # not part of "km/h"
+    unit_rx = _unit_rx(nu)
+
+    def has_num(t: str) -> bool:  # dot leaders ("psia.......922") are separators, not decimal points
+        return bool(num_rx.search(_LEADER.sub(" ", norm_text(t))))
+
+    hit = next((t for t in texts if has_num(t) and unit_rx.search(_slash(norm_text(t)))), None)
+    if hit is None and cited:
+        heads = [t for t in cited if len(t) <= 60 and unit_rx.search(_slash(norm_text(t))) and not has_num(t)]
+        if heads:
+            hit = next((t for t in cited if has_num(t)), None)
+    if hit is None:
+        return None
+    mo = re.search(r"(?<![\d.,])" + re.escape(num) + r"(?![\d.,])", _LEADER.sub(" ", hit))
+    return mo.group(0) if mo else num
+
+
+def unit_context(doc, block_ids: list[str]) -> list[str]:
+    """Texts that may print the unit of a value in these blocks: the blocks themselves, the nearest label-only line
+    above each in its section ("WEIGHTS, lbm" over "Burnout ........ 745") and the section heading ("Dimensions (mm)")."""
+    index = {b.block_id: i for i, b in enumerate(doc.blocks)}
+    out: list[str] = []
+    for bid in block_ids:
+        i = index.get(bid)
+        if i is None:
+            continue
+        b = doc.blocks[i]
+        out.append(b.text)
+        sub = False
+        for k in range(i - 1, max(-1, i - 11), -1):
+            x = doc.blocks[k]
+            if x.section_id != b.section_id:
+                break
+            if x.type == BlockType.heading:
+                out.append(x.text)
+                break
+            if not sub and len(x.text) <= 60 and not re.search(r"\d", x.text):
+                out.append(x.text)
+                sub = True
+    return list(dict.fromkeys(out))
+
+
+def value_grounded(doc, block_ids: list[str], value: str) -> bool:
+    """The value is printed in its evidence blocks, verbatim or as a number whose unit sits in the blocks' labels or
+    in the label line / heading above them."""
+    if value_in_blocks(doc, block_ids, value):
+        return True
+    bmap = doc.block_map()
+    texts = [bmap[b].text for b in block_ids if b in bmap]
+    return _unit_from_context(value, texts, cited=unit_context(doc, block_ids)) is not None
+
+
+def _printed_form(value: str, texts: list[str]) -> str | None:
+    """The page's own spelling of a value the model retyped ("below 25W" for the printed "bellow 25W", a separator or
+    space changed): the closest whole-word span in a cited block with the same digits and at most two edits."""
+    v = value.strip()
+    if len(v) < 6:
+        return None
+    digits = re.findall(r"\d+", v)
+    best: tuple[int, str] | None = None
     for t in texts:
-        nt = norm_text(t)
-        if num_rx.search(nt) and unit_rx.search(nt):
-            mo = re.search(r"(?<![\d.,])" + re.escape(num) + r"(?![\d.,])", t)
-            return mo.group(0) if mo else num
-    return None
+        a = fuzz.partial_ratio_alignment(v, t)
+        if a is None or a.score < 80:
+            continue
+        s, e = a.dest_start, a.dest_end
+        while s > 0 and not t[s - 1].isspace():
+            s -= 1
+        while e < len(t) and not t[e].isspace() and t[e] not in ",;":
+            e += 1
+        span = t[s:e].strip(" ,;:")
+        if not span or re.findall(r"\d+", span) != digits:
+            continue
+        d = Levenshtein.distance(norm_text(v), norm_text(span))
+        if d <= 2 and d <= 0.25 * len(v) and (best is None or d < best[0]):
+            best = (d, span)
+    return best[1] if best else None
 
 
 _TRIM_EDGE = " ,;:-/*()"
@@ -174,13 +257,19 @@ def to_candidate(st: DocState, f: FactOut, method: str, section_id: str | None, 
     conds = [Condition(dimension=c.dimension.strip()[:60], value_text=c.value_text.strip()[:200])
              for c in f.conditions if c.dimension and c.value_text]
     anomalies = []
-    num = None if any(r.quote for r in refs) else _unit_from_context(value, texts)
+    num = None if any(r.quote for r in refs) else _unit_from_context(value, texts, cited=unit_context(doc, blocks))
     if num:
         # a table cell with its unit in the row / column label ("IMU: 259; Units: mm" -> "259 mm"): the number is
         # quoted verbatim, the unit comes from the label, and the verifier checks the composition
         src = [b for b in [*blocks, *(allowed_blocks or [])] if b in bmap and norm_text(num) in norm_text(bmap[b].text)]
         refs = find_quote(doc, src[:1], num) + [r for r in refs if r.block_id not in src[:1]]
         anomalies.append("unit_from_context")
+    elif not any(r.quote for r in refs) and (printed := _printed_form(value, texts)):
+        # the model retyped the value (fixed a typo, changed a separator): keep the page's spelling as the value
+        src = [b for b in [*blocks, *(allowed_blocks or [])] if b in bmap and printed in bmap[b].text]
+        refs = find_quote(doc, src[:1], printed) + [r for r in refs if r.block_id not in src[:1]]
+        value = printed
+        anomalies.append("value_reanchored")
     elif not any(r.quote for r in refs):
         # the model glued a condition onto the value and dropped what sat between them on the page
         # ("1,009 km (545 nm)* / 913 km (493 nm)** with standard tanks" -> "1,009 km (545 nm) with standard tanks"):
@@ -260,7 +349,8 @@ async def a5b_open_discovery(rt: Runtime, st: DocState) -> list[CandidateFact]:
         if not it.dismissed_reason:
             content_items[it.block_id] = content_items.get(it.block_id, 0) + 1
     # ~70 value items -> ~100 facts -> ~9k output tokens: dense catalogue chunks must not overflow max_tokens
-    chunks = build_chunks(doc, st.page_map, max_tokens=rt.settings.section_chunk_tokens, max_items=70, items=content_items)
+    chunks = build_chunks(doc, st.page_map, max_tokens=rt.settings.section_chunk_tokens,
+                          max_items=rt.settings.discovery_max_items, items=content_items)
     task = A5B_TASK.replace("{catalogue}", catalogue_for(rt, st.kg))
 
     async def run(c: Chunk) -> list[CandidateFact]:
@@ -415,6 +505,16 @@ async def a6_attribution(rt: Runtime, st: DocState) -> None:
             res = await ask(rt, agent="A6", role="main", header=doc_header(st, ev_ids), evidence=evidence(st, ev_ids),
                             task=A6_TASK.replace("{facts}", "\n".join(lines)), schema=A6Out, doc_id=doc.doc_id,
                             reasoning="low", max_tokens=6000)
+        except SchemaError as e:
+            if len(batch) >= 2:  # the facts and their evidence do not fit the context window: decide each half
+                mid = len(batch) // 2
+                await _decide(batch[:mid])
+                await _decide(batch[mid:])
+                return
+            st.errors.append(f"A6: {type(e).__name__}: {e}")
+            for f in batch:
+                f.owner_entity_id, f.owner_confidence = f.subject_entity_id, 0.6
+            return
         except Exception as e:
             st.errors.append(f"A6: {type(e).__name__}: {e}")
             for f in batch:
@@ -433,7 +533,8 @@ async def a6_attribution(rt: Runtime, st: DocState) -> None:
             f.attribution_note = d.reason[:200]
             f.agents.append("A6")
 
-    await asyncio.gather(*[decide(amb[i : i + 40]) for i in range(0, len(amb), 40)])
+    n = max(4, rt.settings.a6_batch)
+    await asyncio.gather(*[decide(amb[i : i + n]) for i in range(0, len(amb), n)])
 
 
 # ---------------------------------------------------------------------------------------------------

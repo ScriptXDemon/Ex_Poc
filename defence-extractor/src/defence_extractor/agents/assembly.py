@@ -20,6 +20,7 @@ from ..contracts.facts import CandidateFact, SpecRecord, TextFactRecord
 from ..contracts.ledger import Ledger, LedgerItem
 from ..contracts.page import EXTRACTABLE_ROLES, NONMAIN_EXTRACTABLE_ROLES
 from ..contracts.result import Coverage, ExecutionManifest, FinalDocumentResult, ProductRecord
+from ..pipeline.provenance import document_kind, pages_summary
 from ..pipeline.state import DocState
 from .base import Runtime, norm_text
 
@@ -234,13 +235,21 @@ def a13_assemble(rt: Runtime, st: DocState, usage: Usage, providers: dict[str, i
         pipeline_version=PIPELINE_VERSION, ontology_version=rt.onto.version, parser_version=doc.parser_version,
         run_id=st.run_id, models={"main": rt.settings.main_model, "verifier": rt.settings.verifier_model},
         providers_used=providers, usage=usage, stages=st.timings, duration_s=round(duration_s, 2),
-        status="completed" if not st.errors else "completed_with_errors", errors=st.errors[:50])
+        status="degraded" if st.failed_stages else "completed_with_errors" if st.errors else "completed",
+        errors=st.errors[:50])
+    ch = (doc.metadata or {}).get("challenges") or {}
+    kind, signals = document_kind(st.page_map.page_type if st.page_map else None, ch.get("file_flags") or [])
     return FinalDocumentResult(
         document={"doc_id": doc.doc_id, "url": doc.source_url, "path": st.ref.path, "format": doc.format, "title": doc.title,
                   "language": st.ingest.profile.language, "content_sha256": doc.content_sha256,
                   "page_type": st.page_map.page_type if st.page_map else None,
                   "page_scope": st.page_map.page_scope if st.page_map else None, "level": st.ref.level,
-                  "profile_flags": st.ingest.profile.flags, "parse_warnings": doc.parse_warnings},
+                  "profile_flags": st.ingest.profile.flags, "parse_warnings": doc.parse_warnings,
+                  # where the document came from and what kind it is: kept so later cleaning can filter by kind
+                  "source": {"url": doc.source_url, "path": st.ref.path, "collection_level": st.ref.level,
+                             "format": doc.format, "document_kind": kind, "kind_signals": signals},
+                  "challenges": {k: ch.get(k) for k in ("status", "file_flags", "page_flag_counts", "languages")} if ch else None,
+                  "pages": pages_summary(doc), "failed_stages": st.failed_stages},
         companies=[e for e in kg.entities if e.entity_type == EntityType.company],
         entities=kg.entities, products=products, relations=kg.relations,
         unattributed=[_unres(f) for f in unattributed], coverage=cov, ledger_summary=summary, ledger=ledger.items,

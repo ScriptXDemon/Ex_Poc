@@ -37,6 +37,7 @@ class DocState(BaseModel):
     done: list[str] = Field(default_factory=list)
     timings: list[StageTiming] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)
+    failed_stages: list[str] = Field(default_factory=list)  # stages that raised and were replaced by their fallback
     status: str = "running"
     fact_counter: int = 0
 

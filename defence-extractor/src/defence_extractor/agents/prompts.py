@@ -142,3 +142,14 @@ Rules:
 - Skip logos, decorative slogans, page numbers, running headers and footers, legal notices and contact details.
 - A page with no technical content (a photo, a cover, an empty or decorative page): has_technical_content false and no blocks.
 Return JSON only."""
+
+FIGURE_TASK = """# TASK: FIGURE TRANSCRIPTION (VISION), page {page}
+The image is one figure cut from a page of the document: a drawing, diagram, chart, labelled photo or a table saved as a picture.{caption}
+Transcribe the TECHNICAL content printed inside the figure: dimension lines and their values, callouts and labels that name parts or give values, legends, axis titles with units, and table cells.
+Rules:
+- Copy text exactly as printed: digits, decimal separators, units, symbols and qualifiers. Never estimate a value from the drawing's geometry or a chart's curve; only transcribe printed numbers. Skip anything you cannot read clearly.
+- A dimension or callout with a value: kind "label_value", text "what it measures: value" (e.g. "Overall length: 6,520 mm"); if only the value is printed, use the nearest label or the part it points to.
+- A table inside the figure: one line per row, kind "table_row", "Row label — Column header: value; ...".
+- Chart: kind "paragraph", "Chart: <title>; x axis: <label, unit>; y axis: <label, unit>" plus any printed data labels as label_value lines.
+- A photo or illustration without printed technical text: has_technical_content false and no blocks.
+Return JSON only."""

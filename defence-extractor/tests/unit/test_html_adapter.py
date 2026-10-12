@@ -96,3 +96,22 @@ def test_pdf_swapped_ligatures_are_repaired():
     from defence_extractor.ingest.pdf_adapter import _norm
     assert _norm("Ri昀氀ing, rate of 昀椀re, o昀昀ering") == "Rifling, rate of fire, offering"
     assert _norm("昀椀 一") == "昀椀 一"  # not inside a Latin word: untouched
+
+
+def test_a_reused_marker_binds_to_its_nearest_legend():
+    from defence_extractor.contracts.document import BlockType
+    from defence_extractor.ingest.pdf_adapter import _Builder
+
+    b = _Builder("D")
+    b.heading("Performance", 2, None, None)
+    b.block("Maximum speed: 278 km/h*", BlockType.paragraph, None, None)
+    b.block("* Rotors turning", BlockType.footnote, None, None)
+    b.heading("Hover ceiling OGE", 2, None, None)
+    b.block("2,893 m (9,490 ft)*/ 2,712 m (8,900 ft)**", BlockType.paragraph, None, None)
+    b.block("*General Electric CT7-2E1 / **Safran Aneto-1K", BlockType.footnote, None, None)
+    doc = b.build(fmt="pdf", url=None, path="/x.pdf", sha="0" * 64, title="t", warnings=[], parser="t")
+    by_use = {(m.marker, u): m.legend_text for m in find_marker_bindings(doc) for u in m.used_in_block_ids}
+    speed = next(x.block_id for x in doc.blocks if x.text.startswith("Maximum speed"))
+    hover = next(x.block_id for x in doc.blocks if x.text.startswith("2,893"))
+    assert by_use[("*", speed)] == "Rotors turning"
+    assert by_use[("*", hover)].startswith("General Electric CT7-2E1") and by_use[("**", hover)] == "Safran Aneto-1K"

@@ -23,6 +23,7 @@ class DocRef(BaseModel):
     hint_products: list[str] = Field(default_factory=list)
     source: str = "corpus"
     chars: int | None = None  # main-text characters measured by the corpus gate (size / cost estimate)
+    pages: str | None = None  # PDF page subset, e.g. "4-7,51-60" (fast test sets); None = the whole file
 
 
 def _products(cell: str | None) -> list[str]:
@@ -103,3 +104,17 @@ def load_benchmark(root: str | Path) -> list[DocRef]:
         for r in rows
         if r.get("usable") and (root / f"{r['id']}.html").exists()
     ]
+
+
+def parse_pages(spec: str | None) -> set[int] | None:
+    """"4-7,51-60,99" -> {4,5,6,7,51,...,60,99}; None or "" -> None."""
+    if not spec:
+        return None
+    out: set[int] = set()
+    for part in str(spec).split(","):
+        part = part.strip()
+        if not part:
+            continue
+        a, _, b = part.partition("-")
+        out.update(range(int(a), int(b or a) + 1))
+    return out or None

@@ -25,12 +25,12 @@ from ..contracts.entities import DefenceEntity
 from ..contracts.facts import CandidateFact
 from ..pipeline.state import DocState
 from .base import Runtime, norm_text
+from .designations import DESIGNATION as _DESIGNATION
 
 _PRIORITY = {Role.focal_product: 0, Role.related_product: 1, Role.variant: 1, Role.family: 2, Role.accessory: 2,
              Role.weapon: 3, Role.ammunition: 3, Role.compatible_system: 4, Role.launch_platform: 4, Role.carrier_platform: 4,
              Role.subsystem: 5, Role.component: 5, Role.sensor: 5, Role.engine: 5}
 MAX_LOCAL = 40
-_DESIGNATION = re.compile(r"(?<![\w/.])(?=[A-Za-z0-9-]*\d)(?=[A-Za-z0-9-]*[A-Za-z])[A-Za-z0-9][A-Za-z0-9-]{2,}(?![\w.])")
 
 
 def _owner_candidates(st: DocState) -> list[DefenceEntity]:
